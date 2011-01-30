@@ -1,0 +1,19 @@
+/******************************/
+/* HEADER */ 
+/******************************/
+
+.main-header-view {
+	background: url('/static/body_board/en/current/resources/images/main_header_bg.png?1295922990') top repeat-x;
+}
+
+
+/******************************/
+/* REGISTRATION PAGE */
+/******************************/
+
+.check-view {
+	background: url('/static/body_board/en/current/resources/images/check_bad.png?1294526238') left top no-repeat;
+}
+.checked {
+	background: url('/static/body_board/en/current/resources/images/check_good.png?1294526081') left top no-repeat !important;
+}

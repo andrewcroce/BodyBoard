@@ -1,0 +1,11 @@
+.label-li-view.selected {
+	background: #ff0000;
+}
+
+.check-view {
+	background: url('/static/body_board/account/current/resources/images/check_bad.png?1294526238') left top no-repeat;
+}
+
+.checked {
+	background: url('/static/body_board/account/current/resources/images/check_good.png?1294526081') left top no-repeat !important;
+}

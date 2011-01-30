@@ -1,0 +1,136 @@
+/* >>>>>>>>>> BEGIN source/resources/css/color.css */
+/******************************/
+
+/***** COLORS *****************/
+
+/******************************/
+
+body {
+	background: #EFFFFC;
+}
+* {
+	color: #8B9EA0;
+}
+
+
+
+
+.label-li-view.selected {
+	background: #CFF9FC;
+}
+
+/******************************/
+/* NO BACKGROUND */ 
+/******************************/
+.section-heading 
+{
+	background: none;
+}
+
+
+/******************************/
+/* HEADER */ 
+/******************************/
+
+#main-header {
+	background: url('/static/body_board/en/current/resources/images/main_header_bg.png?1295922990') top repeat-x;
+	background: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0, rgb(163,224,224)),
+		 color-stop(.6, rgb(210,252,254))
+	);
+}
+
+
+/******************************/
+/* LIST ITEM */ 
+/******************************/
+
+.label-li-view.selected {
+	background: #CFF9FC;
+}
+
+
+/******************************/
+/* BODY MENU */ 
+/******************************/
+
+#body-menu .sc-list-item-view {
+	color: #fff;
+	background: -moz-linear-gradient(left,  rgb(107,188,192), rgb(101,178,181));
+	background: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    right bottom,
+	    color-stop(0, rgb(107,188,192)),
+	    color-stop(.6, rgb(101,178,181))
+	);
+}
+
+#body-menu .sc-list-item-view label {
+	color: #fff;
+}
+
+#body-menu .has-disclosure {
+	background: none;
+}
+#body-menu .has-disclosure label {
+	color: #33888D;
+}
+
+
+/******************************/
+/* BODY MENU */ 
+/******************************/ 
+
+#body-menu div {
+	background: none;
+}
+#body-menu {
+	background: -moz-linear-gradient(left,  rgb(138,217,220), rgb(128,201,203));
+	background: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    right bottom,
+	    color-stop(0, rgb(138,217,220)),
+	    color-stop(.6, rgb(128,201,203))
+	);
+}
+/* >>>>>>>>>> BEGIN source/resources/css/images.css */
+/******************************/
+/* HEADER */ 
+/******************************/
+
+.main-header-view {
+	background: url('/static/body_board/en/current/resources/images/main_header_bg.png?1295922990') top repeat-x;
+}
+
+
+/******************************/
+/* REGISTRATION PAGE */
+/******************************/
+
+.check-view {
+	background: url('/static/body_board/en/current/resources/images/check_bad.png?1294526238') left top no-repeat;
+}
+.checked {
+	background: url('/static/body_board/en/current/resources/images/check_good.png?1294526081') left top no-repeat !important;
+}
+/* >>>>>>>>>> BEGIN source/resources/css/layout.css */
+#body-board-view {
+	z-index: 10000;
+}
+/* >>>>>>>>>> BEGIN source/resources/css/typography.css */
+.section-heading .sc-label-view
+{
+	text-transform: uppercase;
+	font-size: 15px;
+}
+/* >>>>>>>>>> BEGIN source/resources/main_page.css */
+#body-board-view {
+	
+
+	
+}
