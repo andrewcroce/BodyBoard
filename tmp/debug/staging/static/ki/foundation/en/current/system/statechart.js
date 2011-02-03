@@ -1,6 +1,5 @@
 // ==========================================================================
 // Project:   Ki - A Statechart Framework for SproutCore
-// Copyright: ©2010 Michael Cohen, and contributors.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
 
@@ -111,7 +110,7 @@
     
     }}}
   
-  Deeping on your needs, a statechart can have lots of states, which can become hard to manage all within
+  Depending on your needs, a statechart can have lots of states, which can become hard to manage all within
   one file. To modularize your states and make them easier to manage and maintain, you can plug-in states
   into other states. Let's say we are using the statechart in the last example above, and all the code is 
   within one file. We could update the code and split the logic across two or more files like so:
@@ -149,9 +148,9 @@
     
           initialSubstate: 'stateA',
       
-          stateA: Ki.State.plugin('MyApp.stateA'),
+          stateA: Ki.State.plugin('MyApp.StateA'),
       
-          stateB: Ki.State.plugin('MyApp.stateB')
+          stateB: Ki.State.plugin('MyApp.StateB')
         
         })
     
@@ -209,7 +208,13 @@ Ki.StatechartManager = {
   */
   trace: NO,
   
-  initMixin: function() {
+  /**
+    Initializes the statechart. By initializing the statechart, it will create all the states and register
+    them with the statechart. Once complete, the statechart can be used to go to states and send events to.
+  */
+  initStatechart: function() {
+    if (this.get('statechartIsInitialized')) return;
+    
     this._gotoStateLocked = NO;
     this._sendEventLocked = NO;
     this._pendingStateTransitions = [];
@@ -220,17 +225,10 @@ Ki.StatechartManager = {
     if (this.get('monitorIsActive')) {
       this.set('monitor', Ki.StatechartMonitor.create());
     }
-  },
-  
-  /**
-    Initializes the statechart. By initializing the statechart, it will create all the states and register
-    them with the statechart. Once complete, the statechart can be used to go to states and send events to.
-  */
-  initStatechart: function() {
-    if (this.get('statechartIsInitialized')) return;
     
     var trace = this.get('trace'),
-        rootState = this.get('rootState');
+        rootState = this.get('rootState'),
+        msg;
     
     if (trace) SC.Logger.info('BEGIN initialize statechart');
     
@@ -239,12 +237,21 @@ Ki.StatechartManager = {
     }
     
     if (!(SC.kindOf(rootState, Ki.State) && rootState.isClass)) {
-      throw "Unable to initialize statechart. Root state must be a state class";
+      msg = 'Unable to initialize statechart. Root state must be a state class';
+      SC.Logger.error(msg);
+      throw msg;
     }
     
     rootState = this.createRootState(rootState, { statechart: this, name: Ki.ROOT_STATE_NAME });
     this.set('rootState', rootState);
     rootState.initState();
+    
+    if (SC.kindOf(rootState.get('initialSubstate'), Ki.EmptyState)) {
+      msg = 'Unable to initialize statechart. Root state must have an initial substate explicilty defined';
+      SC.Logger.error(msg);
+      throw msg;
+    }
+    
     this.set('statechartIsInitialized', YES);
     this.gotoState(rootState);
     
@@ -329,16 +336,45 @@ Ki.StatechartManager = {
     more history states to follow. If the given state does not have a history state, then the statechart
     will continue following state transition procedures.
     
+    Method can be called in the following ways:
+    
+    {{{
+    
+      // With one argument. 
+      gotoState(<state>)
+      
+      // With two argument.
+      gotoState(<state>, <state | boolean | hash>)
+      
+      // With three argument.
+      gotoState(<state>, <state>, <boolean | hash>)
+      gotoState(<state>, <boolean>, <hash>)
+      
+      // With four argument.
+      gotoState(<state>, <state>, <boolean>, <hash>)
+    
+    }}}
+    
+    where <state> is either a Ki.State object or a string and <hash> is a regular JS hash object.
+    
     @param state {Ki.State|String} the state to go to (may not be the final state in the transition process)
     @param fromCurrentState {Ki.State|String} Optional. The current state to start the transition process from.
     @param useHistory {Boolean} Optional. Indicates whether to include using history states in the transition process
+    @param context {Hash} Optional. A context object that will be passed to all exited and entered states
   */
-  gotoState: function(state, fromCurrentState, useHistory) {
+  gotoState: function(state, fromCurrentState, useHistory, context) {
     
     if (!this.get('statechartIsInitialized')) {
       SC.Logger.error('can not go to state %@. statechart has not yet been initialized'.fmt(state));
       return;
     }
+    
+    var args = this._processGotoStateArgs(arguments);
+
+    state = args.state;
+    fromCurrentState = args.fromCurrentState;
+    useHistory = args.useHistory;
+    context = args.context;
     
     var pivotState = null,
         exitStates = [],
@@ -362,7 +398,8 @@ Ki.StatechartManager = {
       this._pendingStateTransitions.push({
         state: state,
         fromCurrentState: fromCurrentState,
-        useHistory: useHistory
+        useHistory: useHistory,
+        context: context
       });
       
       return;
@@ -430,7 +467,7 @@ Ki.StatechartManager = {
     }
     
     // Collected all the state transition actions to be performed. Now execute them.
-    this._executeGotoStateActions(state, gotoStateActions);
+    this._executeGotoStateActions(state, gotoStateActions, null, context);
   },
   
   /**
@@ -458,11 +495,11 @@ Ki.StatechartManager = {
     }
     
     var point = this._gotoStateSuspendedPoint;
-    this._executeGotoStateActions(point.gotoState, point.actions, point.marker);
+    this._executeGotoStateActions(point.gotoState, point.actions, point.marker, point.context);
   },
   
   /** @private */
-  _executeGotoStateActions: function(gotoState, actions, marker) {
+  _executeGotoStateActions: function(gotoState, actions, marker, context) {
     var action = null,
         len = actions.length,
         actionResult = null;
@@ -473,11 +510,11 @@ Ki.StatechartManager = {
       action = actions[marker];
       switch (action.action) {
         case Ki.EXIT_STATE:
-          actionResult = this._exitState(action.state);
+          actionResult = this._exitState(action.state, context);
           break;
           
         case Ki.ENTER_STATE:
-          actionResult = this._enterState(action.state, action.currentState);
+          actionResult = this._enterState(action.state, action.currentState, context);
           break;
       }
       
@@ -493,7 +530,8 @@ Ki.StatechartManager = {
         this._gotoStateSuspendedPoint = {
           gotoState: gotoState,
           actions: actions,
-          marker: marker + 1
+          marker: marker + 1,
+          context: context
         }; 
         
         actionResult.tryToPerform(action.state);
@@ -516,7 +554,7 @@ Ki.StatechartManager = {
   },
   
   /** @private */
-  _exitState: function(state) {
+  _exitState: function(state, context) {
     if (state.get('currentSubstates').indexOf(state) >= 0) {  
       var parentState = state.get('parentState');
       while (parentState) {
@@ -529,7 +567,7 @@ Ki.StatechartManager = {
     
     state.set('currentSubstates', []);
     state.notifyPropertyChange('isCurrentState');
-    var result = this.exitState(state);
+    var result = this.exitState(state, context);
     
     if (this.get('monitorIsActive')) this.get('monitor').pushExitedState(state);
     
@@ -538,12 +576,21 @@ Ki.StatechartManager = {
     return result;
   },
   
-  exitState: function(state) {
-    return state.exitState();
+  /**
+    What will actually invoke a state's exitState method.
+  
+    Called during the state transition process whenever the gotoState method is
+    invoked.
+    
+    @param state {Ki.State} the state whose enterState method is to be invoked
+    @param context {Hash} a context hash object to provide the enterState method
+  */
+  exitState: function(state, context) {
+    return state.exitState(context);
   },
   
   /** @private */
-  _enterState: function(state, current) {
+  _enterState: function(state, current, context) {
     var parentState = state.get('parentState');
     if (parentState && !state.get('isConcurrentState')) parentState.set('historyState', state);
     
@@ -558,15 +605,24 @@ Ki.StatechartManager = {
     if (this.get('trace')) SC.Logger.info('entering state: ' + state);
     
     state.notifyPropertyChange('isCurrentState');
-    var result = this.enterState(state);
+    var result = this.enterState(state, context);
     
     if (this.get('monitorIsActive')) this.get('monitor').pushEnteredState(state);
     
     return result;
   },
   
-  enterState: function(state) {
-    return state.enterState();
+  /**
+    What will actually invoke a state's enterState method.
+  
+    Called during the state transition process whenever the gotoState method is
+    invoked.
+    
+    @param state {Ki.State} the state whose enterState method is to be invoked
+    @param context {Hash} a context hash object to provide the enterState method
+  */
+  enterState: function(state, context) {
+    return state.enterState(context);
   },
   
   /**
@@ -585,15 +641,43 @@ Ki.StatechartManager = {
     depending on the make up of that statechart, can lead to unexpected outcomes. For a statechart with concurrent
     states, it is best to explicitly supply a current state.
     
+    Method can be called in the following ways:
+    
+    {{{
+    
+      // With one arguments. 
+      gotoHistorytate(<state>)
+      
+      // With two arguments. 
+      gotoHistorytate(<state>, <state | boolean | hash>)
+      
+      // With three arguments.
+      gotoHistorytate(<state>, <state>, <boolean | hash>)
+      gotoHistorytate(<state>, <boolean>, <hash>)
+      
+      // With four argumetns
+      gotoHistorytate(<state>, <state>, <boolean>, <hash>)
+    
+    }}}
+    
+    where <state> is either a Ki.State object or a string and <hash> is a regular JS hash object.
+    
     @param state {Ki.State|String} the state to go to and follow it's history state
     @param fromCurrentState {Ki.State|String} Optional. the current state to start the state transition process from
     @param recursive {Boolean} Optional. whether to follow history states recursively.
   */
-  gotoHistoryState: function(state, fromCurrentState, recursive) {
+  gotoHistoryState: function(state, fromCurrentState, recursive, context) {
     if (!this.get('statechartIsInitialized')) {
       SC.Logger.error("can not go to state %@'s history state. Statechart has not yet been initialized".fmt(state));
       return;
     }
+    
+    var args = this._processGotoStateArgs(arguments);
+    
+    state = args.state;
+    fromCurrentState = args.fromCurrentState;
+    recursive = args.useHistory;
+    context = args.context;
     
     state = this.getState(state);
   
@@ -606,12 +690,12 @@ Ki.StatechartManager = {
     
     if (!recursive) { 
       if (historyState) {
-        this.gotoState(historyState, fromCurrentState);
+        this.gotoState(historyState, fromCurrentState, context);
       } else {
-        this.gotoState(state, fromCurrentState);
+        this.gotoState(state, fromCurrentState, context);
       }
     } else {
-      this.gotoState(state, fromCurrentState, YES);
+      this.gotoState(state, fromCurrentState, YES, context);
     }
   },
   
@@ -789,6 +873,10 @@ Ki.StatechartManager = {
       
       // State has an initial substate to enter
       else if (initialSubstate) {
+        if (SC.kindOf(initialSubstate, Ki.HistoryState)) {
+          if (!useHistory) useHistory = initialSubstate.get('isRecursive');
+          initialSubstate = initialSubstate.get('state');
+        }
         this._traverseStatesToEnter(initialSubstate, null, null, useHistory, gotoStateActions);  
       } 
       
@@ -834,9 +922,13 @@ Ki.StatechartManager = {
     pending queue.
   */
   _flushPendingStateTransition: function() {
+    if (!this._pendingStateTransitions) {
+      SC.Logger.error('Unable to flush pending state transition. _pendingStateTransitions is invalid');
+      return;
+    }
     var pending = this._pendingStateTransitions.shift();
     if (!pending) return;
-    this.gotoState(pending.state, pending.fromCurrentState, pending.useHistory);
+    this.gotoState(pending.state, pending.fromCurrentState, pending.useHistory, pending.context);
   },
   
   /** @private
@@ -854,7 +946,70 @@ Ki.StatechartManager = {
     if (this.get('monitorIsActive') && SC.none(this.get('monitor'))) {
       this.set('monitor', Ki.StatechartMonitor.create());
     }
-  }.observes('monitorIsActive')
+  }.observes('monitorIsActive'),
+  
+  /** @private 
+    Will process the arguments supplied to the gotoState method.
+    
+    TODO: Come back to this and refactor the code. It works, but it
+          could certainly be improved
+  */
+  _processGotoStateArgs: function(args) {
+    var processedArgs = { 
+          state: null, 
+          fromCurrentState: null, 
+          useHistory: false, 
+          context: null 
+        },
+        len = null,
+        value = null;
+        
+    args = SC.$A(args);
+    args = args.filter(function(item) {
+      return !(item === undefined); 
+    });
+    len = args.length;
+    
+    if (len < 1) return processedArgs;
+    
+    processedArgs.state = args[0];
+    
+    if (len === 2) {
+      value = args[1];
+      switch (SC.typeOf(value)) {
+      case SC.T_BOOL: 
+        processedArgs.useHistory = value;
+        break;
+      case SC.T_HASH:
+        processedArgs.context = value;
+        break;
+      default:
+        processedArgs.fromCurrentState = value;
+      }
+    }
+    else if (len === 3) {
+      value = args[1];
+      if (SC.typeOf(value) === SC.T_BOOL) {
+        processedArgs.useHistory = value;
+        processedArgs.context = args[2];
+      } else {
+        processedArgs.fromCurrentState = value;
+        value = args[2];
+        if (SC.typeOf(value) === SC.T_BOOL) {
+          processedArgs.useHistory = value;
+        } else {
+          processedArgs.context = value;
+        }
+      }
+    }
+    else {
+      processedArgs.fromCurrentState = args[1];
+      processedArgs.useHistory = args[2];
+      processedArgs.context = args[3];
+    }
+    
+    return processedArgs;
+  }
   
 };
 

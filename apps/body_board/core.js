@@ -25,9 +25,9 @@ BodyBoard = SC.Application.create(
 	store: SC.Store.create().from(SC.Record.fixtures),
   
 	
-	store: SC.Store.create({ 
-	  commitRecordsAutomatically: YES
-	}).from('BodyBoard.BodyBoardDataSource'),
+	//store: SC.Store.create({ 
+	  //commitRecordsAutomatically: YES
+	//}).from('BodyBoard.BodyBoardDataSource'),
 	
 
   // TODO: Add global constants or singleton objects needed by your app here.

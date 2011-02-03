@@ -30,16 +30,16 @@ BodyBoard.main = function main() {
 	//BodyBoard.viewerController.initViewer();
 	
 	
-	//var authors = BodyBoard.store.find(SC.Query.local(BodyBoard.Author));
-	var authors = BodyBoard.store.find(BodyBoard.AUTHORS_QUERY);
+	var authors = BodyBoard.store.find(SC.Query.local(BodyBoard.Author));
+	//var authors = BodyBoard.store.find(BodyBoard.AUTHORS_QUERY);
 	BodyBoard.authorsController.set('content', authors);
 	
-	//var systems = BodyBoard.store.find(SC.Query.local(BodyBoard.System));
-	var systems = BodyBoard.store.find(BodyBoard.SYSTEMS_QUERY);
+	var systems = BodyBoard.store.find(SC.Query.local(BodyBoard.System));
+	//var systems = BodyBoard.store.find(BodyBoard.SYSTEMS_QUERY);
 	BodyBoard.systemsController.set('content', systems);
 	
-	//var labels = BodyBoard.store.find(SC.Query.local(BodyBoard.Label));
-	var labels = BodyBoard.store.find(BodyBoard.LABELS_QUERY);
+	var labels = BodyBoard.store.find(SC.Query.local(BodyBoard.Label));
+	//var labels = BodyBoard.store.find(BodyBoard.LABELS_QUERY);
 	BodyBoard.labelsController.set('content', labels);
 	
 	BodyBoard.treeNavController.populate();
