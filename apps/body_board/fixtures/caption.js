@@ -10,10 +10,17 @@ BodyBoard.Caption.FIXTURES = [
 
   {
 		guid : 1,
-		text : '<p>Distinctively seize superior partnerships whereas cross functional action items. Objectively deliver one-to-one products without highly efficient process improvements. Conveniently integrate customized metrics for scalable scenarios.</p><p>Objectively negotiate leading-edge schemas via inexpensive mindshare. Dynamically build holistic interfaces and accurate communities. Proactively empower extensible expertise without innovative information.</p>',
+		text : '<h2>A Caption Heading<\/h2><p>Distinctively seize superior partnerships whereas cross functional action items. Objectively deliver one-to-one products without highly efficient process improvements. Conveniently integrate customized metrics for scalable scenarios.<\/p>',
 		votes : 0,
-		label_guid : 2,
-		image : {}
+		label_guid : 2
+	},
+	
+	{
+		guid : 2,
+		text : '<h2>Another Caption Heading<\/h2><p>Distinctively seize superior partnerships whereas cross functional action items. Objectively deliver one-to-one products without highly efficient process improvements. Conveniently integrate customized metrics for scalable scenarios.<\/p>',
+		votes : 0,
+		label_guid : 2
 	}
+	
 
 ];

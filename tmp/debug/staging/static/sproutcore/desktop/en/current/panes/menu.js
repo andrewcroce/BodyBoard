@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -264,6 +264,7 @@ SC.MenuPane = SC.PickerPane.extend(
     // interpreted in keyUp.
     this.set('defaultResponder', this);
     this.endPropertyChanges();
+    this._hideOverflow();
 
     this.append();
   },
@@ -525,6 +526,8 @@ SC.MenuPane = SC.PickerPane.extend(
       this.set(key, value);
     }
   },
+
+  renderDelegateName: 'menuRenderDelegate',
 
   /** @private
     The render method is responsible for adding the control size class
@@ -895,7 +898,7 @@ SC.MenuPane = SC.PickerPane.extend(
 
   /** @private */
   mouseDown: function(evt) {
-    this.modalPaneDidClick();
+    this.modalPaneDidClick(evt);
     return YES ;
   },
 
@@ -1000,9 +1003,24 @@ SC.MenuPane = SC.PickerPane.extend(
     return YES;
   },
 
-  performKeyEquivalent: function(keyEquivalent) {
+  /** @private
+    Called by the view hierarchy when the menu should respond to a shortcut
+    key being pressed.
+
+    Normally, the menu will only respond to key presses when it is visible.
+    However, when the menu is part of another control, such as an
+    SC.PopupButtonView, the menu should still respond if it is hidden but its
+    parent control is visible. In those cases, the parameter
+    fromVisibleControl will be set to YES.
+
+    @param keyEquivalent {String} the shortcut key sequence that was pressed
+    @param fromVisibleControl {Boolean} if the shortcut key press was proxied
+    to this menu by a visible parent control
+    @returns {Boolean}
+  */
+  performKeyEquivalent: function(keyEquivalent, evt, fromVisibleControl) {
     //If menu is not visible
-    if (!this.get('isVisibleInWindow')) return NO;
+    if (!fromVisibleControl && !this.get('isVisibleInWindow')) return NO;
     
     // Look for menu item that has this key equivalent
     var menuItem = this._keyEquivalents[keyEquivalent];

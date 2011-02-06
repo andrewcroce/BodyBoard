@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore Costello - Property Observing Library
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -34,6 +34,7 @@ CoreTest.Runner = {
         
     for(idx=0;idx<len;idx++) CoreTest.mixin(ret, arguments[len]);
     if (!ret.plan) ret.plan = CoreTest.Plan.create({ delegate: ret });
+    window.resizeTo(1400, 800);
     Q$(window).load(function() { ret.begin(); });      
     return ret ;
   },
@@ -111,7 +112,7 @@ CoreTest.Runner = {
     }
 
     if (r.warnings > 0) {
-      str += CoreTest.fmt('&nbsp;<span class="warnings">%@ warnings%@</span>',
+      str += CoreTest.fmt('&nbsp;<span class="warnings">%@ warning%@</span>',
             r.warnings, (r.warnings !== 1 ? 's' : ''));
     }
 

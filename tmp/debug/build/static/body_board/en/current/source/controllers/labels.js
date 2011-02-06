@@ -44,11 +44,12 @@ BodyBoard.labelsController = SC.ArrayController.create(
 
 
 
-
 BodyBoard.labelController = SC.ObjectController.create({
 	
 	contentBinding : SC.Binding.single('BodyBoard.labelsController.selection'),
-
+	
+	
+	
 	setSystemOnSelection : function(){
 	
 		var currentSystem = BodyBoard.systemController.get('content');
@@ -56,18 +57,21 @@ BodyBoard.labelController = SC.ObjectController.create({
 			console.log('Selected label, changing system');
 			BodyBoard.systemsController.selectObject(this.get('system'));
 		}
+		this.focusOnLabel();
 		
 	}.observes('content'),
 	
 	
 	
-	focusOnLabel : function( event ){
-		
-		var x = this.get('x');
-		var y = this.get('y');
-		//viewer.viewport.panTo(new Seadragon.Point(x, y));
-		
+	focusOnLabel : function(){
+		var x,y;
+		x = this.get('x');
+		y = this.get('y');
+		console.log(x,y);
+		BodyBoard.viewerController.get('viewer').viewport.panTo(new Seadragon.Point(x, y));
 	},
+	
+	
 	
 	newLabelStartDrag : function( event, layout, view ) {
 		
@@ -80,6 +84,7 @@ BodyBoard.labelController = SC.ObjectController.create({
 		};
 		return YES;
 	},
+	
 	
 	
 	newLabelDragged : function( event, view ) {
@@ -145,4 +150,4 @@ BodyBoard.labelController = SC.ObjectController.create({
 	}
 	
 });
-; if ((typeof SC !== 'undefined') && SC && SC.scriptDidLoad) SC.scriptDidLoad('body_board');
+; if ((typeof SC !== 'undefined') && SC && SC.Module && SC.Module.scriptDidLoad) SC.Module.scriptDidLoad('body_board');

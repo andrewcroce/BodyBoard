@@ -1,6 +1,6 @@
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
+// Copyright ©2006-2011, Strobe Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -65,31 +65,6 @@ SC.PanelPane = SC.Pane.extend({
   */
   contentView: null,
   contentViewBindingDefault: SC.Binding.single(),
-
-  /**
-    Replaces any child views with the passed new content.  
-    
-    This method is automatically called whenever your contentView property 
-    changes.  You can override it if you want to provide some behavior other
-    than the default.
-    
-    @param {SC.View} newContent the new panel view or null.
-    @returns {void}
-  */
-  
-  render: function(context, firstTime) {
-    if (context.needsContent) {
-      this.renderChildViews(context, firstTime) ;
-      context.push("<div class='top-left-edge'></div>",
-       "<div class='top-edge'></div>",
-       "<div class='top-right-edge'></div>",
-       "<div class='right-edge'></div>",
-       "<div class='bottom-right-edge'></div>",
-       "<div class='bottom-edge'></div>",
-       "<div class='bottom-left-edge'></div>",
-       "<div class='left-edge'></div>");
-    }
-  },
   
   replaceContent: function(newContent) {
     this.removeAllChildren() ;
@@ -119,7 +94,14 @@ SC.PanelPane = SC.Pane.extend({
   // ..........................................................
   // INTERNAL SUPPORT
   //
-  
+
+  /**
+    The name of the theme's SC.PanelPane render delegate.
+
+    @property {String}
+  */
+  renderDelegateName: 'panelRenderDelegate',
+
   // get the modal pane. 
   _modalPane: function() {
     var pane = this.get('modalPane');

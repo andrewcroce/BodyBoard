@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -22,7 +22,8 @@ SC.DisclosureView = SC.ButtonView.extend(
   
   classNames: ['sc-disclosure-view'],
   
-  theme: 'disclosure',
+  renderDelegateName: 'disclosureRenderDelegate',
+
   buttonBehavior: SC.TOGGLE_BEHAVIOR,
   
   /**
@@ -38,28 +39,10 @@ SC.DisclosureView = SC.ButtonView.extend(
   
   /** @private */
   valueBindingDefault: SC.Binding.bool() ,
-  
-  /** @private */
-  render: function(context, firstTime) {
-    var title = this.get('displayTitle');
-    if(firstTime) {
-      context.push('<img src="', SC.BLANK_IMAGE_URL, '" class="button" alt="" />');
-      if(this.get('needsEllipsis')) {
-        context.push('<span class="ellipsis sc-button-label">',title,'</span>');
-      }
-      else {
-        context.push('<span class="sc-button-label">', title,'</span>');  
-      }
-    }
-    else {
-      this.$('label').text(title);
-    }
-  },
-  
+
   /**
     Allows toggling of the value with the right and left arrow keys. 
     Extends the behavior inherted from SC.ButtonView.
-    
     @param evt
   */
   keyDown: function(evt) {

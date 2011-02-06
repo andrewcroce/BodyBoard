@@ -10,23 +10,21 @@ sc_require('controllers/systems');
 BodyBoard.labelView = SC.View.design({
 	
 	layout : { height: 1, width: 1 },
-	contentDisplayProperties : 'name'.w(),
+	contentDisplayProperties : 'name labels'.w(),
 	
 	
 	render : function( context, firstTime ) {
 		
-		var name = '';
-		var point = '';
-		var x = 0;
-		var y = 0;
-		var placement = Seadragon.OverlayPlacement.TOP_LEFT;
-		var content = this.get('content');
+		var content,name,x,y,point,placement,captions,div,h1,ul;
+		content = this.get('content');
+		captions = BodyBoard.labelController.get('captions');
 		
 		if( content != null ) {
 			console.log('Label content available');
 			name = content.get('name');
 			x = content.get('x');
 			y = content.get('y');
+			captions = content.get('captions');
 			point = new Seadragon.Point( x, y );
 		} else {
 			console.log('no content available for label');
@@ -37,17 +35,48 @@ BodyBoard.labelView = SC.View.design({
 		}
 		
 		console.log('rendering label: ',name);
-		var div = document.createElement('div');
-		div.style.backgroundColor = '#ff0000';
-		div.style.width = '120px';
-		div.style.height = '25px';
-		div.innerHTML = name;
-		//context = context.begin('h3').addClass('label-name').push(name).end();
 		
+
+		/*
+		*	Currently this does not use the View's actual context, but just creates a new div to use for the overlay
+		*	TODO: Make the overlay div become the View's context or vice versa
+		*/
+		div = document.createElement('div');
+		div.style.backgroundColor = '#ff0000';
+		div.style.color = '#0000ff';
+		div.style.width = '200px';
+		div.style.minHeight = '25px';
+		
+		h1 = document.createElement('h1');
+		h1.innerHTML = name;
+		div.appendChild(h1);
+		
+		if(typeof captions != 'undefined'){
+			var ul;
+			ul = document.createElement('ul');
+			captions.forEach(function(item,index,enumerable){
+				
+				console.log('Caption ',index);
+				console.log(item.get('text'));
+				var caption,image;
+				caption = document.createElement('li');
+				caption.innerHTML = item.get('text');
+				ul.appendChild(caption);
+
+			});
+			div.appendChild(ul);
+			
+		} else {
+			console.log('No captions available');
+		}
+		
+		//div.innerHTML = name;
+				
+		placement = Seadragon.OverlayPlacement.TOP_LEFT;
 		BodyBoard.viewerController.get('viewer').drawer.addOverlay(div, point, placement);
 		
 		arguments.callee.base.apply(this,arguments);
 		
 	}
 	
-});; if ((typeof SC !== 'undefined') && SC && SC.scriptDidLoad) SC.scriptDidLoad('body_board');
+});; if ((typeof SC !== 'undefined') && SC && SC.Module && SC.Module.scriptDidLoad) SC.Module.scriptDidLoad('body_board');

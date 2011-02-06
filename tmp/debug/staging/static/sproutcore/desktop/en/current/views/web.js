@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -33,7 +33,7 @@ SC.WebView = SC.View.extend(SC.Control, {
     var src = this.get('value');
     if (firstTime) {
       context.push('<iframe src="' + src + 
-      '" style="position: absolute; width: 100%; height: 100%; border: 0px; margin: 0px; padding: 0p;"></iframe>');
+      '" style="position: absolute; width: 100%; height: 100%; border: 0px; margin: 0px; padding: 0px;"></iframe>');
     } else {
       var iframe = this.$('iframe');
       // clear out the previous src, to force a reload

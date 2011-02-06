@@ -21,29 +21,15 @@ BodyBoard = SC.Application.create(
   // connect to a backend server.  The default setup below connects the store
   // to any fixtures you define.
 
-
-	store: SC.Store.create().from(SC.Record.fixtures),
-  
+	
+	store: SC.Store.create().from(SC.Record.fixtures), 
+  	
+	//store: SC.Store.create().from('BodyBoard.DataSource'),
+  	//storeType: 'Thoth',
 	
 	//store: SC.Store.create({ 
 	  //commitRecordsAutomatically: YES
 	//}).from('BodyBoard.BodyBoardDataSource'),
-	
 
-  // TODO: Add global constants or singleton objects needed by your app here.
-	
-	/*
-	SeaDragon : {},
-	isInitialized : NO,
-	
-	viewer : function(){
-		if( isInitialized == NO ){
-			isInitialized = YES;
-			BodyBoard.SeaDragon = new Seadragon.Viewer('body-board-view');
-		}
-		return BodyBoard.SeaDragon;
-	}
-	*/
-	
 	
 }) ;

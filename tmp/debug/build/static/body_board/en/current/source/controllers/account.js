@@ -63,4 +63,4 @@ BodyBoard.accountController = SC.ObjectController.create(
 	
 	
 }) ;
-; if ((typeof SC !== 'undefined') && SC && SC.scriptDidLoad) SC.scriptDidLoad('body_board');
+; if ((typeof SC !== 'undefined') && SC && SC.Module && SC.Module.scriptDidLoad) SC.Module.scriptDidLoad('body_board');

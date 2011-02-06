@@ -1,136 +1,156 @@
-/* >>>>>>>>>> BEGIN source/resources/css/color.css */
 /******************************/
-
-/***** COLORS *****************/
-
+/* HEADER */
 /******************************/
-
-body {
-	background: #EFFFFC;
-}
-* {
-	color: #8B9EA0;
-}
-
-
-
-
-.label-li-view.selected {
-	background: #CFF9FC;
-}
-
-/******************************/
-/* NO BACKGROUND */ 
-/******************************/
-.section-heading 
-{
-	background: none;
-}
-
-
-/******************************/
-/* HEADER */ 
-/******************************/
-
-#main-header {
-	background: url('/static/body_board/en/current/resources/images/main_header_bg.png?1295922990') top repeat-x;
-	background: -webkit-gradient(
-	    linear,
-	    left bottom,
-	    left top,
-	    color-stop(0, rgb(163,224,224)),
-		 color-stop(.6, rgb(210,252,254))
-	);
-}
-
-
-/******************************/
-/* LIST ITEM */ 
-/******************************/
-
-.label-li-view.selected {
-	background: #CFF9FC;
-}
-
-
-/******************************/
-/* BODY MENU */ 
-/******************************/
-
-#body-menu .sc-list-item-view {
-	color: #fff;
-	background: -moz-linear-gradient(left,  rgb(107,188,192), rgb(101,178,181));
-	background: -webkit-gradient(
-	    linear,
-	    left bottom,
-	    right bottom,
-	    color-stop(0, rgb(107,188,192)),
-	    color-stop(.6, rgb(101,178,181))
-	);
-}
-
-#body-menu .sc-list-item-view label {
-	color: #fff;
-}
-
-#body-menu .has-disclosure {
-	background: none;
-}
-#body-menu .has-disclosure label {
-	color: #33888D;
-}
-
-
-/******************************/
-/* BODY MENU */ 
-/******************************/ 
-
-#body-menu div {
-	background: none;
-}
-#body-menu {
-	background: -moz-linear-gradient(left,  rgb(138,217,220), rgb(128,201,203));
-	background: -webkit-gradient(
-	    linear,
-	    left bottom,
-	    right bottom,
-	    color-stop(0, rgb(138,217,220)),
-	    color-stop(.6, rgb(128,201,203))
-	);
-}
-/* >>>>>>>>>> BEGIN source/resources/css/images.css */
-/******************************/
-/* HEADER */ 
-/******************************/
-
+/* line 6, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/images.css.scss */
 .main-header-view {
-	background: url('/static/body_board/en/current/resources/images/main_header_bg.png?1295922990') top repeat-x;
+  background: url('/static/body_board/en/current/resources/images/main_header_bg.png?1296599065') top repeat-x;
 }
 
-
-/******************************/
-/* REGISTRATION PAGE */
-/******************************/
-
+/* line 15, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/images.css.scss */
 .check-view {
-	background: url('/static/body_board/en/current/resources/images/check_bad.png?1294526238') left top no-repeat;
+  background: url('/static/body_board/en/current/resources/images/check_bad.png?1296599065') left top no-repeat;
 }
-.checked {
-	background: url('/static/body_board/en/current/resources/images/check_good.png?1294526081') left top no-repeat !important;
-}
-/* >>>>>>>>>> BEGIN source/resources/css/layout.css */
-#body-board-view {
-	z-index: 10000;
-}
-/* >>>>>>>>>> BEGIN source/resources/css/typography.css */
-.section-heading .sc-label-view
-{
-	text-transform: uppercase;
-	font-size: 15px;
-}
-/* >>>>>>>>>> BEGIN source/resources/main_page.css */
-#body-board-view {
-	
 
-	
+/* line 18, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/images.css.scss */
+.checked {
+  background: url('/static/body_board/en/current/resources/images/check_good.png?1296599065') left top no-repeat !important;
+}
+
+/* line 3, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/typography.css.scss */
+.section-heading .sc-label-view {
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+/* line 2, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+#body-board-view {
+  z-index: 1;
+}
+
+/* line 5, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+#create-label-view {
+  z-index: 2;
+}
+
+/* line 8, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+#drag-target-view {
+  z-index: 3;
+}
+
+/* line 11, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+.sc-button-inner {
+  min-width: 25px !important;
+}
+
+/* line 14, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+#main-header .sc-button-label {
+  text-align: left !important;
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+
+/* line 19, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+#viewer-controls {
+  position: absolute !important;
+  z-index: 1000;
+  left: 10px;
+  top: 10px;
+  width: 40px;
+}
+
+/* line 26, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+#controls-container {
+  position: relative !important;
+}
+
+/* line 29, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+#controls-inner-container {
+  position: static !important;
+}
+
+/******************************/
+/***** COLORS *****************/
+/******************************/
+/*
+
+Background Off-White Green :		#EFFFFC
+Text Medium Green :					#8B9EA0
+Main Header Gradient 
+	Darker : 							rgb(163,224,224)
+	Lighter : 							rgb(210,252,254)
+
+
+
+
+
+*/
+/* line 21, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+body {
+  background: #EFFFFC;
+}
+
+/* line 24, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+* {
+  color: #8B9EA0;
+}
+
+/* line 31, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+.label-li-view.selected {
+  background: #CFF9FC;
+}
+
+/* line 39, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+.section-heading {
+  background: none;
+}
+
+/* line 48, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#main-header {
+  background: url('/static/body_board/en/current/resources/images/main_header_bg.png?1296599065') top repeat-x;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #a3e0e0), color-stop(0.6, #d2fcfe));
+}
+
+/* line 62, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#main-header .button,
+#main-header .sc-button-inner,
+#main-header .sc-button-label {
+  background: none;
+}
+
+/* line 71, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+.label-li-view.selected {
+  background: #CFF9FC;
+}
+
+/* line 80, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#body-menu .sc-list-item-view {
+  color: #fff;
+  background: -moz-linear-gradient(left, #6bbcc0, #65b2b5);
+  background: -webkit-gradient(linear, left bottom, right bottom, color-stop(0, #6bbcc0), color-stop(0.6, #65b2b5));
+}
+
+/* line 92, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#body-menu .sc-list-item-view label {
+  color: #fff;
+}
+
+/* line 96, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#body-menu .has-disclosure {
+  background: none;
+}
+
+/* line 99, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#body-menu .has-disclosure label {
+  color: #33888D;
+}
+
+/* line 108, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#body-menu div {
+  background: none;
+}
+
+/* line 111, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#body-menu {
+  background: -moz-linear-gradient(left, #8ad9dc, #80c9cb);
+  background: -webkit-gradient(linear, left bottom, right bottom, color-stop(0, #8ad9dc), color-stop(0.6, #80c9cb));
 }

@@ -30,6 +30,11 @@ BodyBoard.Label = SC.Record.extend(
 		return BodyBoard.store.find(BodyBoard.System, this.get('system_guid'));
 	}.property().cacheable(),
 	
+	captions : function(){
+		var query = SC.Query.local(BodyBoard.Caption,'label = {label}',{ label : this }); 
+		return BodyBoard.store.find(query);
+	}.property().cacheable(),
+	
 	isTreeItemContent : YES,
 	treeItemChildren : null,
 	treeItemIsExpanded : NO,

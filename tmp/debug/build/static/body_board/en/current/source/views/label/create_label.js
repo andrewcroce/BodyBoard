@@ -11,11 +11,12 @@ BodyBoard.createLabelView = SC.View.design(
 	layout : { left: 0, right: 0, bottom: 0, height: 100 },
 	childViews : 'dragLabelView nameLabelView nameFieldView saveButtonView cancelButtonView'.w(),
 	backgroundColor: 'red',
+	layerId : 'create-label-view',
 	
 	dragLabelView : SC.LabelView.design({
 		classNames : ['form-label'],
 		layout : { left: 35, top: 10 },
-		value : 'Drag the target to a position on the Body Board',
+		value : 'Drag the target to a position on the Body Board'
 		
 	}),
 
@@ -44,4 +45,4 @@ BodyBoard.createLabelView = SC.View.design(
 		action : 'requestCancelCreateLabel'
 		
 	})
-}); if ((typeof SC !== 'undefined') && SC && SC.scriptDidLoad) SC.scriptDidLoad('body_board');
+}); if ((typeof SC !== 'undefined') && SC && SC.Module && SC.Module.scriptDidLoad) SC.Module.scriptDidLoad('body_board');

@@ -75,7 +75,6 @@ BodyBoard.authorContentView = SC.SplitView.design({
 			
 			layout : { left: 0, right: 0, top: 0 },
 			hasHorizontalScroller : NO,
-			backgroundColor : 'red',
 			
 			
 			contentView : SC.View.design({
@@ -91,8 +90,9 @@ BodyBoard.authorContentView = SC.SplitView.design({
 
 					labelView : SC.LabelView.design({
 						layout : { left: 10 , top: 5 },
-						contentBinding : 'BodyBoard.authorController.content',
-						contentValueKey : 'fullName',
+						//contentBinding : 'BodyBoard.authorController.content',
+						//contentValueKey : 'fullName',
+						valueBinding : '*fullName'
 					})
 
 				}),

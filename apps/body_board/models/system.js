@@ -16,7 +16,7 @@ BodyBoard.System = SC.Record.extend(
 /** @scope BodyBoard.System.prototype */ {
 
 	name : SC.Record.attr(String),
-	url : SC.Record.attr(String),
+	src : SC.Record.attr(String),
 
 	labels : function(){
 		var query = SC.Query.local(BodyBoard.Label,'system = {system}',{ system : this }); 

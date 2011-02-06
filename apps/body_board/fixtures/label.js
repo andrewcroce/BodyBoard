@@ -18,7 +18,7 @@ BodyBoard.Label.FIXTURES = [
 		x : 0,
 		y : 0,
 		author_guid : 1,
-		system_guid : 11
+		system_guid : 3
 	},
 	
 	{
@@ -37,6 +37,15 @@ BodyBoard.Label.FIXTURES = [
 		y : 0.7492733,
 		author_guid : 1,
 		system_guid : 1
+	},
+	
+	{
+		guid : 4,
+		name : 'Some Body Part',
+		x : 0.3756930,
+		y : 0.7492733,
+		author_guid : 1,
+		system_guid : 2
 	}
 	
 ];

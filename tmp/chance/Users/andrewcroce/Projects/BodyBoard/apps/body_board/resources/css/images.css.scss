@@ -1,0 +1,20 @@
+
+$theme: '';/******************************/
+/* HEADER */ 
+/******************************/
+
+.main-header-view {
+	background: sc_static('main_header_bg.png') top repeat-x;
+}
+
+
+
+
+
+
+.check-view {
+	background: sc_static('check_bad.png') left top no-repeat;
+}
+.checked {
+	background: sc_static('check_good.png') left top no-repeat !important;
+}

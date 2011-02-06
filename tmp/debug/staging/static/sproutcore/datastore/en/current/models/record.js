@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -196,7 +196,7 @@ SC.Record = SC.Object.extend(
         storeKey = this.storeKey,
         ret      = store.readDataHash(storeKey);
     
-    if (ret) ret = SC.clone(ret);
+    if (ret) ret = SC.clone(ret, YES);
 
     return ret;
   }.property(),
@@ -341,7 +341,6 @@ SC.Record = SC.Object.extend(
   writeAttribute: function(key, value, ignoreDidChange) {
     var store    = this.get('store'), 
         storeKey = this.storeKey,
-        status   = store.peekStatus(storeKey),
         attrs;
     
     attrs = store.readEditableDataHash(storeKey);
@@ -361,7 +360,7 @@ SC.Record = SC.Object.extend(
       
       if(!ignoreDidChange) this.endEditing(key);
     }
-    return this ;  
+    return this ;
   },
   
   /**
@@ -483,7 +482,7 @@ SC.Record = SC.Object.extend(
         store      = this.get('store'), 
         storeKey   = this.get('storeKey'), 
         key, valueForKey, typeClass, recHash, attrValue, normChild,  isRecord,
-        isChild, defaultVal, keyForDataHash;
+        isChild, defaultVal, keyForDataHash, attr;
       
     var dataHash = store.readEditableDataHash(storeKey) || {};
     dataHash[primaryKey] = recordId;
@@ -500,8 +499,12 @@ SC.Record = SC.Object.extend(
           isChild  = valueForKey.isChildRecordTransform;
           if (!isRecord && !isChild) {
             attrValue = this.get(key);
-
             if(attrValue!==undefined || (attrValue===null && includeNull)) {
+              attr = this[key];
+              // if record attribute, make sure we transform with the fromType
+              if(SC.instanceOf(attr, SC.RecordAttribute)) {
+                attrValue = attr.fromType(this, key, attrValue);
+              }
               dataHash[keyForDataHash] = attrValue;
             }
           
@@ -514,7 +517,7 @@ SC.Record = SC.Object.extend(
               attrValue.normalize();
             }
           } else if (isRecord) {
-            attrValue = recHash[key];
+            attrValue = recHash[keyForDataHash];
             if (attrValue !== undefined) {
               // write value already there
               dataHash[keyForDataHash] = attrValue;

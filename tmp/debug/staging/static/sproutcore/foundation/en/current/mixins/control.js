@@ -1,18 +1,24 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
 
 sc_require('mixins/string');
 
+/**
+  Option for controls to automatically calculate their size (should be default 
+  on controls that use renderers).
+*/
+SC.AUTO_CONTROL_SIZE = '__AUTO__';
+
 /** 
-  Indicates a value has a mixed state of both on and off. 
+  Option for HUGE control size.
   
   @property {String}
 */
-SC.MIXED_STATE = '__MIXED__' ;
+SC.JUMBO_CONTROL_SIZE = 'sc-jumbo-size' ;
 
 /** 
   Option for HUGE control size.
@@ -103,6 +109,8 @@ SC.TINY_CONTROL_SIZE = 'sc-tiny-size' ;
 */
 SC.Control = {
   
+  isControl: YES,
+  
   /** @private */
   initMixin: function() {
     this._control_contentDidChange() ; // setup content observing if needed.
@@ -190,7 +198,7 @@ SC.Control = {
     
     The key will typically contain the name of the property that changed or 
     '*' if the content object itself has changed.  You should generally do
-    a total reset of '*' is changed.
+    a total reset if '*' is changed.
     
     @param {Object} target the content object
     @param {String} key the property that changes
@@ -198,7 +206,7 @@ SC.Control = {
     @test in content
   */
   contentPropertyDidChange: function(target, key) {
-    return this.updatePropertyFromContent('value', key, 'contentValueKey');
+    return this.updatePropertyFromContent('value', key, 'contentValueKey', target);
   },
   
   /**
@@ -216,23 +224,27 @@ SC.Control = {
     @returns {SC.Control} receiver
   */
   updatePropertyFromContent: function(prop, key, contentKey, content) {
-    var all = key === '*';
-    if (contentKey === undefined) {
-      contentKey = "content"+prop.capitalize()+"Key";
-    }
-    if (content === undefined) content = this.get('content');
+    var del, v;
     
-    // get actual content key
-    contentKey = this[contentKey] ?
-      this.get(contentKey) :
-      this.getDelegateProperty(contentKey, this.displayDelegate) ;
+    if (contentKey === undefined) contentKey = "content"+prop.capitalize()+"Key";
     
-    if (contentKey && (all || key === contentKey)) {
-      var v = (content) ?
-        (content.get ? content.get(contentKey) : content[contentKey]) :
-        null ;
+    // prefer our own definition of contentKey
+    if(this[contentKey]) contentKey = this.get(contentKey);
+    // if we don't have one defined check the delegate
+    else if((del = this.displayDelegate) && (v = del[contentKey])) contentKey = del.get ? del.get(contentKey) : v;
+    // if we have no key we can't do anything so just short circuit out
+    else return this;
+    
+    // only bother setting value if the observer triggered for the correct key
+    if (key === '*' || key === contentKey) {
+      if (content === undefined) content = this.get('content');
+      
+      if(content) v = content.get ? content.get(contentKey) : content[contentKey];
+      else v = null;
+      
       this.set(prop, v) ;
     }
+    
     return this ;
   },
   
@@ -321,6 +333,12 @@ SC.Control = {
     The control size.  This will set a CSS style on the element that can be 
     used by the current theme to vary the appearance of the control.
     
+    Some controls will default to SC.AUTO_CONTROL_SIZE, which will allow you
+    to simply size the control, and the most appropriate control size will
+    automatically be picked; be warned, though, that if you don't specify
+    a height, performance will be impacted as it must be calculated; if you do
+    this, a warning will be issued. If you don't care, use SC.CALCULATED_CONTROL_SIZE.
+    
     @property {String}
   */
   controlSize: SC.REGULAR_CONTROL_SIZE,
@@ -339,11 +357,29 @@ SC.Control = {
     var sel = this.get('isSelected'), disabled = !this.get('isEnabled'),
     // update the CSS classes for the control.  note we reuse the same hash
     // to avoid consuming more memory
-        names = this._CONTROL_TMP_CLASSNAMES ; // temporary object
+    names = this._CONTROL_TMP_CLASSNAMES ; // temporary object
     names.mixed = sel === SC.MIXED_STATE;
     names.sel = sel && (sel !== SC.MIXED_STATE) ;
     names.active = this.get('isActive') ;
-    context.setClass(names).addClass(this.get('controlSize'));
+
+    var controlSize = this.get("controlSize");
+
+    if (firstTime) {
+      context.setClass(names);
+      if (controlSize !== SC.AUTO_CONTROL_SIZE) context.addClass(controlSize);
+    } else {
+      context.$().setClass(names);
+      if (controlSize !== SC.AUTO_CONTROL_SIZE) context.$().addClass(controlSize);
+    }
+
+    // if the control implements the $input() helper, then fixup the input
+    // tags
+    if (!firstTime && this.$input) {
+      var inps = this.$input();
+      if(inps.attr('type')!=="radio"){
+        this.$input().attr('disabled', disabled);
+      }
+    }
   },
   
   /** @private
@@ -356,22 +392,31 @@ SC.Control = {
     Observes when a content object has changed and handles notifying 
     changes to the value of the content object.
   */
+  // TODO: observing * is unnecessary and inefficient, but a bunch of stuff in sproutcore depends on it (like button)
   _control_contentDidChange: function() {
-    var content = this.get('content') ;
+    var content = this.get('content');
+    
     if (this._control_content === content) return; // nothing changed
     
     var f = this.contentPropertyDidChange,
     // remove an observer from the old content if necessary
         old = this._control_content ;
     if (old && old.removeObserver) old.removeObserver('*', this, f) ;
-    
-    // add observer to new content if necessary.
+  
+    // update previous values
     this._control_content = content ;
+  
+    // add observer to new content if necessary.
     if (content && content.addObserver) content.addObserver('*', this, f) ;
     
     // notify that value did change.
     this.contentPropertyDidChange(content, '*') ;
     
-  }.observes('content')
+  }.observes('content'),
   
+  // since we always observe *, just call the update function
+  _control_contentValueKeyDidChange: function() {
+    // notify that value did change.
+    this.contentPropertyDidChange(this.get('content'), '*') ;
+  }.observes('contentValueKey')
 };

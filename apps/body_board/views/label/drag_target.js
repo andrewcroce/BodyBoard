@@ -10,6 +10,7 @@ sc_require('views/label/label');
 
 BodyBoard.dragTargetView = SC.View.design({
 	layout : { width: 15, height: 15, bottom: 45, left: 142 },
+	layerId : 'drag-target-view',
 	backgroundColor : 'blue',
 	
 	isVisible : NO,

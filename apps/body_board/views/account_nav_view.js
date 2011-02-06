@@ -12,13 +12,15 @@ BodyBoard.accountNavView = SC.View.design({
 	manageAccountButtonView : SC.ButtonView.design({
 		layout : { top: 25, right: 140, width: 120 },
 		title : 'Manage Account',
-		action : 'requestManageAccount'
+		action : 'requestManageAccount',
+		layerId : 'manage-account-button'
 	}),
 	
 	logoutButtonView : SC.ButtonView.design({
 		layout : { top: 25, right: 10, width: 120 },
 		title : 'Logout',
-		action : 'requestLogout'
+		action : 'requestLogout',
+		layerId : 'logout-button'
 	})
 	
 });

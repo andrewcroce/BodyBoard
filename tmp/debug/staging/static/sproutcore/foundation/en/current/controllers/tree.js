@@ -1,11 +1,9 @@
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
+// Copyright ©2006-2011, Strobe Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
-sc_require('controllers/object');
-sc_require('mixins/selection_support');
 sc_require('private/tree_item_observer');
 
 /**
@@ -101,6 +99,8 @@ SC.TreeController = SC.ObjectController.extend(SC.SelectionSupport,
     this.updateSelectionAfterContentChange();
   }.observes('*arrangedObjects.[]'),
   
+  canSelectGroups: NO,
+  
   /**
     @private
     
@@ -113,6 +113,9 @@ SC.TreeController = SC.ObjectController.extend(SC.SelectionSupport,
         indexes, len, idx     = 0;
         
     if (!objects) return null; // fast track
+    
+    // other fast track. if you want something fancier use collectionViewDelegate
+    if(this.get('canSelectGroups')) return objects.get('firstObject');
     
     indexes = objects.contentGroupIndexes(null, objects);
     len = objects.get('length');

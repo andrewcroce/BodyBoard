@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -22,12 +22,12 @@ SC.PreloadBundleTask = SC.Task.extend({
   bundle: null,
   
   /**
-    The target to supply to SC.loadBundle.
+    The target to supply to SC.Module.loadModule.
   */
   target: "SC",
   
   /**
-    The action to supply to SC.loadBundle.
+    The action to supply to SC.Module.loadModule.
   */
   action: "preloaded",
   
@@ -35,7 +35,7 @@ SC.PreloadBundleTask = SC.Task.extend({
     var bundle;
     if (bundle = this.get("bundle")) {
       var st = Date.now();
-      SC.loadBundle(this.get("bundle"), this.get("target"), this.get("action"));
+      SC.Module.loadModule(this.get("bundle"), this.get("target"), this.get("action"));
     }
   }
 });

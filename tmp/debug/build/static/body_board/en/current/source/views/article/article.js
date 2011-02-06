@@ -40,4 +40,4 @@ BodyBoard.articleView = SC.View.extend( SC.ContentDisplay, {
 		arguments.callee.base.apply(this,arguments);
 	}
 	
-});; if ((typeof SC !== 'undefined') && SC && SC.scriptDidLoad) SC.scriptDidLoad('body_board');
+});; if ((typeof SC !== 'undefined') && SC && SC.Module && SC.Module.scriptDidLoad) SC.Module.scriptDidLoad('body_board');

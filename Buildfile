@@ -4,5 +4,7 @@
 # ===========================================================================
 
 # Add initial buildfile information here
-config :all, :required => [:sproutcore, :ki, 'sproutcore/table']
+
+config :all, :required => [:sproutcore, :ki]
+
 proxy '/server', :to => '02.dev'

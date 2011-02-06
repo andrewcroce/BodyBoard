@@ -1,0 +1,32 @@
+
+$theme: '';#body-board-view {
+	z-index: 1;
+}
+#create-label-view {
+	z-index: 2;
+}
+#drag-target-view {
+	z-index: 3;
+}
+.sc-button-inner {
+	min-width: 25px !important; 
+}
+#main-header .sc-button-label {
+	text-align: left !important;
+	margin-left: 5px !important;
+	margin-right: 5px !important;
+}
+#viewer-controls {
+	position: absolute !important;
+	z-index: 1000;
+	left: 10px;
+	top: 10px;
+	width: 40px;
+}
+	#controls-container {
+		position: relative !important;
+	}
+		#controls-inner-container {
+			position: static !important;
+		}
+	

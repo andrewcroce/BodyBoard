@@ -27,7 +27,7 @@ SC.PopupButtonView.design({
   @extends SC.ButtonView
   @author Santosh Shanbhogue
   @author Tom Dale
-  @copyright 2008-2010, Sprout Systems, Inc. and contributors.
+  @copyright 2008-2011, Strobe Inc. and contributors.
   @version 1.0
 */
 SC.PopupButtonView = SC.ButtonView.extend(
@@ -113,7 +113,7 @@ SC.PopupButtonView = SC.ButtonView.extend(
     var menu = this.get('menu');
     
     // if it is already instantiated or does not exist, we cannot do anything
-    if (!menu.isClass || !menu) return;
+    if (!menu || !menu.isClass) return;
     
     // create
     this.menu = menu.create();
@@ -274,7 +274,8 @@ SC.PopupButtonView = SC.ButtonView.extend(
   {
     if (!this.get('isEnabled')) return NO ;
     var menu = this.get('instantiatedMenu') ;
-    return (!!menu && menu.performKeyEquivalent(charCode, evt)) ;
+
+    return (!!menu && menu.performKeyEquivalent(charCode, evt, YES)) ;
   },
 
   /** @private */

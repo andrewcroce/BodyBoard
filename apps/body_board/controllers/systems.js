@@ -16,18 +16,12 @@ sc_require('controllers/viewer');
 
 
 
-
 BodyBoard.systemsController = SC.ArrayController.create( 
 /** @scope BodyBoard.systemsController.prototype */ {
 
   	orderBy : 'name',
 	allowsMultipleSelection : NO,
-	/*
-	selectionDidChange : function(){
-		BodyBoard.systemController.set('isSet',NO);
-		console.log('selection changed');
-	}.observes('selection')
-	*/
+
 }) ;
 
 
@@ -37,82 +31,64 @@ BodyBoard.systemController = SC.ObjectController.create(
 /** @scope BodyBoard.systemController.prototype */ {
 
 	contentBinding : SC.Binding.single('BodyBoard.systemsController.selection'),
-	//isSet : YES,
+	newZoom : 1,
+	newCenter : {},
 	
+	
+	/*
+	*	Observe the currently selected system. When it changes, set the new zoom level and center point
+	*	based on the previous level, and open that System's DZI.
+	*/
+	selectionDidChange : function() {
+		//this.set('newZoom',BodyBoard.viewerController.get('zoom'));
+		//this.set('newCenter',BodyBoard.viewerController.get('center'));
+		this.open();
+	}.observes('content'),
+	
+	
+	/*
+	*	Open a DZI.
+	*	If an index is not supplied as a parameter, open the current Systems's DZI,
+	*	otherwise select the System at the index, then open its DZI.
+	*/
 	open: function(index) {
-		var system;
+	
+		this.set('newZoom',BodyBoard.viewerController.get('zoom'));
+		this.set('newCenter',BodyBoard.viewerController.get('center'));
 		if(typeof index == "undefined") {
-			BodyBoard.viewerController.get('viewer').openDzi(this.get('url'));
+			BodyBoard.viewerController.get('viewer').openDzi(this.get('src'));
 		} else {
 			BodyBoard.systemsController.selectObject(BodyBoard.store.find('BodyBoard.System', index));
 			this.invokeLast(function(){
-				BodyBoard.viewerController.get('viewer').openDzi(this.get('url'));
+				BodyBoard.viewerController.get('viewer').openDzi(this.get('src'));
 			});
 		}
 	},
 	
+	
+	/*
+	*	Loop through the current System's Labels,
+	*	add a LabelView for each of them
+	*/
 	setSystem : function() {
 		
-		if(BodyBoard.viewerController.get('isReady') == YES){
-		
-			//BodyBoard.viewerController.set('isReady',NO);
-			var labels, labelView;
-			labels = this.get('labels');
-			BodyBoard.viewerController.get('viewer').addEventListener('open',function(){	
-				console.log('Setting labels, Count: ', labels.get('length'));				
-				labels.forEach(function(item,index,enumerable){
-					console.log(index);
-					labelView = BodyBoard.labelView.create({});
-					labelView.set('content',item);
-					BodyBoard.getPath('mainPage.bodyView.bodyBoardView').appendChild(labelView);
-				});
-				//BodyBoard.viewerController.set('isSet',YES);
-				console.log('Image opened, labels set');
-			});
-		
-		BodyBoard.systemController.open();
-		
-		//BodyBoard.viewerController.get('viewer').openDzi(this.get('url'));
+		var labels, labelView;
+		if(BodyBoard.viewerController.get('isInitialized') == YES){
+			BodyBoard.viewerController.get('viewer').viewport.zoomTo(this.get('newZoom'),this.get('newCenter'), true);
 		} else {
-			console.log('not set yet');
+			BodyBoard.viewerController.set('isInitialized',YES);
 		}
-		
-	}.observes('content'),
+		labels = this.get('labels');
+		labels.forEach(function(item,index,enumerable){
+			console.log(index);
+			labelView = BodyBoard.labelView.create({});
+			labelView.set('content',item);
+			BodyBoard.getPath('mainPage.bodyView.bodyBoardView').appendChild(labelView);
+		});
+	
+	}
 
 	
 	
 }) ;
 
-
-
-
-
-BodyBoard.systemLabelsController = SC.ArrayController.create( 
-/** @scope BodyBoard.systemsController.prototype */ {
-
-		allowsMultipleSelection : NO,
-		
-		setLabels : function() {
-			
-				if( BodyBoard.viewerController.get('labelsSet') == NO ){
-					
-					console.log('Setting labels');
-					this.set('content',BodyBoard.systemController.get('labels'))
-					
-					BodyBoard.systemController.get('labels').forEach(function(item, index, enumerable){
-						console.log('set label ', index);
-						var label = BodyBoard.labelView.create({});
-						label.set('content',item);
-						BodyBoard.getPath('mainPage.bodyView.bodyBoardView').appendChild(label).renderChildViews();
-						BodyBoard.viewerController.set('labelsSet', YES);
-						console.log('label created: ', item);
-					}, this);
-					
-				} else {
-					console.log('Labels already set');
-				}
-					
-			
-		}//.observes('BodyBoard.viewerController.systemSet')
-				
-});

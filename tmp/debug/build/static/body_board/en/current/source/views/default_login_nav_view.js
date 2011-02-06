@@ -10,15 +10,17 @@ BodyBoard.defaultLoginNavView = SC.View.design({
 	childViews : 'registerButtonView loginButtonView'.w(),
 	
 	registerButtonView : SC.ButtonView.design({
-		layout : { top: 25, right: 140, width: 120 },
-		title : 'Register',
-		action : 'requestRegister'
+		layout : { top: 25, right: 50, width: 98 },
+		title : 'Create Account',
+		action : 'requestRegister',
+		layerId : 'create-account-button'
 	}),
 	
 	loginButtonView : SC.ButtonView.design({
-		layout : { top: 25, right: 10, width: 120 },
+		layout : { top: 25, right: 10, width: 40 },
 		title : 'Login',
-		action : 'requestLogin'
+		action : 'requestLogin',
+		layerId : 'login-button'
 	})
 	
-});; if ((typeof SC !== 'undefined') && SC && SC.scriptDidLoad) SC.scriptDidLoad('body_board');
+});; if ((typeof SC !== 'undefined') && SC && SC.Module && SC.Module.scriptDidLoad) SC.Module.scriptDidLoad('body_board');

@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -272,6 +272,8 @@ SC.ManyArray = SC.Object.extend(SC.Enumerable, SC.Array,
       record.recordDidChange(pname);
     } 
     
+    this.enumerableContentDidChange(idx, amt, len - amt);
+    
     return this;
   },
   
@@ -402,7 +404,8 @@ SC.ManyArray = SC.Object.extend(SC.Enumerable, SC.Array,
   
   /** @private */
   unknownProperty: function(key, value) {
-    var ret = this.reducedProperty(key, value);
+    var ret;
+    if (SC.typeOf(key) === SC.T_STRING) ret = this.reducedProperty(key, value);
     return ret === undefined ? arguments.callee.base.apply(this,arguments) : ret;
   },
 

@@ -10,6 +10,7 @@ sc_require('views/label/label');
 
 BodyBoard.dragTargetView = SC.View.design({
 	layout : { width: 15, height: 15, bottom: 45, left: 142 },
+	layerId : 'drag-target-view',
 	backgroundColor : 'blue',
 	
 	isVisible : NO,
@@ -26,4 +27,4 @@ BodyBoard.dragTargetView = SC.View.design({
 		return BodyBoard.labelController.newLabelRelease( event );
 	}
 	
-});; if ((typeof SC !== 'undefined') && SC && SC.scriptDidLoad) SC.scriptDidLoad('body_board');
+});; if ((typeof SC !== 'undefined') && SC && SC.Module && SC.Module.scriptDidLoad) SC.Module.scriptDidLoad('body_board');

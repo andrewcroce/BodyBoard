@@ -30,6 +30,11 @@ BodyBoard.Label = SC.Record.extend(
 		return BodyBoard.store.find(BodyBoard.System, this.get('system_guid'));
 	}.property().cacheable(),
 	
+	captions : function(){
+		var query = SC.Query.local(BodyBoard.Caption,'label = {label}',{ label : this }); 
+		return BodyBoard.store.find(query);
+	}.property().cacheable(),
+	
 	isTreeItemContent : YES,
 	treeItemChildren : null,
 	treeItemIsExpanded : NO,
@@ -40,4 +45,4 @@ BodyBoard.Label = SC.Record.extend(
 	
 
 }) ;
-; if ((typeof SC !== 'undefined') && SC && SC.scriptDidLoad) SC.scriptDidLoad('body_board');
+; if ((typeof SC !== 'undefined') && SC && SC.Module && SC.Module.scriptDidLoad) SC.Module.scriptDidLoad('body_board');

@@ -1,8 +1,21 @@
 /******************************/
-
 /***** COLORS *****************/
-
 /******************************/
+/*
+
+Background Off-White Green :		#EFFFFC
+Text Medium Green :					#8B9EA0
+Main Header Gradient 
+	Darker : 							rgb(163,224,224)
+	Lighter : 							rgb(210,252,254)
+
+
+
+
+
+*/
+
+
 
 body {
 	background: #EFFFFC;
@@ -40,6 +53,13 @@ body {
 	    color-stop(0, rgb(163,224,224)),
 		 color-stop(.6, rgb(210,252,254))
 	);
+}
+
+#main-header .button, 
+#main-header .sc-button-inner,
+#main-header .sc-button-label
+{
+	background: none;
 }
 
 

@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -288,7 +288,7 @@ SC.NestedStore = SC.Store.extend(
     }
     
     if (pstore && editState === SC.Store.EDITABLE) {
-      this.dataHashes[storeKey] = SC.clone(pstore.dataHashes[storeKey]);
+      this.dataHashes[storeKey] = SC.clone(pstore.dataHashes[storeKey], YES);
       if (!editables) editables = this.editables = [];
       editables[storeKey] = 1 ; // mark as editable
       

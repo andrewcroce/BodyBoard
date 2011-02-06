@@ -17,9 +17,11 @@ BodyBoard.Caption = SC.Record.extend(
 	text : SC.Record.attr(String, { isRequired: YES }),
 	votes : SC.Record.attr(Number, { defaultValue: 0 }),
 	
-	//article : SC.Record.toOne('BodyBoard.Article', { inverse: 'captions' }),
-	label : SC.Record.toOne('BodyBoard.Label', { inverse: 'captions' }),
-	image : SC.Record.toOne('BodyBoard.Image', { inverse: 'caption' })
+	label_guid : SC.Record.attr(Number),
+	label : function(){
+		return BodyBoard.store.find(BodyBoard.Label,this.get('label_guid'));	
+	}.property().cacheable(),
+	wimage : SC.Record.toOne('BodyBoard.Image', { inverse: 'caption' })
 
 }) ;
-; if ((typeof SC !== 'undefined') && SC && SC.scriptDidLoad) SC.scriptDidLoad('body_board');
+; if ((typeof SC !== 'undefined') && SC && SC.Module && SC.Module.scriptDidLoad) SC.Module.scriptDidLoad('body_board');

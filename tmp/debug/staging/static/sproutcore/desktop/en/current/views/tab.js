@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -175,7 +175,7 @@ SC.TabView = SC.View.extend(
     custom container view.  You can access this view but you cannot change 
     it.
   */
-  containerView: SC.ContainerView,
+  containerView: SC.ContainerView.extend({ theme: 'well' }),
   
   segmentedView: SC.SegmentedView
   

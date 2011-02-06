@@ -24,11 +24,6 @@ BodyBoard.main = function main() {
   // This will make your app come alive!
 
 	
-	//var articles = BodyBoard.store.find(SC.Query.local(BodyBoard.Article));
-	//BodyBoard.articlesController.set('content', articles);
-	
-	//BodyBoard.viewerController.initViewer();
-	
 	
 	var authors = BodyBoard.store.find(SC.Query.local(BodyBoard.Author));
 	//var authors = BodyBoard.store.find(BodyBoard.AUTHORS_QUERY);
@@ -50,4 +45,4 @@ BodyBoard.main = function main() {
 } ;
 
 function main() { BodyBoard.main(); }
-; if ((typeof SC !== 'undefined') && SC && SC.scriptDidLoad) SC.scriptDidLoad('body_board');
+; if ((typeof SC !== 'undefined') && SC && SC.Module && SC.Module.scriptDidLoad) SC.Module.scriptDidLoad('body_board');

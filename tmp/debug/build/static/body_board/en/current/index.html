@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+    var SC_benchmarkPreloadEvents = { headStart: new Date().getTime() };
+    </script>
+    
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=8" />
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="apple-touch-icon" href="/static/sproutcore/foundation/en/current/images/sproutcore-logo.png?1287691381" />
-	  <link rel="apple-touch-startup-image" media="screen and (orientation:portrait)" href="/static/sproutcore/foundation/en/current/images/sproutcore-startup-portrait.png?1287691381" /> 
-	  <link rel="apple-touch-startup-image" media="screen and (orientation:landscape)" href="/static/sproutcore/foundation/en/current/images/sproutcore-startup-landscape.png?1287691381" />
-	  <link rel="shortcut icon" href="" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/static/sproutcore/foundation/en/current/images/sproutcore-logo.png?1296791438" />
+	  <link rel="apple-touch-startup-image" media="screen and (orientation:portrait)" href="/static/sproutcore/foundation/en/current/images/sproutcore-startup-portrait.png?1296791438" /> 
+	  <link rel="apple-touch-startup-image" media="screen and (orientation:landscape)" href="/static/sproutcore/foundation/en/current/images/sproutcore-startup-landscape.png?1296791438" />
+	  <link rel="shortcut icon" href="/static/sproutcore/foundation/en/current/images/favicon.ico?1296791438" type="image/x-icon" />
     
     <title>Body Board</title>
   <script type="text/javascript">
 /* >>>>>>>>>> BEGIN source/core.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -26,56 +30,65 @@
 /* >>>>>>>>>> BEGIN source/system/browser.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
 
-var SC = SC || { BUNDLE_INFO: {}, LAZY_INSTANTIATION: {} };
+var SC = SC || { MODULE_INFO: {}, LAZY_INSTANTIATION: {} };
 
-SC.browser = (function() {
-  var userAgent = navigator.userAgent.toLowerCase(),
-      version = (userAgent.match( /.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/ ) || [])[1] ;
+SC._detectBrowser = function(rawUserAgent, language) {
+  if (rawUserAgent === undefined) rawUserAgent = navigator.userAgent;
+  if (language === undefined) language = navigator.language || navigator.browserLanguage;
+
+  var userAgent = rawUserAgent.toLowerCase(),
+      // Gibberish at the end is to determine when the browser version is done
+      version = (userAgent.match( /.*(?:rv|chrome|webkit|opera|ie)[\/: ](.+?)([ \);]|$)/ ) || [])[1],
+      webkitVersion = (userAgent.match( /webkit\/(.+?) / ) || [])[1];
 
   var browser = {
-    version: version,
-    safari: (/webkit/).test( userAgent ) ? version : 0,
-    opera: (/opera/).test( userAgent ) ? version : 0,
-    msie: (/msie/).test( userAgent ) && !(/opera/).test( userAgent ) ? version : 0,
-    mozilla: (/mozilla/).test( userAgent ) && !(/(compatible|webkit)/).test( userAgent ) ? version : 0,
-    mobileSafari: (/apple.*mobile.*safari/).test(userAgent) ? version : 0,
-    chrome: (/chrome/).test( userAgent ) ? version : 0,
-    windows: !!(/(windows)/).test(userAgent),
-    mac: !!((/(macintosh)/).test(userAgent) || (/(mac os x)/).test(userAgent)),
-    language: (navigator.language || navigator.browserLanguage).split('-', 1)[0]
+    version:      version,
+    safari:       /webkit/.test(userAgent) ? webkitVersion : 0,
+    opera:        /opera/.test(userAgent) ? version : 0,
+    msie:         /msie/.test(userAgent) && !/opera/.test(userAgent) ? version : 0,
+    mozilla:      /mozilla/.test( userAgent ) && !/(compatible|webkit)/.test(userAgent) ? version : 0,
+    mobileSafari: /apple.*mobile.*safari/.test(userAgent) ? version : 0,
+    chrome:       /chrome/.test( userAgent ) ? version : 0,
+    windows:      !!/windows/.test(userAgent),
+    mac:          !!/macintosh/.test(userAgent) || (/mac os x/.test(userAgent) && !/like mac os x/.test(userAgent)),
+    language:     language.split('-', 1)[0]
   };
-  
-    browser.current = browser.msie ? 'msie' : browser.mozilla ? 'mozilla' : browser.safari ? 'safari' : browser.opera ? 'opera' : 'unknown' ;
-  return browser ;
-})();
 
+  browser.current = browser.msie ? 'msie' : browser.mozilla ? 'mozilla' : browser.chrome ? 'chrome' : browser.safari ? 'safari' : browser.opera ? 'opera' : 'unknown' ;
+  return browser ;
+};
+
+SC.browser = SC._detectBrowser();
+
+/* >>>>>>>>>> BEGIN source/system/bench.js */
+// ==========================================================================
+// Project:   SproutCore - JavaScript Application Framework
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
+//            Portions ©2008-2010 Apple Inc. All rights reserved.
+// License:   Licensed under MIT license (see license.js)
+// ==========================================================================
+/*global SC_benchmarkPreloadEvents*/
+// sc_require("system/browser")
+if (typeof SC_benchmarkPreloadEvents !== "undefined") {
+  SC.benchmarkPreloadEvents = SC_benchmarkPreloadEvents;
+  SC_benchmarkPreloadEvents = undefined;
+} else {
+  SC.benchmarkPreloadEvents = { headStart: new Date().getTime() };
+}
 /* >>>>>>>>>> BEGIN source/system/loader.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
 
 // sc_require("system/browser");
-
-SC.bundleDidLoad = function(bundle) {
-  var info = this.BUNDLE_INFO[bundle] ;
-  if (!info) info = this.BUNDLE_INFO[bundle] = {} ;
-  info.loaded = true ;
-};
-
-SC.bundleIsLoaded = function(bundle) {
-  var info = this.BUNDLE_INFO[bundle] ;
-  return info ? !!info.loaded : false ;
-};
-
-SC.loadBundle = function() { throw "SC.loadBundle(): SproutCore is not loaded."; };
 
 SC.setupBodyClassNames = function() {
   var el = document.body ;
@@ -98,6 +111,7 @@ SC.setupBodyClassNames = function() {
   if(shadows) classNames.push('box-shadow');
   if(borderRad) classNames.push('border-rad');
   classNames.push(browser) ;
+  if (browser === 'chrome') classNames.push('safari');
   classNames.push(platform) ;
   if (parseInt(SC.browser.msie,0)==7) classNames.push('ie7') ;
   if (SC.browser.mobileSafari) classNames.push('mobile-safari') ;
@@ -105,25 +119,38 @@ SC.setupBodyClassNames = function() {
   el.className = classNames.join(' ') ;
 } ;
 
-/* >>>>>>>>>> BEGIN bundle_loaded.js */
-; if ((typeof SC !== 'undefined') && SC && SC.bundleDidLoad) SC.bundleDidLoad('sproutcore/bootstrap');
 
 </script>
+<script type="text/javascript">SC.buildMode = "debug";</script>
 
-     <link href="/static/sproutcore/testing/en/current/stylesheet.css?1287691381" rel="stylesheet" type="text/css" />
-  <link href="/static/sproutcore/foundation/en/current/stylesheet.css?1287691381" rel="stylesheet" type="text/css" />
-  <link href="/static/sproutcore/desktop/en/current/stylesheet.css?1287691381" rel="stylesheet" type="text/css" />
-  <link href="/static/sproutcore/standard_theme/en/current/stylesheet.css?1287691381" rel="stylesheet" type="text/css" />
-  <link href="/static/body_board/en/current/stylesheet.css?1296599065" rel="stylesheet" type="text/css" />
+     <link href="/static/sproutcore/debug/en/current/stylesheet.css?1296968402" rel="stylesheet" type="text/css" />
+  <link href="/static/sproutcore/testing/en/current/stylesheet.css?1296791439" rel="stylesheet" type="text/css" />
+  <link href="/static/sproutcore/jquery/en/current/stylesheet.css?1296968402" rel="stylesheet" type="text/css" />
+  <link href="/static/sproutcore/runtime/en/current/stylesheet.css?1296968402" rel="stylesheet" type="text/css" />
+  <link href="/static/sproutcore/amber/en/current/stylesheet.css?1296791438" rel="stylesheet" type="text/css" />
+  <link href="/static/sproutcore/foundation/en/current/stylesheet.css?1296791438" rel="stylesheet" type="text/css" />
+  <link href="/static/sproutcore/desktop/en/current/stylesheet.css?1296791438" rel="stylesheet" type="text/css" />
+  <link href="/static/sproutcore/datastore/en/current/stylesheet.css?1296968402" rel="stylesheet" type="text/css" />
+  <link href="/static/sproutcore/en/current/stylesheet.css?1296968402" rel="stylesheet" type="text/css" />
+  <link href="/static/ki/foundation/en/current/stylesheet.css?1296968402" rel="stylesheet" type="text/css" />
+  <link href="/static/ki/en/current/stylesheet.css?1296968402" rel="stylesheet" type="text/css" />
+  <link href="/static/sproutcore/empty_theme/en/current/stylesheet.css?1296968402" rel="stylesheet" type="text/css" />
+  <link href="/static/sproutcore/standard_theme/en/current/stylesheet.css?1296791439" rel="stylesheet" type="text/css" />
+  <link href="/static/body_board/en/current/stylesheet.css?1296950107" rel="stylesheet" type="text/css" />
    
-    
+    <script>
+      SC.benchmarkPreloadEvents['headEnd'] = new Date().getTime();
+    </script>
   </head>
     
   <body class="sc-theme focus">  
+    <script>
+    SC.benchmarkPreloadEvents['bodyStart'] = new Date().getTime();
+    </script>
 <script type="text/javascript">
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -140,66 +167,65 @@ if (SC.setupBodyClassNames) SC.setupBodyClassNames() ;
 
 
 </div>
-  <script type="text/javascript" src="/static/sproutcore/debug/en/current/javascript.js?1296693128"></script>
-  <script type="text/javascript" src="/static/sproutcore/testing/en/current/javascript.js?1296693128"></script>
-  <script type="text/javascript" src="/static/sproutcore/runtime/en/current/javascript.js?1296693128"></script>
-  <script type="text/javascript" src="/static/sproutcore/foundation/en/current/javascript.js?1296693128"></script>
-  <script type="text/javascript" src="/static/sproutcore/desktop/en/current/javascript.js?1296693128"></script>
-  <script type="text/javascript" src="/static/sproutcore/datastore/en/current/javascript.js?1296693128"></script>
-  <script type="text/javascript" src="/static/sproutcore/en/current/javascript.js?1296693128"></script>
-  <script type="text/javascript" src="/static/ki/foundation/en/current/javascript.js?1296693128"></script>
-  <script type="text/javascript" src="/static/ki/en/current/javascript.js?1296693128"></script>
-  <script type="text/javascript" src="/static/sproutcore/table/en/current/javascript.js?1296693128"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/bundle_info.js?1296693128"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/core.js?1296599307"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/controllers/authors.js?1296599065"></script>
+<script type="text/javascript">String.preferredLanguage = "en";</script>
+  <script type="text/javascript" src="/static/sproutcore/debug/en/current/javascript.js?1296791438"></script>
+  <script type="text/javascript" src="/static/sproutcore/testing/en/current/javascript.js?1296791439"></script>
+  <script type="text/javascript" src="/static/sproutcore/jquery/en/current/javascript.js?1296791439"></script>
+  <script type="text/javascript" src="/static/sproutcore/runtime/en/current/javascript.js?1296791439"></script>
+  <script type="text/javascript" src="/static/sproutcore/amber/en/current/javascript.js?1296791438"></script>
+  <script type="text/javascript" src="/static/sproutcore/foundation/en/current/javascript.js?1296791439"></script>
+  <script type="text/javascript" src="/static/sproutcore/desktop/en/current/javascript.js?1296791438"></script>
+  <script type="text/javascript" src="/static/sproutcore/datastore/en/current/javascript.js?1296791438"></script>
+  <script type="text/javascript" src="/static/sproutcore/en/current/javascript.js?1296791439"></script>
+  <script type="text/javascript" src="/static/ki/foundation/en/current/javascript.js?1296599191"></script>
+  <script type="text/javascript" src="/static/ki/en/current/javascript.js?1296599192"></script>
+  <script type="text/javascript" src="/static/sproutcore/empty_theme/en/current/javascript.js?1296791439"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/module_info.js?1296968402"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/core.js?1296860089"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/controllers/authors.js?1296950111"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/controllers/account.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/controllers/articles.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/controllers/body.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/controllers/labels.js?1296599065"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/controllers/labels.js?1296968325"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/controllers/login.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/controllers/register.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/controllers/viewer.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/controllers/systems.js?1296599065"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/controllers/viewer.js?1296964847"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/controllers/systems.js?1296965405"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/controllers/tree_nav.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/models/author.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/models/system.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/models/label.js?1296599065"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/models/system.js?1296697711"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/models/label.js?1296706792"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/data_sources/body_board.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/models/account.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/fixtures/account.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/models/article.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/fixtures/article.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/fixtures/author.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/models/caption.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/fixtures/caption.js?1296599065"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/models/caption.js?1296862041"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/fixtures/caption.js?1296863544"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/models/comment.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/fixtures/comment.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/models/group.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/fixtures/group.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/models/image.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/fixtures/image.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/fixtures/label.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/fixtures/system.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/resources/jquery-1.4.4.min.js?1296599065"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/fixtures/label.js?1296697354"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/fixtures/system.js?1296697688"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/seadragon-min.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/states/statechart.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/views/account_nav_view.js?1296599065"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/views/account_nav_view.js?1296875749"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/views/article/article.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/views/article/article_listitem.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/views/article/author_article_listitem.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/views/label/author_label_listitem.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/views/author/author_content.js?1296599065"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/views/author/author_content.js?1296936009"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/views/author/author_listitem.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/views/author/authors.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/views/author/edit_author.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/views/label/label.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/views/label/drag_target.js?1296599065"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/views/label/label.js?1296877353"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/views/label/drag_target.js?1296704043"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/views/body.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/views/default_login_nav_view.js?1296599065"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/views/default_login_nav_view.js?1296876643"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/views/label/label_listitem.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/views/home.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/views/label/create_label.js?1296599065"></script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/views/label/create_label.js?1296703983"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/views/label/labels.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/views/register/register_confirm_page.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/views/register/register_first_page.js?1296599065"></script>
@@ -207,7 +233,10 @@ if (SC.setupBodyClassNames) SC.setupBodyClassNames() ;
   <script type="text/javascript" src="/static/body_board/en/current/source/resources/login_page.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/resources/main_page.js?1296599065"></script>
   <script type="text/javascript" src="/static/body_board/en/current/source/resources/register_page.js?1296599065"></script>
-  <script type="text/javascript" src="/static/body_board/en/current/source/main.js?1296599338"></script>
-<script type="text/javascript">String.preferredLanguage = "en";</script>
+  <script type="text/javascript" src="/static/body_board/en/current/source/main.js?1296860289"></script>
+
+  <script>
+  SC.benchmarkPreloadEvents['bodyEnd'] = new Date().getTime();
+  </script>
 	</body>
 </html>

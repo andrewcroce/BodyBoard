@@ -18,7 +18,7 @@ BodyBoard.Label.FIXTURES = [
 		x : 0,
 		y : 0,
 		author_guid : 1,
-		system_guid : 11
+		system_guid : 3
 	},
 	
 	{
@@ -37,7 +37,16 @@ BodyBoard.Label.FIXTURES = [
 		y : 0.7492733,
 		author_guid : 1,
 		system_guid : 1
+	},
+	
+	{
+		guid : 4,
+		name : 'Some Body Part',
+		x : 0.3756930,
+		y : 0.7492733,
+		author_guid : 1,
+		system_guid : 2
 	}
 	
 ];
-; if ((typeof SC !== 'undefined') && SC && SC.scriptDidLoad) SC.scriptDidLoad('body_board');
+; if ((typeof SC !== 'undefined') && SC && SC.Module && SC.Module.scriptDidLoad) SC.Module.scriptDidLoad('body_board');

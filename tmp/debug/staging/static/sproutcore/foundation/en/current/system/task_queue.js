@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -13,6 +13,16 @@ sc_require("tasks/task");
   bundles while not blocking user interaction.
 */
 SC.TaskQueue = SC.Task.extend({
+  
+  init: function() {
+    var self = this;
+    this._doIdleEntry = function() {
+      self._idleEntry();
+    };
+    
+    this._tasks = [];
+  },
+  
   /**
     If YES, the queue will automatically run in the background when the browser idles.
   */
@@ -40,7 +50,7 @@ SC.TaskQueue = SC.Task.extend({
   */
   minimumIdleDuration: 500,
   
-  _tasks: [],
+  _tasks: null,
   
   /**
     Returns YES if there are tasks in the queue.
@@ -91,11 +101,7 @@ SC.TaskQueue = SC.Task.extend({
   */
   _setupIdle: function() {
     if (this.get('runWhenIdle') && !this._idleIsScheduled && this.get('taskCount') > 0) {
-      var self = this;
-      setTimeout(
-        function(){
-          self._idleEntry();
-        }, 
+      setTimeout(this._doIdleEntry, 
         this.get('interval')
       );
       this._idleIsScheduled = YES;
@@ -109,15 +115,15 @@ SC.TaskQueue = SC.Task.extend({
   _idleEntry: function() {
     this._idleIsScheduled = NO;
     var last = SC.RunLoop.lastRunLoopEnd;
+    
+    // if no recent events (within < 1s)
     if (Date.now() - last > this.get('minimumIdleDuration')) {
-      // if no recent events (within < 1s)
-      this.run();
-    } else {
-      SC.run(function() {
-        this._setupIdle();        
-      }, this);
+      SC.run(this.run, this);
       SC.RunLoop.lastRunLoopEnd = last; // we were never here
     }
+    
+    // set up idle timer if needed
+    this._setupIdle();
   },
   
   /**
@@ -135,9 +141,6 @@ SC.TaskQueue = SC.Task.extend({
       // check if the limit has been exceeded
       if (Date.now() - start > limit) break;
     }
-    
-    // set up idle timer if needed
-    this._setupIdle();
     
     this.set("isRunning", NO);
   }

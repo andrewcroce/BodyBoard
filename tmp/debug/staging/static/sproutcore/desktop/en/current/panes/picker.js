@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            portions copyright @2009 Apple Inc.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -190,7 +190,8 @@ SC.PickerPane = SC.PalettePane.extend({
     if (pointerOffset) this.set('pointerOffset',pointerOffset) ;
     this.endPropertyChanges();
     this.positionPane();
-    this.append();
+    this._hideOverflow();
+    return this.append();
   },
 
   /** @private
@@ -200,12 +201,14 @@ SC.PickerPane = SC.PalettePane.extend({
     fallback to center.
   */  
   positionPane: function(useAnchorCached) {
-    var useAnchorCached = useAnchorCached && this.get('anchorCached'),
-        anchor       = useAnchorCached ? this.get('anchorCached') : this.get('anchorElement'),
+    useAnchorCached = useAnchorCached && this.get('anchorCached');
+    
+    var anchor       = useAnchorCached ? this.get('anchorCached') : this.get('anchorElement'),
         preferType   = this.get('preferType'),
         preferMatrix = this.get('preferMatrix'),
         layout       = this.get('layout'),
         origin;
+        
     
     // usually an anchorElement will be passed.  The ideal position is just 
     // below the anchor + default or custom offset according to preferType.
@@ -338,7 +341,6 @@ SC.PickerPane = SC.PalettePane.extend({
       picker = this.fitPositionToScreenDefault(wret, picker, anchor) ;
     }
     this.displayDidChange();
-    this._hideOverflow();
     return picker ;
   },
 
@@ -604,26 +606,10 @@ SC.PickerPane = SC.PalettePane.extend({
     }
   },
   
-  displayProperties: ["pointerPosY"],
+  displayProperties: ['preferType','pointerPos','pointerPosY'],
 
-  render: function(context, firstTime) {
-    var ret = arguments.callee.base.apply(this,arguments);
-    if (context.needsContent) {
-      if (this.get('preferType') == SC.PICKER_POINTER || this.get('preferType') == SC.PICKER_MENU_POINTER) {
-        context.push('<div class="sc-pointer '+this.get('pointerPos')+'" style="margin-top: '+this.get('pointerPosY')+'px"></div>');
-        context.addClass(this.get('pointerPos'));
-      }
-    } else {
-      if (this.get('preferType') == SC.PICKER_POINTER || this.get('preferType') == SC.PICKER_MENU_POINTER) {
-        var el = this.$('.sc-pointer');
-        el.attr('class', "sc-pointer "+this.get('pointerPos'));
-        el.attr('style', "margin-top: "+this.get('pointerPosY')+"px");
-        context.addClass(this.get('pointerPos'));
-      }
-    }
-    return ret ;
-  },
-  
+  renderDelegateName: 'pickerRenderDelegate',
+
   /** @private - click away picker. */
   modalPaneDidClick: function(evt) {
     var f = this.get("frame");
@@ -653,10 +639,14 @@ SC.PickerPane = SC.PalettePane.extend({
   
   
   remove: function(){
-    this._showOverflow();
+    if(this.get('isVisibleInWindow') && this.get('isPaneAttached')) this._showOverflow();
     return arguments.callee.base.apply(this,arguments);
   },
   
+  /** @private
+    Internal method to hide the overflow on the body to make sure we don't 
+    show scrollbars when the picker has shadows, as it's really anoying.
+  */
   _hideOverflow: function(){
     var body = SC.$(document.body),
         main = SC.$('.sc-main'),
@@ -664,19 +654,34 @@ SC.PickerPane = SC.PalettePane.extend({
         minHeight = parseInt(main.css('minHeight'),0),
         windowSize = SC.RootResponder.responder.get('currentWindowSize');
     if(windowSize.width>=minWidth && windowSize.height>=minHeight){
-      body.css('overflow', 'hidden');           
+      SC.PICKERS_OPEN++;
+      //console.log(this.toString()+" "+SC.PICKERS_OPEN);
+      if(SC.PICKERS_OPEN > 0) body.css('overflow', 'hidden');           
     }
   },
 
+  /** @private
+    Internal method to show the overflow on the body to make sure we don't 
+    show scrollbars when the picker has shadows, as it's really anoying.
+  */
   _showOverflow: function(){
     var body = SC.$(document.body);
-    body.css('overflow', 'visible');     
+    if(SC.PICKERS_OPEN > 0) {
+      SC.PICKERS_OPEN--;
+     // console.log(this.toString()+" "+SC.PICKERS_OPEN);
+    }
+    if(SC.PICKERS_OPEN === 0) body.css('overflow', 'visible');
   }
 });
 
 /**
   Default metrics for the different control sizes.
 */
+
+// Counter to track how many pickers are open. This help us to now when to 
+// show/hide the body overflow.
+SC.PICKERS_OPEN = 0;
+
 SC.PickerPane.PICKER_POINTER_OFFSET = [9, -9, -18, 18];
 SC.PickerPane.PICKER_EXTRA_RIGHT_OFFSET = 20;
 
@@ -688,6 +693,7 @@ SC.PickerPane.SMALL_PICKER_MENU_EXTRA_RIGHT_OFFSET = 11;
 
 SC.PickerPane.REGULAR_PICKER_MENU_POINTER_OFFSET = [9, -9, -12, 12];
 SC.PickerPane.REGULAR_PICKER_MENU_EXTRA_RIGHT_OFFSET = 13;
+SC.PickerPane.REGULAR_PICKER_MENU_EXTRA_RIGHT_OFFSET = 12;
 
 SC.PickerPane.LARGE_PICKER_MENU_POINTER_OFFSET = [9, -9, -16, 16];
 SC.PickerPane.LARGE_PICKER_MENU_EXTRA_RIGHT_OFFSET = 17;

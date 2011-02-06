@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -47,27 +47,8 @@ SC.WellView = SC.ContainerView.extend(
       this.childViews = [view] ;
     } 
   },
-  
-  /**
-     The render method for the WellView simply add the html necessary for
-     the border.
-     
-   */
-  
-  render: function(context, firstTime) {
-    if(firstTime){
-     context.push("<div class='top-left-edge'></div>",
-       "<div class='top-edge'></div>",
-       "<div class='top-right-edge'></div>",
-       "<div class='right-edge'></div>",
-       "<div class='bottom-right-edge'></div>",
-       "<div class='bottom-edge'></div>",
-       "<div class='bottom-left-edge'></div>",
-       "<div class='left-edge'></div>",
-       "<div class='content-background'></div>");
-     }    
-     arguments.callee.base.apply(this,arguments);
-  },
+
+  theme: 'well',
   
   /**
      Invoked whenever the content property changes.  This method will simply

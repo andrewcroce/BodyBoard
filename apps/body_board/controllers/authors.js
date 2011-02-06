@@ -94,13 +94,7 @@ BodyBoard.authorController = SC.ObjectController.create({
 	}*/	
 });
 
-/*
-BodyBoard.authorArticlesController = SC.ArrayController.create({
-	
-	contentBinding : 'BodyBoard.authorController.articles'
-	
-});
-*/
+
 
 BodyBoard.authorLabelsController = SC.ArrayController.create({
 	

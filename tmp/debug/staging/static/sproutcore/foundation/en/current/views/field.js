@@ -1,12 +1,10 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
 
-sc_require('views/view') ;
-sc_require('mixins/control') ;
 sc_require('mixins/validatable') ;
 
 /** @class
@@ -223,9 +221,9 @@ SC.FieldView = SC.View.extend(SC.Control, SC.Validatable,
   },
   
   /** @private
-    Remove the active class on mouseOut if mouse is down.
+    Remove the active class on mouseExited if mouse is down.
   */  
-  mouseOut: function(evt) {
+  mouseExited: function(evt) {
     if (this._field_isMouseDown) this.set('isActive', NO);
     evt.allowDefault();
     return YES;
@@ -234,7 +232,7 @@ SC.FieldView = SC.View.extend(SC.Control, SC.Validatable,
   /** @private
     If mouse was down and we renter the button area, set the active state again.
   */  
-  mouseOver: function(evt) {
+  mouseEntered: function(evt) {
     this.set('isActive', this._field_isMouseDown);
     evt.allowDefault();
     return YES;
@@ -259,7 +257,7 @@ SC.FieldView = SC.View.extend(SC.Control, SC.Validatable,
   keyDown: function(evt) {
 
     // handle tab key
-    if (evt.which === 9) {
+    if (evt.which === 9 || evt.keyCode===9) {
       var view = evt.shiftKey ? this.get('previousValidKeyView') : this.get('nextValidKeyView');
       if (view) view.becomeFirstResponder();
       else evt.allowDefault();

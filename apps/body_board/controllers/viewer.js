@@ -16,75 +16,78 @@ sc_require('controllers/systems');
 BodyBoard.viewerController = SC.ObjectController.create(
 /** @scope BodyBoard.viewerController.prototype */ {
 
-	isReady : NO,
-	systemSet : NO,
-	labelsSet : NO,
-	position : 'Position',
+
+	viewer : '',			//Property that will hold a reference to the DZI viewer
+	isInitialized : NO,
+	isAnimating : NO,		//Is the viewer currently being manipulated
+	mousePosition : '',	//Current mouse position over the DZI viewer
+	zoom : 1,				//Current zoom level
+	center : {},				//Current center point of DZI viewer
 	
-	viewer : '',
 	
+	/*
+	*	Initialize the DZI Viewer.
+	*	Register listeners for the viewer's "open","animation","animationstart", and "animationfinish" events.
+	*/
 	initViewer : function() {
+		var controls;
 		
 		console.log('Initializing Viewer');
 		this.set('viewer', new Seadragon.Viewer('body-board-view'));
-		//BodyBoard.systemsController.selectObject(BodyBoard.store.find('BodyBoard.System', 1));
+		
+		// Some javascript hackery allowing the viewer controls to be repositioned with css
+		controls = this.get('viewer').getNavControl();
+		controls.id = 'viewer-controls';
+		controls.parentNode.parentNode.id = 'controls-inner-container'
+		controls.parentNode.parentNode.parentNode.id = 'controls-container';
+		
 		this.get('viewer').addEventListener('open',function(){
-			console.log('open');
-			BodyBoard.viewerController.set('isReady',YES);
-			//BodyBoard.systemController.setSystem();
+			BodyBoard.viewerController.setViewerPosition();
+			BodyBoard.systemController.setSystem();
 		});
+		
+		this.get('viewer').addEventListener('animationstart',function(){
+			console.log('animation started');
+			BodyBoard.viewerController.set('isAnimating',YES);
+		});
+		
+		this.get('viewer').addEventListener('animation',function(){
+			BodyBoard.viewerController.setViewerPosition();
+		});
+		
+		this.get('viewer').addEventListener('animationfinish',function(){
+			console.log('animation finished');
+			BodyBoard.viewerController.set('isAnimating',YES);
+		});
+		
+		//Open System 1 on initialization
+		//TODO: Randomize, or set to the user's last-opened System
 		BodyBoard.systemController.open(1);
-		/*
-		this.invokeLater(function(){
-			BodyBoard.systemsController.selectObject(BodyBoard.store.find('BodyBoard.System', 1));
-			
-		});*/
+
 	},
 	
+	setViewerPosition : function(){
+		this.set('zoom',this.get('viewer').viewport.getZoom());
+		this.set('center',this.get('viewer').viewport.getCenter());
+		/*
+		this.invokeLast(function(){
+			console.log('Center: ',this.get('center').x,',',this.get('center').y);
+		});
+		*/
+	},
 	
 	setMousePosition : function(event) {
 		//console.log('mouse position set');
 	 	var pixel = Seadragon.Utils.getMousePosition(event).minus(Seadragon.Utils.getElementPosition(this.get('viewer').elmt));
 		//var pixel = Seadragon.Utils.getMousePosition(event);
 		var point = this.get('viewer').viewport.pointFromPixel(pixel);
-		this.set('position', point);
+		this.set('mousePosition', point);
 		this.invokeLater(function(){
 			//console.log(this.get('position'));
 			
 		});
 	},
 	
-/*
-	appendOverlay : function( context, point ) {
-		console.log('Attempting to append overlay');
-		this.invokeLater(function(){
-			//if( this.get('isInitialized') == YES ) {
-				this.get('viewer').drawer.addOverlay(context, point, Seadragon.OverlayPlacement.BOTTOM);
-				console.log('Overlay appended');
-			//}
-		});
-	},
-
-	placeOverlay : function(event) {
-		
-	 	var pixel = Seadragon.Utils.getMousePosition(event).minus(Seadragon.Utils.getElementPosition(this.get('viewer').elmt));
-		var point = this.get('viewer').viewport.pointFromPixel(pixel);
-		var div = document.createElement("img");
-				div.src = 'static/body_board/en/current/resources/images/temp_label.png';
-				div.style.width = '30px';
-				div.style.height = '30px'; 
-		var coordinate = new Seadragon.Point(point.x, point.y);
-		//var point = new Seadragon.Point(1, 1);
-		var placement = Seadragon.OverlayPlacement.BOTTOM;
-		this.get('viewer').drawer.addOverlay(div, coordinate, placement);
-		this.invokeLater(function(){
-			console.log('Mouse Down');
-			console.log(this.get('position'));
-			
-		});
-		
-	}
-*/
 
 	
 });

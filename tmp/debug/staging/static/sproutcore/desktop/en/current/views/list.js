@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+// Copyright: ©2006-2011 Strobe Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -324,9 +324,11 @@ SC.ListView = SC.CollectionView.extend(
   
   */
   layoutForContentIndex: function(contentIndex) {
+    var del = this.get('rowDelegate');
+    
     return {
       top:    this.rowOffsetForContentIndex(contentIndex),
-      height: this.rowHeightForContentIndex(contentIndex),
+      height: this.rowHeightForContentIndex(contentIndex) - del.get('rowPadding') * 2,
       left:   0, 
       right:  0
     };
