@@ -24,32 +24,37 @@
 
 /* line 2, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
 #body-board-view {
-  z-index: 1;
+  z-index: 2;
 }
 
 /* line 5, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
 #create-label-view {
-  z-index: 2;
+  z-index: 3;
 }
 
 /* line 8, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
 #drag-target-view {
-  z-index: 3;
+  z-index: 4;
 }
 
 /* line 11, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+#label-collection {
+  z-index: 1;
+}
+
+/* line 14, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
 .sc-button-inner {
   min-width: 25px !important;
 }
 
-/* line 14, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+/* line 17, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
 #main-header .sc-button-label {
   text-align: left !important;
   margin-left: 5px !important;
   margin-right: 5px !important;
 }
 
-/* line 19, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+/* line 22, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
 #viewer-controls {
   position: absolute !important;
   z-index: 1000;
@@ -58,12 +63,12 @@
   width: 40px;
 }
 
-/* line 26, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+/* line 29, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
 #controls-container {
   position: relative !important;
 }
 
-/* line 29, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+/* line 32, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
 #controls-inner-container {
   position: static !important;
 }
@@ -99,57 +104,59 @@ body {
   background: #CFF9FC;
 }
 
-/* line 39, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
-.section-heading {
-  background: none;
+/* line 40, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+.section-heading,
+#label-collection {
+  background: none !important;
+  background-color: none !important;
 }
 
-/* line 48, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 50, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #main-header {
   background: url('/static/body_board/en/current/resources/images/main_header_bg.png?1296599065') top repeat-x;
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #a3e0e0), color-stop(0.6, #d2fcfe));
 }
 
-/* line 62, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 64, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #main-header .button,
 #main-header .sc-button-inner,
 #main-header .sc-button-label {
   background: none;
 }
 
-/* line 71, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 73, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 .label-li-view.selected {
   background: #CFF9FC;
 }
 
-/* line 80, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 82, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #body-menu .sc-list-item-view {
   color: #fff;
   background: -moz-linear-gradient(left, #6bbcc0, #65b2b5);
   background: -webkit-gradient(linear, left bottom, right bottom, color-stop(0, #6bbcc0), color-stop(0.6, #65b2b5));
 }
 
-/* line 92, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 94, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #body-menu .sc-list-item-view label {
   color: #fff;
 }
 
-/* line 96, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 98, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #body-menu .has-disclosure {
   background: none;
 }
 
-/* line 99, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 101, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #body-menu .has-disclosure label {
   color: #33888D;
 }
 
-/* line 108, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 110, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #body-menu div {
   background: none;
 }
 
-/* line 111, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 113, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #body-menu {
   background: -moz-linear-gradient(left, #8ad9dc, #80c9cb);
   background: -webkit-gradient(linear, left bottom, right bottom, color-stop(0, #8ad9dc), color-stop(0.6, #80c9cb));

@@ -1,12 +1,15 @@
 
 $theme: '';#body-board-view {
-	z-index: 1;
-}
-#create-label-view {
 	z-index: 2;
 }
-#drag-target-view {
+#create-label-view {
 	z-index: 3;
+}
+#drag-target-view {
+	z-index: 4;
+}
+#label-collection {
+	z-index: 1;
 }
 .sc-button-inner {
 	min-width: 25px !important; 

@@ -1,7 +1,7 @@
 /* >>>>>>>>>> BEGIN source/lproj/strings.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -18,7 +18,7 @@ SC.stringsFor('English', {
 /* >>>>>>>>>> BEGIN source/mixins/tree_item_content.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -180,7 +180,7 @@ SC.TreeItemContent = {
 /* >>>>>>>>>> BEGIN source/mixins/collection_content.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -360,7 +360,7 @@ SC.CollectionContent = {
 /* >>>>>>>>>> BEGIN source/private/tree_item_observer.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -1273,7 +1273,7 @@ SC.TreeItemObserver = SC.Object.extend(SC.Array, SC.CollectionContent, {
 /* >>>>>>>>>> BEGIN source/controllers/tree.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -1402,7 +1402,7 @@ SC.TreeController = SC.ObjectController.extend(SC.SelectionSupport,
 /* >>>>>>>>>> BEGIN source/debug/control_test_pane.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            portions copyright @2009 Apple Inc.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -1595,7 +1595,7 @@ SC.ControlTestPane.show = function() {
 /* >>>>>>>>>> BEGIN source/system/gesture.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -1865,7 +1865,7 @@ SC.Gesture = SC.Object.extend({
   */
   take: function(touch) {
     touch.isTaken = YES; // because even changing responder won't prevent it from being used this cycle.
-    if (SC.none(touch.touchResponder) || touch.touchResponder !== this) touch.makeTouchResponder(this, YES);
+    if (touch.touchResponder && touch.touchResponder !== this) touch.makeTouchResponder(this, YES);
   },
   
   /**
@@ -1960,7 +1960,7 @@ SC.Gesture = SC.Object.extend({
 /* >>>>>>>>>> BEGIN source/gestures/pinch.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -2042,7 +2042,7 @@ SC.PinchGesture = SC.Gesture.extend({
 /* >>>>>>>>>> BEGIN source/gestures/swipe.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -2331,7 +2331,7 @@ SC.TapGesture = SC.Gesture.extend({
 /* >>>>>>>>>> BEGIN source/mixins/auto_mixin.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -2368,264 +2368,13 @@ SC.AutoMixin = {
     return v;
   }
 };
-/* >>>>>>>>>> BEGIN source/system/utils/string_measurement.js */
-SC.mixin( /** @scope SC */ {
-
-  _copy_computed_props: [
-    "maxWidth", "maxHeight", "paddingLeft", "paddingRight", "paddingTop", "paddingBottom",
-    "fontFamily", "fontSize", "fontStyle", "fontWeight", "fontVariant", "lineHeight",
-    "whiteSpace"
-  ],
-
-  /**
-    Returns a string representation of the layout hash.
-
-    Layouts can contain the following keys:
-      - left: the left edge
-      - top: the top edge
-      - right: the right edge
-      - bottom: the bottom edge
-      - height: the height
-      - width: the width
-      - centerX: an offset from center X
-      - centerY: an offset from center Y
-      - minWidth: a minimum width
-      - minHeight: a minimum height
-      - maxWidth: a maximum width
-      - maxHeight: a maximum height
-
-    @param layout {Hash} The layout hash to stringify.
-    @returns {String} A string representation of the layout hash.
-  */
-  stringFromLayout: function(layout) {
-    // Put them in the reverse order that we want to display them, because
-    // iterating in reverse is faster for CPUs that can compare against zero
-    // quickly.
-    var keys = ['maxHeight', 'maxWidth', 'minHeight', 'minWidth', 'centerY',
-                'centerX', 'width', 'height', 'bottom', 'right', 'top',
-                'left'],
-        keyValues = [], key,
-        i = keys.length;
-    while (--i >= 0) {
-      key = keys[i];
-      if (layout.hasOwnProperty(key)) {
-        keyValues.push(key + ':' + layout[key]);
-      }
-    }
-
-    return '{' + keyValues.join(', ') + '}';
-  },
-
-  /**
-    Given a string and a fixed width, calculates the height of that
-    block of text using a style string, a set of class names,
-    or both.
-
-    @param str {String} The text to calculate
-    @param width {Number} The fixed width to assume the text will fill
-    @param style {String} A CSS style declaration.  E.g., 'font-weight: bold'
-    @param classNames {Array} An array of class names that may affect the style
-    @param ignoreEscape {Boolean} To NOT html escape the string.
-    @returns {Number} The height of the text given the passed parameters
-  */
-  heightForString: function(str, width, style, classNames, ignoreEscape) {
-    var elem = this._heightCalcElement, classes, height;
-
-    if(!ignoreEscape) str = SC.RenderContext.escapeHTML(str);
-
-    // Coalesce the array of class names to one string, if the array exists
-    classes = (classNames && SC.typeOf(classNames) === SC.T_ARRAY) ? classNames.join(' ') : '';
-
-    if (!width) width = 100; // default to 100 pixels
-
-    // Only create the offscreen element once, then cache it
-    if (!elem) {
-      elem = this._heightCalcElement = document.createElement('div');
-      document.body.insertBefore(elem, null);
-    }
-
-    style = style+'; width: '+width+'px; left: '+(-1*width)+'px; position: absolute';
-    var cqElem = SC.$(elem);
-    cqElem.attr('style', style);
-
-    if (classes !== '') {
-      cqElem.attr('class', classes);
-    }
-
-    elem.innerHTML = str;
-    height = elem.clientHeight;
-
-    elem = null; // don't leak memory
-    return height;
-  },
-
-  /**
-    Sets up a string measuring environment.
-
-    You may want to use this, in conjunction with teardownStringMeasurement and
-    measureString, instead of metricsForString, if you will be measuring many
-    strings with the same settings. It would be a lot more efficient, as it
-    would only prepare and teardown once instead of several times.
-
-    @param exampleElement The example element to grab styles from, or the style
-                          string to use.
-    @param classNames {String} (Optional) Class names to add to the test element.
-  */
-  prepareStringMeasurement: function(exampleElement, classNames) {
-    var element = this._metricsCalculationElement, classes, styles, style,
-        cqElem;
-
-    // collect the class names
-    classes = SC.A(classNames).join(' ');
-
-    // get the calculation element
-    if (!element) {
-      var parentElement = document.createElement("div");
-
-      // to make sure the measurement element is never visible, put it inside a 0x0 element with overflow: hidden
-      SC.mixin(parentElement.style, {
-        position: 'absolute',
-        left: '0px',
-        top: '0px',
-        height: '0px',
-        right: '0px',
-        overflow: 'hidden'
-      });
-
-      element = this._metricsCalculationElement = document.createElement("div");
-
-      parentElement.appendChild(element);
-      document.body.insertBefore(parentElement, null);
-    }
-
-    cqElem = SC.$(element);
-    // two possibilities: example element or type string
-    if (SC.typeOf(exampleElement) != SC.T_STRING) {
-      var computed = null;
-      if (document.defaultView && document.defaultView.getComputedStyle) {
-        computed = document.defaultView.getComputedStyle(exampleElement, null);
-      } else {
-      computed = exampleElement.currentStyle;
-      }
-
-      var props = this._copy_computed_props;
-
-      // firefox ONLY allows this method
-      for (var i = 0; i < props.length; i++) {
-        var prop = props[i], val = computed[prop];
-        element.style[prop] = val;
-      }
-
-      // and why does firefox specifically need "font" set?
-      var cs = element.style; // cached style
-      if (cs.font === "") {
-        var font = "";
-        if (cs.fontStyle) font += cs.fontStyle + " ";
-        if (cs.fontVariant) font += cs.fontVariant + " ";
-        if (cs.fontWeight) font += cs.fontWeight + " ";
-        if (cs.fontSize) font += cs.fontSize; else font += "10px"; //force a default
-        if (cs.lineHeight) font += "/" + cs.lineHeight;
-        font += " ";
-        if (cs.fontFamily) font += cs.fontFamily; else cs += "sans-serif";
-
-        element.style.font = font;
-      }
-
-      SC.mixin(element.style, {
-        left: "0px", top: "0px", position: "absolute", bottom: "auto", right: "auto", width: "auto", height: "auto"
-      });
-     // clean up
-      computed = null;
-    } else {
-      // it is a style string already
-      style = exampleElement;
-
-      // set style
-      cqElem.attr("style", style + "; position:absolute; left: 0px; top: 0px; bottom: auto; right: auto; width: auto; height: auto;");
-    }
-
-    element.className = classes;
-    element = null;
-  },
-
-  /**
-    Tears down the string measurement environment. Usually, this doesn't _have_
-    to be called, but there are too many what ifs: for example, what if the measurement
-    environment has a bright green background and is over 10,000px wide? Guess what: it will
-    become visible on the screen.
-
-    So, generally, we tear the measurement environment down so that it doesn't cause issue.
-    However, we keep the DOM element for efficiency.
-  */
-  teardownStringMeasurement: function() {
-    var element = this._metricsCalculationElement;
-
-    // clear element
-    element.innerHTML = "";
-    element.className = "";
-    element.setAttribute("style", ""); // get rid of any junk from computed style.
-    element = null;
-  },
-
-  /**
-    Measures a string in the prepared environment.
-
-    An easier and simpler alternative (but less efficient for bulk measuring) is metricsForString.
-
-    @param string {String} The string to measure.
-    @param ignoreEscape {Boolean} To NOT html escape the string.
-  */
-  measureString: function(string, ignoreEscape) {
-    if(!ignoreEscape) string = SC.RenderContext.escapeHTML(string);
-
-    var element = this._metricsCalculationElement;
-    if (!element) {
-      throw "measureString requires a string measurement environment to be set up. Did you mean metricsForString?";
-    }
-
-    // the conclusion of which to use (innerText or textContent) should be cached
-    if (typeof element.innerText != "undefined") element.innerText = string;
-    else element.textContent = string;
-
-    // generate result
-    var result = {
-      width: element.clientWidth,
-      height: element.clientHeight
-    };
-
-    element = null;
-    return result;
-  },
-
-  /**
-    Given a string and an example element or style string, and an optional
-    set of class names, calculates the width and height of that block of text.
-
-    To constrain the width, set max-width on the exampleElement or in the style string.
-
-    @param string {String} The string to measure.
-    @param exampleElement The example element to grab styles from, or the style string to use.
-    @param classNames {String} (Optional) Class names to add to the test element.
-    @param ignoreEscape {Boolean} To NOT html escape the string.
-  */
-  metricsForString: function(string, exampleElement, classNames, ignoreEscape) {
-    SC.prepareStringMeasurement(exampleElement, classNames);
-    var result = SC.measureString(string, ignoreEscape);
-    SC.teardownStringMeasurement();
-    return result;
-  }
-
-});
-
 /* >>>>>>>>>> BEGIN source/mixins/auto_resize.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
-
-sc_require("system/utils/string_measurement");
 
 /**
   @namespace
@@ -2866,7 +2615,7 @@ SC.AutoResize = {
 /* >>>>>>>>>> BEGIN source/mixins/button.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -3228,7 +2977,7 @@ SC.Button = {
 /* >>>>>>>>>> BEGIN source/mixins/content_display.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -3278,54 +3027,36 @@ SC.ContentDisplay = {
     this._display_contentDidChange();
   },
 
-  /**
-   * Remove observer on existing content object, if present
-   * @private
-   */
-  destroyMixin: function () {
-    if (!this._display_content) return;
-    this._display_stopObservingContent(this._display_content);
-    this._display_content = null;
-  },
-
-  /** @private */
-  _display_beginObservingContent: function(content) {
-    var f = this._display_contentPropertyDidChange;
-
-    if (SC.isArray(content)) {
-      content.invoke('addObserver', '*', this, f);
-    }
-    else if (content.addObserver) {
-      content.addObserver('*', this, f);
-    }
-  },
-
-  /** @private */
-  _display_stopObservingContent: function(content) {
-    var f = this._display_contentPropertyDidChange;
-
-    if (SC.isArray(content)) {
-      content.invoke('removeObserver', '*', this, f);
-    }
-    else if (content.removeObserver) {
-      content.removeObserver('*', this, f);
-    }
-  },
-
   /** @private */
   _display_contentDidChange: function(target, key, value) {
     // handle changes to the content...
-    if ((value = this.get('content')) === this._display_content) return;
+    if ((value = this.get('content')) != this._display_content) {
 
-    // stop listening to old content.
-    var content = this._display_content;
-    if (content) this._display_stopObservingContent(content);
+      // get the handler method
+      var f = this._display_contentPropertyDidChange ;
+      
+      // stop listening to old content.
+      var content = this._display_content;
+      if (content) {
+        if (SC.isArray(content)) {
+          content.invoke('removeObserver', '*', this, f) ;
+        } else if (content.removeObserver) {
+          content.removeObserver('*', this, f) ;
+        }
+      }
+      
+      // start listening for changes on the new content object.
+      content = this._display_content = value ; 
+      if (content) {
+        if (SC.isArray(content)) {
+          content.invoke('addObserver', '*', this, f) ;
+        } else if (content.addObserver) {
+          content.addObserver('*', this, f) ;
+        }
+      }
 
-    // start listening for changes on the new content object.
-    content = this._display_content = value;
-    if (content) this._display_beginObservingContent(content);
-
-    this.displayDidChange();
+      this.displayDidChange();
+    }
   }.observes('content', 'contentDisplayProperties'),
   
   /** @private Invoked when properties on the content object change. */
@@ -3341,827 +3072,10 @@ SC.ContentDisplay = {
   
 } ;
 
-/* >>>>>>>>>> BEGIN source/mixins/string.js */
-// These are basic enhancements to the string class used throughout
-// SproutCore.
-/** @private */
-SC.STRING_TITLEIZE_REGEXP = (/([\s|\-|\_|\n])([^\s|\-|\_|\n]?)/g);
-SC.STRING_HUMANIZE_REGEXP = (/[\-_]/g);
-SC.STRING_TRIM_REGEXP = (/^\s+|\s+$/g);
-SC.STRING_TRIM_LEFT_REGEXP = (/^\s+/g);
-SC.STRING_TRIM_RIGHT_REGEXP = (/\s+$/g);
-SC.STRING_REGEXP_ESCAPED_REGEXP = (/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g);
-
-// Since there are many strings that are commonly dasherized(), we'll maintain
-// a cache.  Moreover, we'll pre-add some common ones.
-SC.STRING_DASHERIZE_CACHE = {
-  top:      'top',
-  left:     'left',
-  right:    'right',
-  bottom:   'bottom',
-  width:    'width',
-  height:   'height',
-  minWidth: 'min-width',
-  maxWidth: 'max-width'
-};
-
-// Active Support style inflection constants
-SC.INFLECTION_CONSTANTS = {
-  PLURAL: [
-      [/(quiz)$/i,               "$1zes"  ],
-      [/^(ox)$/i,                "$1en"   ],
-      [/([m|l])ouse$/i,          "$1ice"  ],
-      [/(matr|vert|ind)ix|ex$/i, "$1ices" ],
-      [/(x|ch|ss|sh)$/i,         "$1es"   ],
-      [/([^aeiouy]|qu)y$/i,      "$1ies"  ],
-      [/(hive)$/i,               "$1s"    ],
-      [/(?:([^f])fe|([lr])f)$/i, "$1$2ves"],
-      [/sis$/i,                  "ses"    ],
-      [/([ti])um$/i,             "$1a"    ],
-      [/(buffal|tomat)o$/i,      "$1oes"  ],
-      [/(bu)s$/i,                "$1ses"  ],
-      [/(alias|status)$/i,       "$1es"   ],
-      [/(octop|vir)us$/i,        "$1i"    ],
-      [/(ax|test)is$/i,          "$1es"   ],
-      [/s$/i,                    "s"      ],
-      [/$/,                      "s"      ]
-  ],
-
-  SINGULAR: [
-      [/(quiz)zes$/i,                                                    "$1"     ],
-      [/(matr)ices$/i,                                                   "$1ix"   ],
-      [/(vert|ind)ices$/i,                                               "$1ex"   ],
-      [/^(ox)en/i,                                                       "$1"     ],
-      [/(alias|status)es$/i,                                             "$1"     ],
-      [/(octop|vir)i$/i,                                                 "$1us"   ],
-      [/(cris|ax|test)es$/i,                                             "$1is"   ],
-      [/(shoe)s$/i,                                                      "$1"     ],
-      [/(o)es$/i,                                                        "$1"     ],
-      [/(bus)es$/i,                                                      "$1"     ],
-      [/([m|l])ice$/i,                                                   "$1ouse" ],
-      [/(x|ch|ss|sh)es$/i,                                               "$1"     ],
-      [/(m)ovies$/i,                                                     "$1ovie" ],
-      [/(s)eries$/i,                                                     "$1eries"],
-      [/([^aeiouy]|qu)ies$/i,                                            "$1y"    ],
-      [/([lr])ves$/i,                                                    "$1f"    ],
-      [/(tive)s$/i,                                                      "$1"     ],
-      [/(hive)s$/i,                                                      "$1"     ],
-      [/([^f])ves$/i,                                                    "$1fe"   ],
-      [/(^analy)ses$/i,                                                  "$1sis"  ],
-      [/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)ses$/i, "$1$2sis"],
-      [/([ti])a$/i,                                                      "$1um"   ],
-      [/(n)ews$/i,                                                       "$1ews"  ],
-      [/s$/i,                                                            ""       ]
-  ],
-
-  IRREGULAR: [
-      ['move',   'moves'   ],
-      ['sex',    'sexes'   ],
-      ['child',  'children'],
-      ['man',    'men'     ],
-      ['person', 'people'  ]
-  ],
-
-  UNCOUNTABLE: [
-      "sheep",
-      "fish",
-      "series",
-      "species",
-      "money",
-      "rice",
-      "information",
-      "info",
-      "equipment"
-  ]
-};
-
-SC.StringInflections = {
-  /**
-    Capitalizes every word in a string.  Unlike titleize, spaces or dashes
-    will remain in-tact.
-
-    h2. Examples
-
-    | *Input String* | *Output String* |
-    | my favorite items | My Favorite Items |
-    | css-class-name | Css-Class-Name |
-    | action_name | Action_Name |
-    | innerHTML | InnerHTML |
-
-    @returns {String} capitalized string
-  */
-  capitalizeEach: function() {
-    return this.replace(SC.STRING_TITLEIZE_REGEXP,
-      function(str,sep,character) {
-        return (character) ? (sep + character.toUpperCase()) : sep;
-      }).capitalize() ;
-  },
-
-  /**
-    Converts a string to a title.  This will decamelize the string, convert
-    separators to spaces and capitalize every word.
-
-    h2. Examples
-
-    | *Input String* | *Output String* |
-    | my favorite items | My Favorite Items |
-    | css-class-name | Css Class Name |
-    | action_name | Action Name |
-    | innerHTML | Inner HTML |
-
-    @return {String} titleized string.
-  */
-  titleize: function() {
-    var ret = this.replace(SC.STRING_DECAMELIZE_REGEXP,'$1_$2'); // decamelize
-    return ret.replace(SC.STRING_TITLEIZE_REGEXP,
-      function(str,separater,character) {
-        return (character) ? (' ' + character.toUpperCase()) : ' ';
-      }).capitalize() ;
-  },
-
-  /**
-    Converts the string into a class name.  This method will camelize your
-    string and then capitalize the first letter.
-
-    h2. Examples
-
-    | *Input String* | *Output String* |
-    | my favorite items | MyFavoriteItems |
-    | css-class-name | CssClassName |
-    | action_name | ActionName |
-    | innerHTML | InnerHtml |
-
-    @returns {String}
-  */
-  classify: function() {
-    var ret = this.replace(SC.STRING_TITLEIZE_REGEXP,
-      function(str,separater,character) {
-        return (character) ? character.toUpperCase() : '' ;
-      }) ;
-    var first = ret.charAt(0), upper = first.toUpperCase() ;
-    return (first !== upper) ? (upper + ret.slice(1)) : ret ;
-  },
-
-  /**
-    Converts a camelized string or a string with dashes or underscores into
-    a string with components separated by spaces.
-
-    h2. Examples
-
-    | *Input String* | *Output String* |
-    | my favorite items | my favorite items |
-    | css-class-name | css class name |
-    | action_name | action name |
-    | innerHTML | inner html |
-
-    @returns {String} the humanized string.
-  */
-  humanize: function() {
-    return this.decamelize().replace(SC.STRING_HUMANIZE_REGEXP,' ') ;
-  },
-
-  /**
-    Will escape a string so it can be securely used in a regular expression.
-
-    Useful when you need to use user input in a regular expression without
-    having to worry about it breaking code if any reserved regular expression
-    characters are used.
-
-    @returns {String} the string properly escaped for use in a regexp.
-  */
-  escapeForRegExp: function() {
-    return this.replace(SC.STRING_REGEXP_ESCAPED_REGEXP, "\\$1");
-  },
-
-  /**
-    Removes any standard diacritic characters from the string. So, for
-    example, all instances of 'Á' will become 'A'.
-
-    @returns {String} the modified string
-  */
-  removeDiacritics: function() {
-    // Lazily create the SC.diacriticMappingTable object.
-    var diacriticMappingTable = SC.diacriticMappingTable;
-    if (!diacriticMappingTable) {
-      SC.diacriticMappingTable = {
-       'À':'A', 'Á':'A', 'Â':'A', 'Ã':'A', 'Ä':'A', 'Å':'A', 'Ā':'A', 'Ă':'A',
-       'Ą':'A', 'Ǎ':'A', 'Ǟ':'A', 'Ǡ':'A', 'Ǻ':'A', 'Ȁ':'A', 'Ȃ':'A', 'Ȧ':'A',
-       'Ḁ':'A', 'Ạ':'A', 'Ả':'A', 'Ấ':'A', 'Ầ':'A', 'Ẩ':'A', 'Ẫ':'A', 'Ậ':'A',
-       'Ắ':'A', 'Ằ':'A', 'Ẳ':'A', 'Ẵ':'A', 'Ặ':'A', 'Å':'A', 'Ḃ':'B', 'Ḅ':'B',
-       'Ḇ':'B', 'Ç':'C', 'Ć':'C', 'Ĉ':'C', 'Ċ':'C', 'Č':'C', 'Ḉ':'C', 'Ď':'D',
-       'Ḋ':'D', 'Ḍ':'D', 'Ḏ':'D', 'Ḑ':'D', 'Ḓ':'D', 'È':'E', 'É':'E', 'Ê':'E',
-       'Ë':'E', 'Ē':'E', 'Ĕ':'E', 'Ė':'E', 'Ę':'E', 'Ě':'E', 'Ȅ':'E', 'Ȇ':'E',
-       'Ȩ':'E', 'Ḕ':'E', 'Ḗ':'E', 'Ḙ':'E', 'Ḛ':'E', 'Ḝ':'E', 'Ẹ':'E', 'Ẻ':'E',
-       'Ẽ':'E', 'Ế':'E', 'Ề':'E', 'Ể':'E', 'Ễ':'E', 'Ệ':'E', 'Ḟ':'F', 'Ĝ':'G',
-       'Ğ':'G', 'Ġ':'G', 'Ģ':'G', 'Ǧ':'G', 'Ǵ':'G', 'Ḡ':'G', 'Ĥ':'H', 'Ȟ':'H',
-       'Ḣ':'H', 'Ḥ':'H', 'Ḧ':'H', 'Ḩ':'H', 'Ḫ':'H', 'Ì':'I', 'Í':'I', 'Î':'I',
-       'Ï':'I', 'Ĩ':'I', 'Ī':'I', 'Ĭ':'I', 'Į':'I', 'İ':'I', 'Ǐ':'I', 'Ȉ':'I',
-       'Ȋ':'I', 'Ḭ':'I', 'Ḯ':'I', 'Ỉ':'I', 'Ị':'I', 'Ĵ':'J', 'Ķ':'K', 'Ǩ':'K',
-       'Ḱ':'K', 'Ḳ':'K', 'Ḵ':'K', 'Ĺ':'L', 'Ļ':'L', 'Ľ':'L', 'Ḷ':'L', 'Ḹ':'L',
-       'Ḻ':'L', 'Ḽ':'L', 'Ḿ':'M', 'Ṁ':'M', 'Ṃ':'M', 'Ñ':'N', 'Ń':'N', 'Ņ':'N',
-       'Ň':'N', 'Ǹ':'N', 'Ṅ':'N', 'Ṇ':'N', 'Ṉ':'N', 'Ṋ':'N', 'Ò':'O', 'Ó':'O',
-       'Ô':'O', 'Õ':'O', 'Ö':'O', 'Ō':'O', 'Ŏ':'O', 'Ő':'O', 'Ơ':'O', 'Ǒ':'O',
-       'Ǫ':'O', 'Ǭ':'O', 'Ȍ':'O', 'Ȏ':'O', 'Ȫ':'O', 'Ȭ':'O', 'Ȯ':'O', 'Ȱ':'O',
-       'Ṍ':'O', 'Ṏ':'O', 'Ṑ':'O', 'Ṓ':'O', 'Ọ':'O', 'Ỏ':'O', 'Ố':'O', 'Ồ':'O',
-       'Ổ':'O', 'Ỗ':'O', 'Ộ':'O', 'Ớ':'O', 'Ờ':'O', 'Ở':'O', 'Ỡ':'O', 'Ợ':'O',
-       'Ṕ':'P', 'Ṗ':'P', 'Ŕ':'R', 'Ŗ':'R', 'Ř':'R', 'Ȑ':'R', 'Ȓ':'R', 'Ṙ':'R',
-       'Ṛ':'R', 'Ṝ':'R', 'Ṟ':'R', 'Ś':'S', 'Ŝ':'S', 'Ş':'S', 'Š':'S', 'Ș':'S',
-       'Ṡ':'S', 'Ṣ':'S', 'Ṥ':'S', 'Ṧ':'S', 'Ṩ':'S', 'Ţ':'T', 'Ť':'T', 'Ț':'T',
-       'Ṫ':'T', 'Ṭ':'T', 'Ṯ':'T', 'Ṱ':'T', 'Ù':'U', 'Ú':'U', 'Û':'U', 'Ü':'U',
-       'Ũ':'U', 'Ū':'U', 'Ŭ':'U', 'Ů':'U', 'Ű':'U', 'Ų':'U', 'Ư':'U', 'Ǔ':'U',
-       'Ǖ':'U', 'Ǘ':'U', 'Ǚ':'U', 'Ǜ':'U', 'Ȕ':'U', 'Ȗ':'U', 'Ṳ':'U', 'Ṵ':'U',
-       'Ṷ':'U', 'Ṹ':'U', 'Ṻ':'U', 'Ụ':'U', 'Ủ':'U', 'Ứ':'U', 'Ừ':'U', 'Ử':'U',
-       'Ữ':'U', 'Ự':'U', 'Ṽ':'V', 'Ṿ':'V', 'Ŵ':'W', 'Ẁ':'W', 'Ẃ':'W', 'Ẅ':'W',
-       'Ẇ':'W', 'Ẉ':'W', 'Ẋ':'X', 'Ẍ':'X', 'Ý':'Y', 'Ŷ':'Y', 'Ÿ':'Y', 'Ȳ':'Y',
-       'Ẏ':'Y', 'Ỳ':'Y', 'Ỵ':'Y', 'Ỷ':'Y', 'Ỹ':'Y', 'Ź':'Z', 'Ż':'Z', 'Ž':'Z',
-       'Ẑ':'Z', 'Ẓ':'Z', 'Ẕ':'Z',
-       '`': '`',
-       'à':'a', 'á':'a', 'â':'a', 'ã':'a', 'ä':'a', 'å':'a', 'ā':'a', 'ă':'a',
-       'ą':'a', 'ǎ':'a', 'ǟ':'a', 'ǡ':'a', 'ǻ':'a', 'ȁ':'a', 'ȃ':'a', 'ȧ':'a',
-       'ḁ':'a', 'ạ':'a', 'ả':'a', 'ấ':'a', 'ầ':'a', 'ẩ':'a', 'ẫ':'a', 'ậ':'a',
-       'ắ':'a', 'ằ':'a', 'ẳ':'a', 'ẵ':'a', 'ặ':'a', 'ḃ':'b', 'ḅ':'b', 'ḇ':'b',
-       'ç':'c', 'ć':'c', 'ĉ':'c', 'ċ':'c', 'č':'c', 'ḉ':'c', 'ď':'d', 'ḋ':'d',
-       'ḍ':'d', 'ḏ':'d', 'ḑ':'d', 'ḓ':'d', 'è':'e', 'é':'e', 'ê':'e', 'ë':'e',
-       'ē':'e', 'ĕ':'e', 'ė':'e', 'ę':'e', 'ě':'e', 'ȅ':'e', 'ȇ':'e', 'ȩ':'e',
-       'ḕ':'e', 'ḗ':'e', 'ḙ':'e', 'ḛ':'e', 'ḝ':'e', 'ẹ':'e', 'ẻ':'e', 'ẽ':'e',
-       'ế':'e', 'ề':'e', 'ể':'e', 'ễ':'e', 'ệ':'e', 'ḟ':'f', 'ĝ':'g', 'ğ':'g',
-       'ġ':'g', 'ģ':'g', 'ǧ':'g', 'ǵ':'g', 'ḡ':'g', 'ĥ':'h', 'ȟ':'h', 'ḣ':'h',
-       'ḥ':'h', 'ḧ':'h', 'ḩ':'h', 'ḫ':'h', 'ẖ':'h', 'ì':'i', 'í':'i', 'î':'i',
-       'ï':'i', 'ĩ':'i', 'ī':'i', 'ĭ':'i', 'į':'i', 'ǐ':'i', 'ȉ':'i', 'ȋ':'i',
-       'ḭ':'i', 'ḯ':'i', 'ỉ':'i', 'ị':'i', 'ĵ':'j', 'ǰ':'j', 'ķ':'k', 'ǩ':'k',
-       'ḱ':'k', 'ḳ':'k', 'ḵ':'k', 'ĺ':'l', 'ļ':'l', 'ľ':'l', 'ḷ':'l', 'ḹ':'l',
-       'ḻ':'l', 'ḽ':'l', 'ḿ':'m', 'ṁ':'m', 'ṃ':'m', 'ñ':'n', 'ń':'n', 'ņ':'n',
-       'ň':'n', 'ǹ':'n', 'ṅ':'n', 'ṇ':'n', 'ṉ':'n', 'ṋ':'n', 'ò':'o', 'ó':'o',
-       'ô':'o', 'õ':'o', 'ö':'o', 'ō':'o', 'ŏ':'o', 'ő':'o', 'ơ':'o', 'ǒ':'o',
-       'ǫ':'o', 'ǭ':'o', 'ȍ':'o', 'ȏ':'o', 'ȫ':'o', 'ȭ':'o', 'ȯ':'o', 'ȱ':'o',
-       'ṍ':'o', 'ṏ':'o', 'ṑ':'o', 'ṓ':'o', 'ọ':'o', 'ỏ':'o', 'ố':'o', 'ồ':'o',
-       'ổ':'o', 'ỗ':'o', 'ộ':'o', 'ớ':'o', 'ờ':'o', 'ở':'o', 'ỡ':'o', 'ợ':'o',
-       'ṕ':'p', 'ṗ':'p', 'ŕ':'r', 'ŗ':'r', 'ř':'r', 'ȑ':'r', 'ȓ':'r', 'ṙ':'r',
-       'ṛ':'r', 'ṝ':'r', 'ṟ':'r', 'ś':'s', 'ŝ':'s', 'ş':'s', 'š':'s', 'ș':'s',
-       'ṡ':'s', 'ṣ':'s', 'ṥ':'s', 'ṧ':'s', 'ṩ':'s', 'ţ':'t', 'ť':'t', 'ț':'t',
-       'ṫ':'t', 'ṭ':'t', 'ṯ':'t', 'ṱ':'t', 'ẗ':'t', 'ù':'u', 'ú':'u', 'û':'u',
-       'ü':'u', 'ũ':'u', 'ū':'u', 'ŭ':'u', 'ů':'u', 'ű':'u', 'ų':'u', 'ư':'u',
-       'ǔ':'u', 'ǖ':'u', 'ǘ':'u', 'ǚ':'u', 'ǜ':'u', 'ȕ':'u', 'ȗ':'u', 'ṳ':'u',
-       'ṵ':'u', 'ṷ':'u', 'ṹ':'u', 'ṻ':'u', 'ụ':'u', 'ủ':'u', 'ứ':'u', 'ừ':'u',
-       'ử':'u', 'ữ':'u', 'ự':'u', 'ṽ':'v', 'ṿ':'v', 'ŵ':'w', 'ẁ':'w', 'ẃ':'w',
-       'ẅ':'w', 'ẇ':'w', 'ẉ':'w', 'ẘ':'w', 'ẋ':'x', 'ẍ':'x', 'ý':'y', 'ÿ':'y',
-       'ŷ':'y', 'ȳ':'y', 'ẏ':'y', 'ẙ':'y', 'ỳ':'y', 'ỵ':'y', 'ỷ':'y', 'ỹ':'y',
-       'ź':'z', 'ż':'z', 'ž':'z', 'ẑ':'z', 'ẓ':'z', 'ẕ':'z'
-      };
-      diacriticMappingTable = SC.diacriticMappingTable;
-    }
-
-    var original, replacement, ret = "",
-        length = this.length;
-    for (var i = 0; i <= length; ++i) {
-      original = this.charAt(i);
-      replacement = diacriticMappingTable[original];
-      if (replacement) {
-        ret += replacement;
-      }
-      else {
-        ret += original;
-      }
-    }
-    return ret;
-  },
-
-  /**
-    Removes any extra whitespace from the edges of the string. This method is
-    also aliased as strip().
-
-    @returns {String} the trimmed string
-  */
-  trim: function () {
-    return this.replace(SC.STRING_TRIM_REGEXP,"");
-  },
-
-  /**
-    Removes any extra whitespace from the left edge of the string.
-
-    @returns {String} the trimmed string
-  */
-  trimLeft: function () {
-    return this.replace(SC.STRING_TRIM_LEFT_REGEXP,"");
-  },
-
-  /**
-    Removes any extra whitespace from the right edge of the string.
-
-    @returns {String} the trimmed string
-  */
-  trimRight: function () {
-    return this.replace(SC.STRING_TRIM_RIGHT_REGEXP,"");
-  },
-
-  /**
-    Converts a word into its plural form.
-
-    @returns {String} the plural form of the string
-  */
-  pluralize: function() {
-      var idx, len,
-           compare = this.split(/\s/).pop(), //check only the last word of a string
-          restOfString = this.replace(compare,''),
-          isCapitalized = compare.charAt(0).match(/[A-Z]/) ? true : false;
-
-      compare = compare.toLowerCase();
-      for (idx=0, len=SC.INFLECTION_CONSTANTS.UNCOUNTABLE.length; idx < len; idx++) {
-          var uncountable = SC.INFLECTION_CONSTANTS.UNCOUNTABLE[idx];
-          if (compare == uncountable) {
-              return this.toString();
-          }
-      }
-      for (idx=0, len=SC.INFLECTION_CONSTANTS.IRREGULAR.length; idx < len; idx++) {
-          var singular = SC.INFLECTION_CONSTANTS.IRREGULAR[idx][0],
-              plural   = SC.INFLECTION_CONSTANTS.IRREGULAR[idx][1];
-          if ((compare == singular) || (compare == plural)) {
-              if(isCapitalized) plural = plural.capitalize();
-              return restOfString + plural;
-          }
-      }
-      for (idx=0, len=SC.INFLECTION_CONSTANTS.PLURAL.length; idx < len; idx++) {
-          var regex          = SC.INFLECTION_CONSTANTS.PLURAL[idx][0],
-              replace_string = SC.INFLECTION_CONSTANTS.PLURAL[idx][1];
-          if (regex.test(compare)) {
-              return this.replace(regex, replace_string);
-          }
-      }
-  },
-
-  /**
-    Converts a word into its singular form.
-
-    @returns {String} the singular form of the string
-  */
-  singularize: function() {
-      var idx, len,
-          compare = this.split(/\s/).pop(), //check only the last word of a string
-          restOfString = this.replace(compare,''),
-          isCapitalized = compare.charAt(0).match(/[A-Z]/) ? true : false;
-
-      compare = compare.toLowerCase();
-      for (idx=0, len=SC.INFLECTION_CONSTANTS.UNCOUNTABLE.length; idx < len; idx++) {
-          var uncountable = SC.INFLECTION_CONSTANTS.UNCOUNTABLE[idx];
-          if (compare == uncountable) {
-              return this.toString();
-          }
-      }
-      for (idx=0, len=SC.INFLECTION_CONSTANTS.IRREGULAR.length; idx < len; idx++) {
-          var singular = SC.INFLECTION_CONSTANTS.IRREGULAR[idx][0],
-              plural   = SC.INFLECTION_CONSTANTS.IRREGULAR[idx][1];
-          if ((compare == singular) || (compare == plural)) {
-              if(isCapitalized) singular = singular.capitalize();
-              return restOfString + singular;
-          }
-      }
-      for (idx=0, len=SC.INFLECTION_CONSTANTS.SINGULAR.length; idx < len; idx++) {
-          var regex          = SC.INFLECTION_CONSTANTS.SINGULAR[idx][0],
-              replace_string = SC.INFLECTION_CONSTANTS.SINGULAR[idx][1];
-          if (regex.test(compare)) {
-              return this.replace(regex, replace_string);
-          }
-      }
-  }
-
-}
-
-/** @private */
-SC.String.strip = SC.String.trim; // convenience alias.
-SC.supplement(SC.String, SC.StringInflections);
-
-// Apply SC.String mixin to built-in String object
-SC.supplement(String.prototype, SC.StringInflections) ;
-
-
-/* >>>>>>>>>> BEGIN source/mixins/control.js */
-// ==========================================================================
-// Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
-//            Portions ©2008-2010 Apple Inc. All rights reserved.
-// License:   Licensed under MIT license (see license.js)
-// ==========================================================================
-
-sc_require('mixins/string');
-
-/**
-  Option for controls to automatically calculate their size (should be default 
-  on controls that use renderers).
-*/
-SC.AUTO_CONTROL_SIZE = '__AUTO__';
-
-/** 
-  Option for HUGE control size.
-  
-  @property {String}
-*/
-SC.JUMBO_CONTROL_SIZE = 'sc-jumbo-size' ;
-
-/** 
-  Option for HUGE control size.
-  
-  @property {String}
-*/
-SC.HUGE_CONTROL_SIZE = 'sc-huge-size' ;
-
-/** 
-  Option for large control size.
-  
-  @property {String}
-*/
-SC.LARGE_CONTROL_SIZE = 'sc-large-size' ;
-
-/** 
-  Option for standard control size.
-  
-  @property {String}
-*/
-SC.REGULAR_CONTROL_SIZE = 'sc-regular-size' ;
-
-/** 
-  Option for small control size.
-  
-  @property {String}
-*/
-SC.SMALL_CONTROL_SIZE = 'sc-small-size' ;
-
-/** 
-  Option for tiny control size
-  
-  @property {String}
-*/
-SC.TINY_CONTROL_SIZE = 'sc-tiny-size' ;
-
-/**
-  @namespace
-  
-  A Control is a view that also implements some basic state functionality.
-  Apply this mixin to any view that you want to have standard control
-  functionality including showing a selected state, enabled state, focus
-  state, etc.
-  
-  h2. About Values and Content
-  
-  Controls typically are used to represent a single value, such as a number,
-  boolean or string.  The value a control is managing is typically stored in
-  a "value" property.  You will typically use the value property when working
-  with controls such as buttons and text fields in a form.
-  
-  An alternative way of working with a control is to use it to manage some
-  specific aspect of a content object.  For example, you might use a label
-  view control to display the "name" property of a Contact record.  This 
-  approach is often necessary when using the control as part of a collection
-  view.
-  
-  You can use the content-approach to work with a control by setting the 
-  "content" and "contentValueKey" properties of the control.  The 
-  "content" property is the content object you want to manage, while the 
-  "contentValueKey" is the name of the property on the content object 
-  you want the control to display.
-  
-  The default implementation of the Control mixin will essentially map the
-  contentValueKey of a content object to the value property of the 
-  control.  Thus if you are writing a custom control yourself, you can simply
-  work with the value property and the content object support will come for
-  free.  Just write an observer for the value property and update your 
-  view accordingly.
-  
-  If you are working with a control that needs to display multiple aspects
-  of a single content object (for example showing an icon and label), then
-  you can override the contentValueDidChange() method instead of observing
-  the value property.  This method will be called anytime _any_ property 
-  on the content object changes.  You should use this method to check the
-  properties you care about on the content object and update your view if 
-  anything you care about has changed.
-  
-  h2. Delegate Support
-  
-  Controls can optionally get the contentDisplayProperty from a 
-  displayDelegate, if it is set.  The displayDelegate is often used to 
-  delegate common display-related configurations such as which content value
-  to show.  Anytime your control is shown as part of a collection view, the
-  collection view will be automatically set as its displayDelegate.
-  
-  @since SproutCore 1.0
-*/
-SC.Control = {
-  
-  isControl: YES,
-  
-  /** @private */
-  initMixin: function() {
-    this._control_contentDidChange() ; // setup content observing if needed.
-  },
-  
-  /** 
-    The selected state of this control.  Possible options are YES, NO or 
-    SC.MIXED_STATE.
-    
-    @property {Boolean}
-  */
-  isSelected: NO,
-  
-  /** @private */
-  isSelectedBindingDefault: SC.Binding.oneWay().bool(),
-  
-  /**
-    Set to YES when the item is currently active.  Usually this means the 
-    mouse is current pressed and hovering over the control, however the 
-    specific implementation my vary depending on the control.
-    
-    Changing this property value by default will cause the Control mixin to
-    add/remove an 'active' class name to the root element.
-    
-    @property {Boolean}
-  */
-  isActive: NO,
-  
-  /** @private */
-  isActiveBindingDefault: SC.Binding.oneWay().bool(),
-  
-  /**
-    The value represented by this control.
-    
-    Most controls represent a value of some type, such as a number, string
-    or image URL.  This property should hold that value.  It is bindable
-    and observable.  Changing this value will immediately change the
-    appearance of the control.  Likewise, editing the control 
-    will immediately change this value.
-    
-    If instead of setting a single value on a control, you would like to 
-    set a content object and have the control display a single property
-    of that control, then you should use the content property instead.
-
-    @property {Object}
-  */
-  value: null,
-  
-  /**
-    The content object represented by this control.
-    
-    Often you need to use a control to display some single aspect of an 
-    object, especially if you are using the control as an item view in a
-    collection view.
-    
-    In those cases, you can set the content and contentValueKey for the
-    control.  This will cause the control to observe the content object for
-    changes to the value property and then set the value of that property 
-    on the "value" property of this object.
-    
-    Note that unless you are using this control as part of a form or 
-    collection view, then it would be better to instead bind the value of
-    the control directly to a controller property.
-    
-    @property {SC.Object}
-  */
-  content: null,
-  
-  /**
-    The property on the content object that would want to represent the 
-    value of this control.  This property should only be set before the
-    content object is first set.  If you have a displayDelegate, then
-    you can also use the contentValueKey of the displayDelegate.
-    
-    @property {String}
-  */
-  contentValueKey: null,
-  
-  /**
-    Invoked whenever any property on the content object changes.  
-    
-    The default implementation will update the value property of the view
-    if the contentValueKey property has changed.  You can override this
-    method to implement whatever additional changes you would like.
-    
-    The key will typically contain the name of the property that changed or 
-    '*' if the content object itself has changed.  You should generally do
-    a total reset if '*' is changed.
-    
-    @param {Object} target the content object
-    @param {String} key the property that changes
-    @returns {void}
-    @test in content
-  */
-  contentPropertyDidChange: function(target, key) {
-    return this.updatePropertyFromContent('value', key, 'contentValueKey', target);
-  },
-  
-  /**
-    Helper method you can use from your own implementation of 
-    contentPropertyDidChange().  This method will look up the content key to
-    extract a property and then update the property if needed.  If you do
-    not pass the content key or the content object, they will be computed 
-    for you.  It is more efficient, however, for you to compute these values
-    yourself if you expect this method to be called frequently.
-    
-    @param {String} prop local property to update
-    @param {String} key the contentproperty that changed
-    @param {String} contentKey the local property that contains the key
-    @param {Object} content
-    @returns {SC.Control} receiver
-  */
-  updatePropertyFromContent: function(prop, key, contentKey, content) {
-    var del, v;
-    
-    if (contentKey === undefined) contentKey = "content"+prop.capitalize()+"Key";
-    
-    // prefer our own definition of contentKey
-    if(this[contentKey]) contentKey = this.get(contentKey);
-    // if we don't have one defined check the delegate
-    else if((del = this.displayDelegate) && (v = del[contentKey])) contentKey = del.get ? del.get(contentKey) : v;
-    // if we have no key we can't do anything so just short circuit out
-    else return this;
-    
-    // only bother setting value if the observer triggered for the correct key
-    if (key === '*' || key === contentKey) {
-      if (content === undefined) content = this.get('content');
-      
-      if(content) v = content.get ? content.get(contentKey) : content[contentKey];
-      else v = null;
-      
-      this.set(prop, v) ;
-    }
-    
-    return this ;
-  },
-  
-  /**
-    Relays changes to the value back to the content object if you are using
-    a content object.
-    
-    This observer is triggered whenever the value changes.  It will only do
-    something if it finds you are using the content property and
-    contentValueKey and the new value does not match the old value of the
-    content object.  
-    
-    If you are using contentValueKey in some other way than typically
-    implemented by this mixin, then you may want to override this method as
-    well.
-    
-    @returns {void}
-  */
-  updateContentWithValueObserver: function() {
-    var key = this.contentValueKey ?
-      this.get('contentValueKey') :
-      this.getDelegateProperty('contentValueKey', this.displayDelegate),
-      content = this.get('content') ;
-    if (!key || !content) return ; // do nothing if disabled
-    
-    // get value -- set on content if changed
-    var value = this.get('value');
-    if (typeof content.setIfChanged === SC.T_FUNCTION) {
-      content.setIfChanged(key, value);
-    } else {
-      // avoid re-writing inherited props
-      if (content[key] !== value) content[key] = value ;
-    }
-  }.observes('value'),
-  
-  /**
-    The name of the property this control should display if it is part of an
-    SC.FormView.
-    
-    If you add a control as part of an SC.FormView, then the form view will 
-    automatically bind the value to the property key you name here on the 
-    content object.
-    
-    @property {String}
-  */
-  fieldKey: null,
-  
-  /**
-    The human readable label you want shown for errors.  May be a loc string.
-    
-    If your field fails validation, then this is the name that will be shown
-    in the error explanation.  If you do not set this property, then the 
-    fieldKey or the class name will be used to generate a human readable name.
-    
-    @property {String}
-  */
-  fieldLabel: null,
-  
-  /**
-    The human readable label for this control for use in error strings.  This
-    property is computed dynamically using the following rules:
-    
-    If the fieldLabel is defined, that property is localized and returned.
-    Otherwise, if the keyField is defined, try to localize using the string 
-    "ErrorLabel.{fieldKeyName}".  If a localized name cannot be found, use a
-    humanized form of the fieldKey.
-    
-    Try to localize using the string "ErrorLabel.{ClassName}". Return a 
-    humanized form of the class name.
-    
-    @property {String}
-  */
-  errorLabel: function() {
-    var ret, fk, def ;
-    if (ret = this.get('fieldLabel')) return ret ;
-    
-    // if field label is not provided, compute something...
-    fk = this.get('fieldKey') || this.constructor.toString() ;
-    def = (fk || '').humanize().capitalize() ;
-    return "ErrorLabel."+fk
-      .locWithDefault(("FieldKey."+fk).locWithDefault(def)) ;
-      
-  }.property('fieldLabel','fieldKey').cacheable(),
-
-  /**
-    The control size.  This will set a CSS style on the element that can be 
-    used by the current theme to vary the appearance of the control.
-    
-    Some controls will default to SC.AUTO_CONTROL_SIZE, which will allow you
-    to simply size the control, and the most appropriate control size will
-    automatically be picked; be warned, though, that if you don't specify
-    a height, performance will be impacted as it must be calculated; if you do
-    this, a warning will be issued. If you don't care, use SC.CALCULATED_CONTROL_SIZE.
-    
-    @property {String}
-  */
-  controlSize: SC.REGULAR_CONTROL_SIZE,
-  
-  /** @private */
-  displayProperties: 'isEnabled isSelected isActive controlSize'.w(),
-  
-  /** @private */
-  _CONTROL_TMP_CLASSNAMES: {},
-  
-  /** @private
-    Invoke this method in your updateDisplay() method to update any basic 
-    control CSS classes.
-  */
-  renderMixin: function(context, firstTime) {
-    var sel = this.get('isSelected'), disabled = !this.get('isEnabled'),
-    // update the CSS classes for the control.  note we reuse the same hash
-    // to avoid consuming more memory
-    names = this._CONTROL_TMP_CLASSNAMES ; // temporary object
-    names.mixed = sel === SC.MIXED_STATE;
-    names.sel = sel && (sel !== SC.MIXED_STATE) ;
-    names.active = this.get('isActive') ;
-
-    var controlSize = this.get("controlSize");
-
-    if (firstTime) {
-      context.setClass(names);
-      if (controlSize !== SC.AUTO_CONTROL_SIZE) context.addClass(controlSize);
-    } else {
-      context.$().setClass(names);
-      if (controlSize !== SC.AUTO_CONTROL_SIZE) context.$().addClass(controlSize);
-    }
-
-    // if the control implements the $input() helper, then fixup the input
-    // tags
-    if (!firstTime && this.$input) {
-      var inps = this.$input();
-      if(inps.attr('type')!=="radio"){
-        this.$input().attr('disabled', disabled);
-      }
-    }
-  },
-  
-  /** @private
-    This should be null so that if content is also null, the
-    _contentDidChange won't do anything on init.
-  */
-  _control_content: null,
-  
-  /** @private
-    Observes when a content object has changed and handles notifying 
-    changes to the value of the content object.
-  */
-  // TODO: observing * is unnecessary and inefficient, but a bunch of stuff in sproutcore depends on it (like button)
-  _control_contentDidChange: function() {
-    var content = this.get('content');
-    
-    if (this._control_content === content) return; // nothing changed
-    
-    var f = this.contentPropertyDidChange,
-    // remove an observer from the old content if necessary
-        old = this._control_content ;
-    if (old && old.removeObserver) old.removeObserver('*', this, f) ;
-  
-    // update previous values
-    this._control_content = content ;
-  
-    // add observer to new content if necessary.
-    if (content && content.addObserver) content.addObserver('*', this, f) ;
-    
-    // notify that value did change.
-    this.contentPropertyDidChange(content, '*') ;
-    
-  }.observes('content'),
-  
-  // since we always observe *, just call the update function
-  _control_contentValueKeyDidChange: function() {
-    // notify that value did change.
-    this.contentPropertyDidChange(this.get('content'), '*') ;
-  }.observes('contentValueKey')
-};
-
 /* >>>>>>>>>> BEGIN source/mixins/editable.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -4321,7 +3235,7 @@ SC.Editable = {
 /* >>>>>>>>>> BEGIN source/mixins/flowed_layout.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -4949,7 +3863,7 @@ SC.FlowedLayout = {
 /* >>>>>>>>>> BEGIN source/mixins/gestureable.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -5164,7 +4078,7 @@ SC.Gesturable = {
 /* >>>>>>>>>> BEGIN source/mixins/inline_editable.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -5255,7 +4169,7 @@ SC.InlineEditable = {
 /* >>>>>>>>>> BEGIN source/mixins/inline_editor_delegate.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -5396,7 +4310,7 @@ SC.InlineEditorDelegate = {
 /* >>>>>>>>>> BEGIN source/mixins/validatable.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -5587,7 +4501,7 @@ SC.Validatable = {
 /* >>>>>>>>>> BEGIN source/views/field.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -5907,7 +4821,7 @@ SC.FieldView = SC.View.extend(SC.Control, SC.Validatable,
 /* >>>>>>>>>> BEGIN source/system/text_selection.js */
 // ==========================================================================
 // Project:   SproutCore Costello - Property Observing Library
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -6012,7 +4926,7 @@ SC.TextSelection = SC.Object.extend(SC.Copyable, SC.Freezable,
 /* >>>>>>>>>> BEGIN source/mixins/static_layout.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -6091,7 +5005,7 @@ SC.StaticLayout = {
 /* >>>>>>>>>> BEGIN source/views/text_field.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -7089,92 +6003,13 @@ SC.TextFieldView = SC.FieldView.extend(SC.StaticLayout, SC.Editable,
   
 });
 
-/* >>>>>>>>>> BEGIN source/system/utils/misc.js */
-SC.mixin( /** @scope SC */ {
-  _downloadFrames: 0, // count of download frames inserted into document
-
-  /**
-    Starts a download of the file at the named path.
-
-    Use this method when you want to cause a file to be downloaded to a users
-    desktop instead of having it display in the web browser.  Note that your
-    server must return a header indicating that the file  is intended for
-    download also.
-  */
-  download: function(path) {
-    var tempDLIFrame=document.createElement('iframe'),
-        frameId = 'DownloadFrame_' + this._downloadFrames;
-    SC.$(tempDLIFrame).attr('id',frameId);
-    tempDLIFrame.style.border='10px';
-    tempDLIFrame.style.width='0px';
-    tempDLIFrame.style.height='0px';
-    tempDLIFrame.style.position='absolute';
-    tempDLIFrame.style.top='-10000px';
-    tempDLIFrame.style.left='-10000px';
-    // Don't set the iFrame content yet if this is Safari
-    if (!SC.browser.isSafari) {
-      SC.$(tempDLIFrame).attr('src',path);
-    }
-    document.getElementsByTagName('body')[0].appendChild(tempDLIFrame);
-    if (SC.browser.isSafari) {
-      SC.$(tempDLIFrame).attr('src',path);
-    }
-    this._downloadFrames = this._downloadFrames + 1;
-    if (!SC.browser.isSafari) {
-      var r = function() {
-        document.body.removeChild(document.getElementById(frameId));
-        frameId = null;
-      } ;
-      r.invokeLater(null, 2000);
-    }
-    //remove possible IE7 leak
-    tempDLIFrame = null;
-  },
-
-  // Get the computed style from specific element. Useful for cloning styles
-  getStyle: function(oElm, strCssRule){
-    var strValue = "";
-    if(document.defaultView && document.defaultView.getComputedStyle){
-      strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
-    }
-    else if(oElm.currentStyle){
-     strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1){
-      return p1.toUpperCase();
-     });
-     strValue = oElm.currentStyle[strCssRule];
-    }
-    return strValue;
-  },
-
-  // Convert double byte characters to standard Unicode. Considers only
-  // conversions from zenkaku to hankaky roomaji
-  uniJapaneseConvert: function (str){
-    var nChar, cString= '', j, jLen;
-    //here we cycle through the characters in the current value
-    for (j=0, jLen = str.length; j<jLen; j++){
-      nChar = str.charCodeAt(j);
-
-      //here we do the unicode conversion from zenkaku to hankaku roomaji
-      nChar = ((nChar>=65281 && nChar<=65392)?nChar-65248:nChar);
-
-      //MS IME seems to put this character in as the hyphen from keyboard but not numeric pad...
-      nChar = ( nChar===12540?45:nChar) ;
-      cString = cString + String.fromCharCode(nChar);
-    }
-    return cString;
-  }
-
-
-});
-
 /* >>>>>>>>>> BEGIN source/mixins/inline_text_field.js */
 // ========================================================================
 // SproutCore
-// copyright 2006-2011 Strobe Inc.
+// copyright 2006-2008 Sprout Systems, Inc.
 // ========================================================================
 
 sc_require('views/text_field') ;
-sc_require('system/utils/misc') ;
 
 /**
   @class
@@ -7749,7 +6584,7 @@ SC.InlineTextFieldView.mixin(
 /* >>>>>>>>>> BEGIN source/render_delegates/render_delegate.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -7764,112 +6599,10 @@ SC.InlineTextFieldView.mixin(
 SC.RenderDelegate = SC.Object.extend({
   
 });
-/* >>>>>>>>>> BEGIN source/render_delegates/canvas_image.js */
-// ==========================================================================
-// Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
-//            Portions ©2010-2011 Strobe Inc. All rights reserved.
-// License:   Licensed under MIT license (see license.js)
-// ==========================================================================
-
-sc_require('render_delegates/render_delegate');
-
-/**
-  @class
-  Renders and updates DOM representations of an image.
-
-  Parameters
-  --------------------------
-  Expects these properties on the data source:
-
-  - image: An Image object which has completed loading
-
-  If any of these are not present in the data source, the render delegate
-  will throw an error.
-
-  Optional Parameters:
-  ---------------------------
-  If present, these properties will be used.
-
-  - width: Used on the canvas element. If not provided, 0 is used and the canvas
-            will not be visible.
-  - height: Used on the canvas element. If not provided, 0 is used and the canvas
-            will not be visible.
-  - scale: If provided, the image will maintain aspect ratio as specified by this
-          property. One of
-            - SC.SCALE_NONE
-            - SC.FILL
-            - SC.FILL_PROPORTIONALLY
-            - SC.BEST_FIT
-            - SC.BEST_FIT_DOWN_ONLY
-            - percentage {Number}
-          If not provided, SC.FILL will be the default (ie. expected image behaviour)
-  - align: If provided, the image will align itself within its frame.  One of
-            - SC.ALIGN_CENTER
-            - SC.ALIGN_TOP_LEFT
-            - SC.ALIGN_TOP
-            - SC.ALIGN_TOP_RIGHT
-            - SC.ALIGN_RIGHT
-            - SC.ALIGN_BOTTOM_RIGHT
-            - SC.ALIGN_BOTTOM
-            - SC.ALIGN_BOTTOM_LEFT
-            - SC.ALIGN_LEFT
-  - backgroundColor: If provided, the canvas will render a backgroundColor
-*/
-
-SC.BaseTheme.canvasImageRenderDelegate = SC.RenderDelegate.create({
-  name: 'canvasImage',
-
-  /** @private
-    We don't have an element yet, so we do the minimal necessary setup
-    here.
-  */
-  render: function(dataSource, context) {
-    var width = dataSource.get('width') || 0,
-        height = dataSource.get('height') || 0;
-
-    context.attr('width', width);
-    context.attr('height', height);
-  },
-
-  update: function(dataSource, jquery) {
-    var elem = jquery[0],
-        image = dataSource.get('image'),
-        frame = dataSource.get('frame'),
-        backgroundColor = dataSource.get('backgroundColor'),
-        midX = 0, midY = 0,
-        context;
-
-    if (elem && elem.getContext) {
-      elem.height = frame.height;
-      elem.width = frame.width;
-
-      context = elem.getContext('2d');
-
-      context.clearRect(0, 0, frame.width, frame.height);
-
-      if (backgroundColor) {
-        context.fillStyle = backgroundColor;
-        context.fillRect(0, 0, frame.width, frame.height);
-      }
-
-      if (image && image.complete) {
-        this.updateImage(context, image, dataSource);
-      }
-    }
-  },
-
-  updateImage: function(context, image, dataSource) {
-    var frame = dataSource.get('innerFrame');
-    context.drawImage(image, Math.floor(frame.x), Math.floor(frame.y), Math.floor(frame.width), Math.floor(frame.height));
-  }
-
-});
-
 /* >>>>>>>>>> BEGIN source/render_delegates/container.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -7886,109 +6619,10 @@ SC.BaseTheme.containerRenderDelegate = SC.RenderDelegate.create({
   }
 });
 
-/* >>>>>>>>>> BEGIN source/render_delegates/image.js */
-// ==========================================================================
-// Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
-//            Portions ©2010-2011 Strobe Inc. All rights reserved.
-// License:   Licensed under MIT license (see license.js)
-// ==========================================================================
-
-sc_require('render_delegates/render_delegate');
-
-/**
-  @class
-  Renders and updates DOM representations of an image.
-
-  Parameters
-  --------------------------
-  Expects these properties on the data source:
-
-  - image: An Image object which has completed loading
-
-  If any of these are not present in the data source, the render delegate
-  will throw an error.
-
-  Optional Parameters:
-  ---------------------------
-  If present, these properties will be used.
-
-  - imageValue: A String which represents the src or CSS class of the image
-  - displayToolTip: A String which is rendered as a toolTip on the element
-  - type: The type of image being rendered. One of:
-              - SC.IMAGE_TYPE_NONE
-              - SC.IMAGE_TYPE_URL
-              - SC.IMAGE_TYPE_CSS_CLASS
-          If not provided, SC.IMAGE_TYPE_URL is the default
-*/
-
-SC.BaseTheme.imageRenderDelegate = SC.RenderDelegate.create({
-  name: 'image',
-
-  render: function(dataSource, context) {
-    var image = dataSource.get('image'),
-        imageValue = dataSource.get('imageValue'),
-        type = dataSource.get('type') || SC.IMAGE_TYPE_URL,
-        toolTip = dataSource.get('toolTip');
-
-    // Place the img within a div, so that we may scale & offset the img
-    context = context.begin('img');
-    context.attr('src', image.src);
-
-    if (imageValue && type === SC.IMAGE_TYPE_CSS_CLASS) {
-      context.addClass(imageValue);
-      this._last_class = imageValue;
-    }
-
-    if (toolTip) {
-      context.attr('title', toolTip);
-      context.attr('alt', toolTip);
-    }
-
-    // Adjust the layout of the img
-    context.addStyle(this.imageStyles(dataSource));
-
-    context = context.end();
-  },
-
-  update: function(dataSource, jquery) {
-    var image = dataSource.get('image'),
-        imageValue = dataSource.get('imageValue'),
-        toolTip = dataSource.get('toolTip');
-
-    jquery = jquery.find('img');
-    jquery.attr('src', image.src);
-
-    if (imageValue !== this._last_class) jquery.setClass(this._last_class, NO);
-    jquery.addClass(imageValue);
-    this._last_class = imageValue;
-
-    if (toolTip) {
-      jquery.attr('title', toolTip);
-      jquery.attr('alt', toolTip);
-    }
-
-    // Adjust the layout of the img
-    jquery.css(this.imageStyles(dataSource));
-  },
-
-  imageStyles: function(dataSource) {
-    var innerFrame = dataSource.get('innerFrame');
-    return {
-      'position': 'absolute',
-      'left': Math.round(innerFrame.x),
-      'top': Math.round(innerFrame.y),
-      'width': Math.round(innerFrame.width),
-      'height': Math.round(innerFrame.height)
-    };
-  }
-
-});
-
 /* >>>>>>>>>> BEGIN source/render_delegates/label.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -8097,725 +6731,42 @@ SC.BaseTheme.labelRenderDelegate = SC.RenderDelegate.create({
   }
   
 });
-/* >>>>>>>>>> BEGIN source/system/benchmark.js */
+/* >>>>>>>>>> BEGIN source/system/application.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
-/*globals $A */
 
-sc_require('core') ;
+/** @class
 
-/** @namespace
+  The root object for a SproutCore application.  Usually you will create a 
+  single SC.Application instance as your root namespace.  SC.Application is
+  required if you intend to use SC.Responder to route events.
+  
+  h2. Example
+  
+  {{{
+    Contacts = SC.Application.create({
+      store: SC.Store.create(SC.Record.fixtures),
+      
+      // add other useful properties here
+    });
+  }}}
 
-  This bit of meta-programming magic can install a benchmark handler on any
-  object method.  When a benchmark is installed, the time required to execute
-  the method will be printed to the console log everytime the method is
-  called.
-
-  This class can be used to implement benchmarking.  To use this object, just
-  call start() with a key name and end() with a keyname.  The benchmark will
-  be logged.  If you set verbose = true, then benchmark will log everytime it
-  saves a bench.  Otherwise, it just keeps stats.  You can get the stats by
-  calling report().
-
-  Benchmark does not require anything other than the date.js class.  It also
-  does not rely on SC.Object so that you can benchmark code in that area as
-  well.
-
-  The benchmark has three types of reports.
-
-  report(): Returns an abbreviated list with just the durations of the bench.
-            Also, it averages multiple runs. Everything is reported on the top
-            level only.
-
-  timelineReport(): Returns an list of benchmarks and sub-benchmarks. If the
-                    the globalStartTime is set, then it will show relative
-                    time from that time.
-
-  timelineChart(): Displays a chart of all the benchmarks (not sub-benchmarks)
-                   relative to the first time capture or to the globalStartTime.
-                   Hide this by calling hideChart()
+  h2. Sending Events
+  
+  You can send actions and events down an application-level responder chain
+  by 
+  
+  @extends SC.ResponderContext
+  @since SproutCore 1.0
 */
-SC.Benchmark = {
+SC.Application = SC.Responder.extend(SC.ResponderContext,
+/** SC.Application.prototype */ {
 
-  /**
-    If true, then benchmarks will be logged to the console as they are
-    recorded.
-
-    @property {Boolean}
-  */
-  verbose: NO,
-
-  /**
-    If false, benchmarking will be disabled.  You might want to disable this
-    during production to maximize performance.
-
-    @property {Boolean}
-  */
-  enabled: YES,
-
-  /**
-    Events are a way of assigning specific, individual times to names, rather than
-    durations of time. A benchmark event can only occur once—if it occurs again, it
-    will overwrite the old event.
-
-    The purpose of events is different than the purpose for normal benchmarks. Normal
-    benchmarks may be used to benchmark a specific process, and may do so repeatedly;
-    events, conversely, are usually used to benchmark things like startup time, and
-    occur only once. For instance, an 'event' is registered when the document is ready.
-
-    Events are kept as a hash of names to timestamps. To add an event, just set it:
-
-        SC.Benchmark.events['myEventName'] = new Date().getTime();
-
-        // Or, more conveniently:
-        SC.Benchmark.addEvent('myEventName', [optional time]);
-
-    On a timeline chart, events are usually represented as lines rather than bars. However,
-    if you add eventNameStart and eventNameEnd, they will be automatically added as standard
-    benchmarks.
-
-    This is useful when adding preload events to SC.benchmarkPreloadEvents; as SC.Benchmark
-    does not yet exist, you cannot call .start() and .end(), but adding the items to
-    SC.benchmarkPreloadEvents will ensure they are included.
-  */
-  events: {},
-
-  /**
-     This hash stores collected stats.  It contains key value pairs.  The value
-     will be a hash with the following properties:
-
-    * * *runs*: the number of times this stat has run
-    * * *amt*: the total time consumed by this (divide by runs to get avg)
-    * * *name*: an optional longer name you assigned to the stat key.  Set this  using name().
-    * * *_starts*: this array is used internally.
-    * * *_times*: this array is used internally.
-
-    @property {Object}
-  */
-  stats: {},
-
-  /**
-    If set, one can tell when the benchmark is started relatively to the global start time.
-
-    This property is set to a default automatically (from HTML5 NavigationTiming if possible,
-    otherwise the SC bootstrap).
-
-    @property {Number}
-  */
-  globalStartTime: null,
-
-  /**
-    Adds an 'event' to the events hash.
-
-    Unlike normal benchmarks, recorded with start/end and that represent a block of time,
-    events represent a single instance in time. Further, unlike normal benchmarks, which
-    may be run more than once for the same benchmark name, only one instance in time
-    will be recorded for any event name.
-
-    @param {String} name
-      A name that identifies the event. If addEvent is called again with the same name,
-      the previous call's timestamp will be overwritten.
-
-    @param {Timestamp} time
-      Optional. The timestamp to record for the event.
-  */
-  addEvent: function(name, time) {
-    if (!time) time = new Date().getTime();
-    this.events[name] = time;
-  },
-
-  /**
-    Call this method at the start of whatever you want to collect.
-    If a parentKey is passed, then you will attach the stat to the parent,
-    otherwise it will be on the top level. If topLevelOnly is passed, then
-    recursive calls to the start will be ignored and only the top level call
-    will be benchmarked.
-
-    @param {String} key
-      A unique key that identifies this benchmark.  All calls to start/end
-      with the same key will be groups together.
-
-    @param {String} parentKey
-      A unique key that identifies the parent benchmark.  All calls to
-      start/end with the same key will be groups together.
-
-    @param {Boolean} topLevelOnly
-      If true then recursive calls to this method with the same key will be
-      ignored.
-
-    @param {Number} time
-      Only pass if you want to explicitly set the start time.  Otherwise the
-      start time is now.
-
-    @returns {String} the passed key
-  */
-  start: function(key, parentKey, time, topLevelOnly) {
-    if (!this.enabled) return ;
-
-    var start = (time || Date.now()), stat;
-
-    if (parentKey) stat = this._subStatFor(key, parentKey) ;
-    else stat = this._statFor(key) ;
-
-    if (topLevelOnly && stat._starts.length > 0) stat._starts.push('ignore');
-    else stat._starts.push(start) ;
-
-    stat._times.push({start: start, _subStats: {}});
-    return key;
-  },
-
-  /**
-    Call this method at the end of whatever you want to collect.  This will
-    save the collected benchmark.
-
-    @param {String} key
-      The benchmark key you used when you called start()
-
-    @param {String} parentKey
-      The benchmark parent key you used when you called start()
-
-    @param {Number} time
-      Only pass if you want to explicitly set the end time.  Otherwise start
-      time is now.
-  */
-  end: function(key, parentKey, time) {
-    var stat;
-    if (!this.enabled) return ;
-    if(parentKey)
-    {
-      stat = this._subStatFor(key, parentKey) ;
-    }
-    else
-    {
-      stat = this._statFor(key) ;
-    }
-    var start = stat._starts.pop() ;
-    if (!start) {
-      console.log('SC.Benchmark "%@" ended without a matching start.  No information was saved.'.fmt(key));
-      return ;
-    }
-
-    // top level only.
-    if (start == 'ignore') return ;
-
-    var end = (time || Date.now()) ;
-    var dur = end - start;
-
-    stat._times[stat._times.length-1].end = end;
-    stat._times[stat._times.length-1].dur = dur;
-
-    stat.amt += dur ;
-    stat.runs++ ;
-
-    if (this.verbose) this.log(key) ;
-  },
-
-  /*
-    Set the inital global start time.
-  */
-  setGlobalStartTime: function(time)
-  {
-    this.globalStartTime = time;
-  },
-
-  /**
-    This is a simple way to benchmark a function.  The function will be
-    run with the name you provide the number of times you indicate.  Only the
-    function is a required param.
-  */
-  bench: function(func, key, reps) {
-    if (!key) key = "bench%@".fmt(this._benchCount++) ;
-    if (!reps) reps = 1 ;
-    var ret ;
-
-    while(--reps >= 0) {
-      var timeKey = SC.Benchmark.start(key) ;
-      ret = func();
-      SC.Benchmark.end(timeKey) ;
-    }
-
-    return ret ;
-  },
-
-  /**
-    This bit of metaprogramming magic install a wrapper around a method and
-    benchmark it whenever it is run.
-  */
-  install: function(object,method, topLevelOnly) {
-
-    // vae the original method.
-    object['b__' + method] = object[method] ;
-    var __func = object['b__' + method];
-
-    // replace with this helper.
-    object[method] = function() {
-      var key = '%@(%@)'.fmt(method, $A(arguments).join(', ')) ;
-      SC.Benchmark.start(key, topLevelOnly) ;
-      var ret = __func.apply(this, arguments) ;
-      SC.Benchmark.end(key) ;
-      return ret ;
-    } ;
-  },
-
-  /**
-    Restore the original method, deactivating the benchmark.
-
-    @param {object} object the object to change
-    @param {string} method the method name as a string.
-
-  */
-  restore: function(object,method) {
-    object[method] = object['b__' + method] ;
-  },
-
-  /**
-    This method will return a string containing a report of the stats
-    collected so far.  If you pass a key, only the stats for that key will
-    be returned.  Otherwise, all keys will be used.
-  */
-  report: function(key) {
-    if (key) return this._genReport(key) ;
-    var ret = [] ;
-    for(var k in this.stats) {
-      if (!this.stats.hasOwnProperty(k)) continue ;
-      ret.push(this._genReport(k)) ;
-    }
-    return ret.join("\n") ;
-  },
-
-  /**
-    Generate a human readable benchmark report. Pass in appName if you desire.
-
-    @param {string} application name.
-  */
-  timelineReport: function(appName)
-  {
-    appName = (appName) ? 'SproutCore Application' : appName;
-    var ret = [appName, 'User-Agent: %@'.fmt(navigator.userAgent), 'Report Generated: %@ (%@)'.fmt(new Date().toString(), Date.now()), ''] ;
-
-    var chart = this._compileChartData(true);
-    for(var i=0; i<chart.length; i++)
-    {
-      if(chart[i][4])
-      {
-        ret.push(this._timelineGenSubReport(chart[i]));
-      }
-      else
-      {
-        ret.push(this._timelineGenReport(chart[i]));
-      }
-    }
-    return ret.join("\n") ;
-  },
-
-  /**
-    Returns a hash containing the HTML representing the timeline chart, and
-    various metrics and information about the chart:
-
-        html, totalWidth, totalHeight, totalCapturedTime, pointsCaptured
-
-  */
-  getTimelineChartContent: function() {
-    // Compile the data.
-    var chart = this._compileChartData(false);
-    var chartLen = chart.length;
-
-    // Return if there is nothing to draw.
-    if(chartLen === 0) return;
-
-    // Get the global start of the graph.
-    var gStart = this.globalStartTime ? this.globalStartTime : chart[0][1];
-    var maxDur = chart[chartLen-1][2]-gStart;
-    var maxHeight = 25+chartLen*30;
-    var incr = Math.ceil(maxDur/200)+1;
-    var maxWidth = incr*50;
-    var leftPadding = 10, rightPadding = 300;
-
-
-    var str = "<div class = 'sc-benchmark-timeline-chart' style = 'position:relative;'>";
-    str += "<div class = 'sc-benchmark-top'></div>";
-
-    // add tick marks
-    for (var i = 0; i < incr; i++) {
-      str += "<div class = 'sc-benchmark-tick' style = '";
-      str += "left: " + (leftPadding + i * 50) + "px; ";
-      str += "height: " + maxHeight + "px;";
-      str += "'></div>";
-
-      str += "<div class = 'sc-benchmark-tick-label' style = '";
-      str += "left: " + (leftPadding + i * 50) + "px; ";
-      str += "'>" + (i * 200) + "ms</div>";
-    }
-
-    // print each chart item
-    for (i = 0; i < chartLen; i++) {
-      str += "<div class = 'sc-benchmark-row ";
-      str += (i % 2 === 0) ? 'even' : 'odd';
-      str += "' style = '";
-      str += "top: " + (50 + (i * 30)) + "px; ";
-      str += "'></div>";
-
-      var div = document.createElement('div');
-      var start = chart[i][1];
-      var end = chart[i][2];
-      var duration = chart[i][3];
-
-
-      str += "<div class = 'sc-benchmark-bar' style = '";
-      str += 'left:'+ (leftPadding + ((start-gStart)/4))+'px; width: '+((duration/4)) + 'px;';
-      str += 'top: '+(28+(i*30))+'px;';
-
-      str += "' title = 'start: " + (start-gStart) + " ms, end: " + (end-gStart) + ' ms, duration: ' + duration + " ms'";
-      str += ">";
-      str += '&nbsp;' + chart[i][0] + " <span class='sc-benchmark-emphasis'>";
-      str += duration + "ms (start: " + (start - gStart) + "ms)";
-      str += "</span>";
-
-      str += "</div>";
-    }
-
-    // add the events
-    var events = this.events, idx = 0;
-    for (i in events) {
-      var t = events[i] - gStart;
-      str += "<div class = 'sc-benchmark-event idx" + (idx % 10) + "' style = '";
-      str += "left: " + (leftPadding + t / 4) + "px; height: " + maxHeight + "px; top: 20px;";
-      str += "' title = '" + i + ": " + t + "'></div>";
-      idx++;
-    }
-
-    str += "</div>";
-
-    return {
-      html: str,
-      totalCapturedTime: maxDur,
-      pointsCaptured: chartLen,
-      width: maxWidth + leftPadding + rightPadding,
-      height: maxHeight
-    };
-  },
-
-  /**
-    Returns a view with the timeline chart. The view has a 'reload' method to
-    refresh its data.
-  */
-  getTimelineChartView: function() {
-    var view = SC.ScrollView.create({
-      contentView: SC.StaticContentView.extend({
-
-      }),
-
-      reload: function() {
-        var content = SC.Benchmark.getTimelineChartContent();
-        this.contentView.set('content', content.html);
-        this.contentView.adjust({
-          width: content.width,
-          height: content.height
-        });
-
-        this.chartContent = content;
-
-        SC.RunLoop.invokeLater(SC.Benchmark, function() {
-          this.contentView.notifyPropertyChange('frame');
-        });
-      }
-    });
-
-    view.reload();
-
-    return view;
-  },
-
-  /**
-    Generate a human readable benchmark chart. Pass in appName if you desire.
-  */
-  timelineChart: function(appName) {
-    SC.RunLoop.begin();
-
-    var i=0;
-    // Hide the chart if there is an existing one.
-    this.hideChart();
-
-    // Compile the data.
-    var chartView = this.getTimelineChartView();
-    var chartLen = chartView.chartContent.pointsCaptured,
-        chartCapturedTime = chartView.chartContent.totalCapturedTime;
-
-    // Get the global start of the graph.
-
-    this._benchmarkChart = SC.Pane.create({
-      classNames: "sc-benchmark-pane".w(),
-      layout: { left: 20, right: 20, bottom: 20, top: 20 },
-      childViews: "title exit".w(),
-      exit: SC.ButtonView.extend({
-        layout: { right: 20, top: 20, width: 100, height: 30 },
-        title: "Hide Chart",
-        target: this,
-        action: "hideChart"
-      }),
-
-      title: SC.LabelView.extend({
-        classNames: 'sc-benchmark-title'.w(),
-        layout: { left: 20, top: 23, right: 200, height: 30 },
-        value: ((appName) ? appName : 'SproutCore Application') + (' - Total Captured Time: ' + chartCapturedTime +' ms - Points Captured: ' + chartLen),
-        fontWeight: 'bold'
-      })
-
-    }).append();
-
-    chartView.set('layout', { left: 20, top: 60, bottom: 20, right: 20 });
-    this._benchmarkChart.appendChild(chartView);
-
-    SC.RunLoop.end();
-  },
-
-  /*
-    Hide chart.
-
-  */
-  hideChart: function()
-  {
-    if(this._benchmarkChart) {
-      this._benchmarkChart.remove();
-      this._benchmarkChart = null;
-    }
-
-    return YES;
-  },
-
-  /**
-    Because we show a pane to display the chart...
-  */
-  tryToPerform: function(action, sender) {
-    if (this[action]) return this[action](sender);
-    return NO;
-  },
-
-  /**
-    This method is just like report() except that it will log the results to
-    the console.
-  */
-  log: function(key) {
-    // log each line to make this easier to read on an iPad
-    var lines = this.report(key).split('\n'),
-        len   = lines.length, idx;
-    for(idx=0;idx<len;idx++) console.log(lines[idx]);
-  },
-
-  /**
-    This will activate profiling if you have Firebug installed.  Otherwise
-    does nothing.
-  */
-  startProfile: function(key) {
-    if (!this.enabled) return ;
-    if (console && console.profile) console.profile(key) ;
-  },
-
-  endProfile: function(key) {
-    if (!this.enabled) return ;
-    if (console && console.profileEnd) console.profileEnd(key) ;
-  },
-
-  // PRIVATE METHODS
-
-  // @private
-
-
-  /**
-    Loads data from both the browser's own event hash and SC's pre-load event hash.
-  */
-  loadPreloadEvents: function() {
-    var preloadEvents = SC.benchmarkPreloadEvents, events = [], idx, len, evt;
-
-    // the browsers may have their own event hash. Ours uses the same format, so
-    // all that we need to do is mixin the browser's to our own.
-    if (typeof webkitPerformnce !== 'undefined') SC.mixin(preloadEvents, webkitPerformane.timing);
-
-    // we will attempt to find when the loading started and use that as our
-    // global start time, but only do so if the global start time is not already set.
-    if (!this.globalStartTime) {
-      // the potential events representing start time can be either from the browser
-      // or our own recordings. We prefer the browser.
-      var globalStartEvents = 'navigation navigationStart headStart'.w();
-      len = globalStartEvents.length;
-
-      for (idx = 0; idx < len; idx++) {
-        if (preloadEvents[globalStartEvents[idx]]) {
-          this.globalStartTime = preloadEvents[globalStartEvents[idx]];
-          break;
-        }
-      }
-    }
-
-    // the JavaScript start time will be one recorded by us
-    // we record headStart in bootstrap.
-    this.javascriptStartTime = preloadEvents['headStart'];
-
-    // finally, mix in the events to our own events hash
-    SC.mixin(this.events, preloadEvents);
-
-    this._hasLoadedPreloadEvents = true;
-  },
-
-  /**
-    Some events represent a beginning and end. While this is not common for events
-    that take place after the app loads (as they can just use SC.Benchmark.start/end),
-    SC.Benchmark.start/end is not available before load—as such, code will add
-    *Start and *End events to the event hash.
-
-    This method iterates over the event hash and removes those items that represent
-    starts and ends, calling .start/.end for them.
-  */
-  _loadBenchmarksFromEvents: function() {
-    if (!this._hasLoadedPreloadEvents) this.loadPreloadEvents();
-
-    var events = this.events;
-    for (var i in events) {
-      if (i.substr(-3) !== 'End') continue;
-
-      var stem = i.substr(0, i.length - 3);
-      if (!events[stem + 'Start']) continue;
-
-      SC.Benchmark.start(stem, undefined, events[stem + 'Start']);
-      SC.Benchmark.end(stem, undefined, events[stem + 'End']);
-
-      delete events[stem + 'Start'];
-      delete events[stem + 'End'];
-    }
-  },
-
-  // Generates, sorts, and returns the array of all the data that has been captured.
-  _compileChartData: function(showSub)
-  {
-    this._loadBenchmarksFromEvents();
-
-    var chart = [], dispKey;
-    for(var key in this.stats)
-    {
-      var stat = this.stats[key];
-      for(var i=0; i<stat._times.length; i++)
-      {
-        var st = stat._times[i];
-        dispKey = (stat._times.length > 1) ? (i+1)+' - '+key : key;
-        chart.push([dispKey, st.start, st.end, st.dur, false]);
-        if(showSub)
-        {
-          var subStats = st._subStats;
-          for(var k in subStats)
-          {
-
-            var subStat = subStats[k];
-            for(var j=0; j<subStat._times.length; j++)
-            {
-              var s = subStat._times[j];
-              dispKey = (subStat._times.length > 1) ? (j+1)+' - '+k : k;
-              chart.push([dispKey, s.start, s.end, s.dur, true]);
-
-            }
-          }
-        }
-      }
-    }
-
-    chart.sort(function(a,b)
-    {
-      if(a[1] < b[1])
-      {
-        return -1;
-      }
-      else if(a[1] == b[1])
-      {
-        if(a[3] && !b[3]) return -1;
-        if(!a[3] && b[3]) return 1;
-        return 0;
-      }
-      return 1;
-    });
-
-    return chart;
-  },
-
-  // Generate the traditional report show multiple runs averaged.
-  _genReport: function(key) {
-    var stat = this._statFor(key) ;
-    var avg = (stat.runs > 0) ? (Math.floor(stat.amt * 1000 / stat.runs) / 1000) : 0 ;
-    var last = stat._times[stat._times.length - 1];
-
-    return 'BENCH %@ msec: %@ (%@x); latest: %@'.fmt(avg, (stat.name || key), stat.runs, last.end - last.start);
-  },
-
-  // Generate the report in the form of at time line. This returns the parent.
-  _timelineGenReport: function(val)
-  {
-    if(this.globalStartTime)
-    {
-      return 'BENCH start: %@ msec, duration: %@ msec,  %@'.fmt((val[1]-this.globalStartTime), val[3], val[0]) ;
-    }
-    else
-    {
-      return 'BENCH duration: %@ msec, %@'.fmt( val[3],  val[0]) ;
-    }
-  },
-
-  // Generate the report in the form of at time line. This returns the children.
-  _timelineGenSubReport: function(val)
-  {
-    if(this.globalStartTime)
-    {
-      return '   CHECKPOINT BENCH start: %@ msec, duration: %@ msec,  %@'.fmt((val[1]-this.globalStartTime), val[3], val[0]) ;
-    }
-    else
-    {
-      return '   CHECKPOINT BENCH duration: %@ msec, %@'.fmt( val[3], val[0]) ;
-    }
-  },
-
-  // returns a stats hash for the named key and parent key.  If the hash does not exist yet,
-  // creates it.
-  _subStatFor: function(key, parentKey) {
-    var parentTimeLen = this.stats[parentKey]._times.length;
-    if(parentTimeLen === 0) return;
-    var parentSubStats = this.stats[parentKey]._times[this.stats[parentKey]._times.length-1]._subStats;
-    var ret = parentSubStats[key] ;
-    if (!ret) {
-      parentSubStats[key] = {
-        runs: 0, amt: 0, name: key, _starts: [], _times: []
-      };
-      ret = parentSubStats[key];
-    }
-    return ret ;
-  },
-
-  // returns a stats hash for the named key.  If the hash does not exist yet,
-  // creates it.
-  _statFor: function(key) {
-    var ret = this.stats[key] ;
-    if (!ret) {
-      ret = this.stats[key] = {
-        runs: 0, amt: 0, name: key, _starts: [], _times: []
-      };
-      ret = this.stats[key];
-    }
-    return ret ;
-  },
-
-  reset: function() { this.stats = {} ; },
-
-  // This is private, but it is used in some places, so we are keeping this for
-  // compatibility.
-  _bench: function(func, name) {
-    SC.Benchmark.bench(func, name, 1) ;
-  },
-
-  _benchCount: 1
-
-} ;
-
-SC.Benchmark = SC.Benchmark;
+});
 
 /* >>>>>>>>>> BEGIN source/system/cookie.js */
 // ==========================================================================
@@ -8979,68 +6930,10 @@ SC.Cookie.mixin(
 
 });
 
-/* >>>>>>>>>> BEGIN source/system/core_query.js */
-SC.mixin(SC.$.fn, /** @scope SC.$.prototype */ {
-
-  /**
-    You can either pass a single class name and a boolean indicating whether
-    the value should be added or removed, or you can pass a hash with all
-    the class names you want to add or remove with a boolean indicating
-    whether they should be there or not.
-
-    This is far more efficient than using addClass/removeClass.
-
-    @param {String|Hash} className class name or hash of classNames + bools
-    @param {Boolean} shouldAdd for class name if a string was passed
-    @returns {SC.CoreQuery} receiver
-  */
-  setClass: function(className, shouldAdd) {
-    if (SC.none(className)) { return this; } //nothing to do
-    var isHash = SC.typeOf(className) !== SC.T_STRING,
-        fix = this._fixupClass, key;
-
-    this.each(function() {
-      if (this.nodeType !== 1) { return; } // nothing to do
-
-      // collect the class name from the element and build an array
-      var classNames = this.className.split(/\s+/), didChange = NO;
-
-      // loop through hash or just fix single className
-      if (isHash) {
-        for(var key in className) {
-          if (className.hasOwnProperty(key)) {
-            didChange = fix(classNames, key, className[key]) || didChange;
-          }
-        }
-      } else {
-        didChange = fix(classNames, className, shouldAdd);
-      }
-
-      // if classNames were changed, join them and set...
-      if (didChange) { this.className = classNames.join(' '); }
-    });
-    return this ;
-  },
-
-  /** @private used by setClass */
-  _fixupClass: function(classNames, name, shouldAdd) {
-    var indexOf = classNames.indexOf(name);
-    // if should add, add class...
-    if (shouldAdd) {
-      if (indexOf < 0) { classNames.push(name); return YES ; }
-
-    // otherwise, null out class name (this will leave some extra spaces)
-    } else if (indexOf >= 0) { classNames[indexOf]=null; return YES; }
-    return NO ;
-  }
-
-
-});
-
 /* >>>>>>>>>> BEGIN source/system/datetime.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -10182,7 +8075,7 @@ if (SC.RecordAttribute && !SC.RecordAttribute.transforms[SC.guidFor(SC.DateTime)
 /* >>>>>>>>>> BEGIN source/system/exception_handler.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -10268,10 +8161,10 @@ SC.ExceptionHandler = {
   */
   isShowingErrorDialog: NO
 };
-/* >>>>>>>>>> BEGIN source/system/image_queue.js */
+/* >>>>>>>>>> BEGIN source/system/image_cache.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -10283,7 +8176,8 @@ SC.IMAGE_FAILED_ERROR = SC.$error("SC.Image.FailedError", "Image", -101) ;
 /**
   @class
   
-  The image queue can be used to control the order of loading images.
+  The image cache can be used to control the order of loading images into the
+   browser cache.
   
   Images queues are necessary because browsers impose strict limits on the 
   number of concurrent connections that can be open at any one time to any one 
@@ -10291,7 +8185,7 @@ SC.IMAGE_FAILED_ERROR = SC.$error("SC.Image.FailedError", "Image", -101) ;
   queue, you can improve the percieved performance of your application by 
   ensuring the images you need most load first.
   
-  Note that if you use the SC.ImageView class, it will use this image queue 
+  Note that if you use the SC.ImageView class, it will use this image cache 
   for you automatically.
   
   h1. Loading Images
@@ -10318,13 +8212,13 @@ SC.IMAGE_FAILED_ERROR = SC.$error("SC.Image.FailedError", "Image", -101) ;
   h1. Aborting Image Loads
   
   If you request an image load but then no longer require the image for some 
-  reason, you should notify the imageQueue by calling the releaseImage() 
+  reason, you should notify the imageCache by calling the releaseImage() 
   method.  Pass the URL, target and method that you included in your original 
   loadImage() request.  
   
   If you have requested an image before, you should always call releaseImage() 
   when you are finished with it, even if the image has already loaded.  This 
-  will allow the imageQueue to properly manage its own internal resources.
+  will allow the imageCache to properly manage its own internal resources.
   
   This method may remove the image from the queue of images that need or load 
   or it may abort an image load in progress to make room for other images.  If 
@@ -10332,18 +8226,18 @@ SC.IMAGE_FAILED_ERROR = SC.$error("SC.Image.FailedError", "Image", -101) ;
   
   h1. Reloading an Image
   
-  If you have already loaded an image, the imageQueue will avoid loading the 
-  image again.  However, if you need to force the imageQueue to reload the 
+  If you have already loaded an image, the imageCache will avoid loading the 
+  image again.  However, if you need to force the imageCache to reload the 
   image for some reason, you can do so by calling reloadImage(), passing the 
-  URL.
+  URL. 
   
-  This will cause the image queue to attempt to load the image again the next 
+  This will cause the image cache to attempt to load the image again the next 
   time you call loadImage on it.
   
   @extends SC.Object
   @since SproutCore 1.0
 */
-SC.imageQueue = SC.Object.create(/** @scope SC.imageQueue.prototype */ {
+SC.imageCache = SC.Object.create(/** @scope SC.imageCache.prototype */ {
 
   /**
     The maximum number of images that can load from a single hostname at any
@@ -10353,7 +8247,7 @@ SC.imageQueue = SC.Object.create(/** @scope SC.imageQueue.prototype */ {
   loadLimit: 4,
   
   /**
-    The number of currently active requests on the queue. 
+    The number of currently active requests on the cache. 
   */
   activeRequests: 0,
   
@@ -10371,7 +8265,7 @@ SC.imageQueue = SC.Object.create(/** @scope SC.imageQueue.prototype */ {
     }}}
     
     If you do pass a target/method you can optionally also choose to load the 
-    image either in the foreground or in the background.  The imageQueue 
+    image either in the foreground or in the background.  The image cache 
     prioritizes foreground images over background images.  This does not impact 
     how many images load at one time.
     
@@ -10379,7 +8273,7 @@ SC.imageQueue = SC.Object.create(/** @scope SC.imageQueue.prototype */ {
     @param {Object} target
     @param {String|Function} method
     @param {Boolean} isBackgroundFlag
-    @returns {SC.imageQueue} receiver
+    @returns {SC.imageCache} receiver
   */
   loadImage: function(url, target, method, isBackgroundFlag) {
     // normalize params
@@ -10396,7 +8290,7 @@ SC.imageQueue = SC.Object.create(/** @scope SC.imageQueue.prototype */ {
       isBackgroundFlag = SC.none(target) && SC.none(method);
     }
     
-    // get image entry in queue.  If entry is loaded, just invoke callback
+    // get image entry in cache.  If entry is loaded, just invoke callback
     // and quit.
     var entry = this._imageEntryFor(url) ;
     if (entry.status === this.IMAGE_LOADED) {
@@ -10418,9 +8312,10 @@ SC.imageQueue = SC.Object.create(/** @scope SC.imageQueue.prototype */ {
     @param {String} url
     @param {Object} target
     @param {String|Function} method
-    @returns {SC.imageQueue} receiver
+    @returns {SC.imageCache} receiver
   */
   releaseImage: function(url, target, method) {
+    
     // get entry.  if there is no entry, just return as there is nothing to 
     // do.
     var entry = this._imageEntryFor(url, NO) ;
@@ -10614,19 +8509,19 @@ SC.imageQueue = SC.Object.create(/** @scope SC.imageQueue.prototype */ {
   /** @private invoked by Image().  Note that this is the image instance */
   _imageDidAbort: function() {
     SC.run(function() {
-      SC.imageQueue.imageStatusDidChange(this.entry, SC.imageQueue.ABORTED);
+      SC.imageCache.imageStatusDidChange(this.entry, SC.imageCache.ABORTED);
     }, this);
   },
   
   _imageDidError: function() {
     SC.run(function() {
-      SC.imageQueue.imageStatusDidChange(this.entry, SC.imageQueue.ERROR);
+      SC.imageCache.imageStatusDidChange(this.entry, SC.imageCache.ERROR);
     }, this);
   },
   
   _imageDidLoad: function() {
     SC.run(function() {
-      SC.imageQueue.imageStatusDidChange(this.entry, SC.imageQueue.LOADED);
+      SC.imageCache.imageStatusDidChange(this.entry, SC.imageCache.LOADED);
     }, this);
   },
 
@@ -10703,7 +8598,7 @@ SC.imageQueue = SC.Object.create(/** @scope SC.imageQueue.prototype */ {
 /* >>>>>>>>>> BEGIN source/system/math.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -10762,7 +8657,7 @@ SC.Math = SC.Object.create({
 /* >>>>>>>>>> BEGIN source/system/module.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -11337,10 +9232,120 @@ SC.ready(function() {
   }
 });
 
+/* >>>>>>>>>> BEGIN source/system/page.js */
+// ==========================================================================
+// Project:   SproutCore - JavaScript Application Framework
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
+//            Portions ©2008-2010 Apple Inc. All rights reserved.
+// License:   Licensed under MIT license (see license.js)
+// ==========================================================================
+
+/**
+  @class SC.Page
+
+  A Page object is used to store a set of views that can be lazily configured
+  as needed.  The page object works by overloading the get() method.  The
+  first time you try to get the page
+  
+  @extends SC.Object
+*/
+SC.Page = SC.Object.extend(
+/** @scope SC.Page.prototype */ {
+  
+  /**
+    When you create a page, you can set it's "owner" property to an
+    object outside the page definition. This allows views in the page
+    to use the owner object as a target, (as well as other objects
+    accessible through the owner object). E.g.
+    
+    {{{
+      myButton: SC.ButtonView.design({
+        title: 'Click me',
+        target: SC.outlet('page.owner'),
+        action: 'buttonClicked'
+      })
+    }}}
+    
+    Usually, you'll set 'owner' to the object defined in core.js.
+  */
+  owner: null,
+  
+  get: function(key) {
+    var value = this[key] ;
+    if (value && value.isClass) {
+      this[key] = value = value.create({ page: this }) ;
+      if (!this.get('inDesignMode')) value.awake() ;
+      return value ;
+    } else return arguments.callee.base.apply(this,arguments);
+  },
+  
+  /**
+    Finds all views defined on this page instances and builds them.  This is 
+    a quick, brute force way to wake up all of the views in a page object.  It
+    is not generally recommended. Instead, you should use get() or getPath() 
+    to retrieve views and rely on the lazy creation process to set them up.
+    
+    @return {SC.Page} receiver
+  */
+  awake: function() {
+    // step through all views and build them
+    var value, key;
+    for(key in this) {
+      if (!this.hasOwnProperty(key)) continue ;
+      value = this[key] ;
+      if (value && value.isViewClass) {
+        this[key] = value = value.create({ page: this }) ;
+      }
+    }
+    return this;
+  },
+
+  /**
+    Returns the named property unless the property is a view that has not yet
+    been configured.  In that case it will return undefined.  You can use this
+    method to safely get a view without waking it up.
+  */
+  getIfConfigured: function(key) {
+    var ret = this[key] ;
+    return (ret && ret.isViewClass) ? null : this.get(key);
+  },
+
+  /**
+    Applies a localization to every view builder defined on the page.  You must call this before you construct a view to apply the localization.
+  */
+  loc: function(locs) {
+    var view, key;
+    for(key in locs) {
+      if (!locs.hasOwnProperty(key)) continue ;
+      view = this[key] ;
+      if (!view || !view.isViewClass) continue ;
+      view.loc(locs[key]);
+    }
+    return this ;
+  }
+
+  //needsDesigner: YES,
+  
+  //inDesignMode: YES
+    
+}) ;
+
+// ..........................................................
+// SUPPORT FOR LOADING PAGE DESIGNS
+// 
+
+/** Calling design() on a page is the same as calling create() */
+SC.Page.design = SC.Page.create ;
+
+/** Calling localization returns passed attrs. */
+SC.Page.localization = function(attrs) { return attrs; };
+
+
+
 /* >>>>>>>>>> BEGIN source/system/response.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -11892,7 +9897,7 @@ SC.XHRResponse = SC.Response.extend({
 /* >>>>>>>>>> BEGIN source/system/request.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -11960,7 +9965,7 @@ SC.Request = SC.Object.extend(SC.Copyable, SC.Freezable,
     this.header('X-Requested-With', 'XMLHttpRequest');
     //TODO: we need to have the SC version in a SC variable.
     //For now I'm harcoding the variable.
-    this.header('X-SproutCore-Version', SC.VERSION);
+    this.header('X-SproutCore-Version', '1.5');
   },
   
   /**
@@ -12490,7 +10495,7 @@ SC.Request.manager = SC.Object.create( SC.DelegateSupport, {
 /* >>>>>>>>>> BEGIN source/system/routes.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -12528,82 +10533,19 @@ SC.Request.manager = SC.Object.create( SC.DelegateSupport, {
   and earlier, which do not modify the history stack when the location hash
   changes.
   
-  SC.routes also supports HTML5 history, which uses a '/' instead of a '#'
-  in the URLs, so that all your website's URLs are consistent.
+  @since SproutCore 1.1
 */
 SC.routes = SC.Object.create({
-  
-  /**
-    Set this property to YES if you want to use HTML5 history, if available on
-    the browser, instead of the location hash.
     
-    HTML 5 history uses the history.pushState method and the window's popstate
-    event.
-    
-    By default it is NO, so your URLs will look like:
-    {{{
-      http://domain.tld/my_app#notes/edit/4
-    }}}
-    
-    If set to YES and the browser supports pushState(), your URLs will look
-    like:
-    {{{
-      http://domain.tld/my_app/notes/edit/4
-    }}}
-    
-    You will also need to make sure that baseURI is properly configured, as
-    well as your server so that your routes are properly pointing to your
-    SproutCore application.
-    
-    @see http://dev.w3.org/html5/spec/history.html#the-history-interface
-    @property
-    @type {Boolean}
-  */
-  wantsHistory: NO,
-  
-  /**
-    A read-only boolean indicating whether or not HTML5 history is used. Based
-    on the value of wantsHistory and the browser's support for pushState.
-    
-    @see wantsHistory
-    @property
-    @type {Boolean}
-  */
-  usesHistory: null,
-  
-  /**
-    The base URI used to resolve routes (which are relative URLs). Only used
-    when usesHistory is equal to YES.
-    
-    The build tools automatically configure this value if you have the
-    html5_history option activated in the Buildfile:
-    {{{
-      config :my_app, :html5_history => true
-    }}}
-    
-    Alternatively, it uses by default the value of the href attribute of the
-    <base> tag of the HTML document. For example:
-    {{{
-      <base href="http://domain.tld/my_app">
-    }}}
-    
-    The value can also be customized before or during the exectution of the
-    main() method.
-    
-    @see http://www.w3.org/TR/html5/semantics.html#the-base-element
-    @property
-    @type {String}
-  */
-  baseURI: document.baseURI,
-  
   /** @private
-    A boolean value indicating whether or not the ping method has been called
+    A boolean value indicating whether or the ping method has been called
     to setup the SC.routes.
   
     @property
     @type {Boolean}
   */
   _didSetup: NO,
+  
   
   /** @private
     Internal representation of the current location hash.
@@ -12719,7 +10661,7 @@ SC.routes = SC.Object.create({
     @type {String}
   */
   location: function(key, value) {
-    var crumbs, encodedValue;
+    var crumbs;
     
     if (value !== undefined) {
       if (value === null) {
@@ -12731,22 +10673,13 @@ SC.routes = SC.Object.create({
         value = crumbs.route + crumbs.params;
       }
       
-      if (!SC.empty(value) || (this._location && this._location !== value)) {
-        encodedValue = encodeURI(value);
-        
-        if (this.usesHistory) {
-          if (encodedValue.length > 0) {
-            encodedValue = '/' + encodedValue;
-          }
-          window.history.pushState(null, null, this.get('baseURI') + encodedValue);
-        } else {
-          window.location.hash = encodedValue;
-        }
+      if(!SC.empty(value) || (this._location && this._location !== value)) {
+        window.location.hash = encodeURI(value);
       }
-      
       this._location = value;
+      
+      return this;
     }
-    
     return this._location;
   }.property(),
   
@@ -12763,29 +10696,19 @@ SC.routes = SC.Object.create({
     if (!this._didSetup) {
       this._didSetup = YES;
       
-      if (this.get('wantsHistory') && SC.platform.supportsHistory) {
-        this.usesHistory = YES;
-        
-        this.popState();
-        SC.Event.add(window, 'popstate', this, this.popState);
-        
-      } else {
-        this.usesHistory = NO;
-        
-        if (SC.platform.supportsHashChange) {
-          this.hashChange();
-          SC.Event.add(window, 'hashchange', this, this.hashChange);
+      if (SC.platform.supportsHashChange) {
+        this.hashChange();
+        SC.Event.add(window, 'hashchange', this, this.hashChange);
       
-        } else {
-          // we don't use a SC.Timer because we don't want
-          // a run loop to be triggered at each ping
-          that = this;
-          this._invokeHashChange = function() {
-            that.hashChange();
-            setTimeout(that._invokeHashChange, 100);
-          };
-          this._invokeHashChange();
-        }
+      } else {
+        // we don't use a SC.Timer because we don't want
+        // a run loop to be triggered at each ping
+        that = this;
+        this._invokeHashChange = function() {
+          that.hashChange();
+          setTimeout(that._invokeHashChange, 100);
+        };
+        this._invokeHashChange();
       }
     }
   },
@@ -12797,9 +10720,7 @@ SC.routes = SC.Object.create({
   hashChange: function(event) {
     var loc = window.location.hash;
     
-    // Remove the '#' prefix
     loc = (loc && loc.length > 0) ? loc.slice(1, loc.length) : '';
-    
     if (!SC.browser.isMozilla) {
       // because of bug https://bugzilla.mozilla.org/show_bug.cgi?id=483304
       loc = decodeURI(loc);
@@ -12807,25 +10728,8 @@ SC.routes = SC.Object.create({
     
     if (this.get('location') !== loc) {
       SC.run(function() {
-        this.set('location', loc);
+        this.set('location', loc);        
       }, this);
-    }
-  },
-  
-  popState: function(event) {
-    var base = this.get('baseURI'),
-        loc = document.location.href;
-    
-    if (loc.slice(0, base.length) === base) {
-      
-      // Remove the base prefix and the extra '/'
-      loc = loc.slice(base.length + 1, loc.length);
-      
-      if (this.get('location') !== loc) {
-        SC.run(function() {
-          this.set('location', loc);
-        }, this);
-      }
     }
   },
   
@@ -13066,7 +10970,7 @@ SC.StaticQueue = SC.mixin({},
 /* >>>>>>>>>> BEGIN source/tasks/task.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -13085,7 +10989,7 @@ SC.Task = SC.Object.extend({
 /* >>>>>>>>>> BEGIN source/system/task_queue.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -13240,7 +11144,7 @@ SC.backgroundTaskQueue = SC.TaskQueue.create({
 /* >>>>>>>>>> BEGIN source/system/time.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -13712,549 +11616,10 @@ SC.mixin(Date.prototype, {
 
 }) ;
 
-/* >>>>>>>>>> BEGIN source/system/user_defaults.js */
-// ==========================================================================
-// Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
-//            Portions ©2008-2010 Apple Inc. All rights reserved.
-// License:   Licensed under MIT license (see license.js)
-// ==========================================================================
-/*globals ie7userdata openDatabase*/
-/**
-  @class
-
-  The UserDefaults object provides an easy way to store user preferences in
-  your application on the local machine.  You use this by providing built-in
-  defaults using the SC.userDefaults.defaults() method.  You can also
-  implement the UserDefaultsDelegate interface to be notified whenever a
-  default is required.
-
-  You should also set the userDomain property on the defaults on page load.
-  This will allow the UserDefaults application to store/fetch keys from
-  localStorage for the correct user.
-
-  You can also set an appDomain property if you want.  This will be
-  automatically prepended to key names with no slashes in them.
-
-  SC.userDefaults.getPath("global:contactInfo.userName");
-
-  @extends SC.Object
-  @since SproutCore 1.0
-*/
-SC.UserDefaults = SC.Object.extend(/** @scope SC.UserDefaults.prototype */ {
-
-  ready: NO,
-
-  /**
-    the default domain for the user.  This will be used to store keys in
-    local storage.  If you do not set this property, the wrong values may be
-    returned.
-  */
-  userDomain: null,
-
-  /**
-    The default app domain for the user.  Any keys that do not include a
-    slash will be prefixed with this app domain key when getting/setting.
-  */
-  appDomain: null,
-
-  /** @private
-    Defaults.  These will be used if not defined on localStorage.
-  */
-  _defaults: null,
-
-  _safari3DB: null,
-
-  /**
-    Invoke this method to set the builtin defaults.  This will cause all
-    properties to change.
-  */
-  defaults: function(newDefaults) {
-    this._defaults = newDefaults ;
-    this.allPropertiesDidChange();
-  },
-
-  /**
-    Attempts to read a user default from local storage.  If not found on
-    localStorage, use the the local defaults, if defined.  If the key passed
-    does not include a slash, then add the appDomain or use "app/".
-
-    @param {String} keyName
-    @returns {Object} read value
-  */
-  readDefault: function(keyName) {
-    var ret, userKeyName, localStorage, key, del, storageSafari3;
-
-    // namespace keyname
-    keyName = this._normalizeKeyName(keyName);
-    userKeyName = this._userKeyName(keyName);
-
-    // look into recently written values
-    if (this._written) { ret = this._written[userKeyName]; }
-
-    // attempt to read from localStorage
-
-    if(SC.browser.msie=="7.0"){
-      localStorage=document.body;
-      try{
-        localStorage.load("SC.UserDefaults");
-      }catch(e){
-        console.err("Couldn't load userDefaults in IE7: "+e.description);
-      }
-    }else if(this.HTML5DB_noLocalStorage){
-      storageSafari3 = this._safari3DB;
-    }else{
-      localStorage = window.localStorage ;
-      if (!localStorage && window.globalStorage) {
-        localStorage = window.globalStorage[window.location.hostname];
-      }
-    }
-    if (localStorage || storageSafari3) {
-      key=["SC.UserDefaults",userKeyName].join('-at-');
-      if(SC.browser.msie == "7.0") {
-        ret=localStorage.getAttribute(key.replace(/\W/gi, ''));
-      } else if(storageSafari3) {
-        ret = this.dataHash[key];
-      } else {
-        ret = localStorage[key];
-      }
-      if (!SC.none(ret)) {
-        try { ret = SC.json.decode(ret); }
-        catch(ex) {}
-      }
-    }
-
-    // if not found in localStorage, try to notify delegate
-    del = this.delegate ;
-    if (del && del.userDefaultsNeedsDefault) {
-      ret = del.userDefaultsNeedsDefault(this, keyName, userKeyName);
-    }
-
-    // if not found in localStorage or delegate, try to find in defaults
-    if ((ret===undefined) && this._defaults) {
-      ret = this._defaults[userKeyName] || this._defaults[keyName];
-    }
-
-    return ret ;
-  },
-
-  /**
-    Attempts to write the user default to local storage or at least saves them
-    for now.  Also notifies that the value has changed.
-
-    @param {String} keyName
-    @param {Object} value
-    @returns {SC.UserDefault} receiver
-  */
-  writeDefault: function(keyName, value) {
-    var userKeyName, written, localStorage, key, del, storageSafari3;
-
-    keyName = this._normalizeKeyName(keyName);
-    userKeyName = this._userKeyName(keyName);
-
-    // save to local hash
-    written = this._written ;
-    if (!written) { written = this._written = {}; }
-    written[userKeyName] = value ;
-
-    // save to local storage
-
-    if(SC.browser.msie=="7.0"){
-      localStorage=document.body;
-    }else if(this.HTML5DB_noLocalStorage){
-      storageSafari3 = this._safari3DB;
-    }else{
-       localStorage = window.localStorage ;
-       if (!localStorage && window.globalStorage) {
-         localStorage = window.globalStorage[window.location.hostname];
-       }
-    }
-    key=["SC.UserDefaults",userKeyName].join('-at-');
-    if (localStorage || storageSafari3) {
-      var encodedValue = SC.json.encode(value);
-      if(SC.browser.msie=="7.0"){
-        localStorage.setAttribute(key.replace(/\W/gi, ''), encodedValue);
-        localStorage.save("SC.UserDefaults");
-      }else if(storageSafari3){
-        var obj = this;
-        storageSafari3.transaction(
-          function (t) {
-            t.executeSql("delete from SCLocalStorage where key = ?", [key],
-              function (){
-                t.executeSql("insert into SCLocalStorage(key, value)"+
-                            " VALUES ('"+key+"', '"+encodedValue+"');",
-                            [], obj._nullDataHandler, obj.killTransaction
-                );
-              }
-            );
-          }
-        );
-        this.dataHash[key] = encodedValue;
-      }else{
-        try{
-          localStorage[key] = encodedValue;
-        }catch(e){
-          console.error("Failed using localStorage. "+e);
-        }
-      }
-    }
-
-    // also notify delegate
-    del = this.delegate;
-    if (del && del.userDefaultsDidChange) {
-      del.userDefaultsDidChange(this, keyName, value, userKeyName);
-    }
-
-    return this ;
-  },
-
-  /**
-    Removed the passed keyName from the written hash and local storage.
-
-    @param {String} keyName
-    @returns {SC.UserDefaults} receiver
-  */
-  resetDefault: function(keyName) {
-    var fullKeyName, userKeyName, written, localStorage, key, storageSafari3;
-    fullKeyName = this._normalizeKeyName(keyName);
-    userKeyName = this._userKeyName(fullKeyName);
-
-    this.propertyWillChange(keyName);
-    this.propertyWillChange(fullKeyName);
-
-    written = this._written;
-    if (written) delete written[userKeyName];
-
-    if(SC.browser.msie=="7.0"){
-       localStorage=document.body;
-    }else if(this.HTML5DB_noLocalStorage){
-         storageSafari3 = this._safari3DB;
-    }else{
-       localStorage = window.localStorage ;
-       if (!localStorage && window.globalStorage) {
-         localStorage = window.globalStorage[window.location.hostname];
-       }
-    }
-
-    key=["SC.UserDefaults",userKeyName].join('-at-');
-
-    if (localStorage) {
-      if(SC.browser.msie=="7.0"){
-        localStorage.setAttribute(key.replace(/\W/gi, ''), null);
-        localStorage.save("SC.UserDefaults");
-      } else if(storageSafari3){
-        var obj = this;
-        storageSafari3.transaction(
-          function (t) {
-            t.executeSql("delete from SCLocalStorage where key = ?", [key], null);
-          }
-        );
-        delete this.dataHash[key];
-      }else{
-        // In case error occurs while deleting local storage in any browser,
-        // do not allow it to propagate further
-        try{
-          delete localStorage[key];
-        } catch(e) {
-          console.warn('Deleting local storage encountered a problem. '+e);
-        }
-      }
-    }
-
-
-    this.propertyDidChange(keyName);
-    this.propertyDidChange(fullKeyName);
-    return this ;
-  },
-
-  /**
-    Is called whenever you .get() or .set() values on this object
-
-    @param {Object} key
-    @param {Object} value
-    @returns {Object}
-  */
-  unknownProperty: function(key, value) {
-    if (value === undefined) {
-      return this.readDefault(key) ;
-    } else {
-      this.writeDefault(key, value);
-      return value ;
-    }
-  },
-
-  /**
-    Normalize the passed key name.  Used by all accessors to automatically
-    insert an appName if needed.
-  */
-  _normalizeKeyName: function(keyName) {
-    if (keyName.indexOf(':')<0) {
-      var domain = this.get('appDomain') || 'app';
-      keyName = [domain, keyName].join(':');
-    }
-    return keyName;
-  },
-
-  /**
-    Builds a user key name from the passed key name
-  */
-  _userKeyName: function(keyName) {
-    var user = this.get('userDomain') || '(anonymous)' ;
-    return [user,keyName].join('-at-');
-  },
-
-  _domainDidChange: function() {
-    var didChange = NO;
-    if (this.get("userDomain") !== this._scud_userDomain) {
-      this._scud_userDomain = this.get('userDomain');
-      didChange = YES;
-    }
-
-    if (this.get('appDomain') !== this._scud_appDomain) {
-      this._scud_appDomain = this.get('appDomain');
-      didChange = YES;
-    }
-
-    if (didChange) this.allPropertiesDidChange();
-  }.observes('userDomain', 'appDomain'),
-
-  init: function() {
-    arguments.callee.base.apply(this,arguments);
-    if(SC.userDefaults && SC.userDefaults.get('dataHash')){
-      var dh = SC.userDefaults.get('dataHash');
-      if (dh) this.dataHash=SC.userDefaults.get('dataHash')
-    }
-    this._scud_userDomain = this.get('userDomain');
-    this._scud_appDomain  = this.get('appDomain');
-    if(SC.browser.msie=="7.0"){
-      //Add user behavior userData. This works in all versions of IE.
-      //Adding to the body as is the only element never removed.
-      document.body.addBehavior('#default#userData');
-    }
-    this.HTML5DB_noLocalStorage = ((parseInt(SC.browser.safari, 0)>523) && (parseInt(SC.browser.safari, 0)<528));
-    if(this.HTML5DB_noLocalStorage){
-      var myDB;
-      try {
-        if (!window.openDatabase) {
-          console.error("Trying to load a database with safari version 3.1 "+
-                  "to get SC.UserDefaults to work. You are either in a"+
-                  " previous version or there is a problem with your browser.");
-          return;
-        } else {
-          var shortName = 'scdb',
-              version = '1.0',
-              displayName = 'SproutCore database',
-              maxSize = 65536; // in bytes,
-          myDB = openDatabase(shortName, version, displayName, maxSize);
-
-          // You should have a database instance in myDB.
-
-        }
-      } catch(e) {
-        console.error("Trying to load a database with safari version 3.1 "+
-                "to get SC.UserDefaults to work. You are either in a"+
-                " previous version or there is a problem with your browser.");
-        return;
-      }
-
-      if(myDB){
-        var obj = this;
-        myDB.transaction(
-          function (transaction) {
-            transaction.executeSql('CREATE TABLE IF NOT EXISTS SCLocalStorage'+
-              '(key TEXT NOT NULL PRIMARY KEY, value TEXT NOT NULL);',
-              [], obj._nullDataHandler, obj.killTransaction);
-          }
-        );
-        myDB.transaction(
-          function (transaction) {
-
-            transaction.parent = obj;
-            transaction.executeSql('SELECT * from SCLocalStorage;',
-                [], function(transaction, results){
-                  var hash={}, row;
-                  for(var i=0, iLen=results.rows.length; i<iLen; i++){
-                    row=results.rows.item(i);
-                    hash[row['key']]=row['value'];
-                  }
-                  transaction.parent.dataHash = hash;
-                  SC.run(function() { jQuery.ready(true); });
-                }, obj.killTransaction);
-          }
-        );
-        this._safari3DB=myDB;
-      }
-    }else{
-      jQuery.ready(true);
-    }
-  },
-
-
-  //Private methods to use if user defaults uses the database in safari 3
-  _killTransaction: function(transaction, error){
-    return true; // fatal transaction error
-  },
-
-  _nullDataHandler: function(transaction, results){}
-});
-
-jQuery.readyWait++;
-
-/** global user defaults. */
-SC.userDefaults = SC.UserDefaults.create();
-
-/* >>>>>>>>>> BEGIN source/system/utils/colors.js */
-SC.mixin ( /** @scope SC */ {
-
-  /** Returns hex color from hsv value */
-  convertHsvToHex: function (h, s, v) {
-    var r = 0, g = 0, b = 0;
-
-    if (v > 0) {
-      var i = (h == 1) ? 0 : Math.floor(h * 6),
-          f = (h == 1) ? 0 : (h * 6) - i,
-          p = v * (1 - s),
-          q = v * (1 - (s * f)),
-          t = v * (1 - (s * (1 - f))),
-          rgb = [[v,t,p],[q,v,p],[p,v,t],[p,q,v],[t,p,v],[v,p,q]];
-      r = Math.round(255 * rgb[i][0]);
-      g = Math.round(255 * rgb[i][1]);
-      b = Math.round(255 * rgb[i][2]);
-    }
-    return this.parseColor('rgb(' + r + ',' + g + ',' + b + ')');
-  },
-
-  /** Returns hsv color from hex value */
-  convertHexToHsv: function (hex) {
-    var rgb = this.expandColor(hex),
-        max = Math.max(Math.max(rgb[0], rgb[1]), rgb[2]),
-        min = Math.min(Math.min(rgb[0], rgb[1]), rgb[2]),
-        s = (max === 0) ? 0 : (1 - min/max),
-        v = max/255,
-        h = (max == min) ? 0 : ((max == rgb[0]) ? ((rgb[1]-rgb[2])/(max-min)/6) : ((max == rgb[1]) ? ((rgb[2]-rgb[0])/(max-min)/6+1/3) : ((rgb[0]-rgb[1])/(max-min)/6+2/3)));
-    h = (h < 0) ? (h + 1) : ((h > 1)  ? (h - 1) : h);
-    return [h, s, v];
-  },
-
-  /** regular expression for parsing color: rgb, hex */
-  PARSE_COLOR_RGBRE: /^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/i,
-  PARSE_COLOR_HEXRE: /^\#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/,
-
-  // return an array of r,g,b colour
-  expandColor: function(color) {
-    var hexColor, red, green, blue;
-    hexColor = this.parseColor(color);
-    if (hexColor) {
-      red = parseInt(hexColor.slice(1, 3), 16);
-      green = parseInt(hexColor.slice(3, 5), 16);
-      blue = parseInt(hexColor.slice(5, 7), 16);
-      return [red,green,blue];
-    }
-  },
-
-  // parse rgb color or 3-digit hex color to return a properly formatted 6-digit hex colour spec, or false
-  parseColor: function(string) {
-    var i=0, color = '#', match, part;
-    if(match = this.PARSE_COLOR_RGBRE.exec(string)) {
-      for (i=1; i<=3; i++) {
-        part = Math.max(0, Math.min(255, parseInt(match[i],0)));
-        color += this.toColorPart(part);
-      }
-      return color;
-    }
-    if (match = this.PARSE_COLOR_HEXRE.exec(string)) {
-      if(match[1].length == 3) {
-        for (i=0; i<3; i++) {
-          color += match[1].charAt(i) + match[1].charAt(i);
-        }
-        return color;
-      }
-      return '#' + match[1];
-    }
-    return false;
-  },
-
-  // convert one r,g,b number to a 2 digit hex string
-  toColorPart: function(number) {
-    if (number > 255) number = 255;
-    var digits = number.toString(16);
-    if (number < 16) return '0' + digits;
-    return digits;
-  }
-
-
-});
-
-/* >>>>>>>>>> BEGIN source/system/utils/range.js */
-SC.mixin( /** @scope SC */ {
-  /** A zero length range at zero. */
-  ZERO_RANGE: { start: 0, length: 0 },
-
-  RANGE_NOT_FOUND: { start: 0, length: -1 },
-
-  /** Returns true if the passed index is in the specified range */
-  valueInRange: function(value, range) {
-    return (value >= 0) && (value >= range.start) && (value < (range.start + range.length));
-  },
-
-  /** Returns first value of the range. */
-  minRange: function(range) { return range.start; },
-
-  /** Returns the first value outside of the range. */
-  maxRange: function(range) { return (range.length < 0) ? -1 : (range.start + range.length); },
-
-  /** Returns the union of two ranges.  If one range is null, the other
-   range will be returned.  */
-  unionRanges: function(r1, r2) {
-    if ((r1 == null) || (r1.length < 0)) return r2 ;
-    if ((r2 == null) || (r2.length < 0)) return r1 ;
-
-    var min = Math.min(r1.start, r2.start),
-        max = Math.max(SC.maxRange(r1), SC.maxRange(r2)) ;
-    return { start: min, length: max - min } ;
-  },
-
-  /** Returns the intersection of the two ranges or SC.RANGE_NOT_FOUND */
-  intersectRanges: function(r1, r2) {
-    if ((r1 == null) || (r2 == null)) return SC.RANGE_NOT_FOUND ;
-    if ((r1.length < 0) || (r2.length < 0)) return SC.RANGE_NOT_FOUND;
-    var min = Math.max(SC.minRange(r1), SC.minRange(r2)),
-        max = Math.min(SC.maxRange(r1), SC.maxRange(r2)) ;
-    if (max < min) return SC.RANGE_NOT_FOUND ;
-    return { start: min, length: max-min };
-  },
-
-  /** Returns the difference of the two ranges or SC.RANGE_NOT_FOUND */
-  subtractRanges: function(r1, r2) {
-    if ((r1 == null) || (r2 == null)) return SC.RANGE_NOT_FOUND ;
-    if ((r1.length < 0) || (r2.length < 0)) return SC.RANGE_NOT_FOUND;
-    var max = Math.max(SC.minRange(r1), SC.minRange(r2)),
-        min = Math.min(SC.maxRange(r1), SC.maxRange(r2)) ;
-    if (max < min) return SC.RANGE_NOT_FOUND ;
-    return { start: min, length: max-min };
-  },
-
-  /** Returns a clone of the range. */
-  cloneRange: function(r) {
-    return { start: r.start, length: r.length };
-  },
-
-  /** Returns true if the two passed ranges are equal.  A null value is
-    treated like RANGE_NOT_FOUND.
-  */
-  rangesEqual: function(r1, r2) {
-    if (r1===r2) return true ;
-    if (r1 == null) return r2.length < 0 ;
-    if (r2 == null) return r1.length < 0 ;
-    return (r1.start == r2.start) && (r1.length == r2.length) ;
-  }
-
-});
-
 /* >>>>>>>>>> BEGIN source/tasks/preload_bundle.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -14297,7 +11662,7 @@ SC.PreloadBundleTask = SC.Task.extend({
 /* >>>>>>>>>> BEGIN source/validators/validator.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -14625,7 +11990,7 @@ SC.Validator.mixin(/** @scope SC.Validator */ {
 /* >>>>>>>>>> BEGIN source/validators/credit_card.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -14752,7 +12117,7 @@ SC.Validator.CreditCard = SC.Validator.extend(
 /* >>>>>>>>>> BEGIN source/validators/date.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -14806,7 +12171,7 @@ SC.Validator.Date = SC.Validator.extend(
 /* >>>>>>>>>> BEGIN source/validators/date_time.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -14856,7 +12221,7 @@ SC.Validator.DateTime = SC.Validator.extend({
 /* >>>>>>>>>> BEGIN source/validators/email.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -14903,7 +12268,7 @@ SC.Validator.EmailOrEmpty = SC.Validator.Email.extend(
 /* >>>>>>>>>> BEGIN source/validators/not_empty.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -14942,13 +12307,12 @@ SC.Validator.NotEmpty = SC.Validator.extend(
 /* >>>>>>>>>> BEGIN source/validators/number.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
 
 sc_require('validators/validator') ;
-sc_require('system/utils/misc');
 
 /**
   Handles parsing and validating of numbers.
@@ -15043,7 +12407,7 @@ SC.Validator.Number = SC.Validator.extend(
 /* >>>>>>>>>> BEGIN source/validators/password.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -15131,7 +12495,7 @@ SC.Validator.Password = SC.Validator.extend(
 /* >>>>>>>>>> BEGIN source/validators/positive_integer.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -15217,7 +12581,7 @@ SC.Validator.PositiveInteger = SC.Validator.extend(
 /* >>>>>>>>>> BEGIN source/views/container.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -15359,451 +12723,170 @@ SC.ContainerView = SC.View.extend(
 /* >>>>>>>>>> BEGIN source/views/image.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
-//            Portions ©2010 Strobe Inc.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
-
-SC.SCALE_NONE = "none";
-SC.FILL = "fill";
-SC.FILL_PROPORTIONALLY = "fillProportionally";
-SC.BEST_FIT = "fitBest";
-SC.BEST_FIT_DOWN_ONLY = "fitBestDown";
 
 SC.IMAGE_STATE_NONE = 'none';
 SC.IMAGE_STATE_LOADING = 'loading';
 SC.IMAGE_STATE_LOADED = 'loaded';
 SC.IMAGE_STATE_FAILED = 'failed';
-
-SC.IMAGE_TYPE_NONE = 'NONE';
-SC.IMAGE_TYPE_URL = 'URL';
-SC.IMAGE_TYPE_CSS_CLASS = 'CSS_CLASS';
+SC.IMAGE_STATE_SPRITE = 'sprite';
 
 /**
   URL to a transparent GIF.  Used for spriting.
 */
 SC.BLANK_IMAGE_DATAURL = "data:image/gif;base64,R0lGODlhAQABAJAAAP///wAAACH5BAUQAAAALAAAAAABAAEAAAICBAEAOw==";
 
-SC.BLANK_IMAGE_URL = SC.browser.msie && SC.browser.msie<8 ? '/static/sproutcore/foundation/en/current/blank.gif?1296791438' : SC.BLANK_IMAGE_DATAURL;
-
-SC.BLANK_IMAGE = new Image();
-SC.BLANK_IMAGE.src = SC.BLANK_IMAGE_URL;
-SC.BLANK_IMAGE.width = SC.BLANK_IMAGE.height = 1;
+SC.BLANK_IMAGE_URL = SC.browser.msie && SC.browser.msie<8 ? '/static/sproutcore/foundation/en/current/blank.gif?1297039446' : SC.BLANK_IMAGE_DATAURL;
 
 /**
   @class
 
-  Displays an image in the browser.
-
+  Displays an image in the browser.  
+  
   The ImageView can be used to efficiently display images in the browser.
   It includes a built in support for a number of features that can improve
   your page load time if you use a lot of images including a image loading
-  cache and automatic support for CSS spriting.
+  queue and automatic support for CSS spriting.
 
-  Note that there are actually many controls that will natively include
+  Note that there are actually many controls that will natively include 
   images using an icon property name.
-
+  
   @extends SC.View
   @extends SC.Control
   @since SproutCore 1.0
 */
-SC.ImageView = SC.View.extend(SC.Control,
+SC.ImageView = SC.View.extend(SC.Control, 
 /** @scope SC.ImageView.prototype */ {
-
+  
+  /** Image views contain an img tag. */
   classNames: 'sc-image-view',
-
-  displayProperties: 'image imageValue innerFrame frame status scale toolTip type'.w(),
-
-  renderDelegateName: function() {
-    return (this.get('useCanvas') ? 'canvasImage' : 'image') + "RenderDelegate";
-  }.property('useCanvas').cacheable(),
-
-  tagName: function() {
-    return this.get('useCanvas') ? 'canvas' : 'div';
-  }.property('useCanvas').cacheable(),
-
-
-  // ..........................................................
-  // Properties
-  //
-
+  tagName: 'img',
+  
   /**
-    Align the image within its frame.
-
-    <table>
-    <tr><td>SC.ALIGN_TOP_LEFT</td><td>SC.ALIGN_TOP</td><td>SC.ALIGN_TOP_RIGHT</td></tr>
-    <tr><td>SC.ALIGN_LEFT</td><td>SC.ALIGN_CENTER/td><td>SC.ALIGN_RIGHT</td></tr>
-    <tr><td>SC.ALIGN_BOTTOM_LEFT</td><td>SC.ALIGN_BOTTOM</td><td>SC.ALIGN_BOTTOM_RIGHT</td></tr>
-    </table>
-
-    @property {SC.ALIGN_CENTER|SC.ALIGN_TOP_LEFT|SC.ALIGN_TOP|SC.ALIGN_TOP_RIGHT|SC.ALIGN_RIGHT|SC.ALIGN_BOTTOM_RIGHT|SC.BOTTOM|SC.BOTTOM_LEFT|SC.LEFT|Number}
-    @default SC.ALIGN_CENTER
+    Current load status of the image.
+    
+    This status changes as an image is loaded from the server.  If spriting
+    is used, this will always be loaded.  Must be one of the following
+    constants: SC.IMAGE_STATE_NONE, SC.IMAGE_STATE_LOADING, 
+    SC.IMAGE_STATE_LOADED, SC.IMAGE_STATE_FAILED, SC.IMAGE_STATE_SPRITE
+    
+    @property {String}
   */
-  align: SC.ALIGN_CENTER,
-
+  status: SC.IMAGE_STATE_NONE,
+  
+  /**
+    A url or CSS class name.
+    
+    This is the image you want the view to display.  It should be either a
+    url or css class name.  You can also set the content and 
+    contentValueKey properties to have this value extracted 
+    automatically.
+    
+    If you want to use CSS spriting, set this value to a CSS class name.  If
+    you need to use multiple class names to set your icon, separate them by
+    spaces.
+    
+    Note that if you provide a URL, it must contain at least one '/' as this
+    is how we autodetect URLs.
+    
+    @property {String}
+  */
+  value: null,
+  
+  /**
+    If YES, image view will use the imageCache to control loading.  This 
+    setting is generally preferred.
+    
+    @property {String}
+  */
+  useImageCache: YES,
+  
   /**
     If YES, this image can load in the background.  Otherwise, it is treated
     as a foreground image.  If the image is not visible on screen, it will
     always be treated as a background image.
   */
   canLoadInBackground: NO,
-
-  /**
-    @property {Image}
-    @default SC.BLANK_IMAGE
-  */
-  image: SC.BLANK_IMAGE,
-
-  innerFrame: function() {
-    var image = this.get('image'),
-        align = this.get('align'),
-        scale = this.get('scale'),
-        frame = this.get('frame'),
-        imageWidth = image.width,
-        imageHeight = image.height,
-        scaleX,
-        scaleY,
-        result;
-
-    // Fast path
-    result = { x: 0, y: 0, width: frame.width , height: frame.height };
-    if (scale === SC.FILL) return result;
-
-    // Determine the appropriate scale
-    scaleX = frame.width / imageWidth;
-    scaleY = frame.height / imageHeight;
-
-    switch (scale) {
-      case SC.FILL_PROPORTIONALLY:
-        scale = scaleX > scaleY ? scaleX : scaleY;
-        break;
-      case SC.BEST_FIT:
-        scale = scaleX < scaleY ? scaleX : scaleY;
-        break;
-      case SC.BEST_FIT_DOWN_ONLY:
-        if ((imageWidth > frame.width) || (imageHeight > frame.height)) {
-          scale = scaleX < scaleY ? scaleX : scaleY;
-        } else {
-          scale = 1.0;
-        }
-        break;
-      case SC.SCALE_NONE:
-        scale = 1.0;
-        break;
-      default: // Number
-        if (isNaN(window.parseFloat(scale)) || (window.parseFloat(scale) <= 0)) {
-          SC.Logger.warn("SC.ImageView: The scale '%@' was not understood.  Scale must be one of SC.FILL, SC.FILL_PROPORTIONALLY, SC.BEST_FIT, SC.BEST_FIT_DOWN_ONLY or a positive number greater than 0.00.".fmt(scale));
-
-          // Don't attempt to scale or offset the image
-          return result;
-        }
-    }
-
-    imageWidth *= scale;
-    imageHeight *= scale;
-    result.width = Math.round(imageWidth);
-    result.height = Math.round(imageHeight);
-
-    // Align the image within its frame
-    switch (align) {
-      case SC.ALIGN_LEFT:
-        result.x = 0;
-        result.y = (frame.height / 2) - (imageHeight / 2);
-        break;
-      case SC.ALIGN_RIGHT:
-        result.x = frame.width - imageWidth;
-        result.y = (frame.height / 2) - (imageHeight / 2);
-        break;
-      case SC.ALIGN_TOP:
-        result.x = (frame.width / 2) - (imageWidth / 2);
-        result.y = 0;
-        break;
-      case SC.ALIGN_BOTTOM:
-        result.x = (frame.width / 2) - (imageWidth / 2);
-        result.y = frame.height - imageHeight;
-        break;
-      case SC.ALIGN_TOP_LEFT:
-        result.x = 0;
-        result.y = 0;
-        break;
-      case SC.ALIGN_TOP_RIGHT:
-        result.x = frame.width - imageWidth;
-        result.y = 0;
-        break;
-      case SC.ALIGN_BOTTOM_LEFT:
-        result.x = 0;
-        result.y = frame.height - imageHeight;
-        break;
-      case SC.ALIGN_BOTTOM_RIGHT:
-        result.x = frame.width - imageWidth;
-        result.y = frame.height - imageHeight;
-        break;
-      default: // SC.ALIGN_CENTER || SC.ALIGN_MIDDLE
-        result.x = (frame.width / 2) - (imageWidth / 2);
-        result.y = (frame.height / 2) - (imageHeight / 2);
-    }
-
-    return result;
-  }.property('align', 'image', 'scale', 'frame').cacheable(),
-
-  /**
-    @property {String}
-    @default null
-  */
-  imageValue: function() {
-    var value = this.get('value');
-    return value && value.isEnumerable ? value.firstObject() : value;
-  }.property('value').cacheable(),
-
+  
   /**
     If YES, any specified toolTip will be localized before display.
-
-    @property {Boolean}
-    @default YES
   */
   localize: YES,
+  
+  displayProperties: 'status toolTip'.w(),
+  
+  render: function(context, firstTime) {
+    // the image source is the value if the status is LOADED or blank
+    var status = this.get('status'), value = this.get('value') ;
+    
+    if (status === SC.IMAGE_STATE_NONE && value) this._image_valueDidChange() ; // setup initial state
+    
+    // query the status again, as calling this._image_valueDidChange() may
+    // update status to SC.IMAGE_STATE_LOADED or SC.IMAGE_STATE_SPRITE
+    status = this.get('status');
 
-  /**
-    Determines how the image will scale to fit within its containing space.
-
-    Examples:
-
-      SC.SCALE_NONE - don't scale
-      SC.FILL - stretch/shrink the image to fill the ImageView frame
-      SC.FILL_PROPORTIONALLY - stretch/shrink the image to fill the ImageView frame while maintaining
-        aspect ratio, such that the shortest dimension will just fit within the frame and the longest dimension will
-        overflow and be cropped
-      SC.BEST_FIT - stretch/shrink the image to fit the ImageView frame while maintaining aspect ration,
-        such that the longest dimension will just fit within the frame
-      SC.BEST_FIT_DOWN_ONLY - shrink the image to fit the ImageView frame while maintaining aspect ration,
-        such that the longest dimension will just fit within the frame.  Do not stretch the image if the image's
-        width is less than the frame's width.
-
-    @property {SC.SCALE_NONE|SC.FILL|SC.FILL_PROPORTIONALLY|SC.BEST_FIT|SC.BEST_FIT_DOWN_ONLY|Number}
-    @default SC.FILL
-  */
-  scale: SC.FILL,
-
-  /**
-    Current load status of the image.
-
-    This status changes as an image is loaded from the server.  If spriting
-    is used, this will always be loaded.  Must be one of the following
-    constants: SC.IMAGE_STATE_NONE, SC.IMAGE_STATE_LOADING,
-    SC.IMAGE_STATE_LOADED, SC.IMAGE_STATE_FAILED
-
-    @property {String}
-  */
-  status: SC.IMAGE_STATE_NONE,
-
-  /**
-    Will be one of the following constants: SC.IMAGE_TYPE_URL or
-    SC.IMAGE_TYPE_CSS_CLASS
-
-    @property {String}
-    @observes imageValue
-  */
-  type: function() {
-    var imageValue = this.get('imageValue');
-    if (SC.ImageView.valueIsUrl(imageValue)) return SC.IMAGE_TYPE_URL;
-    else if (!SC.none(imageValue)) return SC.IMAGE_TYPE_CSS_CLASS;
-    return SC.IMAGE_TYPE_NONE;
-  }.property('imageValue').cacheable(),
-
-  /**
-    The canvas element is more performant than the img element, since we can
-    update the canvas image without causing browser reflow.  As an additional
-    benefit, canvas images are less easily copied, which is generally in line
-    with acting as an 'application'.
-
-    @property {Boolean}
-    @default YES if supported
-    @since SproutCore 1.5
-  */
-  useCanvas: function() {
-    return SC.platform.supportsCanvas;
-  }.property().cacheable(),
-
-  /**
-    If YES, image view will use the SC.imageQueue to control loading.  This
-    setting is generally preferred.
-
-    @property {Boolean}
-    @default YES
-  */
-  useImageQueue: YES,
-
-  /**
-    A url or CSS class name.
-
-    This is the image you want the view to display.  It should be either a
-    url or css class name.  You can also set the content and
-    contentValueKey properties to have this value extracted
-    automatically.
-
-    If you want to use CSS spriting, set this value to a CSS class name.  If
-    you need to use multiple class names to set your icon, separate them by
-    spaces.
-
-    Note that if you provide a URL, it must contain at least one '/' as this
-    is how we autodetect URLs.
-
-    @property {String}
-  */
-  value: null,
-
-
-  // ..........................................................
-  // Methods
-  //
-
-  init: function() {
-    arguments.callee.base.apply(this,arguments);
-
-    this._image_valueDidChange();
-
-    if (this.get('useImageCache') !== undefined) {
-      SC.Logger.warn("%@ has useImageCache set, please set useImageQueue instead".fmt(this));
-      this.set('useImageQueue', this.get('useImageCache'));
+    var src = (status === SC.IMAGE_STATE_LOADED) ? value : SC.BLANK_IMAGE_URL ;
+    if (status === SC.IMAGE_STATE_SPRITE) context.addClass(value) ;
+    context.attr('src', src) ;
+    
+    // If there is a toolTip set, grab it and localize if necessary.
+    var toolTip = this.get('displayToolTip') ;
+    if (SC.typeOf(toolTip) === SC.T_STRING) {
+      context.attr('title', toolTip) ;
+      context.attr('alt', toolTip) ;
     }
   },
-
-
-  // ..........................................................
-  // Rendering
-  //
-
-  /**
-    When the layer changes, we need to tell the view to render its stuff
-    as the canvas won't work without this
-
-    @observes layer
-  */
-  layerDidChange: function() {
-    if (this.get('useCanvas')) this.set('layerNeedsUpdate', YES);
-  }.observes('layer'),
-
-
-  // ..........................................................
-  // Value handling
-  //
-
-  /** @private
+  
+  /** @private - 
     Whenever the value changes, update the image state and possibly schedule
     an image to load.
   */
   _image_valueDidChange: function() {
-    var value = this.get('imageValue'),
-        type = this.get('type');
+    var value = this.get('value'), isUrl;
+    if(value && value.isEnumerable) value = value.firstObject();
+    
+    isUrl = SC.ImageView.valueIsUrl(value);
 
-    // check to see if our value has changed
-    if (value !== this._iv_value) {
-      this._iv_value = value;
-
-      // While the new image is loading use SC.BLANK_IMAGE as a placeholder
-      this.set('image', SC.BLANK_IMAGE);
-      this.set('status', SC.IMAGE_STATE_LOADING);
-
-      // order: image cache, normal load
-      if (!this._loadImageUsingCache()) {
-        if (!this._loadImage()) {
-          // CSS class? this will be handled automatically
-        }
-      }
-    }
-  }.observes('imageValue'),
-
-  /** @private
-    Tries to load the image value using the SC.imageQueue object. If the imageValue is not
-    a URL, it won't attempt to load it using this method.
-
-    @returns YES if loading using SC.imageQueue, NO otherwise
-  */
-  _loadImageUsingCache: function() {
-    var value = this.get('imageValue'),
-        type = this.get('type');
-
+    // if the old image is still loading, cancel it
+    // if (this._loadingUrl) SC.imageCache.abortImage(this._loadingUrl);
+    
     // now update local state as needed....
-    if (type === SC.IMAGE_TYPE_URL && this.get('useImageQueue')) {
+    if (isUrl && this.get('useImageCache')) {
       var isBackground = this.get('isVisibleInWindow') || this.get('canLoadInBackground');
-
-      SC.imageQueue.loadImage(value, this, this._loadImageUsingCacheDidComplete, isBackground);
-      return YES;
+      
+      this._loadingUrl = value ; // note that we're loading...
+      SC.imageCache.loadImage(value, this, this.imageDidLoad, isBackground);
+      
+      // only mark us as loading if we are still loading...
+      if (this._loadingUrl) this.set('status', SC.IMAGE_STATE_LOADING);
+      
+    // otherwise, just set state immediately
+    } else {
+      this._loadingUrl = null ; // not loading...
+      this.set('status', (isUrl) ? SC.IMAGE_STATE_LOADED : SC.IMAGE_STATE_SPRITE);
+      this.displayDidChange(); // call manually in case status did not change
+      // (e.g value changes from one sprite to another)
     }
-
-    return NO;
-  },
-
-  _loadImageUsingCacheDidComplete: function(url, image) {
-    var value = this.get('imageValue');
-
-    if (value === url) {
-      if (SC.ok(image)) {
-        this.didLoad(image);
-      } else {
-        // if loading it using the cache didn't work, it's useless to try loading the image normally
-        this.didError(image);
-      }
-    }
-  },
-
-  /** @private
-    Loads an image using a normal Image object, without using the SC.imageQueue.
-
-    @returns YES if it will load, NO otherwise
+  }.observes('value'),
+  
+  /** 
+    Called when the imageCache indicates that the image has loaded. 
+    Changing the image state will update the display.
   */
-  _loadImage: function() {
-    var value = this.get('imageValue'),
-        type = this.get('type'),
-        that = this,
-        image;
+  imageDidLoad: function(url, imageOrError) {
+    if (url === this._loadingUrl) this._loadingUrl = null;
 
-    if (type === SC.IMAGE_TYPE_URL) {
-      image = new Image();
-
-      image.onerror = image.onabort = function() {
-        SC.run(function() {
-          that._loadImageDidComplete(value, SC.$error("SC.Image.FailedError", "Image", -101));
-        });
-      };
-
-      image.onload = function() {
-        SC.run(function() {
-          that._loadImageDidComplete(value, image);
-        });
-      };
-
-      image.src = value;
-      return YES;
+    // do nothing if we get this notification by the value of the image has 
+    // since changed.
+    if (this.get('value') === url) {
+      this.set('status', SC.$ok(imageOrError) ? SC.IMAGE_STATE_LOADED : SC.IMAGE_STATE_FAILED);
+      this.displayDidChange();
     }
-
-    return NO;
-  },
-
-  _loadImageDidComplete: function(url, image) {
-    var value = this.get('imageValue');
-
-    if (value === url) {
-      if (SC.ok(image)) {
-        this.didLoad(image);
-      } else {
-        this.didError(image);
-      }
-    }
-  },
-
-  didLoad: function(image) {
-    this.set('status', SC.IMAGE_STATE_LOADED);
-    if (!image) image = SC.BLANK_IMAGE;
-    this.set('image', image);
-  },
-
-  didError: function(error) {
-    this.set('status', SC.IMAGE_STATE_FAILED);
-    this.set('image', SC.BLANK_IMAGE);
   }
-
+  
 }) ;
 
 /**
@@ -15814,10 +12897,11 @@ SC.ImageView.valueIsUrl = function(value) {
   return value ? value.indexOf('/') >= 0 : NO ;
 } ;
 
+
 /* >>>>>>>>>> BEGIN source/views/label.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================

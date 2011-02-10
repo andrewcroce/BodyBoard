@@ -1,7 +1,7 @@
 /* >>>>>>>>>> BEGIN source/lproj/strings.js */
 // ========================================================================
 // Sprout Core
-// copyright 2006-2011 Strobe Inc.
+// copyright 2006-2008 Sprout Systems, Inc.
 // ========================================================================
 
 // English Strings.
@@ -17,7 +17,7 @@ SC.stringsFor('English', {
 /* >>>>>>>>>> BEGIN source/core.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -37,7 +37,7 @@ SC.allowsBackspaceToPreviousPage = NO;
 /* >>>>>>>>>> BEGIN source/system/drag.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -988,7 +988,7 @@ SC.Drag.mixin(
 /* >>>>>>>>>> BEGIN source/debug/drag.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -1030,7 +1030,7 @@ SC.Drag.mixin(
 /* >>>>>>>>>> BEGIN source/mixins/border.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -1196,7 +1196,7 @@ SC.CollectionFastPath = {
   */
   createItemViewFromExampleView: function(exampleView, attrs) {
     // create the example view
-    var ret = this.createItemView(exampleView, null, attrs);
+    var ret = exampleView.create(attrs);
     
     // for our pooling, if it is poolable, mark the view as poolable and
     // give it a reference to its pool.
@@ -1865,7 +1865,7 @@ SC.CollectionFastPath = {
 /* >>>>>>>>>> BEGIN source/mixins/collection_group.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -1889,7 +1889,7 @@ SC.CollectionGroup = {
 /* >>>>>>>>>> BEGIN source/mixins/collection_row_delegate.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -1978,7 +1978,7 @@ SC.CollectionRowDelegate = {
 /* >>>>>>>>>> BEGIN source/mixins/collection_view_delegate.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -2275,7 +2275,7 @@ SC.CollectionViewDelegate = {
 /* >>>>>>>>>> BEGIN source/mixins/navigation_builder.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -2407,7 +2407,7 @@ SC.NavigationBuilder = {
 /* >>>>>>>>>> BEGIN source/mixins/scrollable.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -2662,7 +2662,7 @@ SC.Scrollable = {
 /* >>>>>>>>>> BEGIN source/panes/modal.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -2735,7 +2735,7 @@ SC.ModalPane = SC.Pane.extend({
 /* >>>>>>>>>> BEGIN source/panes/panel.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -2899,7 +2899,7 @@ SC.PanelPane = SC.Pane.extend({
 /* >>>>>>>>>> BEGIN source/views/button.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -3465,7 +3465,7 @@ SC.ButtonView.hasGivenDeprecationWarning = NO;
 /* >>>>>>>>>> BEGIN source/panes/alert.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -3879,7 +3879,7 @@ SC.AlertPane.plain = function(message, description, caption, button1Title, butto
 /* >>>>>>>>>> BEGIN source/panes/palette.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            portions copyright @2009 Apple Inc.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -3955,7 +3955,7 @@ SC.PalettePane = SC.PanelPane.extend({
 /* >>>>>>>>>> BEGIN source/panes/picker.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            portions copyright @2009 Apple Inc.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -4659,7 +4659,7 @@ SC.PickerPane.HUGE_PICKER_MENU_EXTRA_RIGHT_OFFSET = 12;
 /* >>>>>>>>>> BEGIN source/views/separator.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -4697,7 +4697,7 @@ SC.SeparatorView = SC.View.extend(
 /* >>>>>>>>>> BEGIN source/views/menu_item.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -5385,7 +5385,7 @@ SC.MenuItemView._contentPropertyToMenuItemPropertyMapping = {
 /* >>>>>>>>>> BEGIN source/panes/menu.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -6520,7 +6520,7 @@ SC.MenuPane.VERTICAL_OFFSET = 23;
 /* >>>>>>>>>> BEGIN source/panes/select_button.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -7417,7 +7417,7 @@ SC.SelectButtonView.MENU_WIDTH_OFFSET = -2;
 /* >>>>>>>>>> BEGIN source/panes/sheet.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            portions copyright @2009 Apple Inc.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -7633,7 +7633,7 @@ SC.SheetPane.mixin( /** @scope SC.SheetPane */ {
 /* >>>>>>>>>> BEGIN source/protocols/drag_data_source.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -7674,7 +7674,7 @@ SC.DragDataSource = {
 /* >>>>>>>>>> BEGIN source/protocols/drag_source.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -7757,7 +7757,7 @@ SC.DragSource = {
 /* >>>>>>>>>> BEGIN source/protocols/drop_target.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -7934,7 +7934,7 @@ SC.DropTarget = {
 /* >>>>>>>>>> BEGIN source/protocols/responder.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -8235,7 +8235,7 @@ SC.ResponderProtocol = {
 /* >>>>>>>>>> BEGIN source/render_delegates/button.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -8315,7 +8315,7 @@ SC.BaseTheme.buttonRenderDelegate = SC.RenderDelegate.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/checkbox.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licened under MIT license (see license.js)
 // ==========================================================================
@@ -8391,7 +8391,7 @@ SC.BaseTheme.checkboxRenderDelegate = SC.RenderDelegate.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/collection.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -8416,7 +8416,7 @@ SC.BaseTheme.collectionRenderDelegate = SC.RenderDelegate.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/disclosure.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licened under MIT license (see license.js)
 // ==========================================================================
@@ -8459,7 +8459,7 @@ SC.BaseTheme.disclosureRenderDelegate = SC.RenderDelegate.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/helpers/slicing.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -8494,7 +8494,7 @@ SC.mixin(SC.RenderDelegate.prototype, {
 /* >>>>>>>>>> BEGIN source/render_delegates/image_button.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licened under MIT license (see license.js)
 // ==========================================================================
@@ -8525,7 +8525,7 @@ SC.BaseTheme.imageButtonRenderDelegate = SC.RenderDelegate.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/master_detail.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -8554,7 +8554,7 @@ SC.BaseTheme.masterDetailRenderDelegate = SC.RenderDelegate.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/panel.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -8584,7 +8584,7 @@ SC.BaseTheme.panelRenderDelegate = SC.RenderDelegate.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/menu.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licened under MIT license (see license.js)
 // ==========================================================================
@@ -8633,7 +8633,7 @@ SC.BaseTheme.menuRenderDelegate = SC.RenderDelegate.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/picker.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licened under MIT license (see license.js)
 // ==========================================================================
@@ -8678,7 +8678,7 @@ SC.BaseTheme.pickerRenderDelegate = SC.RenderDelegate.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/progress.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -8855,7 +8855,7 @@ SC.BaseTheme.progressRenderDelegate = SC.RenderDelegate.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/radio.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -8931,7 +8931,7 @@ SC.BaseTheme.radioRenderDelegate = SC.RenderDelegate.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/radio_group.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -9042,7 +9042,7 @@ SC.BaseTheme.radioGroupRenderDelegate = SC.RenderDelegate.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/segment.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -9114,7 +9114,7 @@ SC.BaseTheme.segmentRenderDelegate = SC.Object.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/segmented.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -9173,7 +9173,7 @@ SC.BaseTheme.segmentedRenderDelegate = SC.Object.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/slider.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licened under MIT license (see license.js)
 // ==========================================================================
@@ -9214,7 +9214,7 @@ SC.BaseTheme.sliderRenderDelegate = SC.RenderDelegate.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/source_list.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -9223,7 +9223,7 @@ SC.BaseTheme.SourceList = SC.BaseTheme.subtheme('source-list');
 /* >>>>>>>>>> BEGIN source/render_delegates/toolbar.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -9243,7 +9243,7 @@ SC.BaseTheme.toolbarRenderDelegate = SC.RenderDelegate.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/well.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -9274,7 +9274,7 @@ SC.BaseTheme.Well.containerRenderDelegate = SC.Object.create({
 /* >>>>>>>>>> BEGIN source/render_delegates/workspace.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -9293,7 +9293,7 @@ SC.BaseTheme.workspaceRenderDelegate = SC.Object.create({
 /* >>>>>>>>>> BEGIN source/system/key_bindings.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -9335,7 +9335,7 @@ SC.BASE_KEY_BINDINGS = {
 /* >>>>>>>>>> BEGIN source/system/undo_manager.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -9524,7 +9524,7 @@ SC.UndoManager = SC.Object.extend(
 /* >>>>>>>>>> BEGIN source/views/checkbox.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -9608,7 +9608,7 @@ SC.CheckboxView = SC.ButtonView.extend(SC.StaticLayout, SC.Button,
 /* >>>>>>>>>> BEGIN source/views/list_item.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            portions copyright @2009 Apple Inc.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -10525,7 +10525,7 @@ SC.ListItemView._deprecatedRenderWarningHasBeenIssued = false;
 /* >>>>>>>>>> BEGIN source/views/collection.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -13604,7 +13604,7 @@ SC.CollectionView = SC.View.extend(
 /* >>>>>>>>>> BEGIN source/views/date_field.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -13925,7 +13925,7 @@ SC.DateFieldView = SC.TextFieldView.extend(
 /* >>>>>>>>>> BEGIN source/views/disclosure.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -13987,7 +13987,7 @@ SC.DisclosureView = SC.ButtonView.extend(
 /* >>>>>>>>>> BEGIN source/views/file.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -14101,7 +14101,7 @@ SC.FileView = SC.FieldView.extend(
 /* >>>>>>>>>> BEGIN source/views/list.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -14949,7 +14949,7 @@ SC.GridView = SC.ListView.extend(
 /* >>>>>>>>>> BEGIN source/views/image_button.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -15024,48 +15024,18 @@ SC.ImageButtonView = SC.ButtonView.extend(
 /* >>>>>>>>>> BEGIN source/views/toolbar.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
-
-/**
-  Layout properties needed to anchor a view to the top.
-*/
-SC.ANCHOR_TOP = { top: 0 };
-
-/**
-  Layout properties needed to anchor a view to the left.
-*/
-SC.ANCHOR_LEFT = { left: 0 };
-
-/*
-  Layout properties to anchor a view to the top left
-*/
-SC.ANCHOR_TOP_LEFT = { top: 0, left: 0 };
-
-/**
-  Layout properties to anchoe view to the bottom.
-*/
-SC.ANCHOR_BOTTOM = { bottom: 0 };
-
-/**
-  Layout properties to anchor a view to the right.
-*/
-SC.ANCHOR_RIGHT = { right: 0 } ;
-
-/**
-  Layout properties to anchor a view to the bottom right.
-*/
-SC.ANCHOR_BOTTOM_RIGHT = { bottom: 0, right: 0 };
 
 /** @class
 
   A toolbar view can be anchored at the top or bottom of the window to contain
   your main toolbar buttons.  The default implementation assumes you may have
   a leftView, rightView, and centerView, which will be properly laid out.
-
-  You can also override the layout property yourself or simply set the
+  
+  You can also override the layout property yourself or simply set the 
   anchorLocation to SC.ANCHOR_TOP or SC.ANCHOR_BOTTOM.  This will configure
   the layout of your toolbar automatically when it is created.
 
@@ -15076,29 +15046,29 @@ SC.ToolbarView = SC.View.extend(
   /** @scope SC.ToolbarView.prototype */ {
 
   classNames: ['sc-toolbar-view'],
-
+  
   /**
-    Default anchor location.  This will be applied automatically to the
+    Default anchor location.  This will be applied automatically to the 
     toolbar layout if you set it.
   */
   anchorLocation: null,
 
   // ..........................................................
   // INTERNAL SUPPORT
-  //
-
+  // 
+  
   /** @private */
   layout: { left: 0, height: 32, right: 0 },
-
+  
   /** @private */
   init: function() {
     // apply anchor location before setting up the rest of the view.
     if (this.anchorLocation) {
       this.layout = SC.merge(this.layout, this.anchorLocation);
     }
-    arguments.callee.base.apply(this,arguments);
+    arguments.callee.base.apply(this,arguments); 
   },
-
+  
   renderDelegateName: 'toolbarRenderDelegate'
 
 });
@@ -15107,7 +15077,7 @@ SC.ToolbarView = SC.View.extend(
 /* >>>>>>>>>> BEGIN source/views/workspace.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -15360,7 +15330,7 @@ SC.WorkspaceView = SC.View.extend({
 /* >>>>>>>>>> BEGIN source/views/master_detail.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -15619,7 +15589,7 @@ SC.MasterDetailView = SC.View.extend({
 /* >>>>>>>>>> BEGIN source/views/scroller.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -16505,7 +16475,7 @@ SC.TouchScrollerView = SC.ScrollerView.extend({
 /* >>>>>>>>>> BEGIN source/views/scroll.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -18330,7 +18300,7 @@ SC.ScrollView = SC.View.extend(SC.Border, {
 /* >>>>>>>>>> BEGIN source/views/menu_scroll.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -18920,7 +18890,7 @@ SC.MenuScrollView = SC.ScrollView.extend({
 /* >>>>>>>>>> BEGIN source/views/navigation.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -19159,7 +19129,7 @@ SC.NavigationView = SC.WorkspaceView.extend({
 /* >>>>>>>>>> BEGIN source/views/navigation_bar.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2009 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -19368,7 +19338,7 @@ SC.PopupButtonView.design({
   @extends SC.ButtonView
   @author Santosh Shanbhogue
   @author Tom Dale
-  @copyright 2008-2011, Strobe Inc. and contributors.
+  @copyright 2008-2010, Sprout Systems, Inc. and contributors.
   @version 1.0
 */
 SC.PopupButtonView = SC.ButtonView.extend(
@@ -19642,7 +19612,7 @@ SC.PopupButtonMenuLoader = SC.Task.extend({
 /* >>>>>>>>>> BEGIN source/views/progress.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -19832,7 +19802,7 @@ SC.ProgressView = SC.View.extend(SC.Control, {
 /* >>>>>>>>>> BEGIN source/views/radio.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -20133,7 +20103,7 @@ SC.RadioView = SC.View.extend(SC.Control,
 /* >>>>>>>>>> BEGIN source/views/scene.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -20339,7 +20309,7 @@ SC.SceneView = SC.ContainerView.extend(
 /* >>>>>>>>>> BEGIN source/views/segment.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -20425,7 +20395,7 @@ SC.SegmentView = SC.View.extend(SC.Control, {
 /* >>>>>>>>>> BEGIN source/views/segmented.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -21135,7 +21105,7 @@ SC.SegmentedView = SC.View.extend(SC.Control,
 /* >>>>>>>>>> BEGIN source/views/select.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -21516,7 +21486,7 @@ SC.SelectView = SC.ButtonView.extend(
     idx = 0 ;
 
     items.forEach(function(object) {
-    if (object || object === 0) {
+    if (object) {
 
       //Get the name value. If value key is not specified convert obj
       //to string
@@ -21946,7 +21916,7 @@ SC.SelectView.MENU_WIDTH_OFFSET = -2;
 /* >>>>>>>>>> BEGIN source/views/select_field.js */
 // ========================================================================
 // SproutCore -- JavaScript Application Framework
-// Copyright ©2006-2011, Strobe Inc. and contributors.
+// Copyright ©2006-2008, Sprout Systems, Inc. and contributors.
 // Portions copyright ©2008 Apple Inc.  All rights reserved.
 // ========================================================================
 
@@ -22284,7 +22254,7 @@ SC.SelectFieldView = SC.FieldView.extend(
 /* >>>>>>>>>> BEGIN source/views/slider.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -22569,7 +22539,7 @@ SC.SliderView = SC.View.extend(SC.Control,
 /* >>>>>>>>>> BEGIN source/views/source_list_group.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -22740,7 +22710,7 @@ SC.SourceListGroupView = SC.View.extend(SC.Control, SC.CollectionGroup,
 /* >>>>>>>>>> BEGIN source/views/source_list.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -22791,7 +22761,7 @@ SC.SourceListView = SC.ListView.extend(
 /* >>>>>>>>>> BEGIN source/views/split_divider.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -22850,7 +22820,7 @@ SC.SplitDividerView = SC.View.extend(
 /* >>>>>>>>>> BEGIN source/views/split.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -23732,7 +23702,7 @@ SC.mixin(SC.View.prototype, {
 /* >>>>>>>>>> BEGIN source/views/stacked.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -23844,7 +23814,7 @@ SC.StackedView = SC.CollectionView.extend(
 /* >>>>>>>>>> BEGIN source/views/static_content.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -23979,7 +23949,7 @@ SC.StaticContentView = SC.View.extend(SC.StaticLayout, {
 /* >>>>>>>>>> BEGIN source/views/tab.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -24165,7 +24135,7 @@ SC._TAB_ITEM_KEYS = 'itemTitleKey itemValueKey itemIsEnabledKey itemIconKey item
 /* >>>>>>>>>> BEGIN source/views/thumb.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -24220,7 +24190,7 @@ SC.ThumbView = SC.View.extend(
 /* >>>>>>>>>> BEGIN source/views/web.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -24309,7 +24279,7 @@ SC.WebView = SC.View.extend(SC.Control, {
 /* >>>>>>>>>> BEGIN source/views/well.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================

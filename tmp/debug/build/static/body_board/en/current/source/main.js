@@ -13,17 +13,12 @@
 //
 BodyBoard.main = function main() {
 
-  // Step 1: Instantiate Your Views
-  // The default code here will make the mainPane for your application visible
-  // on screen.  If you app gets any level of complexity, you will probably 
-  // create multiple pages and panes.  
+
+	// Create the data source if it doesn't exist already. (FORCE)
+	var initDS = BodyBoard.store._getDataSource();
 	
 	BodyBoard.getPath('mainPage.mainPane').append() ;
-	
-  // Step 2. Set the content property on your primary controller.
-  // This will make your app come alive!
-
-	
+		
 	
 	var authors = BodyBoard.store.find(SC.Query.local(BodyBoard.Author));
 	//var authors = BodyBoard.store.find(BodyBoard.AUTHORS_QUERY);

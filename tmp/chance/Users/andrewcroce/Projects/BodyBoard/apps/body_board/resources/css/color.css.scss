@@ -35,9 +35,11 @@ body {
 
  
 
-.section-heading 
+.section-heading,
+#label-collection
 {
-	background: none;
+	background: none !important;
+	background-color: none !important;
 }
 
 

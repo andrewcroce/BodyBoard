@@ -72,7 +72,7 @@ BodyBoard.systemController = SC.ObjectController.create(
 	*/
 	setSystem : function() {
 		
-		var labels, labelView;
+		var labels, labelView, point, placement;
 		if(BodyBoard.viewerController.get('isInitialized') == YES){
 			BodyBoard.viewerController.get('viewer').viewport.zoomTo(this.get('newZoom'),this.get('newCenter'), true);
 		} else {
@@ -83,7 +83,13 @@ BodyBoard.systemController = SC.ObjectController.create(
 			console.log(index);
 			labelView = BodyBoard.labelView.create({});
 			labelView.set('content',item);
+			
+			point = new Seadragon.Point( item.get('x'), item.get('y') );
+			//console.log(item.get('x'),',' ,item.get('y') );
+			placement = Seadragon.OverlayPlacement.TOP_LEFT;
+			
 			BodyBoard.getPath('mainPage.bodyView.bodyBoardView').appendChild(labelView);
+			//BodyBoard.viewerController.get('viewer').drawer.addOverlay(labelView.get('layer'), point, placement);
 		});
 	
 	}

@@ -1,5 +1,5 @@
 /* Common SC.TextFieldView styles - needed to work properly */
-/* line 4, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 4, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .sc-view .sc-text-field-view {
   border: none;
   z-index: 100;
@@ -7,13 +7,13 @@
   background: white;
 }
 
-/* line 12, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 12, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .safari .sc-view .sc-text-field-view.focus {
   outline: auto 7px -webkit-focus-ring-color;
   outline-offset: -2px;
 }
 
-/* line 17, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 17, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .mozilla .sc-view .sc-text-field-view.focus {
   outline-color: -moz-mac-focusring;
   outline-offset: -5px;
@@ -21,12 +21,12 @@
   outline-width: 3px;
 }
 
-/* line 24, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 24, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .msie .sc-view .sc-text-field-view.focus {
   outline: 1px dotted;
 }
 
-/* line 28, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 28, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .sc-text-field-view .border {
   position: absolute;
   top: 0px;
@@ -35,22 +35,22 @@
   right: 0px;
 }
 
-/* line 38, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 38, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .mozilla .sc-view .sc-text-field-view .border {
   -moz-appearance: textfield;
 }
 
-/* line 42, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 42, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .msie .sc-view .sc-text-field-view .border {
   border: 1px inset;
 }
 
-/* line 46, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 46, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .safari .sc-text-field-view .border {
   -webkit-appearance: textfield;
 }
 
-/* line 52, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 52, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .sc-view .sc-text-field-view .padding {
   top: 0px;
   left: 3px;
@@ -59,17 +59,17 @@
   position: absolute;
 }
 
-/* line 60, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 60, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .sc-view .sc-text-field-view.text-area .padding {
   right: 0px;
 }
 
-/* line 65, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 65, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .sc-view .sc-text-field-view .sc-text-field-accessory-view {
   z-index: 2;
 }
 
-/* line 69, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 69, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .sc-text-field-view input {
   position: absolute;
   top: 0px;
@@ -84,26 +84,26 @@
   vertical-align: middle;
 }
 
-/* line 83, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 83, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .sc-text-field-view input {
   border: none;
   outline: none;
   -webkit-appearance: none;
 }
 
-/* line 89, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 89, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .msie .sc-text-field-view input.field {
   padding-bottom: 1px;
 }
 
-/* line 93, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 93, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .sc-text-field-view textarea {
   border: none;
   outline: none;
   -webkit-appearance: none;
 }
 
-/* line 100, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 100, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .sc-text-field-view textarea {
   position: absolute;
   top: 0px;
@@ -118,13 +118,13 @@
   overflow: auto;
 }
 
-/* line 115, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 115, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .msie .sc-text-field-view textarea.field,
 .mozilla .sc-text-field-view textarea.field {
   height: 100%;
 }
 
-/* line 120, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 120, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .sc-text-field-view .sc-hint {
   z-index: 1;
   position: absolute;
@@ -137,7 +137,7 @@
   font-size: 12px;
 }
 
-/* line 132, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 132, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .sc-text-field-view.text-area .sc-hint {
   top: 2px;
   left: 3px;
@@ -145,24 +145,24 @@
   bottom: 2px;
 }
 
-/* line 140, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 140, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .sc-text-field-view.focus .sc-hint,
 .sc-text-field-view.not-empty .sc-hint {
   display: none;
 }
 
-/* line 144, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
+/* line 144, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/text_field.css.scss */
 .sc-text-field-view.sc-hint .field {
   color: #B3B3B3 !important;
 }
 
 /* SC.ButtonView */
-/* line 4, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/button_view.css.scss */
+/* line 4, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/button_view.css.scss */
 .sc-button-view.sc-static-layout {
   margin: 0 4px;
 }
 
-/* line 8, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/button_view.css.scss */
+/* line 8, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/button_view.css.scss */
 .sc-button-view {
   display: inline-block;
   vertical-align: middle;
@@ -172,7 +172,7 @@
   -moz-border-radius: 3px;
 }
 
-/* line 17, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/button_view.css.scss */
+/* line 17, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/button_view.css.scss */
 .sc-button-view .sc-button-inner {
   position: relative;
   display: block;
@@ -180,7 +180,7 @@
   text-align: center;
 }
 
-/* line 24, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/button_view.css.scss */
+/* line 24, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/button_view.css.scss */
 .sc-button-view label {
   position: relative;
   display: block;
@@ -188,7 +188,7 @@
   text-align: center;
 }
 
-/* line 31, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/button_view.css.scss */
+/* line 31, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/button_view.css.scss */
 .sc-button-view img {
   vertical-align: middle;
   margin-right: 2px;
@@ -197,49 +197,49 @@
   left: -2px;
 }
 
-/* line 39, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/button_view.css.scss */
+/* line 39, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/button_view.css.scss */
 .ie7 .sc-button-view {
   display: inline;
 }
 
 /* SC.LabelView */
-/* line 4, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/label.css.scss */
+/* line 4, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/label.css.scss */
 .sc-label-view.sc-large-size {
   font-size: 18px;
   line-height: 24px;
 }
 
-/* line 9, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/label.css.scss */
+/* line 9, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/label.css.scss */
 .sc-label-view.sc-regular-size {
   font-size: 12px;
   line-height: 19px;
 }
 
-/* line 14, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/label.css.scss */
+/* line 14, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/label.css.scss */
 .sc-label-view.sc-small-size {
   font-size: 11px;
   line-height: 14px;
 }
 
-/* line 19, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/label.css.scss */
+/* line 19, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/label.css.scss */
 .sc-label-view.sc-tiny-size {
   font-size: 9px;
   line-height: 12px;
 }
 
-/* line 24, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/label.css.scss */
+/* line 24, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/label.css.scss */
 .sc-label-view.disabled {
   color: #999;
   color: rgba(50, 50, 50, 0.5);
 }
 
-/* line 29, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/label.css.scss */
+/* line 29, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/label.css.scss */
 .sc-label-view img.icon {
   position: relative;
   vertical-align: middle;
 }
 
-/* line 34, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/label.css.scss */
+/* line 34, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/label.css.scss */
 .sc-label-view .sc-hint {
   position: absolute;
   top: 3px;
@@ -252,25 +252,399 @@
 }
 
 /* SC.StaticLayout Support */
-/* line 4, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/static_layout.css.scss */
+/* line 4, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/static_layout.css.scss */
 .sc-static-layout, .sc-view.sc-static-layout {
   position: relative;
 }
 
-/* line 2, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/debug/control-test-pane.css.scss */
+/* line 2, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/debug/control-test-pane.css.scss */
 .sc-view.sc-control-test-pane {
   border: 1px #888 solid;
   overflow-y: auto;
   background: white;
 }
 
-/* line 8, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/debug/control-test-pane.css.scss */
+/* line 8, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/debug/control-test-pane.css.scss */
 .sc-view.sc-control-test-pane .sc-view.wrapper {
   border: 1px #ccc solid;
 }
 
+           /*
+  These CSS styles apply to all views.
+*/
+/* default behaviors for all views: 
+ - use "pointer" cursor unless otherwise required 
+ - clip overflow
+*/
+/* line 10, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/view.css.scss */
+.sc-view {
+  cursor: default;
+  overflow: hidden;
+  position: absolute;
+  /* all views are absolutely positioned. */
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  user-select: none;
+  margin: 0px;
+}
+
+/* line 21, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/view.css.scss */
+.sc-view.allow-select {
+  -moz-user-select: text;
+  -khtml-user-select: text;
+  user-select: text;
+  cursor: text;
+}
+
+/* line 30, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/view.css.scss */
+.sc-view:focus, a.sc-view:focus,
+.sc-view:active, a.sc-view:active {
+  outline: none;
+}
+
+/* line 35, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/view.css.scss */
+.sc-view img {
+  border: none;
+}
+
+/* line 39, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/view.css.scss */
+.sc-view.hidden {
+  display: none !important;
+}
+
+/* line 45, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/view.css.scss */
+.sc-view.text-align-right,
+.sc-view.textAlignRight {
+  text-align: right;
+}
+
+/* line 50, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/view.css.scss */
+.mobile-safari .sc-pane {
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+/* line 2, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view {
+  font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* line 10, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+}
+
+/* line 20, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+body {
+  position: absolute;
+  margin: 0px;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+/* line 54, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view body,
+.sc-view div,
+.sc-view dl,
+.sc-view dt,
+.sc-view dd,
+.sc-view ul,
+.sc-view ol,
+.sc-view li,
+.sc-view h1,
+.sc-view h2,
+.sc-view h3,
+.sc-view h4,
+.sc-view h5,
+.sc-view h6,
+.sc-view pre,
+.sc-view code,
+.sc-view form,
+.sc-view fieldset,
+.sc-view legend,
+.sc-view input,
+.sc-view button,
+.sc-view textarea,
+.sc-view p,
+.sc-view blockquote,
+.sc-view th,
+.sc-view td {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 59, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 65, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view fieldset,
+.sc-view img {
+  border: 0;
+}
+
+/* line 78, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view address,
+.sc-view caption,
+.sc-view cite,
+.sc-view code,
+.sc-view dfn,
+.sc-view em,
+.sc-view strong,
+.sc-view th,
+.sc-view var,
+.sc-view optgroup {
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+/* line 84, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view del,
+.sc-view ins {
+  text-decoration: none;
+}
+
+/* line 88, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view li {
+  list-style: none;
+}
+
+/* line 93, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view caption,
+.sc-view th {
+  text-align: left;
+}
+
+/* line 102, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view h1,
+.sc-view h2,
+.sc-view h3,
+.sc-view h4,
+.sc-view h5,
+.sc-view h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+/* line 108, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view q:before,
+.sc-view q:after {
+  content: '';
+}
+
+/* line 113, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view abbr,
+.sc-view acronym {
+  border: 0;
+  font-variant: normal;
+}
+
+/* line 118, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view sup {
+  vertical-align: baseline;
+}
+
+/* line 122, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view sub {
+  vertical-align: baseline;
+}
+
+/* line 127, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view legend {
+  color: #000;
+}
+
+/* line 136, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view input,
+.sc-view button,
+.sc-view textarea,
+.sc-view select,
+.sc-view optgroup,
+.sc-view option {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+/* line 148, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view input,
+.sc-view button,
+.sc-view textarea,
+.sc-view select {
+  font-size: 100%;
+}
+
+/* line 164, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view body {
+  font: 13px/1.231 "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
+  /* for IE6/7 */
+  *font-size: small;
+  /* for IE Quirks Mode */
+  *font: x-small;
+}
+
+/* line 176, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view select,
+.sc-view input,
+.sc-view textarea,
+.sc-view button {
+  font: 99% "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
+}
+
+/* line 181, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view table {
+  font-size: inherit;
+  font: 100%;
+}
+
+/* line 191, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view pre,
+.sc-view code,
+.sc-view kbd,
+.sc-view samp,
+.sc-view tt {
+  font-family: monospace;
+  *font-size: 108%;
+  line-height: 100%;
+}
+
+/* line 205, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view body {
+  margin: 10px;
+}
+
+/* line 210, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view h1 {
+  font-size: 138.5%;
+}
+
+/* line 215, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view h2 {
+  font-size: 123.1%;
+}
+
+/* line 220, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view h3 {
+  font-size: 108%;
+}
+
+/* line 227, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view h1,
+.sc-view h2,
+.sc-view h3 {
+  margin: 0em 0;
+}
+
+/* line 239, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view h1,
+.sc-view h2,
+.sc-view h3,
+.sc-view h4,
+.sc-view h5,
+.sc-view h6,
+.sc-view strong,
+.sc-view dt {
+  font-weight: bold;
+}
+
+/* line 243, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view optgroup {
+  font-weight: normal;
+}
+
+/* line 248, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view abbr,
+.sc-view acronym {
+  border-bottom: 1px dotted #000;
+  cursor: help;
+}
+
+/* line 254, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view em {
+  font-style: italic;
+}
+
+/* line 259, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view del {
+  text-decoration: line-through;
+}
+
+/* line 267, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view blockquote,
+.sc-view ul,
+.sc-view ol,
+.sc-view dl {
+  margin: 1em;
+}
+
+/* line 274, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view ol,
+.sc-view ul,
+.sc-view dl {
+  margin-left: 2em;
+}
+
+/* line 280, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view th,
+.sc-view td {
+  border: 1px solid #000;
+  padding: .5em;
+}
+
+/* line 286, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view th {
+  font-weight: bold;
+  text-align: center;
+}
+
+/* line 292, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view caption {
+  margin-bottom: .5em;
+  /* Centered so it doesn't blend in to other content. */
+  text-align: center;
+}
+
+/* line 299, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view sup {
+  vertical-align: super;
+}
+
+/* line 304, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view sub {
+  vertical-align: sub;
+}
+
+/* line 312, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view p,
+.sc-view fieldset,
+.sc-view table,
+.sc-view pre {
+  margin-bottom: 1em;
+}
+
+/* line 321, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/core.css.scss */
+.sc-view button,
+.sc-view input[type="checkbox"],
+.sc-view input[type="radio"],
+.sc-view input[type="reset"],
+.sc-view input[type="submit"] {
+  padding: 1px;
+}
+
 /* SC.Benchmark */
-/* line 4, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 4, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-pane {
   -webkit-box-shadow: 0px 0px 5px black;
   background: white;
@@ -278,28 +652,28 @@
   z-index: 10000;
 }
 
-/* line 11, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 11, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-pane .sc-scroll-view {
   border: 1px solid #ddd;
 }
 
-/* line 16, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 16, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-graph {
   width: 100%;
   height: 100%;
 }
 
-/* line 22, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 22, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-label-view.sc-regular-size.sc-benchmark-title {
   font-size: 16px;
 }
 
-/* line 27, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 27, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-emphasis {
   font-weight: bold;
 }
 
-/* line 32, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 32, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-top {
   height: 20px;
   left: 0px;
@@ -315,7 +689,7 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
 }
 
-/* line 48, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 48, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-tick {
   width: 1px;
   height: 2000px;
@@ -324,7 +698,7 @@
   background-color: #ccc;
 }
 
-/* line 57, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 57, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-tick-label {
   width: 40px;
   position: absolute;
@@ -334,7 +708,7 @@
   white-space: nowrap;
 }
 
-/* line 67, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 67, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-bar {
   height: 16px;
   position: absolute;
@@ -352,7 +726,7 @@
   z-index: 2;
 }
 
-/* line 86, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 86, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-row {
   position: absolute;
   left: 0px;
@@ -360,7 +734,7 @@
   height: 30px;
 }
 
-/* line 94, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 94, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-row.even {
   background-color: #ddd;
   opacity: 0.4;
@@ -369,19 +743,19 @@
   -moz-opacity: 0.4;
 }
 
-/* line 103, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 103, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .no-min-width {
   min-width: 20px !important;
 }
 
-/* line 107, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 107, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-event {
   position: absolute;
   z-index: 1;
   width: 2px;
 }
 
-/* line 113, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 113, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-event:hover {
   -webkit-border-radius: 5px;
   border: 2px solid white;
@@ -389,42 +763,42 @@
   background-color: red;
 }
 
-/* line 120, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 120, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-event.idx0 {
   background: blue;
 }
 
-/* line 124, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 124, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-event.idx1 {
   background: red;
 }
 
-/* line 128, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 128, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-event.idx2 {
   background: green;
 }
 
-/* line 132, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 132, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-event.idx3 {
   background: orange;
 }
 
-/* line 136, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 136, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-event.idx4 {
   background: purple;
 }
 
-/* line 140, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 140, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-event.idx5 {
   background: #ee82ee;
 }
 
-/* line 144, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
+/* line 144, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/benchmark.css.scss */
 .sc-benchmark-event.idx6 {
   background: #800000;
 }
 
-/* line 5, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/inline_editor.css.scss */
+/* line 5, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/inline_editor.css.scss */
 .mozilla .sc-view .sc-text-field-view.inline-editor .border,
 .webkit .sc-view .sc-text-field-view.inline-editor .border,
 .msie .sc-view .sc-text-field-view.inline-editor .border,
@@ -434,7 +808,7 @@
   border: none;
 }
 
-/* line 11, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/frameworks/foundation/english.lproj/inline_editor.css.scss */
+/* line 11, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/foundation/english.lproj/inline_editor.css.scss */
 .mozilla .sc-view .sc-text-field-view.inline-editor.focus {
   outline-offset: 0px;
 }

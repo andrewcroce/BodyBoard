@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -511,12 +511,11 @@ SC.Store = SC.Object.extend( /** @scope SC.Store.prototype */ {
       // to nested stores
       if (editState === K.INHERITED) {
         store._notifyRecordPropertyChange(storeKey, statusOnly, key);
-
       } else if (status & SC.Record.BUSY) {
-        // make sure nested store does not have any changes before resetting
-        if(store.get('hasChanges')) throw K.CHAIN_CONFLICT_ERROR;
-        store.reset();
-      }
+            // make sure nested store does not have any changes before resetting
+            if(store.get('hasChanges')) throw K.CHAIN_CONFLICT_ERROR;
+            store.reset();
+         }
     }
     
     // store info in changes hash and schedule notification if needed.
@@ -1527,6 +1526,7 @@ SC.Store = SC.Object.extend( /** @scope SC.Store.prototype */ {
     @returns {Number} storeKey that was retrieved 
   */
   retrieveRecord: function(recordType, id, storeKey, isRefresh) {
+     console.log("retrieveRecord called on the store with id: " + id + " and storekey: " + storeKey);
     var array = this._TMP_RETRIEVE_ARRAY,
         ret;
     
@@ -2052,19 +2052,44 @@ SC.Store = SC.Object.extend( /** @scope SC.Store.prototype */ {
   */
   pushRetrieve: function(recordType, id, dataHash, storeKey) {
     var K = SC.Record, status;
+    var nestedStores = this.get('nestedStores');
     
     if(storeKey===undefined) storeKey = recordType.storeKeyFor(id);
+    
     status = this.readStatus(storeKey);
     if(status==K.EMPTY || status==K.ERROR || status==K.READY_CLEAN || status==K.DESTROYED_CLEAN) {
-      
+      console.log("SC.Store.pushRetrieve: updating record with id " + id + " and storeKey " + storeKey);
       status = K.READY_CLEAN;
       if(dataHash===undefined) this.writeStatus(storeKey, status) ;
       else this.writeDataHash(storeKey, dataHash, status) ;
 
       this.dataHashDidChange(storeKey);
       
+      var store, editState, len, idx;
+      // pass along to nested stores
+      len = nestedStores ? nestedStores.length : 0 ;
+      for(idx=0;idx<len;idx++) {
+        store = nestedStores[idx];
+        if(store.lockOnRead === NO){ // only pass on when lockOnRead === NO
+           console.log("updating nested store in pushRetrieve");
+           store = nestedStores[idx];
+           status = store.peekStatus(storeKey); // important: peek avoids read-lock
+           editState = store.storeKeyEditState(storeKey);
+           console.log("info of nested store: status: " + status + " editState: " + editState);
+           if((status === SC.Record.READY_CLEAN) && ((editState === SC.Store.INHERITED) || (editState === SC.Store.EDITABLE))){
+              console.log("About to write new datahash in nested store");
+              store.writeDataHash(storeKey, dataHash, status);
+              // when updating, set the revision of the root store
+              var rev = this.revisions[storeKey];
+              store.dataHashDidChange(storeKey,rev);
+              //store._notifyRecordPropertyChange(storeKey, null, "*"); // assume all properties changed
+           }
+        }
+      }
+      
       return storeKey;
     }
+    console.log("SC.Store.pushRetrieve: didn't update because of conflict");
     //conflicted (ready)
     return NO;
   },

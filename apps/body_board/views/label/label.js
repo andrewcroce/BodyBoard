@@ -7,10 +7,34 @@
 sc_require('controllers/viewer');
 sc_require('controllers/systems');
 
-BodyBoard.labelView = SC.View.design({
+BodyBoard.labelView = SC.View.extend(SC.ContentDisplay,{
 	
-	layout : { height: 1, width: 1 },
-	contentDisplayProperties : 'name labels'.w(),
+	layout : { left: 0, right: 0, height: 20, width: 100 },
+	contentDisplayProperties : 'name captions'.w(),
+	//content : '',
+	//backgroundColor: 'red',
+	
+	childViews : 'spotView titleView moreButtonView captionsView'.w(),
+	
+	spotView : SC.View.design({
+		layout : { top: -8, left: -8, width: 16, height: 16 },
+		backgroundColor: 'blue'
+	}),
+	
+	titleView : SC.LabelView.design({
+		layout : { top: -8, left: 20, width: 100, height: 20 },
+		//valueBinding : 'parentView*content.name'
+		value : 'Title Here'
+	}),
+	
+	moreButtonView : SC.ButtonView.design({
+		
+	}),
+	
+	captionsView : SC.ListView.design({
+		
+	}),
+	
 	
 	
 	render : function( context, firstTime ) {
@@ -20,6 +44,7 @@ BodyBoard.labelView = SC.View.design({
 		captions = BodyBoard.labelController.get('captions');
 		
 		if( content != null ) {
+			console.log('FirstTime: ',firstTime);
 			console.log('Label content available');
 			name = content.get('name');
 			x = content.get('x');
@@ -41,6 +66,8 @@ BodyBoard.labelView = SC.View.design({
 		*	Currently this does not use the View's actual context, but just creates a new div to use for the overlay
 		*	TODO: Make the overlay div become the View's context or vice versa
 		*/
+		
+		
 		div = document.createElement('div');
 		div.style.backgroundColor = '#ff0000';
 		div.style.color = '#0000ff';
@@ -78,5 +105,7 @@ BodyBoard.labelView = SC.View.design({
 		sc_super();
 		
 	}
+	
+	
 	
 });

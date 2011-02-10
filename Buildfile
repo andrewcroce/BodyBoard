@@ -5,6 +5,8 @@
 
 # Add initial buildfile information here
 
-config :all, :required => [:sproutcore, :ki]
+config :'Thoth-SC', :required => [:sproutcore]
+config :'sproutcore-ui', :required => [:sproutcore]
+config :body_board, :required => [:sproutcore, :ki, :'Thoth-SC']
 
-proxy '/server', :to => '02.dev'
+proxy '/thoth', :to => '02.dev'

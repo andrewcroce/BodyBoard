@@ -1,7 +1,7 @@
 /* @override http://localhost:4020/static/sproutcore/en/desktop/_cache/sc.theme/1228026565/text_field.css */
 /* SC.TextFieldView - sc-theme */
 /* @group Checkbox */
-/* line 4, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
+/* line 4, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
 .sc-list-item-view .sc-checkbox-view {
   position: absolute;
   display: block;
@@ -14,25 +14,25 @@
   background: none;
 }
 
-/* line 16, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
+/* line 16, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
 .sc-list-item-view.sel .sc-checkbox-view {
   background: none;
   border: none;
 }
 
-/* line 21, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
+/* line 21, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
 .sc-list-item-view .sc-checkbox-view.sel {
   background: none;
   border: none;
 }
 
-/* line 26, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
+/* line 26, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
 .sc-list-item-view .sc-checkbox-view.active {
   background: none;
   border: none;
 }
 
-/* line 35, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
+/* line 35, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
 .sc-list-item-view img.disclosure {
   position: absolute;
   left: -11px;
@@ -40,52 +40,52 @@
   margin-top: -6px;
   width: 14px;
   height: 14px;
-  background-image: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439');
+  background-image: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446');
   background-position: -16px -1614px;
 }
 
-/* line 46, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
+/* line 46, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
 .sc-list-item-view img.disclosure.open {
   background-position: 0px -1597px;
 }
 
-/* line 50, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
+/* line 50, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
 .sc-list-item-view img.disclosure.active {
   background-position: 0px -1630px;
 }
 
-/* line 54, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
+/* line 54, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
 .sc-list-item-view img.disclosure.open.active {
   background-position: -16px -1597px;
 }
 
-/* line 59, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
+/* line 59, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
 .sc-list-item-view.disabled img.disclosure,
 .sc-list-item-view.disabled img.disclosure.active {
   background-position: -16px -1630px;
 }
 
-/* line 64, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
+/* line 64, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
 .sc-list-item-view.disabled img.disclosure.open,
 .sc-list-item-view.disabled img.disclosure.open.active {
   background-position: 0px -1613px;
 }
 
-/* line 73, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
+/* line 73, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
 .sc-list-item-view .branch {
-  background-image: url('/static/sproutcore/standard_theme/en/current/images/icons/mini_454545.png?1296791439');
+  background-image: url('/static/sproutcore/standard_theme/en/current/images/icons/mini_454545.png?1297039446');
   background-position: -32px 0;
 }
 
-/* line 79, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
+/* line 79, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/list_item.css.scss */
 .sc-list-item-view.sel .branch,
 .sc-list-item-view.active .branch {
-  background-image: url('/static/sproutcore/standard_theme/en/current/images/icons/mini_ffffff.png?1296791439');
+  background-image: url('/static/sproutcore/standard_theme/en/current/images/icons/mini_ffffff.png?1297039446');
 }
 
 /* @override http://localhost:4020/static/sproutcore/en/desktop/_cache/sc.theme/1227685866/label.css */
 /* SC.LabelView - sc-theme support */
-/* line 6, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/label.css.scss */
+/* line 6, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/label.css.scss */
 .sc-theme .sc-label-view img.icon {
   top: -2px;
   margin-left: 2px;
@@ -94,7 +94,7 @@
   width: 16px;
 }
 
-/* line 2, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/table.css.scss */
+/* line 2, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/table.css.scss */
 .sc-theme .sc-table-header {
   background: -webkit-gradient(linear, left top, left bottom, from(white), to(#e6e6e6));
   -webkit-background-clip: content-box;
@@ -104,60 +104,60 @@
   line-height: 18px;
 }
 
-/* line 13, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/table.css.scss */
+/* line 13, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/table.css.scss */
 .sc-theme .sc-table-header-sort-active {
   background: #eee;
 }
 
 /** SC.Panel Support */
-/* line 4, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/panel.css.scss */
+/* line 4, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/panel.css.scss */
 .sc-theme .sc-pane.sc-panel > .top-right-edge {
-  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1296791439') no-repeat -40px -120px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1297039446') no-repeat -40px -120px;
 }
 
-/* line 8, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/panel.css.scss */
+/* line 8, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/panel.css.scss */
 .sc-theme .sc-pane.sc-panel > .top-left-edge {
-  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1296791439') no-repeat 0px -120px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1297039446') no-repeat 0px -120px;
 }
 
-/* line 12, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/panel.css.scss */
+/* line 12, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/panel.css.scss */
 .sc-theme .sc-pane.sc-panel > .bottom-left-edge {
-  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1296791439') no-repeat 0px -160px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1297039446') no-repeat 0px -160px;
 }
 
-/* line 16, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/panel.css.scss */
+/* line 16, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/panel.css.scss */
 .sc-theme .sc-pane.sc-panel > .bottom-right-edge {
-  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1296791439') no-repeat -40px -160px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1297039446') no-repeat -40px -160px;
 }
 
-/* line 20, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/panel.css.scss */
+/* line 20, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/panel.css.scss */
 .sc-theme .sc-pane.sc-panel > .top-edge {
-  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1296791439') repeat-x 0px -230px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1297039446') repeat-x 0px -230px;
 }
 
-/* line 24, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/panel.css.scss */
+/* line 24, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/panel.css.scss */
 .sc-theme .sc-pane.sc-panel > .bottom-edge {
-  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1296791439') repeat-x 0px -210px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1297039446') repeat-x 0px -210px;
 }
 
-/* line 28, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/panel.css.scss */
+/* line 28, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/panel.css.scss */
 .sc-theme .sc-pane.sc-panel > .left-edge {
-  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-y.png?1296791439') repeat-y 0px 0px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-y.png?1297039446') repeat-y 0px 0px;
 }
 
-/* line 32, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/panel.css.scss */
+/* line 32, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/panel.css.scss */
 .sc-theme .sc-pane.sc-panel > .right-edge {
-  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-y.png?1296791439') repeat-y -20px 0px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-y.png?1297039446') repeat-y -20px 0px;
 }
 
 /* @override http://localhost:4020/static/sproutcore/en/desktop/_cache/sc.theme/1228020574/slider.css */
 /* @group SC.SliderView */
-/* line 6, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
+/* line 6, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
 .sc-theme .sc-slider-view.sc-regular-size {
   height: 21px;
 }
 
-/* line 18, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
+/* line 18, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
 .sc-theme .sc-slider-view .sc-inner {
   display: block;
   position: absolute;
@@ -165,11 +165,11 @@
   right: 12px;
   height: 8px;
   top: 5px;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -170px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -170px;
   border: none;
 }
 
-/* line 29, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
+/* line 29, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
 .sc-theme .sc-slider-view .sc-inner .sc-leftcap {
   display: block;
   position: absolute;
@@ -177,10 +177,10 @@
   right: 1px;
   top: 0;
   bottom: 0;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x left -179px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x left -179px;
 }
 
-/* line 39, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
+/* line 39, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
 .sc-theme .sc-slider-view .sc-inner .sc-rightcap {
   display: block;
   position: absolute;
@@ -189,65 +189,65 @@
   width: 7px;
   top: 0;
   bottom: 0;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -188px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -188px;
 }
 
-/* line 54, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
+/* line 54, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
 .sc-theme.focus .sc-slider-view.disabled .sc-inner,
 .sc-theme.blur .sc-slider-view .sc-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -251px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -251px;
   border: none;
 }
 
-/* line 60, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
+/* line 60, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
 .sc-theme.focus .sc-slider-view.disabled .sc-inner .sc-leftcap,
 .sc-theme.blur .sc-slider-view .sc-inner .sc-leftcap {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x left -260px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x left -260px;
 }
 
-/* line 65, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
+/* line 65, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
 .sc-theme.focus .sc-slider-view.disabled .sc-inner .sc-rightcap,
 .sc-theme.blur .sc-slider-view .sc-inner .sc-rightcap {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -269px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -269px;
 }
 
-/* line 73, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
+/* line 73, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
 .sc-theme .sc-slider-view .sc-handle {
   height: 21px;
   width: 21px;
   margin-left: -6px;
   top: -5px;
   position: absolute;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -25px -333px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -25px -333px;
 }
 
-/* line 82, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
+/* line 82, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
 .sc-theme .sc-slider-view.active .sc-handle {
   background-position: -2px -410px;
 }
 
-/* line 87, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
+/* line 87, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
 .sc-theme.blur .sc-slider-view .sc-handle,
 .sc-theme.focus .sc-slider-view.disabled .sc-handle {
   background-position: -2px -333px;
 }
 
-/* line 91, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
+/* line 91, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/slider.css.scss */
 .sc-theme.focus .sc-slider-view.active .sc-handle {
   background-position: -2px -410px;
 }
 
 /* SC.ProgressView - sc-theme */
 /* @override http://localhost:4020/static/sproutcore/en/desktop/_cache/sc.theme/1227986917/progress.css */
-/* line 6, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/progress.css.scss */
+/* line 6, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/progress.css.scss */
 .sc-theme .sc-progress-view {
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x 0px -1540px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x 0px -1540px;
   border: none;
   border-left: 1px solid #666;
   border-right: 1px solid #666;
 }
 
-/* line 13, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/progress.css.scss */
+/* line 13, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/progress.css.scss */
 .sc-theme .sc-progress-view.disabled {
   opacity: 0.5;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
@@ -255,142 +255,142 @@
   -moz-opacity: 0.5;
 }
 
-/* line 20, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/progress.css.scss */
+/* line 20, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/progress.css.scss */
 .sc-theme .sc-progress-view .sc-inner {
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x 0px -1518px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x 0px -1518px;
   border-right: 1px solid #625560;
 }
 
-/* line 25, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/progress.css.scss */
+/* line 25, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/progress.css.scss */
 .sc-theme .sc-progress-view.sc-indeterminate .sc-inner {
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x 0px -1562px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x 0px -1562px;
 }
 
 /** SC.PickerPane Support */
-/* line 4, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/picker.css.scss */
+/* line 4, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/picker.css.scss */
 .sc-theme .sc-pane.sc-panel.sc-picker .perfectRight {
-  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1296791439') no-repeat 0px -30px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1297039446') no-repeat 0px -30px;
 }
 
-/* line 8, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/picker.css.scss */
+/* line 8, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/picker.css.scss */
 .sc-theme .sc-pane.sc-panel.sc-picker .perfectLeft {
-  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1296791439') no-repeat -30px -30px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1297039446') no-repeat -30px -30px;
 }
 
-/* line 12, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/picker.css.scss */
+/* line 12, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/picker.css.scss */
 .sc-theme .sc-pane.sc-panel.sc-picker .perfectTop {
-  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1296791439') no-repeat 0px -90px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1297039446') no-repeat 0px -90px;
 }
 
-/* line 16, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/picker.css.scss */
+/* line 16, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/picker.css.scss */
 .sc-theme .sc-pane.sc-panel.sc-picker .perfectBottom {
-  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1296791439') no-repeat 0px 0px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/panels/sprite-x.png?1297039446') no-repeat 0px 0px;
 }
 
 /* SC.DisclosureView - sc-theme */
 /* @group disclosure */
 /* @group basic */
-/* line 8, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/disclosure.css.scss */
+/* line 8, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/disclosure.css.scss */
 .sc-theme .sc-button-view.sc-disclosure-view img.button {
   width: 12px;
   height: 12px;
   left: 0;
   top: 3px;
-  background-image: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439');
+  background-image: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446');
 }
 
-/* line 17, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/disclosure.css.scss */
+/* line 17, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/disclosure.css.scss */
 .sc-theme .sc-button-view.sc-disclosure-view.sel img.button {
   background-position: 0px -1597px;
 }
 
-/* line 21, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/disclosure.css.scss */
+/* line 21, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/disclosure.css.scss */
 .sc-theme .sc-button-view.sc-disclosure-view img.button {
   background-position: -16px -1614px;
 }
 
-/* line 25, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/disclosure.css.scss */
+/* line 25, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/disclosure.css.scss */
 .sc-theme .sc-button-view.sc-disclosure-view {
   background: transparent;
 }
 
-/* line 33, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/disclosure.css.scss */
+/* line 33, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/disclosure.css.scss */
 .sc-theme .sc-button-view.sc-disclosure-view.sel.disabled img.button {
   background-position: 0px -1613px;
 }
 
-/* line 37, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/disclosure.css.scss */
+/* line 37, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/disclosure.css.scss */
 .sc-theme .sc-button-view.sc-disclosure-view.disabled img.button {
   background-position: -16px -1630px;
 }
 
-/* line 45, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/disclosure.css.scss */
+/* line 45, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/disclosure.css.scss */
 .sc-theme .sc-button-view.sc-disclosure-view.sel.active img.button {
   background-position: -16px -1597px;
 }
 
-/* line 49, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/disclosure.css.scss */
+/* line 49, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/disclosure.css.scss */
 .sc-theme .sc-button-view.sc-disclosure-view.active img.button {
   background-position: 0px -1630px;
 }
 
-/* line 2, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
+/* line 2, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
 .sc-theme .sc-well-view .top-right-edge {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -1646px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -1646px;
 }
 
-/* line 6, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
+/* line 6, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
 .sc-theme .sc-well-view .top-left-edge {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -1646px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -1646px;
 }
 
-/* line 10, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
+/* line 10, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
 .sc-theme .sc-well-view .bottom-left-edge {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -1657px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -1657px;
 }
 
-/* line 14, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
+/* line 14, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
 .sc-theme .sc-well-view .bottom-right-edge {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -1657px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -1657px;
 }
 
-/* line 18, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
+/* line 18, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
 .sc-theme .sc-well-view .top-edge {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x right -1668px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x right -1668px;
 }
 
-/* line 22, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
+/* line 22, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
 .sc-theme .sc-well-view .bottom-edge {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x right -1680px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x right -1680px;
 }
 
-/* line 26, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
+/* line 26, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
 .sc-theme .sc-well-view .left-edge {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-ysprite.png?1296791439') repeat-y -16px top;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-ysprite.png?1297039446') repeat-y -16px top;
 }
 
-/* line 30, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
+/* line 30, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
 .sc-theme .sc-well-view .right-edge {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-ysprite.png?1296791439') repeat-y -28px top;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-ysprite.png?1297039446') repeat-y -28px top;
 }
 
-/* line 34, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
+/* line 34, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/well.css.scss */
 .sc-theme .sc-well-view .content-background {
   background: #57647f;
   opacity: 0.4;
 }
 
-/* line 2, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 2, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view {
   display: block;
 }
 
-/* line 6, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 6, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segment:active, .sc-segment:focus {
   outline: none;
 }
 
-/* line 10, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 10, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segment img.icon {
   position: relative;
   vertical-align: middle;
@@ -400,7 +400,7 @@
   width: 16px;
 }
 
-/* line 19, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 19, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view.disabled .sc-segment img.icon {
   opacity: 0.5;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
@@ -408,7 +408,7 @@
   -moz-opacity: 0.5;
 }
 
-/* line 28, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 28, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment {
   display: inline-block;
   top: 0;
@@ -421,7 +421,7 @@
   text-align: center;
 }
 
-/* line 40, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 40, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-button-inner {
   display: block;
   min-width: 20px;
@@ -429,7 +429,7 @@
   border: none;
 }
 
-/* line 47, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 47, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment {
   padding-left: 11px;
   padding-right: 0;
@@ -437,14 +437,14 @@
   background: transparent;
 }
 
-/* line 55, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 55, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment .sc-button-inner {
   padding-left: 0;
   padding-right: 11px;
   background: transparent;
 }
 
-/* line 61, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 61, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment label {
   display: block;
   line-height: 24px;
@@ -453,205 +453,205 @@
   background: transparent;
 }
 
-/* line 75, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 75, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sc-last-segment .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -814px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -814px;
 }
 
-/* line 79, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 79, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sc-first-segment {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -789px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -789px;
 }
 
-/* line 83, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 83, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment label {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x left -764px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x left -764px;
   text-shadow: #fff 0px 1px 0px;
 }
 
-/* line 89, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 89, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sc-middle-segment,
 .sc-theme .sc-segmented-view .sc-segment.sc-last-segment {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -839px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -839px;
 }
 
-/* line 94, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 94, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sc-middle-segment .sc-button-inner,
 .sc-theme .sc-segmented-view .sc-segment.sc-first-segment .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -864px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -864px;
 }
 
-/* line 106, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 106, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.active.sc-last-segment .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -939px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -939px;
 }
 
-/* line 110, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 110, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.active.sc-first-segment {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -913px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -913px;
 }
 
-/* line 114, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 114, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.active label {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x left -889px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x left -889px;
   text-shadow: #fff 0px 1px 0px;
   text-shadow: black 0px -1px 0px;
   color: white;
 }
 
-/* line 122, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 122, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.active.sc-middle-segment,
 .sc-theme .sc-segmented-view .sc-segment.active.sc-last-segment {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -964px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -964px;
 }
 
-/* line 127, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 127, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.active.sc-middle-segment .sc-button-inner,
 .sc-theme .sc-segmented-view .sc-segment.active.sc-first-segment .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -989px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -989px;
 }
 
-/* line 138, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 138, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sc-last-segment.disabled .sc-button-inner,
 .sc-theme .sc-segmented-view.disabled .sc-segment.sc-last-segment .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -1064px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -1064px;
 }
 
-/* line 143, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 143, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sc-first-segment.disabled,
 .sc-theme .sc-segmented-view.disabled .sc-segment.sc-first-segment {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -1038px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -1038px;
 }
 
-/* line 148, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 148, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.disabled label,
 .sc-theme .sc-segmented-view.disabled .sc-segment label {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x left -1014px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x left -1014px;
   color: #999;
   text-shadow: none;
 }
 
-/* line 157, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 157, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sc-middle-segment.disabled,
 .sc-theme .sc-segmented-view .sc-segment.sc-last-segment.disabled,
 .sc-theme .sc-segmented-view.disabled .sc-segment.sc-middle-segment,
 .sc-theme .sc-segmented-view.disabled .sc-segment.sc-last-segment {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -1089px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -1089px;
 }
 
-/* line 164, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 164, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sc-middle-segment.disabled .sc-button-inner,
 .sc-theme .sc-segmented-view .sc-segment.sc-first-segment.disabled .sc-button-inner,
 .sc-theme .sc-segmented-view.disabled .sc-segment.sc-middle-segment .sc-button-inner,
 .sc-theme .sc-segmented-view.disabled .sc-segment.sc-first-segment .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -1114px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -1114px;
 }
 
-/* line 174, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 174, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sc-last-segment.sel .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -1190px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -1190px;
 }
 
-/* line 178, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 178, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sc-first-segment.sel {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -1164px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -1164px;
 }
 
-/* line 182, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 182, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sel label {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x left -1140px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x left -1140px;
   text-shadow: black 0px -1px 0px;
   color: white;
 }
 
-/* line 189, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 189, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sc-middle-segment.sel,
 .sc-theme .sc-segmented-view .sc-segment.sc-last-segment.sel {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -1215px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -1215px;
 }
 
-/* line 194, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 194, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sc-middle-segment.sel .sc-button-inner,
 .sc-theme .sc-segmented-view .sc-segment.sc-first-segment.sel .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -1240px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -1240px;
 }
 
-/* line 203, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 203, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sel.sc-last-segment.disabled .sc-button-inner,
 .sc-theme .sc-segmented-view.disabled .sc-segment.sel.sc-last-segment .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -1442px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -1442px;
 }
 
-/* line 208, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 208, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sel.sc-first-segment.disabled,
 .sc-theme .sc-segmented-view.disabled .sc-segment.sel.sc-first-segment {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -1416px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -1416px;
 }
 
-/* line 213, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 213, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sel.disabled label,
 .sc-theme .sc-segmented-view.disabled .sc-segment.sel label {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x left -1392px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x left -1392px;
   color: white;
   text-shadow: none;
 }
 
-/* line 222, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 222, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sel.sc-middle-segment.disabled,
 .sc-theme .sc-segmented-view .sc-segment.sel.sc-last-segment.disabled,
 .sc-theme .sc-segmented-view.disabled .sc-segment.sel.sc-middle-segment,
 .sc-theme .sc-segmented-view.disabled .sc-segment.sel.sc-last-segment {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -1467px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -1467px;
 }
 
-/* line 229, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 229, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.sel.sc-middle-segment.disabled .sc-button-inner,
 .sc-theme .sc-segmented-view .sc-segment.sel.sc-first-segment.disabled .sc-button-inner,
 .sc-theme .sc-segmented-view.disabled .sc-segment.sel.sc-middle-segment .sc-button-inner,
 .sc-theme .sc-segmented-view.disabled .sc-segment.sel.sc-first-segment .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -1492px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -1492px;
 }
 
-/* line 241, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 241, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.active.sel.sc-last-segment .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -1316px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -1316px;
 }
 
-/* line 245, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 245, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.active.sel.sc-first-segment {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -1290px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -1290px;
 }
 
-/* line 249, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 249, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.active.sel label {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x left -1266px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x left -1266px;
   text-shadow: black 0px -1px 0px;
   color: white;
 }
 
-/* line 256, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 256, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.active.sel.sc-middle-segment,
 .sc-theme .sc-segmented-view .sc-segment.active.sel.sc-last-segment {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -1341px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -1341px;
 }
 
-/* line 261, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
+/* line 261, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/segmented.css.scss */
 .sc-theme .sc-segmented-view .sc-segment.active.sel.sc-middle-segment .sc-button-inner,
 .sc-theme .sc-segmented-view .sc-segment.active.sel.sc-first-segment .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -1366px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -1366px;
 }
 
 /* @override http://localhost:4020/static/sproutcore/en/desktop/_cache/sc.theme/1227681631/radio.css */
 /* SC.RadioView - sc-theme */
 /* @group Layout */
-/* line 8, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 8, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view .sc-radio-button .sc-button-label {
   position: relative;
   vertical-align: bottom;
   padding-left: 2px;
 }
 
-/* line 14, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 14, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view .sc-radio-button span.button {
   width: 16px;
   height: 16px;
@@ -659,22 +659,22 @@
   position: relative;
   margin-right: 4px;
   margin-top: -2px;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat 0px -776px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat 0px -776px;
 }
 
-/* line 24, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 24, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view.sc-layout-vertical .sc-radio-button {
   padding-left: 18px;
   position: relative;
   margin-bottom: 3px;
 }
 
-/* line 30, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 30, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view.sc-layout-horizontal .sc-radio-button {
   padding-right: 8px;
 }
 
-/* line 34, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 34, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view.sc-layout-vertical .sc-radio-button span.button {
   position: absolute;
   margin: 0;
@@ -682,7 +682,7 @@
   top: 0;
 }
 
-/* line 42, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 42, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view.sc-layout-horizontal .sc-radio-button span.button {
   position: relative;
   margin: 0;
@@ -691,14 +691,14 @@
   display: inline-block;
 }
 
-/* line 52, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 52, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view.disabled .sc-radio-button,
 .sc-theme .sc-radio-view .sc-radio-button.disabled {
   color: #666;
   color: rgba(0, 0, 0, 0.5);
 }
 
-/* line 57, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 57, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view img.icon {
   position: relative;
   vertical-align: middle;
@@ -709,7 +709,7 @@
   width: 16px;
 }
 
-/* line 68, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 68, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view.disabled img.icon,
 .sc-theme .sc-radio-view .sc-radio-button.disabled img.icon {
   opacity: 0.5;
@@ -718,224 +718,224 @@
   -moz-opacity: 0.5;
 }
 
-/* line 79, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 79, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view .sc-radio-button span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -16px -200px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -16px -200px;
 }
 
-/* line 83, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 83, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view .sc-radio-button.sel span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -32px -280px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -32px -280px;
 }
 
-/* line 87, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 87, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view .sc-radio-button.mixed span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -16px -360px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -16px -360px;
 }
 
-/* line 94, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 94, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view .sc-radio-button.disabled span.button,
 .sc-theme .sc-radio-view.disabled .sc-radio-button span.button,
 .sc-theme .sc-radio-view.disabled .sc-radio-button.active:hover span.button,
 .sc-theme .sc-radio-view .sc-radio-button.disabled.active:hover span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -16px -226px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -16px -226px;
 }
 
-/* line 101, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 101, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view.disabled .sc-radio-button.sel span.button,
 .sc-theme .sc-radio-view.disabled .sc-radio-button.sel.active:hover span.button,
 .sc-theme .sc-radio-view .sc-radio-button.sel.disabled span.button,
 .sc-theme .sc-radio-view .sc-radio-button.sel.disabled.active:hover span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -16px -280px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -16px -280px;
 }
 
-/* line 108, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 108, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view.disabled .sc-radio-button.mixed span.button,
 .sc-theme .sc-radio-view .sc-radio-button.mixed.disabled span.button,
 .sc-theme .sc-radio-view.disabled .sc-radio-button.mixed.active:hover span.button,
 .sc-theme .sc-radio-view .sc-radio-button.mixed.disabled span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat 0px -308px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat 0px -308px;
 }
 
-/* line 113, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 113, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view .sc-radio-button.active:hover span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -32px -200px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -32px -200px;
 }
 
-/* line 117, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 117, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view .sc-radio-button.active.sel:hover span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat 0px -226px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat 0px -226px;
 }
 
-/* line 121, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
+/* line 121, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/radio.css.scss */
 .sc-theme .sc-radio-view .sc-radio-button.mixed.active:hover span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -16px -308px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -16px -308px;
 }
 
 /* Track */
-/* line 3, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 3, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-vertical .track {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-repeat-x.png?1296791439') 0 0 repeat-y;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-repeat-x.png?1297039446') 0 0 repeat-y;
 }
 
-/* line 13, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 13, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-vertical .cap {
   position: absolute;
   width: 14px;
   height: 16px;
   top: 0;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1296791439') -58px -14px no-repeat;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1297039446') -58px -14px no-repeat;
 }
 
-/* line 22, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 22, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-vertical .button-top {
   position: absolute;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1296791439') -30px -14px no-repeat;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1297039446') -30px -14px no-repeat;
   height: 26px;
   width: 14px;
   bottom: 14px;
 }
 
-/* line 30, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 30, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-vertical .button-bottom {
   position: absolute;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1296791439') 0 -40px no-repeat;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1297039446') 0 -40px no-repeat;
   height: 15px;
   width: 14px;
   bottom: 0;
 }
 
-/* line 40, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 40, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-vertical .button-top:active,
 .sc-theme .sc-view.sc-scroller-view.sc-vertical .button-top.active {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1296791439') -44px -14px no-repeat;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1297039446') -44px -14px no-repeat;
 }
 
-/* line 45, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 45, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-vertical .button-bottom:active,
 .sc-theme .sc-view.sc-scroller-view.sc-vertical .button-bottom.active {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1296791439') -14px -40px no-repeat;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1297039446') -14px -40px no-repeat;
 }
 
-/* line 50, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 50, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-vertical .thumb {
   position: absolute;
 }
 
-/* line 54, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 54, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-vertical .thumb-center {
   position: absolute;
   width: 14px;
   top: 10px;
   bottom: 10px;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-repeat-x.png?1296791439') -14px 0 repeat-y;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-repeat-x.png?1297039446') -14px 0 repeat-y;
 }
 
-/* line 62, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 62, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-vertical .thumb-top {
   position: absolute;
   width: 14px;
   top: 0;
   height: 10px;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1296791439') -42px -40px no-repeat;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1297039446') -42px -40px no-repeat;
 }
 
-/* line 70, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 70, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-vertical .thumb-bottom {
   position: absolute;
   width: 14px;
   bottom: 0;
   height: 10px;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1296791439') -28px -40px no-repeat;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1297039446') -28px -40px no-repeat;
 }
 
-/* line 79, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 79, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-horizontal .track {
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-repeat-y.png?1296791439') 0 0 repeat-x;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-repeat-y.png?1297039446') 0 0 repeat-x;
 }
 
-/* line 89, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 89, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-horizontal .cap {
   position: absolute;
   height: 14px;
   width: 16px;
   left: 0;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1296791439') -52px 0 no-repeat;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1297039446') -52px 0 no-repeat;
 }
 
-/* line 98, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 98, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-horizontal .button-top {
   position: absolute;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1296791439') 0 0 no-repeat;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1297039446') 0 0 no-repeat;
   width: 26px;
   height: 14px;
   right: 14px;
 }
 
-/* line 106, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 106, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-horizontal .button-bottom {
   position: absolute;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1296791439') -15px -14px no-repeat;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1297039446') -15px -14px no-repeat;
   width: 15px;
   height: 14px;
   right: 0;
 }
 
-/* line 116, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 116, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-horizontal .button-top:active,
 .sc-theme .sc-view.sc-scroller-view.sc-horizontal .button-top.active {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1296791439') -26px 0px no-repeat;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1297039446') -26px 0px no-repeat;
 }
 
-/* line 121, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 121, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-horizontal .button-bottom:active,
 .sc-theme .sc-view.sc-scroller-view.sc-horizontal .button-bottom.active {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1296791439') 0px -14px no-repeat;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1297039446') 0px -14px no-repeat;
 }
 
-/* line 126, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 126, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-horizontal .thumb {
   position: absolute;
 }
 
-/* line 130, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 130, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-horizontal .thumb-center {
   position: absolute;
   height: 14px;
   left: 10px;
   right: 10px;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-repeat-y.png?1296791439') 0 -14px repeat-x;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-repeat-y.png?1297039446') 0 -14px repeat-x;
 }
 
-/* line 138, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 138, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-horizontal .thumb-top {
   position: absolute;
   height: 14px;
   left: 0;
   width: 10px;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1296791439') -68px 0 no-repeat;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1297039446') -68px 0 no-repeat;
 }
 
-/* line 146, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 146, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.sc-horizontal .thumb-bottom {
   position: absolute;
   height: 14px;
   right: 0;
   width: 10px;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1296791439') -56px -40px no-repeat;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-scroller-sprite.png?1297039446') -56px -40px no-repeat;
 }
 
-/* line 158, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
+/* line 158, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/scroller.css.scss */
 .sc-theme .sc-view.sc-scroller-view.controls-hidden .button-top,
 .sc-theme .sc-view.sc-scroller-view.controls-hidden .button-bottom,
 .sc-theme .sc-view.sc-scroller-view.controls-hidden .thumb,
@@ -943,29 +943,29 @@
   display: none;
 }
 
-/* line 2, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/menu_item_view.css.scss */
+/* line 2, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/menu_item_view.css.scss */
 .sc-theme .sc-menu-item.focus a {
   color: #fff;
   background-color: #5A8EC6;
 }
 
-/* line 7, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/menu_item_view.css.scss */
+/* line 7, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/menu_item_view.css.scss */
 .sc-menu-item div.checkbox {
-  background-image: url('/static/sproutcore/standard_theme/en/current/images/icons/mini_454545.png?1296791439');
+  background-image: url('/static/sproutcore/standard_theme/en/current/images/icons/mini_454545.png?1297039446');
   background-position: -66px -147px;
 }
 
-/* line 12, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/menu_item_view.css.scss */
+/* line 12, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/menu_item_view.css.scss */
 .sc-menu-item.focus div.checkbox {
-  background-image: url('/static/sproutcore/standard_theme/en/current/images/icons/mini_ffffff.png?1296791439');
+  background-image: url('/static/sproutcore/standard_theme/en/current/images/icons/mini_ffffff.png?1297039446');
 }
 
-/* line 16, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/menu_item_view.css.scss */
+/* line 16, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/menu_item_view.css.scss */
 .sc-theme .sc-menu-item .separator {
   margin: 3px 1px 3px 1px;
 }
 
-/* line 20, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/menu_item_view.css.scss */
+/* line 20, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/menu_item_view.css.scss */
 .sc-menu-item span.has-branch {
   position: absolute;
   display: block;
@@ -974,26 +974,26 @@
   text-align: center;
   right: 5px;
   top: 2px;
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/icons/mini_222222.png?1296791439');
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/icons/mini_222222.png?1297039446');
   background-position-x: 0px;
   background-position-y: -160px;
 }
 
-/* line 33, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/menu_item_view.css.scss */
+/* line 33, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/menu_item_view.css.scss */
 .sc-menu-item.focus span.has-branch {
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/icons/mini_ffffff.png?1296791439');
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/icons/mini_ffffff.png?1297039446');
   background-position-x: 0px;
   background-position-y: -160px;
 }
 
 /* SC.CheckboxView - sc-theme */
-/* line 4, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
+/* line 4, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
 .sc-theme .sc-checkbox-view {
   line-height: 18px;
   vertical-align: middle;
 }
 
-/* line 9, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
+/* line 9, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
 .sc-theme .sc-checkbox-view .label {
   position: absolute;
   left: 20px;
@@ -1003,7 +1003,7 @@
   line-height: 18px;
 }
 
-/* line 18, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
+/* line 18, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
 .sc-theme .sc-checkbox-view.icon img.icon {
   position: relative;
   vertical-align: middle;
@@ -1014,15 +1014,15 @@
   width: 16px;
 }
 
-/* line 28, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
+/* line 28, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
 .sc-theme .sc-checkbox-view.disabled {
   color: #666;
   color: rgba(0, 0, 0, 0.5);
 }
 
-/* line 36, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
+/* line 36, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
 .sc-theme .sc-checkbox-view span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -16px -468px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -16px -468px;
   width: 16px;
   height: 16px;
   position: absolute;
@@ -1031,49 +1031,49 @@
   top: 0px;
 }
 
-/* line 46, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
+/* line 46, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
 .sc-theme .sc-checkbox-view.sel span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -32px -495px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -32px -495px;
 }
 
-/* line 50, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
+/* line 50, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
 .sc-theme .sc-checkbox-view.mixed span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat 0px -468px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat 0px -468px;
 }
 
-/* line 54, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
+/* line 54, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
 .sc-theme .sc-checkbox-view.disabled span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -27px -411px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -27px -411px;
 }
 
-/* line 58, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
+/* line 58, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
 .sc-theme .sc-checkbox-view.sel.disabled span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat 0px -495px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat 0px -495px;
 }
 
-/* line 62, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
+/* line 62, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
 .sc-theme .sc-checkbox-view.mixed.disabled span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -32px -441px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -32px -441px;
 }
 
-/* line 66, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
+/* line 66, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
 .sc-checkbox-view.active span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -16px -441px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -16px -441px;
 }
 
-/* line 70, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
+/* line 70, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
 .sc-theme .sc-checkbox-view.sel.active span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -16px -495px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -16px -495px;
 }
 
-/* line 74, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
+/* line 74, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/checkbox.css.scss */
 .sc-theme .sc-checkbox-view.mixed.active span.button {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -16px -388px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -16px -388px;
 }
 
-/* line 2, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/toolbar.css.scss */
+/* line 2, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/toolbar.css.scss */
 .sc-toolbar-view {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x 0px -650px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x 0px -650px;
   border: none;
   border-top: 1px solid #4d5567;
   /* #818ea4; */
@@ -1082,47 +1082,47 @@
 }
 
 /* @group SC.SplitView */
-/* line 4, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/split_view.css.scss */
+/* line 4, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/split_view.css.scss */
 .sc-theme .sc-horizontal .sc-split-divider-view {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-ysprite.png?1296791439') repeat-y 0px top;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-ysprite.png?1297039446') repeat-y 0px top;
 }
 
-/* line 8, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/split_view.css.scss */
+/* line 8, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/split_view.css.scss */
 .sc-theme .sc-vertical .sc-split-divider-view {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x 0px -1397px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x 0px -1397px;
 }
 
-/* line 2, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/pane.css.scss */
+/* line 2, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/pane.css.scss */
 .sc-theme .sc-dialog-pane {
   z-index: 2000;
   background: #494949;
 }
 
-/* line 8, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/pane.css.scss */
+/* line 8, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/pane.css.scss */
 .sc-theme div.sc-ghost-view {
   background-image: url(data:image/gif;base64,R0lGODlhAQABAJAAAP///wAAACH5BAUQAAAALAAAAAABAAEAAAICBAEAOw==) top left no-repeat;
   *background-image: url('') top left no-repeat;
   /* IE < 8 */
 }
 
-/* line 3, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/menu.css.scss */
+/* line 3, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/menu.css.scss */
 .sc-theme .sc-menu-scroller-view.sc-vertical .arrowDown {
   border: none;
   width: 14px;
   height: 14px;
   text-align: center;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat 0px -1598px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat 0px -1598px;
   display: inline-block;
   vertical-align: bottom;
 }
 
-/* line 13, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/menu.css.scss */
+/* line 13, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/menu.css.scss */
 .sc-theme .sc-menu-scroller-view.sc-vertical .arrowUp {
   border: none;
   width: 14px;
   height: 14px;
   text-align: center;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat 0px -1585px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat 0px -1585px;
   display: inline-block;
   vertical-align: bottom;
 }
@@ -1132,19 +1132,19 @@
   theme, just set the theme option in your sc-config to another theme name.
 */
 /* Always use Helvetica and this background color. */
-/* line 8, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
+/* line 8, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
 body.sc-theme {
   font: 12px/18px "Lucida Grande", "Lucida Sans", Verdana, Arial, sans-serif;
   background-color: #57647f;
   padding: 0px;
 }
 
-/* line 15, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
+/* line 15, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
 body.sc-theme .sc-view.invalid {
   outline: 2px red solid;
 }
 
-/* line 21, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
+/* line 21, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
 body.sc-theme .sc-view.sc-bezel-border {
   border-left: 1px #999 solid;
   border-top: 1px #666 solid;
@@ -1152,38 +1152,38 @@ body.sc-theme .sc-view.sc-bezel-border {
   border-right: 1px #fff solid;
 }
 
-/* line 28, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
+/* line 28, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
 body.sc-theme .sc-view.sc-black-border {
   border: 1px black solid;
 }
 
-/* line 32, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
+/* line 32, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
 body.sc-theme .sc-view.sc-gray-border {
   border: 1px #888 solid;
 }
 
-/* line 36, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
+/* line 36, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
 body.sc-theme .sc-view.sc-bottom-border {
   border-bottom: 1px #888 solid;
 }
 
-/* line 40, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
+/* line 40, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
 body.sc-theme .sc-view.sc-top-border {
   border-top: 1px #888 solid;
 }
 
-/* line 46, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
+/* line 46, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
 .sc-theme div.sc-web-view {
   background-color: white;
 }
 
-/* line 50, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
+/* line 50, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
 .sc-theme .sc-pane.sc-main {
   background: -webkit-gradient(linear, left top, left bottom, from(#57647f), to(#848ea2));
   color: white;
 }
 
-/* line 55, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
+/* line 55, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
 .sc-theme #loading {
   position: absolute;
   top: 0;
@@ -1194,7 +1194,7 @@ body.sc-theme .sc-view.sc-top-border {
   color: white;
 }
 
-/* line 65, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
+/* line 65, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/core.css.scss */
 .sc-theme #loading p.loading {
   position: absolute;
   padding: 4px 12px;
@@ -1210,14 +1210,14 @@ body.sc-theme .sc-view.sc-top-border {
 
 /* @override http://localhost:4020/static/sproutcore/standard_theme/en/current/source/button.css?1245946971 */
 /* @group Button Core */
-/* line 6, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 6, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view {
   text-decoration: none;
   border: none;
   padding: 0;
 }
 
-/* line 12, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 12, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.icon img.icon {
   position: relative;
   vertical-align: middle;
@@ -1227,179 +1227,179 @@ body.sc-theme .sc-view.sc-top-border {
   width: 16px;
 }
 
-/* line 27, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 27, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square {
   text-shadow: #fff 0px 1px 0px;
   color: black;
 }
 
-/* line 32, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 32, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square .sc-button-inner {
   display: block;
 }
 
-/* line 36, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 36, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square .sc-button-label {
   display: block;
   text-align: center;
   padding: 0px 0px 7px 0px;
 }
 
-/* line 42, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 42, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.active .sc-button-label {
   text-shadow: black 0px -1px 0px;
   color: white;
 }
 
-/* line 47, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 47, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.square.disabled .sc-button-label {
   color: #999;
   text-shadow: none;
 }
 
-/* line 53, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 53, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.def .sc-button-label,
 .sc-theme .sc-button-view.sc-regular-size.square.sel .sc-button-label {
   color: white;
   text-shadow: #2a569e 0px -1px 0px;
 }
 
-/* line 59, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 59, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.def.disabled .sc-button-label,
 .sc-theme .sc-button-view.sc-regular-size.square.sel.disabled .sc-button-label {
   color: #ddd;
   text-shadow: none;
 }
 
-/* line 70, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 70, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square {
   font-size: 12px;
   max-height: 24px;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -814px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -814px;
 }
 
-/* line 76, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 76, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square .sc-button-inner {
   height: 24px;
   max-height: 24px;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -789px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -789px;
 }
 
-/* line 82, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 82, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square .sc-button-label {
   height: 18px;
   line-height: 24px;
   margin-left: 11px;
   margin-right: 11px;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x -15px -764px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x -15px -764px;
 }
 
-/* line 94, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 94, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.active {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -913px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -913px;
 }
 
-/* line 98, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 98, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.active .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -939px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -939px;
 }
 
-/* line 102, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 102, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.active .sc-button-label {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x right -889px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x right -889px;
 }
 
-/* line 110, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 110, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.disabled {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -1064px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -1064px;
 }
 
-/* line 114, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 114, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.disabled .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -1038px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -1038px;
 }
 
-/* line 118, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 118, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.disabled .sc-button-label {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x left -1014px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x left -1014px;
 }
 
-/* line 127, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 127, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.def,
 .sc-theme .sc-button-view.sc-regular-size.square.sel {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -1190px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -1190px;
 }
 
-/* line 132, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 132, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.def .sc-button-inner,
 .sc-theme .sc-button-view.sc-regular-size.square.sel .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -1164px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -1164px;
 }
 
-/* line 137, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 137, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.def .sc-button-label,
 .sc-theme .sc-button-view.sc-regular-size.square.sel .sc-button-label {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x left -1140px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x left -1140px;
 }
 
-/* line 148, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 148, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.def.active,
 .sc-theme .sc-button-view.sc-regular-size.square.sel.active {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -1316px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -1316px;
 }
 
-/* line 153, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 153, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.def.active .sc-button-inner,
 .sc-theme .sc-button-view.sc-regular-size.square.sel.active .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -1290px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -1290px;
 }
 
-/* line 158, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 158, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.def.active .sc-button-label,
 .sc-theme .sc-button-view.sc-regular-size.square.sel.active .sc-button-label {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x left -1266px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x left -1266px;
 }
 
-/* line 168, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 168, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.def.disabled,
 .sc-theme .sc-button-view.sc-regular-size.square.sel.disabled {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -1442px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -1442px;
 }
 
-/* line 173, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 173, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.def.disabled .sc-button-inner,
 .sc-theme .sc-button-view.sc-regular-size.square.sel.disabled .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat left -1416px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat left -1416px;
 }
 
-/* line 178, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 178, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.sc-regular-size.square.def.disabled .sc-button-label,
 .sc-theme .sc-button-view.sc-regular-size.square.sel.disabled .sc-button-label {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x left -1392px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x left -1392px;
 }
 
-/* line 193, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 193, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule {
   font-size: 12px;
   height: 24px;
   max-height: 24px;
   text-shadow: #fff 0px 1px 0px;
   text-align: center;
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat right -224px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat right -224px;
   color: black;
 }
 
-/* line 203, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 203, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat 0 -197px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat 0 -197px;
   display: block;
   height: 24px;
   max-height: 24px;
 }
 
-/* line 211, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 211, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule .sc-button-label {
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x left -764px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x left -764px;
   display: block;
   text-align: center;
   padding: 0px 0px 7px 0px;
@@ -1410,109 +1410,109 @@ body.sc-theme .sc-view.sc-top-border {
   text-shadow: none;
 }
 
-/* line 228, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 228, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule.sel,
 .sc-theme .sc-button-view.capsule.def {
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat scroll right -304px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat scroll right -304px;
 }
 
-/* line 233, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 233, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule.sel .sc-button-inner,
 .sc-theme .sc-button-view.capsule.def .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat 0 -277px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat 0 -277px;
 }
 
-/* line 238, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 238, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule.sel .sc-button-label,
 .sc-theme .sc-button-view.capsule.def .sc-button-label {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x 0 -1140px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x 0 -1140px;
   color: white;
   text-shadow: #2a569e 0px -1px 0px;
 }
 
-/* line 248, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 248, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule.disabled {
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat scroll right -544px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat scroll right -544px;
 }
 
-/* line 252, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 252, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule.disabled .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat 0 -517px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat 0 -517px;
 }
 
-/* line 256, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 256, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule.disabled .sc-button-label {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x 0 -1014px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x 0 -1014px;
   color: #999;
   text-shadow: none;
 }
 
-/* line 267, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 267, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule.sel.disabled,
 .sc-theme .sc-button-view.capsule.def.disabled {
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat scroll right -544px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat scroll right -544px;
 }
 
-/* line 272, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 272, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule.sel.disabled .sc-button-inner,
 .sc-theme .sc-button-view.capsule.def.disabled .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat 0 -517px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat 0 -517px;
 }
 
-/* line 277, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 277, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule.sel.disabled .sc-button-label,
 .sc-theme .sc-button-view.capsule.def.disabled .sc-button-label {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x 0 -1014px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x 0 -1014px;
   color: #999;
   text-shadow: none;
 }
 
-/* line 288, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 288, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule.sel.active,
 .sc-theme .sc-button-view.capsule.def.active {
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat scroll right -464px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat scroll right -464px;
 }
 
-/* line 293, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 293, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule.sel.active .sc-button-inner,
 .sc-theme .sc-button-view.capsule.def.active .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat 0 -437px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat 0 -437px;
 }
 
-/* line 299, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 299, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule.sel.active .sc-button-label,
 .sc-theme .sc-button-view.capsule.def.active .sc-button-label {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x 0 -1266px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x 0 -1266px;
   color: white;
 }
 
-/* line 308, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 308, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule.active {
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat scroll right -384px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat scroll right -384px;
 }
 
-/* line 312, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 312, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule.active .sc-button-inner {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat 0 -357px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat 0 -357px;
 }
 
-/* line 317, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 317, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule.active .sc-button-label {
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x 0 -889px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x 0 -889px;
   color: white;
 }
 
-/* line 326, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 326, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.focus {
   overflow: visible;
 }
 
-/* line 330, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 330, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view div.focus-ring {
   visibility: hidden;
 }
 
-/* line 334, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 334, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.focus div.focus-ring {
   visibility: visible;
   right: 0px;
@@ -1522,63 +1522,63 @@ body.sc-theme .sc-view.sc-top-border {
   position: absolute;
 }
 
-/* line 342, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 342, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.focus div.focus-ring div {
   top: -3px;
   bottom: -3px;
   position: absolute;
 }
 
-/* line 351, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 351, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.square.focus .focus-ring .focus-left,
 .sc-theme .sc-button-view.dropdown.focus .focus-ring .focus-left,
 .sc-theme .sc-button-view.popup.focus .focus-ring .focus-left {
   left: -2px;
   width: 10px;
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat 0px -1685px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat 0px -1685px;
 }
 
-/* line 359, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 359, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.square.focus .focus-ring .focus-right,
 .sc-theme .sc-button-view.dropdown.focus .focus-ring .focus-right,
 .sc-theme .sc-button-view.popup.focus .focus-ring .focus-right {
   right: -2px;
   width: 10px;
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat scroll right -1717px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat scroll right -1717px;
 }
 
-/* line 367, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 367, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.square.focus .focus-ring .focus-middle,
 .sc-theme .sc-button-view.dropdown.focus .focus-ring .focus-middle,
 .sc-theme .sc-button-view.popup.focus .focus-ring .focus-middle {
   left: 7px;
   right: 7px;
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x 0px -1749px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x 0px -1749px;
 }
 
-/* line 376, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 376, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule div.focus-ring .focus-left {
   left: -3px;
   width: 16px;
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat 0px -1783px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat 0px -1783px;
 }
 
-/* line 382, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 382, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule div.focus-ring .focus-right {
   right: -3px;
   width: 16px;
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -16px -1815px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -16px -1815px;
 }
 
-/* line 388, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
+/* line 388, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/button.css.scss */
 .sc-theme .sc-button-view.capsule div.focus-ring .focus-middle {
   left: 13px;
   right: 13px;
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x 0px -1847px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x 0px -1847px;
 }
 
 /* SC.TabView */
-/* line 4, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/tab.css.scss */
+/* line 4, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/tab.css.scss */
 .sc-theme .sc-tab-view > .sc-container-view {
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1587,7 +1587,7 @@ body.sc-theme .sc-view.sc-top-border {
   overflow: hidden;
 }
 
-/* line 13, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/tab.css.scss */
+/* line 13, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/tab.css.scss */
 .sc-theme .sc-tab-view .sc-tab-view {
   background-color: transparent;
 }
@@ -1597,63 +1597,63 @@ body.sc-theme .sc-view.sc-top-border {
 	http://localhost:4020/static/sproutcore/standard_theme/en/current/source/collection.css?1243569705
 */
 /* @group SC.CollectionView */
-/* line 9, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 9, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-collection-view {
   text-decoration: none;
   color: #000;
 }
 
-/* line 14, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 14, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-collection-view.alternating .sc-collection-item.even {
   background-color: #e4e4e4;
 }
 
-/* line 18, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 18, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-collection-view .sc-collection-item.sel {
   background-color: #ddd;
   color: #333;
 }
 
-/* line 23, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 23, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme.focus .sc-collection-view.alternating .sc-collection-item.even {
   background-color: #f4f7fb;
 }
 
-/* line 27, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 27, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme.focus .sc-collection-view.focus .sc-collection-item.sel {
   background-color: #2370d8;
   color: white;
 }
 
-/* line 36, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 36, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-list-view {
   background-color: white;
 }
 
-/* line 40, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 40, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-list-view .sc-collection-item {
   display: block;
   line-height: 22px;
 }
 
-/* line 45, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 45, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-list-insertion-point {
   overflow: visible;
   background-color: #4e4977;
   z-index: 1000;
 }
 
-/* line 51, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 51, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-list-insertion-point .anchor {
   position: absolute;
   width: 8px;
   top: -2px;
   left: -4px;
   height: 8px;
-  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') no-repeat -32px -1630px;
+  background: url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') no-repeat -32px -1630px;
 }
 
-/* line 64, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 64, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-list-view.sc-source-list {
   background-color: #f0f0f0;
   background-color: rgba(255, 255, 255, 0.8);
@@ -1661,47 +1661,47 @@ body.sc-theme .sc-view.sc-top-border {
   color: #363636;
 }
 
-/* line 71, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 71, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme.focus .sc-list-view.sc-source-list {
   background-color: #d4d7e0;
   background-color: rgba(250, 250, 255, 0.7);
   color: black;
 }
 
-/* line 77, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 77, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-list-view.sc-source-list .sc-collection-item.sel {
   background-color: #ddd;
   border-top: 1px solid #eee;
   font-weight: bold;
 }
 
-/* line 83, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 83, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme.focus .sc-list-view.sc-source-list .sc-collection-item.sel {
-  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1296791439') repeat-x 0px -16px;
+  background: transparent url('/static/sproutcore/standard_theme/en/current/images/sc-theme-repeat-x.png?1297039446') repeat-x 0px -16px;
   color: white;
   border-top: 1px solid #1f4f9b;
   border-bottom: 1px solid #1f4f9b;
   border-right: 0;
-  z-index: 1;
+  z-index: 0;
 }
 
-/* line 92, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 92, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-list-view.sc-source-list .sc-list-item-view label {
   left: 12px;
 }
 
-/* line 97, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 97, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-list-view.sc-source-list .sc-list-item-view.has-icon label,
 .sc-theme .sc-list-view.sc-source-list .sc-list-item-view.has-checkbox label {
   left: 32px;
 }
 
-/* line 101, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 101, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-list-view.sc-source-list .sc-list-item-view.has-checkbox.has-icon label {
   left: 56px;
 }
 
-/* line 105, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 105, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-list-view.sc-source-list .sc-list-item-view img.icon {
   position: absolute;
   left: 10px;
@@ -1709,29 +1709,29 @@ body.sc-theme .sc-view.sc-top-border {
   margin-top: -9px;
 }
 
-/* line 113, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 113, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-list-view.sc-source-list .sc-list-item-view.sel img.icon {
   margin-top: -10px;
 }
 
-/* line 117, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 117, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-list-view.sc-source-list .sc-list-item-view.has-checkbox img.icon {
   left: 30px;
 }
 
-/* line 121, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 121, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-list-view.sc-source-list .sc-list-item-view.sc-group-item {
   text-transform: uppercase;
   color: #2e2f30;
   font-weight: bold;
 }
 
-/* line 127, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 127, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-list-view.sc-source-list .sc-list-item-view.sc-group-item img.icon {
   display: none;
 }
 
-/* line 131, ././tmp/chance//Library/Ruby/Gems/1.8/gems/sproutcore-1.5.0.pre.3/lib/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
+/* line 131, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/themes/standard_theme/english.lproj/collection.css.scss */
 .sc-theme .sc-list-view.sc-source-list .sc-list-item-view.sc-group-item.has-icon label {
   left: 8px;
 }

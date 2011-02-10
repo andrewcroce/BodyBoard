@@ -13,6 +13,10 @@ BodyBoard.createLabelView = SC.View.design(
 	backgroundColor: 'red',
 	layerId : 'create-label-view',
 	
+	/*
+	*	The actual draggable target view is in
+	*/
+	
 	dragLabelView : SC.LabelView.design({
 		classNames : ['form-label'],
 		layout : { left: 35, top: 10 },

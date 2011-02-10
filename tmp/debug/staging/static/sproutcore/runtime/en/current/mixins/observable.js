@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore Costello - Property Observing Library
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -774,7 +774,32 @@ SC.Observable = {
     if (this.didRemoveObserver) this.didRemoveObserver(key, target, method);
     return this;
   },
+  
+  //function(key, target, method, context) {
+  addFiniteObserver: function(key, target, method, context){
+     
+     // normalize.  if a function is passed to target, make it the method.
+     if (method === undefined) {
+       method = target; target = this ;
+     }
+     if (!target) target = this ;
 
+     if (typeof method === "string") method = target[method] ;
+     if (!method) throw "You must pass a method to addObserver()" ;
+
+     var me = this; // replace by context?
+     var f = function() { 
+        var val = me.get(key);
+        var ret = method.call(target,val);
+        console.log("addFiniteObserver function called: val = " + val + " and ret = " + ret);
+        if(ret){
+           me.removeObserver(key, me, f); 
+        }
+     };
+     this.addObserver(key, this, f);
+  },
+  
+  
   /**
     Returns YES if the object currently has observers registered for a
     particular key.  You can use this method to potentially defer performing
@@ -1190,7 +1215,7 @@ SC.Observable = {
     this may be more efficient.
 
     NOTE: By default, the set() method will not set the value unless it has
-    changed. However, this check can skipped by setting .property().idempotent(NO)
+    changed. However, this check can skipped by setting .property().indempotent(NO)
     setIfChanged() may be useful in this case.
 
     @param key {String|Hash} the key to change

@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -67,26 +67,6 @@ SC.ALIGN_MIDDLE = 'middle';
   Indicates that the content should be aligned to the bottom.
 */
 SC.ALIGN_BOTTOM = 'bottom';
-
-/**
-  Indicates that the content should be aligned to the top and left.
-*/
-SC.ALIGN_TOP_LEFT = 'top-left';
-
-/**
-  Indicates that the content should be aligned to the top and right.
-*/
-SC.ALIGN_TOP_RIGHT = 'top-right';
-
-/**
-  Indicates that the content should be aligned to the bottom and left.
-*/
-SC.ALIGN_BOTTOM_LEFT = 'bottom-left';
-
-/**
-  Indicates that the content should be aligned to the bottom and right.
-*/
-SC.ALIGN_BOTTOM_RIGHT = 'bottom-right';
 
 /**
   This variable is here to make the tab focus behavior work like safari's.

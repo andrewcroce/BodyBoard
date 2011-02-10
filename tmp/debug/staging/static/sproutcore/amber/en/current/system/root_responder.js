@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -506,8 +506,7 @@ SC.RootResponder = SC.Object.extend({
 
     // 3. an explicit pane was passed...
     if (pane) {
-      target = this._responderFor(pane, methodName, firstResponder); 
-      if (target) return target;
+      return this._responderFor(pane, methodName, firstResponder) ;
     }
 
     // 4. no target or pane passed... try to find target in the active panes
@@ -528,7 +527,7 @@ SC.RootResponder = SC.Object.extend({
         target = SC.objectForPropertyPath(target) ;
         if (target) this.set('defaultResponder', target) ; // cache if found
       }
-      if (target && !target.isResponderContext) {
+      if (target) {
         if (target.respondsTo && !target.respondsTo(methodName)) {
           target = null ;
         } else if (SC.typeOf(target[methodName]) !== SC.T_FUNCTION) {

@@ -120,17 +120,7 @@ BodyBoard.authorContentView = SC.SplitView.design({
 						recordType: BodyBoard.Label
 					})
 				})
-				/*
-				labelsListView : SC.ListView.design({
-					layout : { top: 70, bottom: 0, left: 10, right: 10 },
-					contentBinding : 'BodyBoard.authorLabelsController.arrangedObjects',
-					selectionBinding : 'BodyBoard.labelsController.selection',
-					selectOnMouseDown : YES,
-					rowHeight: 100,
-					exampleView: BodyBoard.authorLabelListitemView,
-					recordType: BodyBoard.Label
-				})
-				*/
+
 			})
 			
 		}),
@@ -140,7 +130,7 @@ BodyBoard.authorContentView = SC.SplitView.design({
 			
 			layout : { left: 0, right: 0, bottom: 0 },
 			hasHorizontalScroller : NO,
-			backgroundColor : 'red',
+			//backgroundColor : 'red',
 			
 			contentView : SC.View.design({
 				

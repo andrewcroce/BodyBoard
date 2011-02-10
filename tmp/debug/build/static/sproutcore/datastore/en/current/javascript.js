@@ -1,7 +1,7 @@
 /* >>>>>>>>>> BEGIN source/core.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -11,7 +11,7 @@
 /* >>>>>>>>>> BEGIN source/data_sources/data_source.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -353,7 +353,7 @@ SC.DataSource = SC.Object.extend( /** @scope SC.DataSource.prototype */ {
 /* >>>>>>>>>> BEGIN source/data_sources/cascade.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -535,7 +535,7 @@ SC.CascadeDataSource = SC.DataSource.extend(
 /* >>>>>>>>>> BEGIN source/models/record.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -1741,7 +1741,7 @@ SC.Record.mixin( /** @scope SC.Record */ {
 /* >>>>>>>>>> BEGIN source/data_sources/fixtures.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -4831,7 +4831,7 @@ var AuthorFixtures = [{"type": "Author",
 /* >>>>>>>>>> BEGIN source/system/query.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -5586,19 +5586,20 @@ SC.Query = SC.Object.extend(SC.Copyable, SC.Freezable,
         evaluate:       function (r,w) {
                           var all    = this.leftSide.evaluate(r,w) || [];
                           var value = this.rightSide.evaluate(r,w);
-
-                          var allType = SC.typeOf(all);
-                          if (allType === SC.T_STRING) {
-                            return (all.indexOf(value) !== -1);
-                          } else if (allType === SC.T_ARRAY || all.toArray) {
-                            if (allType !== SC.T_ARRAY) all = all.toArray();
-                            var found  = false;
-                            var i      = 0;
-                            while ( found===false && i<all.length ) {
-                              if ( value == all[i] ) found = true;
-                              i++;
-                            }
-                            return found;
+                          switch(SC.typeOf(all)) {
+                            case SC.T_STRING:
+                              return (all.indexOf(value) !== -1); 
+                            case SC.T_ARRAY:
+                              var found  = false;
+                              var i      = 0;
+                              while ( found===false && i<all.length ) {
+                                if ( value == all[i] ) found = true;
+                                i++;
+                              }
+                              return found;
+                            default:
+                              //do nothing
+                              break;
                           }
                         }
     },
@@ -6539,7 +6540,7 @@ SC.ChildRecord = SC.Record.extend(
 /* >>>>>>>>>> BEGIN source/models/record_attribute.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -7304,7 +7305,7 @@ SC.ChildrenAttribute = SC.ChildAttribute.extend(
 /* >>>>>>>>>> BEGIN source/models/fetched_attribute.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -7406,7 +7407,7 @@ SC.FetchedAttribute = SC.RecordAttribute.extend(
 /* >>>>>>>>>> BEGIN source/models/many_attribute.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -7561,7 +7562,7 @@ SC.ManyAttribute = SC.RecordAttribute.extend(
 /* >>>>>>>>>> BEGIN source/models/single_attribute.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -7965,7 +7966,7 @@ SC.ChildArray = SC.Object.extend(SC.Enumerable, SC.Array,
 /* >>>>>>>>>> BEGIN source/system/many_array.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -8385,7 +8386,7 @@ SC.ManyArray = SC.Object.extend(SC.Enumerable, SC.Array,
 /* >>>>>>>>>> BEGIN source/system/store.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -8896,12 +8897,11 @@ SC.Store = SC.Object.extend( /** @scope SC.Store.prototype */ {
       // to nested stores
       if (editState === K.INHERITED) {
         store._notifyRecordPropertyChange(storeKey, statusOnly, key);
-
       } else if (status & SC.Record.BUSY) {
-        // make sure nested store does not have any changes before resetting
-        if(store.get('hasChanges')) throw K.CHAIN_CONFLICT_ERROR;
-        store.reset();
-      }
+            // make sure nested store does not have any changes before resetting
+            if(store.get('hasChanges')) throw K.CHAIN_CONFLICT_ERROR;
+            store.reset();
+         }
     }
     
     // store info in changes hash and schedule notification if needed.
@@ -9912,6 +9912,7 @@ SC.Store = SC.Object.extend( /** @scope SC.Store.prototype */ {
     @returns {Number} storeKey that was retrieved 
   */
   retrieveRecord: function(recordType, id, storeKey, isRefresh) {
+     console.log("retrieveRecord called on the store with id: " + id + " and storekey: " + storeKey);
     var array = this._TMP_RETRIEVE_ARRAY,
         ret;
     
@@ -10437,19 +10438,44 @@ SC.Store = SC.Object.extend( /** @scope SC.Store.prototype */ {
   */
   pushRetrieve: function(recordType, id, dataHash, storeKey) {
     var K = SC.Record, status;
+    var nestedStores = this.get('nestedStores');
     
     if(storeKey===undefined) storeKey = recordType.storeKeyFor(id);
+    
     status = this.readStatus(storeKey);
     if(status==K.EMPTY || status==K.ERROR || status==K.READY_CLEAN || status==K.DESTROYED_CLEAN) {
-      
+      console.log("SC.Store.pushRetrieve: updating record with id " + id + " and storeKey " + storeKey);
       status = K.READY_CLEAN;
       if(dataHash===undefined) this.writeStatus(storeKey, status) ;
       else this.writeDataHash(storeKey, dataHash, status) ;
 
       this.dataHashDidChange(storeKey);
       
+      var store, editState, len, idx;
+      // pass along to nested stores
+      len = nestedStores ? nestedStores.length : 0 ;
+      for(idx=0;idx<len;idx++) {
+        store = nestedStores[idx];
+        if(store.lockOnRead === NO){ // only pass on when lockOnRead === NO
+           console.log("updating nested store in pushRetrieve");
+           store = nestedStores[idx];
+           status = store.peekStatus(storeKey); // important: peek avoids read-lock
+           editState = store.storeKeyEditState(storeKey);
+           console.log("info of nested store: status: " + status + " editState: " + editState);
+           if((status === SC.Record.READY_CLEAN) && ((editState === SC.Store.INHERITED) || (editState === SC.Store.EDITABLE))){
+              console.log("About to write new datahash in nested store");
+              store.writeDataHash(storeKey, dataHash, status);
+              // when updating, set the revision of the root store
+              var rev = this.revisions[storeKey];
+              store.dataHashDidChange(storeKey,rev);
+              //store._notifyRecordPropertyChange(storeKey, null, "*"); // assume all properties changed
+           }
+        }
+      }
+      
       return storeKey;
     }
+    console.log("SC.Store.pushRetrieve: didn't update because of conflict");
     //conflicted (ready)
     return NO;
   },
@@ -11052,7 +11078,7 @@ SC.Store.findAll = function(filter, recordType) {
 /* >>>>>>>>>> BEGIN source/system/nested_store.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -11642,7 +11668,7 @@ SC.NestedStore = SC.Store.extend(
 /* >>>>>>>>>> BEGIN source/system/record_array.js */
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================

@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
+// Copyright: ©2006-2010 Sprout Systems, Inc. and contributors.
 //            Portions ©2008-2010 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
@@ -38,82 +38,19 @@
   and earlier, which do not modify the history stack when the location hash
   changes.
   
-  SC.routes also supports HTML5 history, which uses a '/' instead of a '#'
-  in the URLs, so that all your website's URLs are consistent.
+  @since SproutCore 1.1
 */
 SC.routes = SC.Object.create({
-  
-  /**
-    Set this property to YES if you want to use HTML5 history, if available on
-    the browser, instead of the location hash.
     
-    HTML 5 history uses the history.pushState method and the window's popstate
-    event.
-    
-    By default it is NO, so your URLs will look like:
-    {{{
-      http://domain.tld/my_app#notes/edit/4
-    }}}
-    
-    If set to YES and the browser supports pushState(), your URLs will look
-    like:
-    {{{
-      http://domain.tld/my_app/notes/edit/4
-    }}}
-    
-    You will also need to make sure that baseURI is properly configured, as
-    well as your server so that your routes are properly pointing to your
-    SproutCore application.
-    
-    @see http://dev.w3.org/html5/spec/history.html#the-history-interface
-    @property
-    @type {Boolean}
-  */
-  wantsHistory: NO,
-  
-  /**
-    A read-only boolean indicating whether or not HTML5 history is used. Based
-    on the value of wantsHistory and the browser's support for pushState.
-    
-    @see wantsHistory
-    @property
-    @type {Boolean}
-  */
-  usesHistory: null,
-  
-  /**
-    The base URI used to resolve routes (which are relative URLs). Only used
-    when usesHistory is equal to YES.
-    
-    The build tools automatically configure this value if you have the
-    html5_history option activated in the Buildfile:
-    {{{
-      config :my_app, :html5_history => true
-    }}}
-    
-    Alternatively, it uses by default the value of the href attribute of the
-    <base> tag of the HTML document. For example:
-    {{{
-      <base href="http://domain.tld/my_app">
-    }}}
-    
-    The value can also be customized before or during the exectution of the
-    main() method.
-    
-    @see http://www.w3.org/TR/html5/semantics.html#the-base-element
-    @property
-    @type {String}
-  */
-  baseURI: document.baseURI,
-  
   /** @private
-    A boolean value indicating whether or not the ping method has been called
+    A boolean value indicating whether or the ping method has been called
     to setup the SC.routes.
   
     @property
     @type {Boolean}
   */
   _didSetup: NO,
+  
   
   /** @private
     Internal representation of the current location hash.
@@ -229,7 +166,7 @@ SC.routes = SC.Object.create({
     @type {String}
   */
   location: function(key, value) {
-    var crumbs, encodedValue;
+    var crumbs;
     
     if (value !== undefined) {
       if (value === null) {
@@ -241,22 +178,13 @@ SC.routes = SC.Object.create({
         value = crumbs.route + crumbs.params;
       }
       
-      if (!SC.empty(value) || (this._location && this._location !== value)) {
-        encodedValue = encodeURI(value);
-        
-        if (this.usesHistory) {
-          if (encodedValue.length > 0) {
-            encodedValue = '/' + encodedValue;
-          }
-          window.history.pushState(null, null, this.get('baseURI') + encodedValue);
-        } else {
-          window.location.hash = encodedValue;
-        }
+      if(!SC.empty(value) || (this._location && this._location !== value)) {
+        window.location.hash = encodeURI(value);
       }
-      
       this._location = value;
+      
+      return this;
     }
-    
     return this._location;
   }.property(),
   
@@ -273,29 +201,19 @@ SC.routes = SC.Object.create({
     if (!this._didSetup) {
       this._didSetup = YES;
       
-      if (this.get('wantsHistory') && SC.platform.supportsHistory) {
-        this.usesHistory = YES;
-        
-        this.popState();
-        SC.Event.add(window, 'popstate', this, this.popState);
-        
-      } else {
-        this.usesHistory = NO;
-        
-        if (SC.platform.supportsHashChange) {
-          this.hashChange();
-          SC.Event.add(window, 'hashchange', this, this.hashChange);
+      if (SC.platform.supportsHashChange) {
+        this.hashChange();
+        SC.Event.add(window, 'hashchange', this, this.hashChange);
       
-        } else {
-          // we don't use a SC.Timer because we don't want
-          // a run loop to be triggered at each ping
-          that = this;
-          this._invokeHashChange = function() {
-            that.hashChange();
-            setTimeout(that._invokeHashChange, 100);
-          };
-          this._invokeHashChange();
-        }
+      } else {
+        // we don't use a SC.Timer because we don't want
+        // a run loop to be triggered at each ping
+        that = this;
+        this._invokeHashChange = function() {
+          that.hashChange();
+          setTimeout(that._invokeHashChange, 100);
+        };
+        this._invokeHashChange();
       }
     }
   },
@@ -307,9 +225,7 @@ SC.routes = SC.Object.create({
   hashChange: function(event) {
     var loc = window.location.hash;
     
-    // Remove the '#' prefix
     loc = (loc && loc.length > 0) ? loc.slice(1, loc.length) : '';
-    
     if (!SC.browser.isMozilla) {
       // because of bug https://bugzilla.mozilla.org/show_bug.cgi?id=483304
       loc = decodeURI(loc);
@@ -317,25 +233,8 @@ SC.routes = SC.Object.create({
     
     if (this.get('location') !== loc) {
       SC.run(function() {
-        this.set('location', loc);
+        this.set('location', loc);        
       }, this);
-    }
-  },
-  
-  popState: function(event) {
-    var base = this.get('baseURI'),
-        loc = document.location.href;
-    
-    if (loc.slice(0, base.length) === base) {
-      
-      // Remove the base prefix and the extra '/'
-      loc = loc.slice(base.length + 1, loc.length);
-      
-      if (this.get('location') !== loc) {
-        SC.run(function() {
-          this.set('location', loc);
-        }, this);
-      }
     }
   },
   

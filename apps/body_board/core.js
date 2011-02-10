@@ -22,10 +22,10 @@ BodyBoard = SC.Application.create(
   // to any fixtures you define.
 
 	
-	store: SC.Store.create().from(SC.Record.fixtures), 
+	//store: SC.Store.create().from(SC.Record.fixtures), 
   	
-	//store: SC.Store.create().from('BodyBoard.DataSource'),
-  	//storeType: 'Thoth',
+	store: SC.Store.create().from('BodyBoard.DataSource'),
+  	storeType: 'Thoth',
 	
 	//store: SC.Store.create({ 
 	  //commitRecordsAutomatically: YES

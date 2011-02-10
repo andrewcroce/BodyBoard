@@ -88,18 +88,16 @@ BodyBoard.labelController = SC.ObjectController.create({
 	
 	
 	newLabelDragged : function( event, view ) {
-		
+		var info, loc;
 		console.log('Dragging...')
-		var info =  view._mouseDownInfo;
-		var loc;
-		
+		info =  view._mouseDownInfo;		
 		loc = info.left + ( event.pageX - info.pageX );
 		view.adjust('left', loc);
-		this.set('x', BodyBoard.viewerController.get('position').x);
+		this.set('x', BodyBoard.viewerController.get('mousePosition').x);
 		
 		loc = info.bottom + ( event.pageY - info.pageY );
 		view.adjust('bottom', -loc);
-		this.set('y', BodyBoard.viewerController.get('position').y);
+		this.set('y', BodyBoard.viewerController.get('mousePosition').y);
 		
 		this.invokeLater(function(){
 			console.log(this.get('x'));
@@ -112,7 +110,17 @@ BodyBoard.labelController = SC.ObjectController.create({
 	
 	
 	newLabelRelease : function( event ) {
+		var target,point,placement;
+		//target = document.getElementById('drag-target-view');
+		target = BodyBoard.labelView.create({});
+		target.set('content',this);
+		BodyBoard.getPath('mainPage.bodyView.bodyBoardView').appendChild(target);
+		//BodyBoard.getPath('mainPage.bodyView.bodyBoardView').removeChild(target);
+		//point = new Seadragon.Point(this.get('x'),this.get('y'));
+		//placement = Seadragon.OverlayPlacement.TOP_LEFT;
+		//BodyBoard.viewerController.get('viewer').drawer.addOverlay(target, point, placement);
 		console.log('Target released');
+		
 		return YES;
 	},
 	
