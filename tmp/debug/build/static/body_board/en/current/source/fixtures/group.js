@@ -13,19 +13,19 @@ BodyBoard.Group.FIXTURES = [
   // the example below.
 
 	{ 
-		guid: 1,
+		_id: 1,
 		name: "Admin",
 		//accounts: [1]
 	},
 	
 	{ 
-		guid: 2,
+		_id: 2,
 		name: "Author",
 		//accounts: [2]
 	},
 	
 	{ 
-		guid: 3,
+		_id: 3,
 		name: "Public",
 		//accounts: []
 	}

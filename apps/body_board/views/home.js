@@ -82,6 +82,7 @@ BodyBoard.homeView = SC.View.design({
 				contentBinding : 'BodyBoard.labelsController.arrangedObjects',
 				selectionBinding : 'BodyBoard.labelsController.selection',
 				selectOnMouseDown : YES,
+				canDeleteContent : YES,
 				rowHeight: 50,
 				//contentValueKey : 'name',
 				

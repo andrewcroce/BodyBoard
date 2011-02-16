@@ -13,8 +13,8 @@ BodyBoard.Author.FIXTURES = [
   // the example below.
 
 	{ 
-		guid : 1,
-		account_guid : 1,
+		_id : 1,
+		account_id : 1,
 		firstName : 'Andrew',
 		lastName : 'Croce',
 		title : 'Student',
@@ -27,8 +27,8 @@ BodyBoard.Author.FIXTURES = [
 	},
 	
 	{ 
-		guid : 2,
-		account_guid : 2,
+		_id : 2,
+		account_id : 2,
 		firstName : 'Julia',
 		lastName : 'Bark',
 		title : 'Au.D',

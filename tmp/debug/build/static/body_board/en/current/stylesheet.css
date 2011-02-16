@@ -151,12 +151,7 @@ body {
   color: #33888D;
 }
 
-/* line 110, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
-#body-menu div {
-  background: none;
-}
-
-/* line 113, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 112, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #body-menu {
   background: -moz-linear-gradient(left, #8ad9dc, #80c9cb);
   background: -webkit-gradient(linear, left bottom, right bottom, color-stop(0, #8ad9dc), color-stop(0.6, #80c9cb));

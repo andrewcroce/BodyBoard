@@ -14,12 +14,14 @@
 BodyBoard.Caption = SC.Record.extend(
 /** @scope BodyBoard.Caption.prototype */ {
 
+	primaryKey : '_id',
+	
 	text : SC.Record.attr(String, { isRequired: YES }),
 	votes : SC.Record.attr(Number, { defaultValue: 0 }),
 	
-	label_guid : SC.Record.attr(Number),
+	label_id : SC.Record.attr(Number),
 	label : function(){
-		return BodyBoard.store.find(BodyBoard.Label,this.get('label_guid'));	
+		return BodyBoard.store.find(BodyBoard.Label,this.get('label_id'));	
 	}.property().cacheable(),
 	wimage : SC.Record.toOne('BodyBoard.Image', { inverse: 'caption' })
 

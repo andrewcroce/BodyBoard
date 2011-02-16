@@ -5,8 +5,6 @@
 
 # Add initial buildfile information here
 
-config :'Thoth-SC', :required => [:sproutcore]
-config :'sproutcore-ui', :required => [:sproutcore]
-config :body_board, :required => [:sproutcore, :ki, :'Thoth-SC']
+config :all, :required => [:sproutcore, :ki]
 
-proxy '/thoth', :to => '02.dev'
+proxy '/', :to => 'bodyboard.couchone.com'

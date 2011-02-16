@@ -14,19 +14,21 @@
 BodyBoard.Account = SC.Record.extend(
 /** @scope BodyBoard.Account.prototype */ {
 
+	primaryKey : '_id',
+	
 	verified : SC.Record.attr(Boolean, { defaultValue: NO } ),
 	email : SC.Record.attr(String, { isRequired: YES }),
 	password : SC.Record.attr(String, { isRequired: YES, isPassword: YES }),
 	created : SC.Record.attr(Date),
 	
-	author_guid : SC.Record.attr(Number),
+	author_id : SC.Record.attr(Number),
 	author : function(){
-		return BodyBoard.store.find(BodyBoard.Author,this.get('author_guid'));
+		return BodyBoard.store.find(BodyBoard.Author,this.get('author_id'));
 	}.property().cacheable(),
 	
-	group_guid : SC.Record.attr(Number),
+	group_id : SC.Record.attr(Number),
 	group : function(){
-		return BodyBoard.store.find(BodyBoard.Group,this.get('group_guid'));
+		return BodyBoard.store.find(BodyBoard.Group,this.get('group_id'));
 	}.property().cacheable()
 	
 	

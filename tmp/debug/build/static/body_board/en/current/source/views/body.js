@@ -16,7 +16,6 @@ BodyBoard.bodyView = SC.View.design({
 	
 	bodyMenuView : SC.ScrollView.design({
 		layout : { top: 0, bottom: 0, left: 0, width: menuWidth },
-		layerId : 'body-menu',
 		hasHorizontalScroller : NO,
 		
 		contentView : SC.ListView.design({
@@ -24,7 +23,8 @@ BodyBoard.bodyView = SC.View.design({
 			contentBinding : 'BodyBoard.treeNavController.arrangedObjects',
 			selectionBinding : 'BodyBoard.treeNavController.selection',
 			contentValueKey : 'name',
-			canEditContent : NO,
+			layerId : 'body-menu',
+			canEditContent : YES,
 			canDeleteContent: NO,
 		})
 	}),

@@ -14,7 +14,9 @@
 BodyBoard.System = SC.Record.extend(
 	SC.TreeItemContent,
 /** @scope BodyBoard.System.prototype */ {
-
+	
+	primaryKey : '_id',
+	
 	name : SC.Record.attr(String),
 	src : SC.Record.attr(String),
 

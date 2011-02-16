@@ -14,8 +14,9 @@ BodyBoard.labelView = SC.View.extend(SC.ContentDisplay,{
 	//content : '',
 	//backgroundColor: 'red',
 	
-	childViews : 'spotView titleView moreButtonView captionsView'.w(),
+	childViews : ''.w(),
 	
+	/*
 	spotView : SC.View.design({
 		layout : { top: -8, left: -8, width: 16, height: 16 },
 		backgroundColor: 'blue'
@@ -34,7 +35,7 @@ BodyBoard.labelView = SC.View.extend(SC.ContentDisplay,{
 	captionsView : SC.ListView.design({
 		
 	}),
-	
+	*/
 	
 	
 	render : function( context, firstTime ) {
@@ -44,8 +45,8 @@ BodyBoard.labelView = SC.View.extend(SC.ContentDisplay,{
 		captions = BodyBoard.labelController.get('captions');
 		
 		if( content != null ) {
-			console.log('FirstTime: ',firstTime);
-			console.log('Label content available');
+			//console.log('FirstTime: ',firstTime);
+			//console.log('Label content available');
 			name = content.get('name');
 			x = content.get('x');
 			y = content.get('y');
@@ -61,13 +62,22 @@ BodyBoard.labelView = SC.View.extend(SC.ContentDisplay,{
 		
 		console.log('rendering label: ',name);
 		
+		
+		context = context.begin('h1').push(name).end();
+		context = context.begin('ul');
+		captions.forEach(function(item,index,enumerable){
+			caption = item.get('text');
+			context = context.begin('li').push(caption).end();
+		});
+		context = context.end();
+		
 
 		/*
 		*	Currently this does not use the View's actual context, but just creates a new div to use for the overlay
 		*	TODO: Make the overlay div become the View's context or vice versa
 		*/
 		
-		
+		/*
 		div = document.createElement('div');
 		div.style.backgroundColor = '#ff0000';
 		div.style.color = '#0000ff';
@@ -96,16 +106,27 @@ BodyBoard.labelView = SC.View.extend(SC.ContentDisplay,{
 		} else {
 			console.log('No captions available');
 		}
+		*/
 		
-		//div.innerHTML = name;
-				
-		placement = Seadragon.OverlayPlacement.TOP_LEFT;
-		BodyBoard.viewerController.get('viewer').drawer.addOverlay(div, point, placement);
+		
+		
+		//placement = Seadragon.OverlayPlacement.TOP_LEFT;
+		//BodyBoard.viewerController.get('viewer').drawer.addOverlay(div, point, placement);
+		//BodyBoard.viewerController.get('viewer').drawer.addOverlay(context, point, placement);
 		
 		arguments.callee.base.apply(this,arguments);
 		
-	}
+	},
 	
+	didAppendToDocument : function() {
+		var element,point,placement;
+		console.log('Adding overlay');
+		element = this.$();
+		point = new Seadragon.Point(this.get('x'),this.get('y'));
+		placement = Seadragon.OverlayPlacement.TOP_LEFT;
+		BodyBoard.viewerController.get('viewer').drawer.addOverlay(element,point,placement);
+		console.log(this.$());
+	},
 	
 	
 });; if ((typeof SC !== 'undefined') && SC && SC.Module && SC.Module.scriptDidLoad) SC.Module.scriptDidLoad('body_board');

@@ -13,7 +13,9 @@
 */
 BodyBoard.Author = SC.Record.extend(
 /** @scope BodyBoard.Author.prototype */ {
-
+	
+	primaryKey : '_id',
+	
 	firstName : SC.Record.attr(String, { isRequired: YES } ),
 	lastName : SC.Record.attr(String, { isRequired: YES } ),
 	title : SC.Record.attr(String, { defaultValue: '' } ),
@@ -23,9 +25,9 @@ BodyBoard.Author = SC.Record.extend(
 	
 	
 	//account : SC.Record.toOne('BodyBoard.Account', { inverse: 'author' }),
-	account_guid : SC.Record.attr(Number),
+	account_id : SC.Record.attr(Number),
 	account : function(){
-		return BodyBoard.store.find(BodyBoard.Account,this.get('account_guid'));	
+		return BodyBoard.store.find(BodyBoard.Account,this.get('account_id'));	
 	}.property().cacheable(),
 	
 	

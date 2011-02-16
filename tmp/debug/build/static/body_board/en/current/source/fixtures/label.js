@@ -13,39 +13,39 @@ BodyBoard.Label.FIXTURES = [
   // the example below.
 
 	{
-		guid : 1,
+		_id : 1,
 		name : 'Skull',
 		x : 0,
 		y : 0,
-		author_guid : 1,
-		system_guid : 3
+		author_id : 1,
+		system_id : 3
 	},
 	
 	{
-		guid : 2,
+		_id : 2,
 		name : 'Heart',
 		x : 0.5089341859346928,
 		y : 0.6291716446918595,
-		author_guid : 1,
-		system_guid : 1
+		author_id : 1,
+		system_id : 1
 	},
 	
 	{
-		guid : 3,
+		_id : 3,
 		name : 'Some Body Part',
 		x : 0.3756930,
 		y : 0.7492733,
-		author_guid : 1,
-		system_guid : 1
+		author_id : 1,
+		system_id : 1
 	},
 	
 	{
-		guid : 4,
+		_id : 4,
 		name : 'Some Body Part',
 		x : 0.3756930,
 		y : 0.7492733,
-		author_guid : 1,
-		system_guid : 2
+		author_id : 1,
+		system_id : 2
 	}
 	
 ];

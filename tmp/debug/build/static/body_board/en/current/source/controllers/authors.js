@@ -11,6 +11,8 @@
   @extends SC.ArrayController
 */
 
+sc_require('fixtures/author');
+
 
 BodyBoard.authorsController = SC.ArrayController.create( 
 	
@@ -20,6 +22,22 @@ BodyBoard.authorsController = SC.ArrayController.create(
 	
 	//orderBy : 'rating',
 	//allowsMultipleSelection : NO,
+	
+	isLoadedArray : [],
+	loadedCount : 0,
+	
+	initializeForLoading : function(){
+		var arr = this.get('isLoadedArray');
+		for(var i = 0, len = BodyBoard.Author.FIXTURES.get('length'); i < len; i++){
+			arr.pushObject(NO);
+		}
+	},
+	
+	recordWasLoaded : function(key){
+		this.get('isLoadedArray').replace(key - 1, 1, [YES]);
+		var count = this.get('loadedCount');
+		this.set('loadedCount', count + 1);
+	},
 	
 	addAuthor : function() {
 		

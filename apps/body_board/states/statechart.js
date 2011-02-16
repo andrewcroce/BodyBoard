@@ -7,17 +7,65 @@
 BodyBoard.statechart = Ki.Statechart.create({
 	
 	rootState : Ki.State.design({
-		
-		
+		//initialSubstate : 'STARTING',
+		initialSubstate : 'homeState',
 		
 		// INITIALIZE THE BODYBOARD VIEWER
-		
 		enterState : function() {
 			BodyBoard.viewerController.initViewer();
 		},
 		
 		
+		/*
+		STARTING : Ki.State.design({
+			
+			enterState: function(){
+				BodyBoard.authorsController.initializeForLoading();
+				BodyBoard.systemsController.initializeForLoading();
+				BodyBoard.labelsController.initializeForLoading();
+			
+				if(BodyBoard.get('storeType') === 'Thoth'){
+					this.gotoState('LOADING_AUTHORS');
+				} else {
+					this.gotoState('LOADING_APP');
+				}
+			}
+			
+		}),
 		
+		
+		LOADING_AUTHORS : Ki.State.design({
+			
+			enterState : function(){
+				return this.performAsync('loadAuthors');
+			},
+			
+			loadAuthors : function(){
+				
+			},
+			
+			generateCheckAuthorsFunction : function(){
+				var me = this;
+				return function(val) {
+					if(val & SC.Record.READY_CLEAN){
+						return YES;
+					} else {
+						return NO;
+					}
+				}
+			}
+			
+		}),
+		
+		AUTHORS_LOADED : Ki.State.design({
+			
+		}),
+		
+		
+		LOADING_APP : Ki.State.design({
+			
+		}),
+		*/
 		
 		
 		/*
@@ -26,7 +74,7 @@ BodyBoard.statechart = Ki.Statechart.create({
 		* The initial state is, which automatically checks if the user is logged in
 		*/
 		
-		initialSubstate : 'homeState',
+
 		loginState : Ki.State.design({
 			
 			
@@ -160,11 +208,19 @@ BodyBoard.statechart = Ki.Statechart.create({
 					console.log('Entered logged-in state');
 					BodyBoard.getPath('loginPage.mainPane').remove();
 					BodyBoard.setPath('mainPage.mainPane.topView.loginNavView.nowShowing','accountNavView');
+					BodyBoard.setPath('mainPage.bodyView.bodyMenuView.contentView.canEditContent',YES);
+					BodyBoard.setPath('mainPage.bodyView.bodyMenuView.contentView.canDeleteContent',YES);
+					
 					//Moved to loginController.completeLogin
 					//BodyBoard.accountController.set('content', BodyBoard.store.find('BodyBoard.Account', 1) );
 					//BodyBoard.authorsController.selectObject(BodyBoard.accountController.get('author'));
 					BodyBoard.setPath('mainPage.mainPane.middleView.topLeftView.contentView.nowShowing','authorContentView');
 					//BodyBoard.setPath('mainPage.mainPane.middleView.scrollView.contentView.nowShowing','authorContentView');
+				},
+				
+				exitState : function(){
+					BodyBoard.setPath('mainPage.bodyView.bodyMenuView.contentView.canEditContent',NO);
+					BodyBoard.setPath('mainPage.bodyView.bodyMenuView.contentView.canDeleteContent',NO);
 				},
 				
 				requestLogout : function() {
@@ -235,20 +291,29 @@ BodyBoard.statechart = Ki.Statechart.create({
 						console.log('Entered create label state');
 						BodyBoard.setPath('mainPage.bodyView.editPanelView.nowShowing','createLabelView');
 						BodyBoard.setPath('mainPage.bodyView.dragTargetView.isVisible', YES);
+						BodyBoard.systemsController.set('allowsSelection',NO);
 						BodyBoard.labelsController.addLabel();
+						BodyBoard.labelController.set('isEditable',YES);
 					},
 					
 					requestSaveLabel : function(){
 						console.log('Requested save new label');
-						BodyBoard.labelController.saveLabel();
+						BodyBoard.setPath('mainPage.bodyView.editPanelView.nowShowing',null);
+						BodyBoard.setPath('mainPage.bodyView.dragTargetView.isVisible', NO);
+						this.gotoState('loggedInDefaultState')
+						BodyBoard.labelsController.saveLabel();
+						BodyBoard.systemsController.set('allowsSelection',YES);
 					}, 
 					
 					requestCancelCreateLabel : function(){
 						console.log('Requested cancel create label');
-						BodyBoard.setPath('mainPage.bodyView.editPanelView.nowShowing','emptyView');
+						BodyBoard.setPath('mainPage.bodyView.editPanelView.nowShowing',null);
 						BodyBoard.setPath('mainPage.bodyView.dragTargetView.isVisible', NO);
+						BodyBoard.systemsController.set('allowsSelection',YES);
+						//BodyBoard.labelsController.cancelLabelCreation();
+						BodyBoard.labelsController.set('isDeleteOk',YES);
+						BodyBoard.labelsController.deleteLabel();
 						this.gotoState('loggedInDefaultState');
-						BodyBoard.labelController.cancelLabelCreation();
 						
 					}
 					

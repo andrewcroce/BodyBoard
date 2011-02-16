@@ -83,7 +83,7 @@ BodyBoard.viewerController = SC.ObjectController.create(
 		var point = this.get('viewer').viewport.pointFromPixel(pixel);
 		this.set('mousePosition', point);
 		this.invokeLater(function(){
-			//console.log(this.get('position'));
+			//console.log(this.get('mousePosition'));
 			
 		});
 	},

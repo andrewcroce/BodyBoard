@@ -15,21 +15,21 @@ BodyBoard.main = function main() {
 
 
 	// Create the data source if it doesn't exist already. (FORCE)
-	var initDS = BodyBoard.store._getDataSource();
+	//var initDS = BodyBoard.store._getDataSource();
 	
 	BodyBoard.getPath('mainPage.mainPane').append() ;
 		
 	
-	var authors = BodyBoard.store.find(SC.Query.local(BodyBoard.Author));
-	//var authors = BodyBoard.store.find(BodyBoard.AUTHORS_QUERY);
+	//var authors = BodyBoard.store.find(SC.Query.local(BodyBoard.Author));
+	var authors = BodyBoard.store.find(BodyBoard.AUTHORS_QUERY);
 	BodyBoard.authorsController.set('content', authors);
 	
-	var systems = BodyBoard.store.find(SC.Query.local(BodyBoard.System));
-	//var systems = BodyBoard.store.find(BodyBoard.SYSTEMS_QUERY);
+	//var systems = BodyBoard.store.find(SC.Query.local(BodyBoard.System));
+	var systems = BodyBoard.store.find(BodyBoard.SYSTEMS_QUERY);
 	BodyBoard.systemsController.set('content', systems);
 	
-	var labels = BodyBoard.store.find(SC.Query.local(BodyBoard.Label));
-	//var labels = BodyBoard.store.find(BodyBoard.LABELS_QUERY);
+	//var labels = BodyBoard.store.find(SC.Query.local(BodyBoard.Label));
+	var labels = BodyBoard.store.find(BodyBoard.LABELS_QUERY);
 	BodyBoard.labelsController.set('content', labels);
 	
 	BodyBoard.treeNavController.populate();

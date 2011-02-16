@@ -14,6 +14,7 @@
 BodyBoard.Comment = SC.Record.extend(
 /** @scope BodyBoard.Comment.prototype */ {
 
+	
 	text : SC.Record.attr(String, { isRequired: YES }),
 	
 	author : SC.Record.toOne('BodyBoard.Author', { inverse: 'comments' }),

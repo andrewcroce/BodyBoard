@@ -15,19 +15,21 @@ BodyBoard.Label = SC.Record.extend(
 	SC.TreeItemContent,
 /** @scope BodyBoard.Label.prototype */ {
 
+	primaryKey : '_id',
+	
 	name : SC.Record.attr(String, { isRequired: YES }),
 	x : SC.Record.attr(Number),
 	y : SC.Record.attr(Number),
 	
-	author_guid : SC.Record.attr(Number),
-	system_guid : SC.Record.attr(Number),
+	author_id : SC.Record.attr(Number),
+	system_id : SC.Record.attr(Number),
 	
 	author : function(){
-		return BodyBoard.store.find(BodyBoard.Author, this.get('author_guid'));
+		return BodyBoard.store.find(BodyBoard.Author, this.get('author_id'));
 	}.property().cacheable(),
 	
 	system : function(){
-		return BodyBoard.store.find(BodyBoard.System, this.get('system_guid'));
+		return BodyBoard.store.find(BodyBoard.System, this.get('system_id'));
 	}.property().cacheable(),
 	
 	captions : function(){

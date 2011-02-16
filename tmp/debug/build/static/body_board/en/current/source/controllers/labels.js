@@ -17,26 +17,99 @@ BodyBoard.labelsController = SC.ArrayController.create(
 
   	orderBy : 'name',
 	allowsMultipleSelection : NO,
+	isEditing : YES,
+	isSaveOk : NO,
+	isDeleteOk : NO,
+	buffer : null,
+	
+	/*
+	isLoadedArray : [],
+	loadedCount : 0,
+	
+	initializeForLoading : function(){
+		var arr = this.get('isLoadedArray');
+		for(var i = 0, len = BodyBoard.Label.FIXTURES.get('length'); i < len; i++){
+			arr.pushObject(NO);
+		}
+	},
+	
+	recordWasLoaded : function(key){
+		this.get('isLoadedArray').replace(key - 1, 1, [YES]);
+		var count = this.get('loadedCount');
+		this.set('loadedCount', count + 1);
+	},
+	*/
 	
 	addLabel : function(){
 		console.log('Adding a label');
+		//this.setPath('BodyBoard.labelController.allowSystemSet',NO);
+		//this.setPath('BodyBoard.systemsController.allowsSelection',NO);
 		var label;
+		this.set('buffer', BodyBoard.store.chain());
+		
 		label = BodyBoard.store.createRecord(BodyBoard.Label, {
+		//label = this.get('buffer').createRecord(BodyBoard.Label, {
 			'name' : 'New Label',
+			//'x' : BodyBoard.viewerController.get('center').x,
+			//'y' : BodyBoard.viewerController.get('center').y,
 			'x' : 0.5,
 			'y' : 0.5,
-			'author_guid' : BodyBoard.authorController.get('id'),
-			'system_guid' : BodyBoard.systemController.get('id')
+			'author_id' : BodyBoard.authorController.get('id'),
+			'system_id' : BodyBoard.systemController.get('id')
 		});
 
 		this.invokeLast(function() { 
 			this.selectObject(label);
-			//this.get('selection').set('system',BodyBoard.systemsController.get('selection'));
+			this.set('isSaveOk',YES);
+			this.set('isDeleteOk',YES);
+			BodyBoard.labelController.set('BodyBoard.labelController.isEditable',YES);
+			this.editLabel();
 		});
 		return YES;
 		
-	}
+	},
+	
+	editLabel : function() {
+		if(BodyBoard.labelController.get('isEditable') == YES){
+			var label;
+			label = this.get('selection');
+			console.log('Editing label: ',label.get('name'));
+		}
+	},
+	
+	saveLabel : function() {
+		if(this.get('isSaveOk') == YES) {
+			this.get('buffer').commitChanges();
+			this.set('buffer',null);
+			//BodyBoard.labelController.set('BodyBoard.labelController.isEditable',NO);
+		}
+	},
+	
+	deleteLabel : function() {
+		if(this.get('isDeleteOk') == YES) {
+			var label = this.get('selection');	
+			console.log('deleting label');
+			BodyBoard.labelController.set('allowSystemSet',NO);
+			label.destroy();
+			this.set('isDeleteOk',NO);
+			BodyBoard.labelController.set('allowSystemSet',YES);
+		}
+	},
+	
+	
+	collectionViewDeleteContent: function(view, content, indexes) {
 
+	    // destroy the records
+	    var records = indexes.map(function(idx) {
+	      return this.objectAt(idx);
+	    }, this);
+	    records.invoke('destroy');
+
+	    var selIndex = indexes.get('min')-1;
+	    if (selIndex<0) selIndex = 0;
+	    this.selectObject(this.objectAt(selIndex));
+	  }
+	
 });
 
 
@@ -47,17 +120,21 @@ BodyBoard.labelsController = SC.ArrayController.create(
 BodyBoard.labelController = SC.ObjectController.create({
 	
 	contentBinding : SC.Binding.single('BodyBoard.labelsController.selection'),
-	
-	
+	allowSystemSet : YES,
+	isEditable : NO,
 	
 	setSystemOnSelection : function(){
 	
-		var currentSystem = BodyBoard.systemController.get('content');
-		if( currentSystem != this.get('system') ){
-			console.log('Selected label, changing system');
-			BodyBoard.systemsController.selectObject(this.get('system'));
+		if(this.get('allowSystemSet') == YES){
+			var currentSystem = BodyBoard.systemController.get('content');
+			if( currentSystem != this.get('system') ){
+				console.log('Selected label, changing system');
+				BodyBoard.systemsController.selectObject(this.get('system'));
+			}
+			this.focusOnLabel();
+		} else {
+			console.log('System setting blocked');
 		}
-		this.focusOnLabel();
 		
 	}.observes('content'),
 	
@@ -125,37 +202,7 @@ BodyBoard.labelController = SC.ObjectController.create({
 	},
 	
 	
-	beginCreatingLabel : function() {
-		console.log('Beginning Label Creation');
-		//BodyBoard.labelsController.addLabel();
-	},
-	
-	finishCreatingLabel : function() {
-		
-	},
-	
-	cancelLabelCreation : function() {
-		console.log('Cancelled label creation');
-		BodyBoard.setPath('mainPage.bodyView.dragTargetView.layout', {
-			width: 15, height: 15, bottom: 45, left: 142
-		});
-	},
-	
-	
-	saveLabel : function() {
-		var labelRecord = this.get('content');
-		if( labelRecord && labelRecord.isRecord ) {
-			labelRecord.commitRecord();
-			console.log('Label Saved');
-		} else {
-			if(!labelRecord.isRecord){
-				alert('Label isnt a record');
-			} else {
-				alert('Problem saving label');
-			}
-		}
-		return YES;
-	}
+
 	
 });
 ; if ((typeof SC !== 'undefined') && SC && SC.Module && SC.Module.scriptDidLoad) SC.Module.scriptDidLoad('body_board');
