@@ -101,7 +101,16 @@ body {
 #body-menu .has-disclosure label {
 	color: #33888D;
 }
-
+#body-menu .sel {
+	background: -moz-linear-gradient(left,  rgb(137,201,205), rgb(132,193,196));
+	background: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    right bottom,
+	    color-stop(0, rgb(137,201,205)),
+	    color-stop(.6, rgb(132,193,196))
+	);
+}
 
 
  

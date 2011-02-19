@@ -37,6 +37,7 @@ BodyBoard.Label = SC.Record.extend(
 		return BodyBoard.store.find(query);
 	}.property().cacheable(),
 	
+	
 	isTreeItemContent : YES,
 	treeItemChildren : null,
 	treeItemIsExpanded : NO,

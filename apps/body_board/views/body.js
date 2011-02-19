@@ -6,13 +6,12 @@
 
 var menuWidth = 130;
 sc_require('views/label/label');
-sc_require('views/label/label2');
 sc_require('views/label/drag_target');
 
 BodyBoard.bodyView = SC.View.design({
 	
 	layout: { top: 0, bottom: 0, right: 0 },
-	childViews : 'bodyMenuView labelsView bodyBoardView editPanelView dragTargetView'.w(),
+	childViews : 'bodyMenuView bodyBoardView editPanelView dragTargetView'.w(),
 	
 	bodyMenuView : SC.ScrollView.design({
 		layout : { top: 0, bottom: 0, left: 0, width: menuWidth },
@@ -25,7 +24,7 @@ BodyBoard.bodyView = SC.View.design({
 			contentValueKey : 'name',
 			layerId : 'body-menu',
 			canEditContent : YES,
-			canDeleteContent: NO,
+			canDeleteContent: YES,
 		})
 	}),
 	
@@ -38,17 +37,6 @@ BodyBoard.bodyView = SC.View.design({
 			BodyBoard.viewerController.setMousePosition( event );
 		},
 
-	}),
-	
-	
-	labelsView : SC.ListView.design({
-		layout : { top: 0, bottom: 0, right: 0, left: menuWidth+2 },
-		layerId : 'label-collection',
-		rowHeight : 25,
-		contentBinding :'BodyBoard.systemController.labels',
-		exampleView : BodyBoard.label2View,
-		recordType: BodyBoard.Label,
-		canEditContent : YES,
 	}),
 	
 	

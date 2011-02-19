@@ -23,7 +23,7 @@ BodyBoard.Caption = SC.Record.extend(
 	label : function(){
 		return BodyBoard.store.find(BodyBoard.Label,this.get('label_id'));	
 	}.property().cacheable(),
-	wimage : SC.Record.toOne('BodyBoard.Image', { inverse: 'caption' })
+	//image : SC.Record.toOne('BodyBoard.Image', { inverse: 'caption' })
 
 }) ;
 ; if ((typeof SC !== 'undefined') && SC && SC.Module && SC.Module.scriptDidLoad) SC.Module.scriptDidLoad('body_board');

@@ -151,7 +151,13 @@ body {
   color: #33888D;
 }
 
-/* line 112, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 104, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#body-menu .sel {
+  background: -moz-linear-gradient(left, #89c9cd, #84c1c4);
+  background: -webkit-gradient(linear, left bottom, right bottom, color-stop(0, #89c9cd), color-stop(0.6, #84c1c4));
+}
+
+/* line 121, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #body-menu {
   background: -moz-linear-gradient(left, #8ad9dc, #80c9cb);
   background: -webkit-gradient(linear, left bottom, right bottom, color-stop(0, #8ad9dc), color-stop(0.6, #80c9cb));

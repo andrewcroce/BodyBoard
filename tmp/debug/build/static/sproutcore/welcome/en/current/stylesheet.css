@@ -1,8 +1,29 @@
-/* >>>>>>>>>> BEGIN source/main_page.css */
-h1.sc-view.heading {
-  font-size: 24px;
-  letter-spacing: -2px;
-  line-height: 1.1;
-  margin: 0;
-  padding: 0;
+/* line 2, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/apps/welcome/english.lproj/main_page.css.scss */
+.sc-view.sc-main {
+  background: #262b32 url('/static/sproutcore/welcome/en/current/images/main-bg.png?1297039445') repeat;
+}
+
+/* line 6, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/apps/welcome/english.lproj/main_page.css.scss */
+.app-selector {
+  background-color: #f4f4f4;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border: 1px solid #f4f4f4;
+  border-bottom-color: #fff;
+  -webkit-box-shadow: inset rgba(0, 0, 0, 0.3) 0 3px 8px;
+  -moz-box-shadow: inset rgba(0, 0, 0, 0.3) 0 3px 8px;
+}
+
+/* line 16, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/apps/welcome/english.lproj/main_page.css.scss */
+.sc-list-view .sc-list-item-view {
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+}
+
+/* line 21, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/apps/welcome/english.lproj/main_page.css.scss */
+.sc-list-view .sc-list-item-view:first-child {
+  -webkit-border-top-left-radius: 8px;
+  -webkit-border-top-right-radius: 8px;
+  -moz-border-radius-topleft: 8px;
+  -moz-border-radius-topright: 8px;
 }

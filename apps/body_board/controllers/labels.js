@@ -22,23 +22,6 @@ BodyBoard.labelsController = SC.ArrayController.create(
 	isDeleteOk : NO,
 	buffer : null,
 	
-	/*
-	isLoadedArray : [],
-	loadedCount : 0,
-	
-	initializeForLoading : function(){
-		var arr = this.get('isLoadedArray');
-		for(var i = 0, len = BodyBoard.Label.FIXTURES.get('length'); i < len; i++){
-			arr.pushObject(NO);
-		}
-	},
-	
-	recordWasLoaded : function(key){
-		this.get('isLoadedArray').replace(key - 1, 1, [YES]);
-		var count = this.get('loadedCount');
-		this.set('loadedCount', count + 1);
-	},
-	*/
 	
 	addLabel : function(){
 		console.log('Adding a label');
@@ -62,7 +45,6 @@ BodyBoard.labelsController = SC.ArrayController.create(
 			this.selectObject(label);
 			this.set('isSaveOk',YES);
 			this.set('isDeleteOk',YES);
-			BodyBoard.labelController.set('BodyBoard.labelController.isEditable',YES);
 			this.editLabel();
 		});
 		return YES;
@@ -81,7 +63,6 @@ BodyBoard.labelsController = SC.ArrayController.create(
 		if(this.get('isSaveOk') == YES) {
 			this.get('buffer').commitChanges();
 			this.set('buffer',null);
-			//BodyBoard.labelController.set('BodyBoard.labelController.isEditable',NO);
 		}
 	},
 	
@@ -131,7 +112,7 @@ BodyBoard.labelController = SC.ObjectController.create({
 				console.log('Selected label, changing system');
 				BodyBoard.systemsController.selectObject(this.get('system'));
 			}
-			this.focusOnLabel();
+			
 		} else {
 			console.log('System setting blocked');
 		}
@@ -170,15 +151,15 @@ BodyBoard.labelController = SC.ObjectController.create({
 		info =  view._mouseDownInfo;		
 		loc = info.left + ( event.pageX - info.pageX );
 		view.adjust('left', loc);
-		this.set('x', BodyBoard.viewerController.get('mousePosition').x);
+		//this.set('x', BodyBoard.viewerController.get('mousePosition').x);
 		
 		loc = info.bottom + ( event.pageY - info.pageY );
 		view.adjust('bottom', -loc);
-		this.set('y', BodyBoard.viewerController.get('mousePosition').y);
+		//this.set('y', BodyBoard.viewerController.get('mousePosition').y);
 		
 		this.invokeLater(function(){
-			console.log(this.get('x'));
-			console.log(this.get('y'));
+			//console.log(this.get('x'));
+			//console.log(this.get('y'));
 			
 		});
 		
@@ -187,15 +168,13 @@ BodyBoard.labelController = SC.ObjectController.create({
 	
 	
 	newLabelRelease : function( event ) {
-		var target,point,placement;
-		//target = document.getElementById('drag-target-view');
+		var target;
+		this.set('x', BodyBoard.viewerController.get('mousePosition').x);
+		this.set('y', BodyBoard.viewerController.get('mousePosition').y);
 		target = BodyBoard.labelView.create({});
 		target.set('content',this);
+		console.log(target.get('x'),',',target.get('y'))
 		BodyBoard.getPath('mainPage.bodyView.bodyBoardView').appendChild(target);
-		//BodyBoard.getPath('mainPage.bodyView.bodyBoardView').removeChild(target);
-		//point = new Seadragon.Point(this.get('x'),this.get('y'));
-		//placement = Seadragon.OverlayPlacement.TOP_LEFT;
-		//BodyBoard.viewerController.get('viewer').drawer.addOverlay(target, point, placement);
 		console.log('Target released');
 		
 		return YES;

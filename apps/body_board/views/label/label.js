@@ -7,14 +7,17 @@
 sc_require('controllers/viewer');
 sc_require('controllers/systems');
 
-BodyBoard.labelView = SC.View.extend(SC.ContentDisplay,{
+BodyBoard.labelView = SC.View.extend(
+SC.ContentDisplay,
+{
 	
-	layout : { left: 0, right: 0, height: 20, width: 100 },
+	layout : { left: 0, right: 0, width: 200, height: 50 },
 	contentDisplayProperties : 'name captions'.w(),
-	//content : '',
-	//backgroundColor: 'red',
+	useStaticLayout: YES,
+	backgroundColor: 'red',
+	classNames : 'body-label-view'.w(),
 	
-	childViews : ''.w(),
+	childViews : 'captionsView'.w(),
 	
 	/*
 	spotView : SC.View.design({
@@ -31,18 +34,20 @@ BodyBoard.labelView = SC.View.extend(SC.ContentDisplay,{
 	moreButtonView : SC.ButtonView.design({
 		
 	}),
-	
-	captionsView : SC.ListView.design({
-		
-	}),
 	*/
+	captionsView : SC.StaticContentView.design({
+		content : SC.CollectionView.design({
+			
+		})
+	}),
+	
 	
 	
 	render : function( context, firstTime ) {
 		
 		var content,name,x,y,point,placement,captions,div,h1,ul;
 		content = this.get('content');
-		captions = BodyBoard.labelController.get('captions');
+		//captions = BodyBoard.labelController.get('captions');
 		
 		if( content != null ) {
 			//console.log('FirstTime: ',firstTime);
@@ -51,6 +56,8 @@ BodyBoard.labelView = SC.View.extend(SC.ContentDisplay,{
 			x = content.get('x');
 			y = content.get('y');
 			captions = content.get('captions');
+			this.setPath('captionsView.content',captions);
+			console.log(captions);
 			point = new Seadragon.Point( x, y );
 		} else {
 			console.log('no content available for label');
@@ -65,10 +72,13 @@ BodyBoard.labelView = SC.View.extend(SC.ContentDisplay,{
 		
 		context = context.begin('h1').push(name).end();
 		context = context.begin('ul');
-		captions.forEach(function(item,index,enumerable){
-			caption = item.get('text');
-			context = context.begin('li').push(caption).end();
-		});
+		if(typeof captions != 'undefined'){
+			captions.forEach(function(item,index,enumerable){
+				text = item.get('text');
+				console.log(text);
+				//context = context.begin('li').push(text).end();
+			});	
+		}
 		context = context.end();
 		
 
@@ -118,14 +128,14 @@ BodyBoard.labelView = SC.View.extend(SC.ContentDisplay,{
 		
 	},
 	
-	didAppendToDocument : function() {
-		var element,point,placement;
+	didCreateLayer : function() {
 		console.log('Adding overlay');
-		element = this.$();
-		point = new Seadragon.Point(this.get('x'),this.get('y'));
+		var content,element,point,placement;
+		content = this.get('content');
+		element = this.$()[0];
+		point = new Seadragon.Point(content.get('x'),content.get('y'));
 		placement = Seadragon.OverlayPlacement.TOP_LEFT;
 		BodyBoard.viewerController.get('viewer').drawer.addOverlay(element,point,placement);
-		console.log(this.$());
 	},
 	
 	

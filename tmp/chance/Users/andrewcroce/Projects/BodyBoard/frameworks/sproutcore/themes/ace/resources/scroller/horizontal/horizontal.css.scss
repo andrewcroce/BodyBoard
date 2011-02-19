@@ -1,0 +1,88 @@
+
+$theme: '.ace';/* Track */
+#{$theme}.sc-scroller-view.sc-horizontal {
+  .track {
+	  position: absolute;
+  	left: 0px;
+  	right: 0px;
+  	top: 0;
+  	bottom: 0;
+  	@extend .__s16_93;
+background-position: _slice_offset_x("resources/scroller/horizontal/track_and_arrows_16_0_1__0_", 0) _slice_offset_y("resources/scroller/horizontal/track_and_arrows_16_0_1__0_", 0);background-repeat: repeat-x;
+  }
+  
+  .cap {
+  	position:absolute;
+  	width: 16;
+  	height: 14px;
+  	width: 16px;
+  	left: 0px;
+    @extend .__s16_94;
+background-position: _slice_offset_x("resources/scroller/horizontal/track_and_arrows_0_0_16__0_", 0) _slice_offset_y("resources/scroller/horizontal/track_and_arrows_0_0_16__0_", 0);background-repeat: none;
+  }
+
+  
+  .button-left, .button-top {
+	  position:absolute;
+	  @extend .__s16_95;
+background-position: _slice_offset_x("resources/scroller/horizontal/track_and_arrows__0_26__0_15", 0) _slice_offset_y("resources/scroller/horizontal/track_and_arrows__0_26__0_15", 0);background-repeat: none;
+  	width: 26px;
+    height: 14px;
+    right: 15px;
+  }
+
+
+  .button-right, .button-bottom {
+  	position:absolute;
+  	@extend .__s16_96;
+background-position: _slice_offset_x("resources/scroller/horizontal/track_and_arrows__0_15__0_0", 0) _slice_offset_y("resources/scroller/horizontal/track_and_arrows__0_15__0_0", 0);background-repeat: none;
+  	width: 15px;
+    height: 14px;
+    right: 0px;
+  }
+
+  
+  .button-left:active, .button-top:active {
+	  @extend .__s16_97;
+background-position: _slice_offset_x("resources/scroller/horizontal/track_and_arrows_active__0_26__0_15", 0) _slice_offset_y("resources/scroller/horizontal/track_and_arrows_active__0_26__0_15", 0);background-repeat: none;
+  }
+
+  .button-right:active, .button-bottom:active {
+  	@extend .__s16_98;
+background-position: _slice_offset_x("resources/scroller/horizontal/track_and_arrows_active__0_15__0_0", 0) _slice_offset_y("resources/scroller/horizontal/track_and_arrows_active__0_15__0_0", 0);background-repeat: none;
+  }
+
+  
+  .thumb {
+  	position:absolute;
+  }
+
+  .thumb-center {
+  	position: absolute;
+  	height: 14px;
+  	left: 10px;
+  	right: 8px; /* hack to account for a different cap length than is hard-coded in;
+  	we need a render delegate here pretty badly. */
+  	@extend .__s16_99;
+background-position: _slice_offset_x("resources/scroller/horizontal/thumb_10_0_1__0_", 0) _slice_offset_y("resources/scroller/horizontal/thumb_10_0_1__0_", 0);background-repeat: repeat-x;
+  }
+
+  .thumb-left, .thumb-top {
+  	position: absolute;
+  	height: 14px;
+  	left: 0px;
+  	width: 10px;
+  	@extend .__s16_100;
+background-position: _slice_offset_x("resources/scroller/horizontal/thumb_0_0_10__0_", 0) _slice_offset_y("resources/scroller/horizontal/thumb_0_0_10__0_", 0);background-repeat: none;
+  }
+
+  .thumb-right, .thumb-bottom {
+  	position: absolute;
+  	height: 14px;
+  	right: -2px; /* hack to account for a different cap length than is hard-coded in;
+  	we need a render delegate here pretty badly. */
+  	width: 10px;
+  	@extend .__s16_101;
+background-position: _slice_offset_x("resources/scroller/horizontal/thumb__0_10__0_0", 0) _slice_offset_y("resources/scroller/horizontal/thumb__0_10__0_0", 0);background-repeat: none;
+  }
+}

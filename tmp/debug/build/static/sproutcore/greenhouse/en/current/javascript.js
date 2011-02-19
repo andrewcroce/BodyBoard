@@ -1,15 +1,4 @@
-/* >>>>>>>>>> BEGIN bundle_info.js */
-        ;(function() {
-          var target_name = 'sproutcore/standard_theme' ;
-          if (!SC.BUNDLE_INFO) throw "SC.BUNDLE_INFO is not defined!" ;
-          if (SC.BUNDLE_INFO[target_name]) return ; 
-
-          SC.BUNDLE_INFO[target_name] = {
-            requires: ['sproutcore/empty_theme','sproutcore/debug','sproutcore/testing'],
-            styles:   ['/static/sproutcore/standard_theme/en/current/stylesheet.css?1287691381'],
-            scripts:  []
-          }
-        })();
+/* >>>>>>>>>> BEGIN module_info.js */
 
 /* >>>>>>>>>> BEGIN source/lproj/strings.js */
 // ==========================================================================
@@ -96,7 +85,13 @@ SC.stringsFor('English', {
   "_Reload App": "Reload App",
   "_Target:": "Target:",
   "_Design Type:": "Design Type:",
-  "_Add Design": "Add Design"
+  "_Remove": "Remove",
+  "_iPhone Hrz": "iPhone Hrz",
+  "_iPhone Vrt": "iPhone Vrt",
+  "_iPad Hrz": "iPad Hrz",
+  "_iPad Vrt": "iPad Vrt",
+  "_Page Size": "Page Size",
+  "_Full": "Full"
   
 }) ;
 
@@ -116,7 +111,7 @@ SC.DEFAULT_TREE = 'main';
   
   @extends SC.Object
 */
-Greenhouse = SC.Object.create( SC.Statechart,
+Greenhouse = SC.Object.create( SC.StatechartManager,
   /** @scope Greenhouse.prototype */ {
 
   NAMESPACE: 'Greenhouse',
@@ -131,12 +126,10 @@ Greenhouse = SC.Object.create( SC.Statechart,
   store: SC.Store.create().from('Greenhouse.DataSource'),
   
   //statechart options
-  log: YES,
+  monitorIsActive: YES,
   
-  startOnInit: NO,
   
-  startStates: {'main': 'loading', 'modals': 'modalReady', 'projectPicker': 'projectPickerClosed', 'library': 'libraryClosed', 'inspector': 'inspectorClosed'},
-  
+    
   loadIframeWithPage: function(firstTime){
     var c = Greenhouse.fileController.get('content'), iframe = Greenhouse.get('iframe'), namespace, page;
     var r = c.get('pageRegex'), mainPane;
@@ -1264,8 +1257,6 @@ Greenhouse.designController = SC.ObjectController.create(
 
   @extends SC.ObjectController
 */
-Greenhouse.PAGE_DESIGNER = "pageDesigner";
-Greenhouse.BESPIN = "bespin";
 
 Greenhouse.fileController = SC.ObjectController.create(
 /** @scope Greenhouse.fileController.prototype */ {
@@ -1277,55 +1268,17 @@ Greenhouse.fileController = SC.ObjectController.create(
   _content_statusDidChange: function(){
     var c = this.get('content');
     if(c && c.get('isPage') ) {
-      Greenhouse.sendAction('fileSelectedIsAPage');
-      Greenhouse.sendAction('cancel');
+      this.invokeOnce(function(){
+        Greenhouse.sendAction('fileSelectedIsAPage');
+        Greenhouse.sendAction('cancel');
+      });
     }
     else if (c && !c.get('isPage')){
-      Greenhouse.sendAction('fileSelectedIsNotAPage');
+      this.invokeOnce(function(){
+        Greenhouse.sendAction('fileSelectedIsNotAPage');
+      });
     }
-  }.observes('*content.body'),
-  
-  state: null,
-  editorMode: '',
-  
-  // ..........................................................
-  // State information
-  // 
-  //TODO: Rip this crap out...
-  init: function(){
-    arguments.callee.base.apply(this,arguments);
-    this.set('state', Greenhouse.PAGE_DESIGNER);
-    this.set('editorMode', "pageDesigner");
-    
-  },
-  
-  pageDesigner: function(){
-    var state = this.get('state');
-    switch(state){
-      case Greenhouse.BESPIN:
-        this.set('state', Greenhouse.PAGE_DESIGNER);
-        this.set('editorMode', "pageDesigner");
-        break;
-      default:
-        console.log("RedBull.fileController#pageDesigner not handled in current state %@".fmt(state));
-        break;
-    }
-  },
-  
-  bespinEditor: function(){
-    var state = this.get('state');
-    switch(state){
-      case Greenhouse.PAGE_DESIGNER:
-        this.set('state', Greenhouse.BESPIN);
-        this.set('editorMode', "bespinEditor");
-        break;
-      default:
-        console.log("RedBull.fileController#bespinEditor not handled in current state %@".fmt(state));
-        break;
-    }
-  }
-  
-  
+  }.observes('*content.body')  
 }) ;
 
 /* >>>>>>>>>> BEGIN source/controllers/files.js */
@@ -3430,11 +3383,15 @@ Greenhouse.DropDown = {
 */
 Greenhouse.Design = SC.Record.extend(
 /** @scope Greenhouse.Design.prototype */ {
-  primaryKey: 'name',
+  primaryKey: 'scClass',
   
   name: SC.Record.attr(String),
   scClass: SC.Record.attr(String),
-  defaults: SC.Record.attr(Object)
+  defaults: SC.Record.attr(Object),
+  
+  canEdit: function(){
+    return this._parentRecord.get('canEdit');
+  }.property().cacheable()
   
 }) ;
 
@@ -3464,7 +3421,7 @@ Greenhouse.Dir = SC.ChildRecord.extend(
   
   name: SC.Record.attr(String),
   dir: SC.Record.attr(String),  
-  contents: SC.Record.toMany('SC.Record', {nested: YES}),
+  contents: SC.Record.toMany('Greenhouse.File', {nested: YES}),
   
   primaryKey: 'id',
   
@@ -3483,7 +3440,8 @@ Greenhouse.Dir = SC.ChildRecord.extend(
       body = eval(bodyText || "");
       body.set('needsDesigner', YES);
       body.set('isContainerView',YES);
-      this.set('currentDesign', body);
+      this.writeAttribute('currentDesign', body, YES);
+      this.notifyPropertyChange('currentDesign');
       for(var v in body){
         if(body.hasOwnProperty(v)){
           if(body[v] && body[v].kindOf){
@@ -3499,11 +3457,11 @@ Greenhouse.Dir = SC.ChildRecord.extend(
           }
         }
       }
-      this.set('designs', designs);
+      this.writeAttribute('designs', designs, YES);
+      this.notifyPropertyChange('designs');
       
     } catch (exception) {
       console.log("Couldn't eval body...");
-      this.set('designs', null);
     }
     
   },
@@ -3683,134 +3641,142 @@ Greenhouse.CONFIG_QUERY = SC.Query.remote(Greenhouse.ViewConfig);
   @since RC1
 */
 Greenhouse.mixin( /** @scope Greenhouse */{
-  inspectorClosed: SC.State.create({
-    
-    parallelStatechart: 'inspector',
-
-    // ..........................................................
-    // Events
-    //
-    openInspector: function(anchor){
-      if(anchor) Greenhouse.openInspectorPicker.set('anchor', anchor);
-      this.goState('openInspectorPicker');
-    },
-   
-    toggleDockedInspector: function(){
-      this.goState('dockedInspector');
-    },
-    
-    floatInspector: function(){
-      this.goState('inspectorPalette');
-    }
-  }),
   
-  openInspectorPicker: SC.State.create({
-    parallelStatechart: 'inspector',
-
-    enterState: function(){
-      var ap = Greenhouse.appPage;
-      var picker = ap.get('inspectorPicker'),
-          pickerContentView = ap.get('inspectorPickerContentView');
-      var anchor = this.get('anchor') || ap.getPath('mainView.toolBar.inspector');
-      
-      pickerContentView.setIfChanged('nowShowing', 'Greenhouse.appPage.inspectorContentView');
-      picker.popup(anchor, SC.PICKER_POINTER);
-      picker.becomeFirstResponder();
-    },
-    exitState: function(){
-      var ap = Greenhouse.appPage; 
-      var picker = ap.get('inspectorPicker'),
-          pickerContentView = ap.get('inspectorPickerContentView');
-      pickerContentView.setIfChanged('nowShowing', null);
-      picker.remove();
-      this.set('anchor', null);
-    },
-   
-    // ..........................................................
-    // Events
-    //
-    cancel: function(){
-      this.goState('inspectorClosed');
-    },
+  inspectorStates: SC.State.design({
+    initialSubstate: 'inspectorClosed',
     
-    floatInspector: function(){
-      this.goState('inspectorPalette');
-    },
-    
-    toggleDockedInspector: function(){
-      this.goState('dockedInspector');
-    }
-  }),
-  
-  inspectorPalette: SC.State.create({
-    parallelStatechart: 'inspector',
+    inspectorClosed: SC.State.design({
 
-    enterState: function(){
-      var ap = Greenhouse.appPage; 
-      var picker = ap.get('inspectorPicker'),
-          pickerContentView = ap.get('inspectorPickerContentView');
-          
-      pickerContentView.setIfChanged('nowShowing', 'Greenhouse.appPage.inspectorContentView');
-      picker.append();
-      picker.set('isModal', NO);
-      picker.set('isAnchored', NO);
-      picker.$().toggleClass('sc-picker', NO);
-      var content = ap.getPath('inspectorContentView.content'),
-          toolbar = ap.getPath('inspectorContentView.toolbar');
-     
-      content.adjust('top', 28);    
-      toolbar.set('isVisible', YES); 
-    },
-    exitState: function(){
-      var ap = Greenhouse.appPage; 
-      var picker = ap.get('inspectorPicker'),
-          pickerContentView = ap.get('inspectorPickerContentView');
-      
-      pickerContentView.setIfChanged('nowShowing', null);
-      picker.set('isModal', YES);
-      picker.set('isAnchored', YES);
-      picker.remove();
-     
-      var content = ap.getPath('inspectorContentView.content'),
-          toolbar = ap.getPath('inspectorContentView.toolbar');
-     
-      content.adjust('top', 0);    
-      toolbar.set('isVisible', NO);
-    },
-   
-    // ..........................................................
-    // Events
-    //
-    closeInspector: function(){
-      this.goState('inspectorClosed');
-    },
-   
-    toggleDockedInspector: function(){
-      this.goState('dockedInspector');
-    }
-  }),
- 
-  dockedInspector: SC.State.create({
-    parallelStatechart: 'inspector',
+      parallelStatechart: 'inspector',
 
-    enterState: function(){
-      var iDock = Greenhouse.appPage.get('inspectorDockView');
-      iDock.setIfChanged('nowShowing', 'Greenhouse.appPage.inspectorContentView');
-    },
-    exitState: function(){
-      var iDock = Greenhouse.appPage.get('inspectorDockView');
-      iDock.setIfChanged('nowShowing', null);
-    },
- 
-    // ..........................................................
-    // Events
-    //
-    toggleDockedInspector: function(){
-      var libState = Greenhouse.get('libraryClosed').state();
-      if (libState !== Greenhouse.get('dockedLibrary')) Greenhouse.sendEvent('undock');
-      this.goState('inspectorClosed');
-    }
+      // ..........................................................
+      // Events
+      //
+      openInspector: function(anchor){
+        if(anchor) Greenhouse.openInspectorPicker.set('anchor', anchor);
+        this.gotoState('openInspectorPicker');
+      },
+
+      toggleDockedInspector: function(){
+        this.gotoState('dockedInspector');
+      },
+
+      floatInspector: function(){
+        this.gotoState('inspectorPalette');
+      }
+    }),
+
+    openInspectorPicker: SC.State.design({
+      parallelStatechart: 'inspector',
+
+      enterState: function(){
+        var ap = Greenhouse.appPage;
+        var picker = ap.get('inspectorPicker'),
+            pickerContentView = ap.get('inspectorPickerContentView');
+        var anchor = this.get('anchor') || ap.getPath('mainView.toolBar.inspector');
+
+        pickerContentView.setIfChanged('nowShowing', 'Greenhouse.appPage.inspectorContentView');
+        picker.popup(anchor, SC.PICKER_POINTER);
+        picker.becomeFirstResponder();
+      },
+      exitState: function(){
+        var ap = Greenhouse.appPage; 
+        var picker = ap.get('inspectorPicker'),
+            pickerContentView = ap.get('inspectorPickerContentView');
+        pickerContentView.setIfChanged('nowShowing', null);
+        picker.remove();
+        this.set('anchor', null);
+      },
+
+      // ..........................................................
+      // Events
+      //
+      cancel: function(){
+        this.gotoState('inspectorClosed');
+      },
+
+      floatInspector: function(){
+        this.gotoState('inspectorPalette');
+      },
+
+      toggleDockedInspector: function(){
+        this.gotoState('dockedInspector');
+      }
+    }),
+
+    inspectorPalette: SC.State.design({
+      parallelStatechart: 'inspector',
+
+      enterState: function(){
+        var ap = Greenhouse.appPage; 
+        var picker = ap.get('inspectorPicker'),
+            pickerContentView = ap.get('inspectorPickerContentView');
+
+        pickerContentView.setIfChanged('nowShowing', 'Greenhouse.appPage.inspectorContentView');
+        picker.append();
+        picker.set('isModal', NO);
+        picker.set('isAnchored', NO);
+        picker.$().toggleClass('sc-picker', NO);
+        var content = ap.getPath('inspectorContentView.content'),
+            toolbar = ap.getPath('inspectorContentView.toolbar');
+
+        content.adjust('top', 28);    
+        toolbar.set('isVisible', YES); 
+      },
+      exitState: function(){
+        var ap = Greenhouse.appPage; 
+        var picker = ap.get('inspectorPicker'),
+            pickerContentView = ap.get('inspectorPickerContentView');
+
+        pickerContentView.setIfChanged('nowShowing', null);
+        picker.set('isModal', YES);
+        picker.set('isAnchored', YES);
+        picker.remove();
+
+        var content = ap.getPath('inspectorContentView.content'),
+            toolbar = ap.getPath('inspectorContentView.toolbar');
+
+        content.adjust('top', 0);    
+        toolbar.set('isVisible', NO);
+      },
+
+      // ..........................................................
+      // Events
+      //
+      closeInspector: function(){
+        this.gotoState('inspectorClosed');
+      },
+
+      toggleDockedInspector: function(){
+        this.gotoState('dockedInspector');
+      }
+    }),
+
+    dockedInspector: SC.State.design({
+      parallelStatechart: 'inspector',
+
+      enterState: function(){
+        var iDock = Greenhouse.appPage.get('inspectorDockView');
+        iDock.setIfChanged('nowShowing', 'Greenhouse.appPage.inspectorContentView');
+      },
+      exitState: function(){
+        var iDock = Greenhouse.appPage.get('inspectorDockView');
+        iDock.setIfChanged('nowShowing', null);
+      },
+
+      // ..........................................................
+      // Events
+      //
+      toggleDockedInspector: function(){
+        var libState = Greenhouse.get('libraryClosed').state();
+        if (libState !== Greenhouse.get('dockedLibrary')) Greenhouse.sendEvent('undock');
+        this.gotoState('inspectorClosed');
+      }
+    })
   })
+  
+  
+
 });
 
 /* >>>>>>>>>> BEGIN source/states/library.js */
@@ -3829,123 +3795,132 @@ Greenhouse.mixin( /** @scope Greenhouse */{
   @since RC1
 */
 Greenhouse.mixin( /** @scope Greenhouse */{
-  libraryClosed: SC.State.create({
-    parallelStatechart: 'library',
-   
-    // ..........................................................
-    // Events
-    //
-    openLibrary: function(){
-      this.goState('openLibraryPicker');
-    },
-   
-    toggleDockedLibrary: function(){
-      this.goState('dockedLibrary');
-    }
-  }),
   
-  openLibraryPicker: SC.State.create({
+  libraryStates: SC.State.design({
+    initialSubstate: 'libraryClosed',
     
-    parallelStatechart: 'library',
-    
-    enterState: function(){
-      var picker = Greenhouse.appPage.get('libraryPicker'),
-          button = Greenhouse.appPage.getPath('mainView.toolBar.library'),
-          pickerContentView = Greenhouse.appPage.get('libraryPickerContentView');
-      
-      pickerContentView.setIfChanged('nowShowing', 'Greenhouse.appPage.libraryContentView');
-      picker.popup(button, SC.PICKER_POINTER);
-      picker.becomeFirstResponder();
-    },
-   
-    exitState: function(){
-      var picker = Greenhouse.appPage.get('libraryPicker'),
-          pickerContentView = Greenhouse.appPage.get('libraryPickerContentView');
-      pickerContentView.setIfChanged('nowShowing', null);
-      picker.remove();
-    },
-   
-    cancel: function(){
-      this.goState('libraryClosed');
-    },
-    
-    floatLibrary: function(){
-      this.goState('libraryPalette');
-    },
-    
-    toggleDockedLibrary: function(){
-      this.goState('dockedLibrary');
-    }
-  }),
- 
-  libraryPalette: SC.State.create({
-    parallelStatechart: 'library',
+    libraryClosed: SC.State.design({
+      parallelStatechart: 'library',
 
-    enterState: function(){
-      var ap = Greenhouse.appPage;
-      var picker = ap.get('libraryPicker'),
-          pickerContentView = ap.get('libraryPickerContentView');
-          
-      pickerContentView.setIfChanged('nowShowing', 'Greenhouse.appPage.libraryContentView');
-      picker.append();
-      picker.set('isModal', NO);
-      picker.set('isAnchored', NO);
-      picker.$().toggleClass('sc-picker', NO);
-      var content = ap.getPath('libraryContentView.content'),
-          toolbar = ap.getPath('libraryContentView.toolbar');
-     
-      content.adjust('top', 49);    
-      toolbar.set('isVisible', YES); 
-    },
-    exitState: function(){
-      var ap = Greenhouse.appPage;
-      var picker = ap.get('libraryPicker'),
-          pickerContentView = ap.get('libraryPickerContentView');
-      
-      pickerContentView.setIfChanged('nowShowing', null);
-      picker.set('isModal', YES);
-      picker.set('isAnchored', YES);
-      picker.remove();
-     
-      var content = ap.getPath('libraryContentView.content'),
-          toolbar = ap.getPath('libraryContentView.toolbar');
-     
-      content.adjust('top', 49);    
-      toolbar.set('isVisible', NO);
-    },
-    
-    closeLibrary: function(){
-      this.goState('libraryClosed');
-    },
-    
-    toggleDockedLibrary: function(){
-      this.goState('dockedLibrary');
-    }
-  }),
- 
-  dockedLibrary: SC.State.create({
+      // ..........................................................
+      // Events
+      //
+      openLibrary: function(){
+        this.gotoState('openLibraryPicker');
+      },
 
-    parallelStatechart: 'library',
+      toggleDockedLibrary: function(){
+        this.gotoState('dockedLibrary');
+      }
+    }),
 
-    enterState: function(){
-      var libDock = Greenhouse.appPage.get('libraryDockView');
-      libDock.setIfChanged('nowShowing', 'Greenhouse.appPage.libraryContentView');
-    },
-    exitState: function(){
-      var libDock = Greenhouse.appPage.get('libraryDockView');
-      libDock.setIfChanged('nowShowing', null);
-    },
-  
-    // ..........................................................
-    // Events
-    //
-    toggleDockedLibrary: function(){
-      var iState = Greenhouse.get('inspectorClosed').state();
-      if (iState !== Greenhouse.get('dockedInspector')) Greenhouse.sendEvent('undock');
-      
-      this.goState('libraryClosed');
-    }
+    openLibraryPicker: SC.State.design({
+
+      parallelStatechart: 'library',
+
+      enterState: function(){
+        var picker = Greenhouse.appPage.get('libraryPicker'),
+            button = Greenhouse.appPage.getPath('mainView.toolBar.library'),
+            pickerContentView = Greenhouse.appPage.get('libraryPickerContentView');
+
+        pickerContentView.setIfChanged('nowShowing', 'Greenhouse.appPage.libraryContentView');
+        picker.popup(button, SC.PICKER_POINTER);
+        picker.becomeFirstResponder();
+      },
+
+      exitState: function(){
+        var picker = Greenhouse.appPage.get('libraryPicker'),
+            pickerContentView = Greenhouse.appPage.get('libraryPickerContentView');
+        pickerContentView.setIfChanged('nowShowing', null);
+        picker.remove();
+      },
+
+      cancel: function(){
+        this.gotoState('libraryClosed');
+      },
+
+      floatLibrary: function(){
+        this.gotoState('libraryPalette');
+      },
+
+      toggleDockedLibrary: function(){
+        this.gotoState('dockedLibrary');
+      }
+    }),
+
+    libraryPalette: SC.State.design({
+      parallelStatechart: 'library',
+
+      enterState: function(){
+        var ap = Greenhouse.appPage;
+        var picker = ap.get('libraryPicker'),
+            pickerContentView = ap.get('libraryPickerContentView');
+
+        pickerContentView.setIfChanged('nowShowing', 'Greenhouse.appPage.libraryContentView');
+        picker.append();
+        picker.set('isModal', NO);
+        picker.set('isAnchored', NO);
+        picker.$().toggleClass('sc-picker', NO);
+        var content = ap.getPath('libraryContentView.content'),
+            toolbar = ap.getPath('libraryContentView.toolbar');
+
+        content.adjust('top', 49);    
+        toolbar.set('isVisible', YES); 
+      },
+      exitState: function(){
+        var ap = Greenhouse.appPage;
+        var picker = ap.get('libraryPicker'),
+            pickerContentView = ap.get('libraryPickerContentView');
+
+        pickerContentView.setIfChanged('nowShowing', null);
+        picker.set('isModal', YES);
+        picker.set('isAnchored', YES);
+        picker.remove();
+
+        var content = ap.getPath('libraryContentView.content'),
+            toolbar = ap.getPath('libraryContentView.toolbar');
+
+        content.adjust('top', 49);    
+        toolbar.set('isVisible', NO);
+      },
+
+      closeLibrary: function(){
+        this.gotoState('libraryClosed');
+      },
+
+      toggleDockedLibrary: function(){
+        this.gotoState('dockedLibrary');
+      }
+    }),
+
+    dockedLibrary: SC.State.design({
+
+      parallelStatechart: 'library',
+
+      enterState: function(){
+        var libDock = Greenhouse.appPage.get('libraryDockView');
+        libDock.setIfChanged('nowShowing', 'Greenhouse.appPage.libraryContentView');
+      },
+      exitState: function(){
+        var libDock = Greenhouse.appPage.get('libraryDockView');
+        libDock.setIfChanged('nowShowing', null);
+      },
+
+      // ..........................................................
+      // Events
+      //
+      toggleDockedLibrary: function(){
+        var iState = Greenhouse.get('inspectorClosed').state();
+        if (iState !== Greenhouse.get('dockedInspector')) Greenhouse.sendEvent('undock');
+
+        this.gotoState('libraryClosed');
+      }
+    })
+    
+    
   })
+  
+  
 });
 
 /* >>>>>>>>>> BEGIN source/states/modals.js */
@@ -3964,281 +3939,288 @@ Greenhouse.mixin( /** @scope Greenhouse */{
   @since RC1
 */
 Greenhouse.mixin( /** @scope Greenhouse */{
-  modalReady: SC.State.create({
- 
-    parallelStatechart: 'modals',
-
-    newBindingPopup: function(item){
-      Greenhouse.createBindingPopup.set('newItem', item);
-      this.goState('createBindingPopup');
-    },
-    
-    newCustomView: function(){
-      this.goState('addCustomView');
-    },
-    
-    editProperty: function(){
-      this.goState('editProperties');
-    },
-
-    newPageElement: function(item){
-      Greenhouse.set('newItem', item);
-      this.goState('addToPage');
-    },
-    openProjectPicker: function(){
-      this.goState('projectPicker');
-    }
-  }),
   
-  projectPicker: SC.State.create({
-
-    parallelStatechart: 'modals',
-
-    enterState: function(){
-      var picker = Greenhouse.appPage.get('projectPicker'),
-          button = Greenhouse.appPage.getPath('mainView.toolBar.project');
-
-      picker.popup(button, SC.PICKER_POINTER);
-      picker.becomeFirstResponder();
-    },
-    exitState: function(){
-      var picker = Greenhouse.appPage.get('projectPicker');
-      picker.remove();
-    },
+  modalStates: SC.State.design({
+    initialSubstate: 'modalReady',
     
-    cancel: function(){
-      this.goState('modalReady');
-    },
-    
-    newPageFile: function(){
-      this.goState('newPage');
-    }
-  }),
-  
-  
-  createBindingPopup: SC.State.create({
+    modalReady: SC.State.design({
 
-    parallelStatechart: 'modals',
+      parallelStatechart: 'modals',
 
-    enterState: function(){
-      Greenhouse.set("newBindingFromKey", null);
-      Greenhouse.set("newBindingToKey", null);
-      var modal = Greenhouse.dialogPage.get('modal');
-      modal.set('contentView', Greenhouse.dialogPage.get('createBindingView'));
-      modal.set('layout', {centerX: 0, centerY: 0, width: 200, height: 180});
-      modal.append();
-    },
-    exitState: function(){
-      var modal = Greenhouse.dialogPage.get('modal');
-      modal.remove();
-      Greenhouse.set("newBindingFromKey", null);
-      Greenhouse.set("newBindingToKey", null);
-      this.set('newItem', null);
-    },
-    cancel: function(){
-      this.goState('modalReady');
-    },
+      newBindingPopup: function(item){
+        Greenhouse.createBindingPopup.set('newItem', item);
+        this.gotoState('createBindingPopup');
+      },
 
-    create: function(){
-      var fromKey = Greenhouse.get("newBindingFromKey"),
-          toKey = Greenhouse.get("newBindingToKey"),
-          newItem = this.get('newItem'),
-          view = Greenhouse.designController.get('view'), 
-          c = Greenhouse.designController.get('content');
+      newCustomView: function(){
+        this.gotoState('addCustomView');
+      },
 
-      if(view && c){
-        Greenhouse.designController.propertyWillChange('content');
-        var designAttrs = c.get('designAttrs');
-        if(designAttrs) designAttrs = designAttrs[0];
-        newItem.addItem(fromKey, toKey, designAttrs);
-        Greenhouse.designController.propertyDidChange('content');
+      editProperty: function(){
+        this.gotoState('editProperties');
+      },
+
+      newPageElement: function(item){
+        Greenhouse.set('newItem', item);
+        this.gotoState('addToPage');
+      },
+      openProjectPicker: function(){
+        this.gotoState('projectPicker');
+      }
+    }),
+
+    projectPicker: SC.State.design({
+
+      parallelStatechart: 'modals',
+
+      enterState: function(){
+        var picker = Greenhouse.appPage.get('projectPicker'),
+            button = Greenhouse.appPage.getPath('mainView.toolBar.project');
+
+        picker.popup(button, SC.PICKER_POINTER);
+        picker.becomeFirstResponder();
+      },
+      exitState: function(){
+        var picker = Greenhouse.appPage.get('projectPicker');
+        picker.remove();
+      },
+
+      cancel: function(){
+        this.gotoState('modalReady');
+      },
+
+      newPageFile: function(){
+        this.gotoState('newPage');
+      }
+    }),
+
+
+    createBindingPopup: SC.State.design({
+
+      parallelStatechart: 'modals',
+
+      enterState: function(){
+        Greenhouse.set("newBindingFromKey", null);
+        Greenhouse.set("newBindingToKey", null);
+        var modal = Greenhouse.dialogPage.get('modal');
+        modal.set('contentView', Greenhouse.dialogPage.get('createBindingView'));
+        modal.set('layout', {centerX: 0, centerY: 0, width: 200, height: 180});
+        modal.append();
+      },
+      exitState: function(){
+        var modal = Greenhouse.dialogPage.get('modal');
+        modal.remove();
+        Greenhouse.set("newBindingFromKey", null);
+        Greenhouse.set("newBindingToKey", null);
+        this.set('newItem', null);
+      },
+      cancel: function(){
+        this.gotoState('modalReady');
+      },
+
+      create: function(){
+        var fromKey = Greenhouse.get("newBindingFromKey"),
+            toKey = Greenhouse.get("newBindingToKey"),
+            newItem = this.get('newItem'),
+            view = Greenhouse.designController.get('view'), 
+            c = Greenhouse.designController.get('content');
+
+        if(view && c){
+          Greenhouse.designController.propertyWillChange('content');
+          var designAttrs = c.get('designAttrs');
+          if(designAttrs) designAttrs = designAttrs[0];
+          newItem.addItem(fromKey, toKey, designAttrs);
+          Greenhouse.designController.propertyDidChange('content');
+        }
+
+        this.gotoState('modalReady');
       }
 
-      this.goState('modalReady');
-    }
-    
-  }),
-  
-  addCustomView: SC.State.create({
+    }),
 
-    parallelStatechart: 'modals',
+    addCustomView: SC.State.design({
 
-    enterState: function(){
-      var modal = Greenhouse.dialogPage.get('modal');
-      modal.set('contentView', Greenhouse.dialogPage.get('customViewModal'));
-      modal.set('layout', {centerX: 0, centerY: 0, width: 350, height: 380});
-      Greenhouse.set('newDesignClass', null);
-      Greenhouse.set('newDesignDefaults', null);
-      Greenhouse.set('newDesignViewConfig', null);
-      Greenhouse.set('newDesignType', null);
-      modal.append();
-    },
-    exitState: function(){
-      var modal = Greenhouse.dialogPage.get('modal');
-      modal.remove();
-      Greenhouse.set('newDesignClass', null);
-      Greenhouse.set('newDesignDefaults', null);
-      Greenhouse.set('newDesignViewConfig', null);
-      Greenhouse.set('newDesignType', null);
-      
-    },
-    
-    cancel: function(){
-      this.goState('modalReady');
-    },
+      parallelStatechart: 'modals',
 
-    add: function(){
-      var viewConfig = Greenhouse.get('newDesignViewConfig');
-      var array = viewConfig.get(Greenhouse.get('newDesignType'));
-      
-      var newView = array.pushObject({name: Greenhouse.get('newDesignClass'), 
-                         scClass: Greenhouse.get('newDesignClass'), 
-                         defaults: eval("("+Greenhouse.get('newDesignDefaults')+")")});
+      enterState: function(){
+        var modal = Greenhouse.dialogPage.get('modal');
+        modal.set('contentView', Greenhouse.dialogPage.get('customViewModal'));
+        modal.set('layout', {centerX: 0, centerY: 0, width: 350, height: 380});
+        Greenhouse.set('newDesignClass', null);
+        Greenhouse.set('newDesignDefaults', null);
+        Greenhouse.set('newDesignViewConfig', null);
+        Greenhouse.set('newDesignType', null);
+        modal.append();
+      },
+      exitState: function(){
+        var modal = Greenhouse.dialogPage.get('modal');
+        modal.remove();
+        Greenhouse.set('newDesignClass', null);
+        Greenhouse.set('newDesignDefaults', null);
+        Greenhouse.set('newDesignViewConfig', null);
+        Greenhouse.set('newDesignType', null);
 
-      viewConfig.commitRecord();
-      Greenhouse.viewConfigsController.notifyPropertyChange(Greenhouse.get('newDesignType'));
-      Greenhouse.viewConfigsController.refreshContent();
-            
-      this.goState('modalReady');
-    }
-  }),
-  
-  newPage: SC.State.create({
-    parentState: 'projectPicker',
-    parallelStatechart: 'modals',
+      },
 
-    enterState: function(){
-      var modal = Greenhouse.dialogPage.get('modal');
-      modal.set('contentView', Greenhouse.dialogPage.get('pageFile'));
-      modal.set('layout', {centerX: 0, centerY: 0, width: 350, height: 300});
+      cancel: function(){
+        this.gotoState('modalReady');
+      },
 
-      Greenhouse.set('newFileName', null);
-      Greenhouse.set('newFilePath', Greenhouse.fileController.get('path'));
-      Greenhouse.set('newPageName', null);
+      add: function(){
+        var viewConfig = Greenhouse.get('newDesignViewConfig');
+        var array = viewConfig.get(Greenhouse.get('newDesignType'));
 
-      modal.append();
-    },
-    exitState: function(){
-      var modal = Greenhouse.dialogPage.get('modal');
-      modal.remove();
-      Greenhouse.set('newFileName', null);
-      Greenhouse.set('newFilePath', null);
-      Greenhouse.set('newPageName', null);
-    },
-    
-    cancel: function(){
-      this.goState('projectPicker');
-    },
+        var newView = array.pushObject({name: Greenhouse.get('newDesignClass'), 
+                           scClass: Greenhouse.get('newDesignClass'), 
+                           defaults: eval("("+Greenhouse.get('newDesignDefaults')+")")});
 
-    create: function(){
-      var f = Greenhouse.fileController.get('content'), ret, child, page = Greenhouse.get('newPageName'),
-          fileName = Greenhouse.get('newFileName'), filePath = Greenhouse.get('newFilePath') + "/";
+        viewConfig.commitRecord();
+        Greenhouse.viewConfigsController.notifyPropertyChange(Greenhouse.get('newDesignType'));
+        Greenhouse.viewConfigsController.refreshContent();
 
-      if(!fileName.match(/\.js/)) fileName = fileName + ".js";
-
-      ret = ['// SproutCore ViewBuilder Design Format v1.0',
-        '// WARNING: This file is automatically generated.  DO NOT EDIT.  Changes you',
-        '// make to this file will be lost.', '',
-        '%@ = SC.Page.design({});'.fmt(page),''].join("\n");
-
-      var contents = f.get('contents');
-
-      contents.pushObject({type: 'File', dir: filePath, name: fileName, body:ret});
-      child = contents.objectAt(contents.get('length') - 1);
-      child.commitRecord();
-
-      this.goState('projectPicker');
-    }
-  }),
-  
-  editProperties: SC.State.create({
-
-    parallelStatechart: 'modals',
-
-    enterState: function(){
-      var picker = Greenhouse.dialogPage.get('propertyPicker');
-      picker.set('contentView', Greenhouse.dialogPage.get('propertyEditor'));
-      var list = Greenhouse.inspectorsPage.getPath('propertiesInspector.list.contentView');
-      var content = Greenhouse.propertyController.get('content');
-
-      //TODO: I should probably popup this picker in the plist item view....
-      picker.popup(list.itemViewForContentObject(content));
-      picker.becomeFirstResponder();
-
-      //TODO: copy correct here? 
-      Greenhouse.propertyEditorController.set('content', SC.copy(content));
-    },
-    exitState: function(){
-      var picker = Greenhouse.dialogPage.get('propertyPicker');
-      picker.remove();
-      Greenhouse.propertyEditorController.set('content', null);
-    },
-    
-    cancel: function(){
-      this.goState('modalReady');
-    },
-
-    update: function(){
-      var val = Greenhouse.propertyEditorController.get('value'), 
-          view = Greenhouse.propertyEditorController.get('view'),
-          key = Greenhouse.propertyEditorController.get('key'),
-          origKey = Greenhouse.propertyController.get('key'),
-          content = Greenhouse.designController.get('content'), designAttrs;
-
-
-
-      // designAttrs = content.get('designAttrs');
-      //  if(designAttrs) designAttrs = designAttrs[0];
- 
-      if(key !== origKey){
-        view[origKey] = undefined;
-        delete view[origKey];
-        view.designer.designProperties.removeObject(origKey);
-        view.designer.designProperties.pushObject(key);
-        view.designer.propertyDidChange('editableProperties');
-        //delete designAttrs[origKey];
+        this.gotoState('modalReady');
       }
+    }),
 
-      view[key] = eval(val);
-      view.propertyDidChange(key);
-      if(view.displayDidChange) view.displayDidChange();
+    newPage: SC.State.design({
+      parentState: 'projectPicker',
+      parallelStatechart: 'modals',
 
-      Greenhouse.propertyController.set('key',key);
-      Greenhouse.propertyController.set('value', val);
+      enterState: function(){
+        var modal = Greenhouse.dialogPage.get('modal');
+        modal.set('contentView', Greenhouse.dialogPage.get('pageFile'));
+        modal.set('layout', {centerX: 0, centerY: 0, width: 350, height: 300});
 
-      this.goState('modalReady');
-    }
-  }),
-  
-  addToPage: SC.State.create({
+        Greenhouse.set('newFileName', null);
+        Greenhouse.set('newFilePath', Greenhouse.fileController.get('path'));
+        Greenhouse.set('newPageName', null);
 
-    parallelStatechart: 'modals',
+        modal.append();
+      },
+      exitState: function(){
+        var modal = Greenhouse.dialogPage.get('modal');
+        modal.remove();
+        Greenhouse.set('newFileName', null);
+        Greenhouse.set('newFilePath', null);
+        Greenhouse.set('newPageName', null);
+      },
 
-    enterState: function(){
-      Greenhouse.set('newPageItemName', '');
-      var modal = Greenhouse.dialogPage.get('modal');
-      modal.set('contentView', Greenhouse.dialogPage.get('newItemForPage'));
-      modal.set('layout', {width: 200, height: 120, centerX: 0, centerY: 0});
-      modal.append();
-    },
-    exitState: function(){
-      var modal = Greenhouse.dialogPage.get('modal');
-      modal.remove();
-      Greenhouse.set('newItem', null);
-      Greenhouse.set('newPageItemName', '');
-    },
-    cancel: function(){
-      this.goState('modalReady');
-    },
+      cancel: function(){
+        this.gotoState('projectPicker');
+      },
 
-    add: function(){
-      var newItem = Greenhouse.get('newItem'),
-          name = Greenhouse.get('newPageItemName');
+      create: function(){
+        var f = Greenhouse.fileController.get('content'), ret, child, page = Greenhouse.get('newPageName'),
+            fileName = Greenhouse.get('newFileName'), filePath = Greenhouse.get('newFilePath') + "/";
 
-      newItem.addItemToPage(name);
-      this.goState('modalReady');
-    }
+        if(!fileName.match(/\.js/)) fileName = fileName + ".js";
+
+        ret = ['// SproutCore ViewBuilder Design Format v1.0',
+          '// WARNING: This file is automatically generated.  DO NOT EDIT.  Changes you',
+          '// make to this file will be lost.', '',
+          '%@ = SC.Page.design({});'.fmt(page),''].join("\n");
+
+        var contents = f.get('contents');
+
+        contents.pushObject({type: 'File', dir: filePath, name: fileName, body:ret});
+        child = contents.objectAt(contents.get('length') - 1);
+        child.commitRecord();
+
+        this.gotoState('projectPicker');
+      }
+    }),
+
+    editProperties: SC.State.design({
+
+      parallelStatechart: 'modals',
+
+      enterState: function(){
+        var picker = Greenhouse.dialogPage.get('propertyPicker');
+        picker.set('contentView', Greenhouse.dialogPage.get('propertyEditor'));
+        var list = Greenhouse.inspectorsPage.getPath('propertiesInspector.list.contentView');
+        var content = Greenhouse.propertyController.get('content');
+
+        //TODO: I should probably popup this picker in the plist item view....
+        picker.popup(list.itemViewForContentObject(content));
+        picker.becomeFirstResponder();
+
+        //TODO: copy correct here? 
+        Greenhouse.propertyEditorController.set('content', SC.copy(content));
+      },
+      exitState: function(){
+        var picker = Greenhouse.dialogPage.get('propertyPicker');
+        picker.remove();
+        Greenhouse.propertyEditorController.set('content', null);
+      },
+
+      cancel: function(){
+        this.gotoState('modalReady');
+      },
+
+      update: function(){
+        var val = Greenhouse.propertyEditorController.get('value'), 
+            view = Greenhouse.propertyEditorController.get('view'),
+            key = Greenhouse.propertyEditorController.get('key'),
+            origKey = Greenhouse.propertyController.get('key'),
+            content = Greenhouse.designController.get('content'), designAttrs;
+
+
+
+        // designAttrs = content.get('designAttrs');
+        //  if(designAttrs) designAttrs = designAttrs[0];
+
+        if(key !== origKey){
+          view[origKey] = undefined;
+          delete view[origKey];
+          view.designer.designProperties.removeObject(origKey);
+          view.designer.designProperties.pushObject(key);
+          view.designer.propertyDidChange('editableProperties');
+          //delete designAttrs[origKey];
+        }
+
+        view[key] = eval(val);
+        view.propertyDidChange(key);
+        if(view.displayDidChange) view.displayDidChange();
+
+        Greenhouse.propertyController.set('key',key);
+        Greenhouse.propertyController.set('value', val);
+
+        this.gotoState('modalReady');
+      }
+    }),
+
+    addToPage: SC.State.design({
+
+      parallelStatechart: 'modals',
+
+      enterState: function(){
+        Greenhouse.set('newPageItemName', '');
+        var modal = Greenhouse.dialogPage.get('modal');
+        modal.set('contentView', Greenhouse.dialogPage.get('newItemForPage'));
+        modal.set('layout', {width: 200, height: 120, centerX: 0, centerY: 0});
+        modal.append();
+      },
+      exitState: function(){
+        var modal = Greenhouse.dialogPage.get('modal');
+        modal.remove();
+        Greenhouse.set('newItem', null);
+        Greenhouse.set('newPageItemName', '');
+      },
+      cancel: function(){
+        this.gotoState('modalReady');
+      },
+
+      add: function(){
+        var newItem = Greenhouse.get('newItem'),
+            name = Greenhouse.get('newPageItemName');
+
+        newItem.addItemToPage(name);
+        this.gotoState('modalReady');
+      }
+    })
+    
   })
+  
 });
 
 /* >>>>>>>>>> BEGIN source/states/ready.js */
@@ -4258,8 +4240,10 @@ Greenhouse.mixin( /** @scope Greenhouse */{
   // ..........................................................
   // Ready States
   // 
-  ready: SC.State.create({
-
+  readyStates: SC.State.design({
+    initialSubstate: 'readyWaiting',
+    
+    
     enterState: function(){
       console.log('greenhouse has landed');
       var c = Greenhouse.getPath('mainPage.mainPane.container');
@@ -4268,7 +4252,7 @@ Greenhouse.mixin( /** @scope Greenhouse */{
     exitState: function(){
 
     },
-    
+
     // ..........................................................
     //  Events
     // 
@@ -4276,168 +4260,178 @@ Greenhouse.mixin( /** @scope Greenhouse */{
       var target = Greenhouse.targetController.get('name');
       window.open(target, "","");
     },
-    
+
     selectFile: function(){
       var c = Greenhouse.fileController.get('content');
       if(c) {
         c.refresh();
-        this.goState('gettingFile');
+        this.gotoState('gettingFile');
       }
     },
-    
+
     unselectFile: function(){
      // TODO: [EG, MB] add the action for unselecting 
-     this.goState('readyWaiting');
+     this.gotoState('readyWaiting');
     },
-     
+
     reloadIframe: function(){
       Greenhouse.filesController.set('selection', null);
       Greenhouse.gettingFile._firstTime = YES;
 
       Greenhouse.iframe.location.reload();
-      this.goState('iframeLoading');
-    }
-  }),
-  
-  readyWaiting: SC.State.create({
-    
-    parentState: 'ready',
+      this.gotoState('iframeLoading');
+    },
 
-    enterState: function(){
-      
-    },
-    exitState: function(){
-
-    }
-    
-  }),
-  
-  gettingFile: SC.State.create({
-    
-    parentState: 'ready',
-    
-    initState: function(){
-      this._firstTime = YES;
-    },
-    
-    enterState: function(){
-      //TODO draw spinner
-    },
-    exitState: function(){
-    },
-    
-    fileSelectedIsAPage: function(){
-      Greenhouse.loadIframeWithPage(this._firstTime);
-      this._firstTime = NO;
-      this.goHistoryState('pageSelected');
-    },
-    
-    fileSelectedIsNotAPage: function(){
-      this.goState('fileSelected');
-    }
-  }),
-  
-  fileSelected: SC.State.create({
-
-    parentState: 'ready',
-
-    enterState: function(){
-      //TODO: draw message saing we can't do anythign with this right now...
-    },
-    exitState: function(){}
-  }),
-  
-  pageSelected: SC.State.create({
-
-    parentState: 'ready',
-    initialSubState: 'noDock',
-
-    enterState: function(){},
-    exitState: function(){},
-    
-    // ..........................................................
-    // Events
-    // 
-    save: function(){
-      var designPage, content = Greenhouse.fileController.get('content');
-      designPage = Greenhouse.iframe.SC.designsController.get('page');
-      //check if this page has a name...
-      designPage.setPath('designController.selection', null);
-      if(!designPage.get('pageName')) designPage.set('pageName', content.get('pageName'));
-      designPage = designPage.emitDesign();
-      content.set('body', js_beautify(designPage));
-      content.commitRecord(); 
-    },
-    addProperty: function(){
-      var designer = Greenhouse.designController.get('content');
-
-      if(designer){
-        designer.designProperties.pushObject("newProperty"); //TODO: generate better name....
-        designer.propertyDidChange('editableProperties');
-      }
-    },
-    deleteProperty: function(){
-      var prop = Greenhouse.propertyController.get('content'),
-          designer = Greenhouse.designController.get('content'),
+    resizePage: function(sender){
+      var s = sender.getPath('content.size'),
+          def = {top: 20, left: 20, right: 20, bottom: 83},
+          iframe = Greenhouse.get('iframe'),
           view;
-      if(prop && designer){
-        view = prop.view;
-        view[prop.view] = undefined;
-        delete view[prop.key]; //FIXME: [MB] this isn't removing the property...
-        designer.designProperties.removeObject(prop.key);
-        view.propertyDidChange(prop.key);
-        if(view.displayDidChange) view.displayDidChange();
-        designer.propertyDidChange('editableProperties');
+
+
+      view = iframe.SC.designPage.getPath('designMainPane.container');
+
+      if(!s){
+        view.set('classNames', ['design']);
+        view.set('layout', def);
       }
-    }
-  }),
-  
-  noDock: SC.State.create({
-    parentState: 'pageSelected',
-
-    enterState: function(){
-      var dock = Greenhouse.appPage.get('dockView');
-      dock.set('layout', {top: 0, bottom: 0, right: 0, width: 0});
-      var design = Greenhouse.appPage.get('designAreaView');
-      design.set('layout', {top: 0, bottom: 0, right: 0, left: 0});
-    },
-    exitState: function(){
+      else{
+        view.set('classNames', []);
+        view.set('layout', SC.merge({centerX:0, centerY: 0}, s));
+      }
 
     },
-   
     // ..........................................................
-    // Events
-    //
-    toggleDockedLibrary: function(){
-      this.goState('docked');
-    },
+    // Ready substates
+    // 
+    readyWaiting: SC.State.design({
+    }),
 
-    toggleDockedInspector: function(){
-      this.goState('docked');
-    }
-  }),
+    gettingFile: SC.State.design({
 
-  docked: SC.State.create({
-    parentState: 'pageSelected',
+      init: function(){
+        arguments.callee.base.apply(this,arguments);
+        this._firstTime = YES;
+      },
 
-    enterState: function(){
-      var dock = Greenhouse.appPage.get('dockView');
-      dock.set('layout', {top: 0, bottom: 0, right: 0, width: 230});
-      var design = Greenhouse.appPage.get('designAreaView');
-      design.set('layout', {top: 0, left: 0, right: 230, bottom: 0});
-    },
-    exitState: function(){
+      enterState: function(){
+        //TODO draw spinner
+      },
+      exitState: function(){
+      },
 
-    },
-   
-    // ..........................................................
-    // Events
-    //
-    undock: function(){
-      this.goState('noDock');
-    }
- })
-  
+      fileSelectedIsAPage: function(){
+        Greenhouse.loadIframeWithPage(this._firstTime);
+        this._firstTime = NO;
+        this.goHistoryState('pageSelected');
+      },
+
+      fileSelectedIsNotAPage: function(){
+        this.gotoState('fileSelected');
+      }
+    }),
+
+    fileSelected: SC.State.design({
+
+      enterState: function(){
+        //TODO: draw message saing we can't do anythign with this right now...
+      },
+      exitState: function(){}
+    }),
+
+    pageSelected: SC.State.design({
+
+      parentState: 'ready',
+      initialSubstate: 'noDock',
+
+      enterState: function(){},
+      exitState: function(){},
+
+      // ..........................................................
+      // Events
+      // 
+      save: function(){
+        var designPage, content = Greenhouse.fileController.get('content');
+        designPage = Greenhouse.iframe.SC.designsController.get('page');
+        //check if this page has a name...
+        designPage.setPath('designController.selection', null);
+        if(!designPage.get('pageName')) designPage.set('pageName', content.get('pageName'));
+        designPage = designPage.emitDesign();
+        content.set('body', js_beautify(designPage));
+        content.commitRecord(); 
+      },
+      addProperty: function(){
+        var designer = Greenhouse.designController.get('content');
+
+        if(designer){
+          designer.designProperties.pushObject("newProperty"); //TODO: generate better name....
+          designer.propertyDidChange('editableProperties');
+        }
+      },
+      deleteProperty: function(){
+        var prop = Greenhouse.propertyController.get('content'),
+            designer = Greenhouse.designController.get('content'),
+            view;
+        if(prop && designer){
+          view = prop.view;
+          view[prop.view] = undefined;
+          delete view[prop.key]; //FIXME: [MB] this isn't removing the property...
+          designer.designProperties.removeObject(prop.key);
+          view.propertyDidChange(prop.key);
+          if(view.displayDidChange) view.displayDidChange();
+          designer.propertyDidChange('editableProperties');
+        }
+      },
+      // ..........................................................
+      // pageSelected substates
+      // 
+       noDock: SC.State.design({
+         parentState: 'pageSelected',
+
+         enterState: function(){
+           var dock = Greenhouse.appPage.get('dockView');
+           dock.set('layout', {top: 0, bottom: 0, right: 0, width: 0});
+           var design = Greenhouse.appPage.get('designAreaView');
+           design.set('layout', {top: 0, bottom: 0, right: 0, left: 0});
+         },
+         exitState: function(){
+
+         },
+
+         // ..........................................................
+         // Events
+         //
+         toggleDockedLibrary: function(){
+           this.gotoState('docked');
+         },
+
+         toggleDockedInspector: function(){
+           this.gotoState('docked');
+         }
+       }),
+
+       docked: SC.State.design({
+         parentState: 'pageSelected',
+
+         enterState: function(){
+           var dock = Greenhouse.appPage.get('dockView');
+           dock.set('layout', {top: 0, bottom: 0, right: 0, width: 230});
+           var design = Greenhouse.appPage.get('designAreaView');
+           design.set('layout', {top: 0, left: 0, right: 230, bottom: 0});
+         },
+         exitState: function(){
+
+         },
+
+         // ..........................................................
+         // Events
+         //
+         undock: function(){
+           this.gotoState('noDock');
+         }
+      })
+    })
+  })  
 });
 
 /* >>>>>>>>>> BEGIN source/views/application_list_item.js */
@@ -4606,7 +4600,7 @@ Greenhouse.SimpleButton = {
   },
 
   /** @private
-    Remove the active class on mouseOut if mouse is down.
+    Remove the active class on mouseExited if mouse is down.
   */  
   mouseExited: function(evt) {
     //console.log('SimpleButton#mouseExited()...');
@@ -4840,7 +4834,7 @@ Greenhouse.appPage = SC.Page.design({
     
     mainContainer: SC.ContainerView.design({
       layout: { left: 0, top: 46, right: 0, bottom: 0 },
-      nowShowingBinding: 'Greenhouse.fileController.editorMode' 
+      nowShowing: 'pageDesigner' //Hardcoded till we add another mode like bespin
     }),
     
     toolBar: SC.ToolbarView.design({
@@ -4932,6 +4926,18 @@ Greenhouse.appPage = SC.Page.design({
             {title: "_Reload App".loc(), action: 'reloadIframe', isEnabled: YES},
             {title: "_Dock Library".loc(), action: 'toggleDockedLibrary', isEnabled: YES},
             {title: "_Dock Inspector".loc(), action: 'toggleDockedInspector', isEnabled: YES},
+            { isSeparator: YES },
+            {title: "_Page Size".loc(),
+              subMenu:[
+              {title: "_iPhone Hrz".loc(), action: 'resizePage', isEnabled: YES, size: {width: 480, height: 320}},
+              {title: "_iPhone Vrt".loc(), action: 'resizePage', isEnabled: YES, size: {width: 320, height: 480}},
+              {title: "_iPad Hrz".loc(), action: 'resizePage', isEnabled: YES, size: {width: 1024, height: 768}},
+              {title: "_iPad Vrt".loc(), action: 'resizePage', isEnabled: YES, size: {height: 1024, width: 768}},
+              {title: "_Full".loc(), action: 'resizePage', isEnabled: YES}
+              
+              ]
+            },
+            { isSeparator: YES },
             {title: "_Save".loc(), action: 'save', isEnabled: YES }
           ]
         })
@@ -5069,7 +5075,7 @@ Greenhouse.appPage = SC.Page.design({
     content: SC.View.design({
       classNames: ['content'],
       layout: { top: 49, bottom: 11, left: 8, right: 8 },
-      childViews: 'library addCustomView'.w(),
+      childViews: 'library addCustomView removeCustomView'.w(),
     
       library: SC.ScrollView.design({
         classNames: ['library-list'],
@@ -5088,13 +5094,23 @@ Greenhouse.appPage = SC.Page.design({
           }
         })
       }),
+      
+      removeCustomView: SC.ButtonView.design({
+        classNames: ['dark'],
+        layout: { bottom: 1, right: 70, height: 24, width: 70 },
+        titleMinWidth: 0,
+        hasIcon: NO,
+        isEnabledBinding: 'Greenhouse.libraryController*selection.firstObject.canEdit',
+        title: "_Remove".loc(),
+        action: 'removeCustomView'
+      }),
     
       addCustomView: SC.ButtonView.design({
         classNames: ['dark'],
-        layout: { bottom: 1, right: 0, height: 24, width: 90 },
+        layout: { bottom: 1, right: 0, height: 24, width: 50 },
         titleMinWidth: 0,
         hasIcon: NO,
-        title: "_Add Design".loc(),
+        title: "_Add".loc(),
         action: 'newCustomView'
       })
     })
@@ -5358,7 +5374,7 @@ Greenhouse.main = function main() {
   
   //start the state machine
   Greenhouse.targetsController.reload();
-  Greenhouse.startupStatechart();
+  Greenhouse.initStatechart();
   
 } ;
 
@@ -5378,215 +5394,257 @@ function main() { Greenhouse.main(); }
   @since RC1
 */
 Greenhouse.mixin( /** @scope Greenhouse */{
+  
+  rootState: SC.State.design({    
+    substatesAreConcurrent: YES,
     
-  loading: SC.State.create({
+    mainStates: SC.State.plugin('Greenhouse.mainStates'),
     
-    enterState: function(){
-      console.log('greenhouse is loading');
-      var c = Greenhouse.getPath('mainPage.mainPane.container');
-      c.set('nowShowing', Greenhouse.getPath('mainPage.loading'));
-    },
-    exitState: function(){
-      
-    },
+    modalStates: SC.State.plugin('Greenhouse.modalStates'),
     
-    // ..........................................................
-    // Events
-    //
-    /*
-      called when the file list call completes
-    */
-    fileListCallDidComplete: function(){
-      //eval all the appropriate files
-      this.goState('iframeLoading');
-    },
-
-    /*
-      called when the file choose call completes
-    */
-    fetchTargetsDidComplete: function(){
-      //eval all the appropriate files
-      this.goState('chooseApp');
-    }
+    libraryStates: SC.State.plugin('Greenhouse.libraryStates'),
     
+    inspectorStates: SC.State.plugin('Greenhouse.inspectorStates')    
   }),
   
-  chooseApp: SC.State.create({
+  mainStates: SC.State.design({
     
-    enterState: function(){
-      var c = Greenhouse.getPath('mainPage.mainPane.container');
-      c.set('nowShowing', Greenhouse.getPath('mainPage.appPicker'));
-    },
-    exitState: function(){
-      
-    },
+    initialSubstate: 'loading',
     
-    // ..........................................................
-    // Events
-    //
-    loadApplication: function(){
-      Greenhouse.filesController.reload();
-      Greenhouse.viewConfigsController.reload();
-      this.goState('loading');
-    }
-  }),
-  
-  iframeLoading: SC.State.create({
-    
-    enterState: function(){
-      var c = Greenhouse.getPath('mainPage.mainPane.container');
-      c.set('nowShowing', Greenhouse.getPath('appPage.mainView'));
-      //TODO disable views and display a loading spinner
-    },
-    exitState: function(){
-      
-    },
-    
-    // ..........................................................
-    // Events
-    //
-    iframeLoaded: function(){
-      this.goState('syncRunLoops');
-    }
-  }),
-  
-  syncRunLoops: SC.State.create({
-    
-    enterState: function(){
-      this._setupRunLoops();
-      this._grabDropTargets();
-      this._setupGreenhouse();
-      this._setupEventBlocker();
-      this.invokeLater(function(){this.goState('readyWaiting');}); //totally cheating!!
-    },
-    exitState: function(){
-      
-    },
-    
-    // ..........................................................
-    // Monkey-Patch Run Loop
-    // 
-    _setupRunLoops: function(){
-      var iframe = Greenhouse.get('iframe'), innerBegin, outerBegin, innerEnd, outerEnd, outerSC = SC;
+    loading: SC.State.design({
 
+      enterState: function(){
+        console.log('greenhouse is loading');
+        var c = Greenhouse.getPath('mainPage.mainPane.container');
+        c.set('nowShowing', Greenhouse.getPath('mainPage.loading'));
+      },
+      exitState: function(){
 
-      outerBegin = outerSC.RunLoop.begin = function() { 
-        //console.log('outer begin');
-        var runLoop = this.currentRunLoop;
-        if (!runLoop) runLoop = this.currentRunLoop = outerSC.RunLoop.runLoopClass.create();
-        runLoop.beginRunLoop();
+      },
 
-        //begin the iframe's run loop...
-        var runLoopIframe = iframe.SC.RunLoop.currentRunLoop;
-        if (!runLoopIframe) runLoopIframe = iframe.SC.RunLoop.currentRunLoop = iframe.SC.RunLoop.runLoopClass.create();
-        runLoopIframe.beginRunLoop();
+      // ..........................................................
+      // Events
+      //
+      /*
+        called when the file list call completes
+      */
+      fileListCallDidComplete: function(){
+        //eval all the appropriate files
+        this.gotoState('iframeLoading');
+      },
 
-        return this ;
-      };
-      innerBegin = iframe.SC.RunLoop.begin = function() {
-        //console.log('inner begin');
-        outerBegin(); //inner run loop always triggers both loops
-        return this ;
-      };
-
-      outerEnd = outerSC.RunLoop.end = function() {
-        //end any inner run loops if they exist.
-        var innerLoop = iframe.SC.RunLoop.currentRunLoop;
-        if(innerLoop) innerLoop.endRunLoop();
-
-
-        //console.log('outer end');
-        var runLoop = this.currentRunLoop;
-        if (!runLoop) {
-          throw "SC.RunLoop.end() called outside of a runloop!";
-        }
-        runLoop.endRunLoop();
-        return this ;
-      };
-
-      innerEnd = iframe.SC.RunLoop.end = function() {
-        //console.log('inner end');
-        var runLoop = this.currentRunLoop;
-        if (!runLoop) {
-          throw "SC.RunLoop.end() called outside of a runloop!";
-        }
-        runLoop.endRunLoop();
-        outerEnd();
-        return this ;
-      };
-    },
-
-    _grabDropTargets: function(){
-      var iframe = Greenhouse.get('iframe'), 
-          innerTargets,
-          webViewFrame,
-          webView = Greenhouse.appPage.get('webView');
-
-      var pv = webView.get('parentView');
-        webViewFrame = webView.get('frame');
-      webViewFrame = pv.convertFrameToView(webViewFrame, null);
-
-
-      //add existing targets
-      innerTargets = iframe.SC.Drag._dropTargets;
-
-      for(var dt in innerTargets){
-        if(innerTargets.hasOwnProperty(dt)){
-          SC.Drag.addDropTarget(innerTargets[dt]);
-        }
+      /*
+        called when the file choose call completes
+      */
+      fetchTargetsDidComplete: function(){
+        //eval all the appropriate files
+        this.gotoState('chooseApp');
       }
 
-      //make sure we get any new ones
-      iframe.SC.Drag.addDropTarget = function(target) {
-        iframe.SC.Drag._dropTargets[iframe.SC.guidFor(target)] = target ;
-        SC.Drag._dropTargets[iframe.SC.guidFor(target)] = target ;
-      };
+    }),
 
+    chooseApp: SC.State.design({
 
-      iframe.SC.Drag.removeDropTarget = function(target) {
-        delete iframe.SC.Drag._dropTargets[iframe.SC.guidFor(target)] ;
-        delete SC.Drag._dropTargets[iframe.SC.guidFor(target)];
-      };
+      enterState: function(){
+        var c = Greenhouse.getPath('mainPage.mainPane.container');
+        c.set('nowShowing', Greenhouse.getPath('mainPage.appPicker'));
+      },
+      exitState: function(){
 
+      },
 
-      SC.Drag.prototype._findDropTarget = function(evt) {
-        var loc = { x: evt.pageX, y: evt.pageY } ;
-
-        var target, frame ;
-        var ary = this._dropTargets() ;
-        for (var idx=0, len=ary.length; idx<len; idx++) {
-          target = ary[idx] ;
-
-          // If the target is not visible, it is not valid.
-          if (!target.get('isVisibleInWindow')) continue ;
-
-          // get clippingFrame, converted to the pane.
-          frame = target.convertFrameToView(target.get('clippingFrame'), null) ;
-
-          //if this is in the iframe adjust the frame accordingly
-          if(target.get('targetIsInIFrame')){
-             frame.x = frame.x + webViewFrame.x;
-             frame.y = frame.y + webViewFrame.y;
-           }
-          // check to see if loc is inside.  If so, then make this the drop target
-          // unless there is a drop target and the current one is not deeper.
-          if (SC.pointInRect(loc, frame)) return target;
-        } 
-        return null ;
-      };
-      //all inner drags are actually outer drags
-      iframe.SC.Drag.start = SC.Drag.start;
-    },
-
-    _setupGreenhouse: function(){
-      var iframe = Greenhouse.get('iframe');
-      iframe.SC._Greenhouse = Greenhouse;
-    },
+      // ..........................................................
+      // Events
+      //
+      loadApplication: function(){
+        Greenhouse.filesController.reload();
+        Greenhouse.viewConfigsController.reload();
+        this.gotoState('loading');
+      }
+    }),
     
-    _setupEventBlocker: function(){
-      var eventBlocker = Greenhouse.appPage.get('eventBlocker');
-      Greenhouse.set('eventBlocker', eventBlocker);
-    }
+    // ..........................................................
+    // sub states
+    // 
+    ready: SC.State.plugin('Greenhouse.readyStates'),
+
+
+    iframeLoading: SC.State.design({
+
+      enterState: function(){
+        var c = Greenhouse.getPath('mainPage.mainPane.container');
+        c.set('nowShowing', Greenhouse.getPath('appPage.mainView'));
+        //TODO disable views and display a loading spinner
+      },
+      exitState: function(){
+
+      },
+
+      // ..........................................................
+      // Events
+      //
+      iframeLoaded: function(){
+        this.gotoState('syncRunLoops');
+      }
+    }),
+
+    syncRunLoops: SC.State.design({
+
+      enterState: function(){
+        this._setupRunLoops();
+        this._grabDropTargets();
+        this._setupGreenhouse();
+        this._setupEventBlocker();
+        this.gotoState('readyWaiting');
+        //this.invokeLater(function(){this.gotoState('readyWaiting');}); //totally cheating!!
+      },
+      exitState: function(){
+
+      },
+
+      // ..........................................................
+      // Monkey-Patch Run Loop
+      // 
+      _setupRunLoops: function(){
+        var iframe = Greenhouse.get('iframe'), innerBegin, outerBegin, innerEnd, outerEnd, outerSC = SC;
+
+        // ..........................................................
+        // run loop patches...
+        // 
+        outerBegin = function() {    
+          var runLoop = outerSC.RunLoop.currentRunLoop;
+          if (!runLoop) runLoop = outerSC.RunLoop.currentRunLoop = outerSC.RunLoop.runLoopClass.create();
+          runLoop.beginRunLoop();
+          return outerSC.RunLoop ;
+        };
+        outerEnd = function() {
+          var runLoop = outerSC.RunLoop.currentRunLoop;
+          if (!runLoop) {
+            throw "SC.RunLoop.end() called outside of a runloop!";
+          }
+          runLoop.endRunLoop();
+          return outerSC.RunLoop ;
+        };
+
+        innerBegin = function() {    
+          var runLoop = iframe.SC.RunLoop.currentRunLoop;
+          if (!runLoop) runLoop = iframe.SC.RunLoop.currentRunLoop = iframe.SC.RunLoop.runLoopClass.create();
+          runLoop.beginRunLoop();
+          return iframe.SC.RunLoop ;
+        };
+
+        innerEnd = function() {
+          var runLoop = iframe.SC.RunLoop.currentRunLoop;
+          if (!runLoop) {
+            throw "SC.RunLoop.end() called outside of a runloop!";
+          }
+          runLoop.endRunLoop();
+          return iframe.SC.RunLoop ;
+        };
+
+        //outer begin
+        outerSC.RunLoop.begin = function() { 
+          //console.log('outer begin');
+          var outer = outerBegin();
+          innerBegin();
+          return outer;
+        };
+
+        //inner begin
+        iframe.SC.RunLoop.begin = function() {
+          //console.log('inner begin');
+          var inner = innerBegin();
+          outerBegin();
+          return inner;
+        };
+
+        //inner end
+        iframe.SC.RunLoop.end = function() {
+          //console.log('inner end');
+          outerEnd();
+          return innerEnd();
+        };
+
+        //Outer End
+        outerSC.RunLoop.end = function() {
+          //console.log('outer end');
+          innerEnd();
+          return outerEnd();
+        };
+       },
+
+      _grabDropTargets: function(){
+        var iframe = Greenhouse.get('iframe'), 
+            innerTargets,
+            webViewFrame,
+            webView = Greenhouse.appPage.get('webView');
+
+        var pv = webView.get('parentView');
+          webViewFrame = webView.get('frame');
+        webViewFrame = pv.convertFrameToView(webViewFrame, null);
+
+
+        //add existing targets
+        innerTargets = iframe.SC.Drag._dropTargets;
+
+        for(var dt in innerTargets){
+          if(innerTargets.hasOwnProperty(dt)){
+            SC.Drag.addDropTarget(innerTargets[dt]);
+          }
+        }
+
+        //make sure we get any new ones
+        iframe.SC.Drag.addDropTarget = function(target) {
+          iframe.SC.Drag._dropTargets[iframe.SC.guidFor(target)] = target ;
+          SC.Drag._dropTargets[iframe.SC.guidFor(target)] = target ;
+        };
+
+
+        iframe.SC.Drag.removeDropTarget = function(target) {
+          delete iframe.SC.Drag._dropTargets[iframe.SC.guidFor(target)] ;
+          delete SC.Drag._dropTargets[iframe.SC.guidFor(target)];
+        };
+
+
+        SC.Drag.prototype._findDropTarget = function(evt) {
+          var loc = { x: evt.pageX, y: evt.pageY } ;
+
+          var target, frame ;
+          var ary = this._dropTargets() ;
+          for (var idx=0, len=ary.length; idx<len; idx++) {
+            target = ary[idx] ;
+
+            // If the target is not visible, it is not valid.
+            if (!target.get('isVisibleInWindow')) continue ;
+
+            // get clippingFrame, converted to the pane.
+            frame = target.convertFrameToView(target.get('clippingFrame'), null) ;
+
+            //if this is in the iframe adjust the frame accordingly
+            if(target.get('targetIsInIFrame')){
+               frame.x = frame.x + webViewFrame.x;
+               frame.y = frame.y + webViewFrame.y;
+             }
+            // check to see if loc is inside.  If so, then make this the drop target
+            // unless there is a drop target and the current one is not deeper.
+            if (SC.pointInRect(loc, frame)) return target;
+          } 
+          return null ;
+        };
+        //all inner drags are actually outer drags
+        iframe.SC.Drag.start = SC.Drag.start;
+      },
+
+      _setupGreenhouse: function(){
+        var iframe = Greenhouse.get('iframe');
+        iframe.SC._Greenhouse = Greenhouse;
+      },
+
+      _setupEventBlocker: function(){
+        var eventBlocker = Greenhouse.appPage.get('eventBlocker');
+        Greenhouse.set('eventBlocker', eventBlocker);
+      }
+    })
   })
 });
 

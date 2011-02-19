@@ -30,6 +30,7 @@ BodyBoard.LABELS_QUERY = SC.Query.local(BodyBoard.Label, {
 });
 
 BodyBoard.CAPTIONS_QUERY = SC.Query.local(BodyBoard.Caption, {
+	orderBy: 'text'
 });
 
 

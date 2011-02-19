@@ -32,6 +32,10 @@ BodyBoard.main = function main() {
 	var labels = BodyBoard.store.find(BodyBoard.LABELS_QUERY);
 	BodyBoard.labelsController.set('content', labels);
 	
+	//var captions = BodyBoard.store.find(SC.Query.local(BodyBoard.Caption));
+	var captions = BodyBoard.store.find(BodyBoard.CAPTIONS_QUERY);
+	BodyBoard.captionsController.set('content', captions);
+	
 	BodyBoard.treeNavController.populate();
 
 	// Initialize the first responder

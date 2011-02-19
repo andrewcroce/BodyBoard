@@ -1,0 +1,11 @@
+/* This default stylesheet for forms maximizes fluidity. */
+/* line 3, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/forms/english.lproj/default_styles.css.scss */
+.sc-label-view.sc-form-label {
+  white-space: pre;
+  text-align: right;
+}
+
+/* line 6, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/frameworks/sproutcore/frameworks/forms/english.lproj/default_styles.css.scss */
+.sc-view.sc-form-view .sc-view.sc-form-row-view {
+  overflow: visible;
+}

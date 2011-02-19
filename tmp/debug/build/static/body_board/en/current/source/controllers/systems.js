@@ -23,23 +23,6 @@ BodyBoard.systemsController = SC.ArrayController.create(
 	allowsSelection : YES,
 	allowsMultipleSelection : NO,
 	
-	/*
-	isLoadedArray : [],
-	loadedCount : 0,
-	
-	initializeForLoading : function(){
-		var arr = this.get('isLoadedArray');
-		for(var i = 0, len = BodyBoard.System.FIXTURES.get('length'); i < len; i++){
-			arr.pushObject(NO);
-		}
-	},
-	
-	recordWasLoaded : function(key){
-		this.get('isLoadedArray').replace(key - 1, 1, [YES]);
-		var count = this.get('loadedCount');
-		this.set('loadedCount', count + 1);
-	},
-	*/
 }) ;
 
 
@@ -100,15 +83,10 @@ BodyBoard.systemController = SC.ObjectController.create(
 		labels.forEach(function(item,index,enumerable){
 			console.log(index);
 			labelView = BodyBoard.labelView.create({});
-			labelView.set('content',item);
-			//labelView.render();
-			
-			//point = new Seadragon.Point( item.get('x'), item.get('y') );
-			//console.log(item.get('x'),',' ,item.get('y') );
-			//placement = Seadragon.OverlayPlacement.TOP_LEFT;
-			
+			labelView.set('content',item);			
 			BodyBoard.getPath('mainPage.bodyView.bodyBoardView').appendChild(labelView);
-			//BodyBoard.viewerController.get('viewer').drawer.addOverlay(labelView.get('layer'), point, placement);
+		});
+		this.invokeLast(function(){
 		});
 	
 	}

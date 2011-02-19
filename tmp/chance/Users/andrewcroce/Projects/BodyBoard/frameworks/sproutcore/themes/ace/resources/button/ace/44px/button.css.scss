@@ -1,0 +1,158 @@
+
+$theme: '.ace';
+$theme: '.ace.sc-jumbo-size';
+
+  
+  #{$theme}.button {
+    
+    .sc-button-label {
+      margin-top: 12px;
+      top: 0px;
+      height: 24px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #777;
+    }
+    
+    .left {
+@extend .__s24_128;
+background-position: _slice_offset_x("resources/button/ace/44px/normal_button_0_0_3__0_", 0) _slice_offset_y("resources/button/ace/44px/normal_button_0_0_3__0_", 0);background-repeat: none;
+position: absolute;
+background-repeat: none; 
+left: 0px; 
+top: 0px; 
+bottom: 0px; 
+width: 3px; 
+}
+.middle {
+@extend .__s24_129;
+background-position: _slice_offset_x("resources/button/ace/44px/normal_button_3_0_1__0_", 0) _slice_offset_y("resources/button/ace/44px/normal_button_3_0_1__0_", 0);background-repeat: repeat-x;
+position: absolute;
+background-repeat: repeat-x; 
+left: 3px; 
+top: 0px; 
+right: 3px; 
+bottom: 0px; 
+}
+.right {
+@extend .__s24_130;
+background-position: _slice_offset_x("resources/button/ace/44px/normal_button__0_3__0_0", 0) _slice_offset_y("resources/button/ace/44px/normal_button__0_3__0_0", 0);background-repeat: none;
+position: absolute;
+background-repeat: none; 
+top: 0px; 
+right: 0px; 
+bottom: 0px; 
+width: 3px; 
+}
+;
+    
+    &.active {
+      .left {
+@extend .__s24_131;
+background-position: _slice_offset_x("resources/button/ace/44px/active_button_0_0_3__0_", 0) _slice_offset_y("resources/button/ace/44px/active_button_0_0_3__0_", 0);background-repeat: none;
+position: absolute;
+background-repeat: none; 
+left: 0px; 
+top: 0px; 
+bottom: 0px; 
+width: 3px; 
+}
+.middle {
+@extend .__s24_132;
+background-position: _slice_offset_x("resources/button/ace/44px/active_button_3_0_1__0_", 0) _slice_offset_y("resources/button/ace/44px/active_button_3_0_1__0_", 0);background-repeat: repeat-x;
+position: absolute;
+background-repeat: repeat-x; 
+left: 3px; 
+top: 0px; 
+right: 3px; 
+bottom: 0px; 
+}
+.right {
+@extend .__s24_133;
+background-position: _slice_offset_x("resources/button/ace/44px/active_button__0_3__0_0", 0) _slice_offset_y("resources/button/ace/44px/active_button__0_3__0_0", 0);background-repeat: none;
+position: absolute;
+background-repeat: none; 
+top: 0px; 
+right: 0px; 
+bottom: 0px; 
+width: 3px; 
+}
+;    
+    }
+  
+    &.sel, &.def {
+      .sc-button-label {
+        color:white;
+        text-shadow: 0px -1px 1px black;
+      }
+      
+      .left {
+@extend .__s24_134;
+background-position: _slice_offset_x("resources/button/ace/44px/selected_button_0_0_3__0_", 0) _slice_offset_y("resources/button/ace/44px/selected_button_0_0_3__0_", 0);background-repeat: none;
+position: absolute;
+background-repeat: none; 
+left: 0px; 
+top: 0px; 
+bottom: 0px; 
+width: 3px; 
+}
+.middle {
+@extend .__s24_135;
+background-position: _slice_offset_x("resources/button/ace/44px/selected_button_3_0_1__0_", 0) _slice_offset_y("resources/button/ace/44px/selected_button_3_0_1__0_", 0);background-repeat: repeat-x;
+position: absolute;
+background-repeat: repeat-x; 
+left: 3px; 
+top: 0px; 
+right: 3px; 
+bottom: 0px; 
+}
+.right {
+@extend .__s24_136;
+background-position: _slice_offset_x("resources/button/ace/44px/selected_button__0_3__0_0", 0) _slice_offset_y("resources/button/ace/44px/selected_button__0_3__0_0", 0);background-repeat: none;
+position: absolute;
+background-repeat: none; 
+top: 0px; 
+right: 0px; 
+bottom: 0px; 
+width: 3px; 
+}
+;    
+  
+      &.sel.active, &.def.active {
+        .left {
+@extend .__s24_137;
+background-position: _slice_offset_x("resources/button/ace/44px/selected_active_button_0_0_3__0_", 0) _slice_offset_y("resources/button/ace/44px/selected_active_button_0_0_3__0_", 0);background-repeat: none;
+position: absolute;
+background-repeat: none; 
+left: 0px; 
+top: 0px; 
+bottom: 0px; 
+width: 3px; 
+}
+.middle {
+@extend .__s24_138;
+background-position: _slice_offset_x("resources/button/ace/44px/selected_active_button_3_0_1__0_", 0) _slice_offset_y("resources/button/ace/44px/selected_active_button_3_0_1__0_", 0);background-repeat: repeat-x;
+position: absolute;
+background-repeat: repeat-x; 
+left: 3px; 
+top: 0px; 
+right: 3px; 
+bottom: 0px; 
+}
+.right {
+@extend .__s24_139;
+background-position: _slice_offset_x("resources/button/ace/44px/selected_active_button__0_3__0_0", 0) _slice_offset_y("resources/button/ace/44px/selected_active_button__0_3__0_0", 0);background-repeat: none;
+position: absolute;
+background-repeat: none; 
+top: 0px; 
+right: 0px; 
+bottom: 0px; 
+width: 3px; 
+}
+;
+      }
+    }
+  }
+  
+$theme: '.ace';
+
