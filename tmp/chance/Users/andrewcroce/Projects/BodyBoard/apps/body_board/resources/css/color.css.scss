@@ -112,10 +112,6 @@ body {
 	);
 }
 
-
- 
- 
-
 #body-menu div {
 }
 #body-menu {
@@ -127,4 +123,50 @@ body {
 	    color-stop(0, rgb(138,217,220)),
 	    color-stop(.6, rgb(128,201,203))
 	);
+}
+
+
+
+
+
+ 
+
+.body-label-view ul {
+	margin:0px;
+	padding:0px;
+	background: #f00;
+}
+	.body-label-view h1 {
+		color: #fff;
+		background: #317484;
+	}
+
+	.body-label-view .marker{
+		background: -moz-linear-gradient(top,  rgba(62,159,163,0.8), rgba(39,99,105,0.8));
+		background: -webkit-gradient(
+		    linear,
+		    left bottom,
+		    left top,
+			 color-stop(0, rgba(39,99,105, 0.8)),
+			 color-stop(1, rgba(62,159,163,0.8))
+		);
+		border: 1px solid #368084;
+	}
+
+
+
+
+ 
+
+
+.next-button {
+	border-color: transparent transparent transparent rgba(62,159,163,0.8);
+	border-width: 10px 0px 10px 20px;
+	background-color: #0F0;
+}
+
+.prev-button {
+	border-color: transparent rgba(62,159,163,0.8) transparent transparent;
+	border-width: 10px 20px 10px 0px;
+	background-color: #0F0;
 }

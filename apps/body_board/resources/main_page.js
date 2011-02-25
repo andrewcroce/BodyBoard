@@ -49,9 +49,9 @@ BodyBoard.mainPage = SC.Page.design({
 			backgroundColor : 'white',
 			layoutDirection : SC.LAYOUT_HORIZONTAL,			
 			//childViews : 'topLeftView dividerView bottomRightView'.w(),
+			defaultThickness : 300,
+			autoresizeBehavior: SC.RESIZE_BOTTOM_RIGHT,
 			
-			autoresizeBehavior: SC.RESIZE_TOP_LEFT,
-			defaultThickness : 0.6,
 			
 			
 			
@@ -63,8 +63,7 @@ BodyBoard.mainPage = SC.Page.design({
 			topLeftView : SC.ContainerView.design({
 			
 				isContainer : YES,
-				layout : { top: 0, bottom: 0, left: 0 },
-				
+				layout : { top: 0, bottom: 0, left: 0 },				
 				contentView : SC.SceneView.design({ 
 					scenes : 'homeView authorContentView'.w(),
 					nowShowing : 'homeView'
@@ -73,8 +72,8 @@ BodyBoard.mainPage = SC.Page.design({
 				
 			}),
 			
-			topLeftMinThickness : 300,
-			topLeftMaxThickness : 500,
+			//topLeftMinThickness : 300,
+			//topLeftMaxThickness : 500,
 			
 			
 			dividerView : SC.SplitDividerView.design({

@@ -17,7 +17,7 @@ BodyBoard.main = function main() {
 	// Create the data source if it doesn't exist already. (FORCE)
 	//var initDS = BodyBoard.store._getDataSource();
 	
-	BodyBoard.getPath('mainPage.mainPane').append() ;
+	//BodyBoard.getPath('mainPage.mainPane').append() ;
 		
 	
 	//var authors = BodyBoard.store.find(SC.Query.local(BodyBoard.Author));
@@ -37,7 +37,9 @@ BodyBoard.main = function main() {
 	BodyBoard.captionsController.set('content', captions);
 	
 	BodyBoard.treeNavController.populate();
-
+	
+	BodyBoard.getPath('mainPage.mainPane').append() ;
+	
 	// Initialize the first responder
 	BodyBoard.statechart.initStatechart(); 
 

@@ -20,6 +20,7 @@ BodyBoard.viewerController = SC.ObjectController.create(
 	viewer : '',			//Property that will hold a reference to the DZI viewer
 	isInitialized : NO,
 	isAnimating : NO,		//Is the viewer currently being manipulated
+	isReady : NO,
 	mousePosition : '',	//Current mouse position over the DZI viewer
 	zoom : 1,				//Current zoom level
 	center : {},				//Current center point of DZI viewer
@@ -42,7 +43,9 @@ BodyBoard.viewerController = SC.ObjectController.create(
 		controls.parentNode.parentNode.parentNode.id = 'controls-container';
 		
 		this.get('viewer').addEventListener('open',function(){
+			console.log('DZI Opened');
 			BodyBoard.viewerController.setViewerPosition();
+			BodyBoard.viewerController.set('isReady',YES);
 			BodyBoard.systemController.setSystem();
 		});
 		

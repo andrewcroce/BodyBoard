@@ -15,7 +15,7 @@
 BodyBoard.labelsController = SC.ArrayController.create( 
 /** @scope BodyBoard.labelsController.prototype */ {
 
-  	orderBy : 'name',
+  	orderBy : 'system_id',
 	allowsMultipleSelection : NO,
 	isEditing : YES,
 	isSaveOk : NO,
@@ -102,17 +102,20 @@ BodyBoard.labelController = SC.ObjectController.create({
 	
 	contentBinding : SC.Binding.single('BodyBoard.labelsController.selection'),
 	allowSystemSet : YES,
-	isEditable : NO,
+	isHovering : NO,
+	showingCaptions : NO,
+	view : {},
 	
 	setSystemOnSelection : function(){
 	
 		if(this.get('allowSystemSet') == YES){
 			var currentSystem = BodyBoard.systemController.get('content');
-			if( currentSystem != this.get('system') ){
+			console.log(currentSystem.get('name'));
+			if( currentSystem.get('id') != this.get('system') ){
 				console.log('Selected label, changing system');
 				BodyBoard.systemsController.selectObject(this.get('system'));
 			}
-			
+			this.set('isHovering',NO);
 		} else {
 			console.log('System setting blocked');
 		}
@@ -123,13 +126,107 @@ BodyBoard.labelController = SC.ObjectController.create({
 	
 	focusOnLabel : function(){
 		var x,y;
+		SC.RunLoop.begin();
 		x = this.get('x');
 		y = this.get('y');
-		console.log(x,y);
+		console.log('Focusing on label ',x,',',y);
 		BodyBoard.viewerController.get('viewer').viewport.panTo(new Seadragon.Point(x, y));
+		SC.RunLoop.end();
 	},
 	
 	
+	over : function(view){
+		
+		if(this.get('showingCaptions') == NO){
+			var element,button;
+			Seadragon.Config.zoomPerClick = 1;
+			this.set('view',view);
+			element = view.$()[0];
+			button = view.get('moreButtonView');
+			$(element).animate(
+				{ height : 32 },
+				10
+			);
+			console.log('over');
+			$(element).animate(
+				{ width : 250 },
+				200,
+				function(){
+					button.set('isVisible',YES)
+				}
+			);
+		}
+	},
+	
+	
+	out : function(view){
+		if(this.get('showingCaptions') == NO){
+			Seadragon.Config.zoomPerClick = 2;
+			var element,button;
+			this.set('view',null);
+			element = view.$()[0];
+			button = view.get('moreButtonView');
+			button.set('isVisible',NO);
+			$(element).animate(
+				{ width : 12 },
+				300
+			);
+			console.log('out');
+			$(element).animate(
+				{ height : 12 },
+				300
+			);
+		}
+	},
+	
+	showCaptions : function(){
+		var view,element,moreButton,closeButton,nextButton,prevButton;
+		view = this.get('view');
+		element = view.$()[0];
+		moreButton = view.get('moreButtonView');
+		closeButton = view.get('closeButtonView');
+		nextButton = view.get('nextButtonView');
+		prevButton = view.get('prevButtonView');
+		moreButton.set('isVisible',NO);
+		closeButton.set('isVisible',YES);
+		nextButton.set('isVisible',YES);
+		prevButton.set('isVisible',YES);
+		console.log('show captions');
+		$(element).animate(
+			{ width : 400 },
+			300
+		);
+		console.log('out');
+		$(element).animate(
+			{ height : 500 },
+			300,
+			function(){
+				BodyBoard.viewerController.get('viewer').viewport.ensureVisible();
+			}
+		);
+	},
+	
+	hideCaptions : function(){
+		var view,element,moreButton,closeButton,nextButton,prevButton;
+		view = this.get('view');
+		element = view.$()[0];
+		moreButton = view.get('moreButtonView');
+		closeButton = view.get('closeButtonView');
+		nextButton = view.get('nextButtonView');
+		prevButton = view.get('prevButtonView');
+		closeButton.set('isVisible',NO);
+		moreButton.set('isVisible',NO);
+		nextButton.set('isVisible',NO);
+		prevButton.set('isVisible',NO);
+		console.log('hide captions');
+		$(element).animate(
+			{ width : 12, height : 12 },
+			200,
+			function(){
+				Seadragon.Config.zoomPerClick = 2;
+			}
+		);
+	},
 	
 	newLabelStartDrag : function( event, layout, view ) {
 		

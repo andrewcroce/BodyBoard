@@ -66,6 +66,7 @@ SC.TreeItemContent,{
 BodyBoard.treeNodeController = SC.ObjectController.create({
 	
 	contentBinding : SC.Binding.single('BodyBoard.treeNavController.selection'),
+	systemChanged : NO,
 	
 	/*
 	*	Manage the selection of the tree nav menu. Check if its a System or a Label,
@@ -73,14 +74,30 @@ BodyBoard.treeNodeController = SC.ObjectController.create({
 	*/
 	
 	observeContent : function(){
-		var record = this.get('content');	
+		var record,currentSystem;	
+		record = this.get('content');
+		currentSystem = BodyBoard.systemController.get('content');
 		
 		if(record.isSystem){
 			BodyBoard.systemsController.selectObject(record);
 		} else {
 			if(record.isLabel){
-				BodyBoard.labelsController.selectObject(record);
-				BodyBoard.labelController.focusOnLabel();
+				if(currentSystem.get('id') != record.get('id')){
+					console.log('system reset');
+					BodyBoard.systemsController.selectObject(record.get('system'));
+					BodyBoard.labelsController.selectObject(record);
+					if(this.get('systemChanged') == NO){
+						BodyBoard.labelController.focusOnLabel();
+					}
+				} else {
+					BodyBoard.labelsController.selectObject(record);
+					this.invokeLast(function(){
+						if(this.get('systemChanged') == NO){
+							BodyBoard.labelController.focusOnLabel();
+						}
+					});
+				}
+				
 			}
 		}
 	}.observes('content')

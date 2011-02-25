@@ -56,6 +56,16 @@ BodyBoard.systemController = SC.ObjectController.create(
 	
 		this.set('newZoom',BodyBoard.viewerController.get('zoom'));
 		this.set('newCenter',BodyBoard.viewerController.get('center'));
+		
+		if(typeof index != "undefined") {
+			BodyBoard.systemsController.selectObject(BodyBoard.store.find('BodyBoard.System', index));
+		}
+		
+		this.invokeLast(function(){
+			BodyBoard.viewerController.get('viewer').openDzi(this.get('src'));
+		});
+		
+		/*
 		if(typeof index == "undefined") {
 			BodyBoard.viewerController.get('viewer').openDzi(this.get('src'));
 		} else {
@@ -64,6 +74,7 @@ BodyBoard.systemController = SC.ObjectController.create(
 				BodyBoard.viewerController.get('viewer').openDzi(this.get('src'));
 			});
 		}
+		*/
 	},
 	
 	
@@ -81,12 +92,24 @@ BodyBoard.systemController = SC.ObjectController.create(
 		}
 		labels = this.get('labels');
 		labels.forEach(function(item,index,enumerable){
-			console.log(index);
+			console.log('Creating label ',index);
 			labelView = BodyBoard.labelView.create({});
 			labelView.set('content',item);			
+			
+			SC.RunLoop.begin();
 			BodyBoard.getPath('mainPage.bodyView.bodyBoardView').appendChild(labelView);
+			SC.RunLoop.end();
 		});
 		this.invokeLast(function(){
+			
+			if(BodyBoard.labelsController.get('hasSelection') == YES){
+				if(BodyBoard.labelController.get('system_id') == this.get('id')){
+					console.log(BodyBoard.labelController.get('system_id'), this.get('id'));
+					BodyBoard.labelController.focusOnLabel();
+					SC.RunLoop.end();
+				}
+			}
+			
 		});
 	
 	}

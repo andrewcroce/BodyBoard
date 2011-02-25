@@ -171,8 +171,14 @@ BodyBoard.statechart = Ki.Statechart.create({
 				console.log('Entered home state');
 			},
 			
-			requestViewArticle : function() {
-				this.gotoState('viewArticleState');
+			requestShowCaptions : function(){
+				BodyBoard.labelController.set('showingCaptions',YES);
+				BodyBoard.labelController.showCaptions();
+			},
+			
+			requestHideCaptions : function(){
+				BodyBoard.labelController.set('showingCaptions',NO);
+				BodyBoard.labelController.hideCaptions();
 			},
 			
 			//	PUBLIC STATE
@@ -239,9 +245,6 @@ BodyBoard.statechart = Ki.Statechart.create({
 						console.log('Entered default logged-in state');
 					},
 					
-					requestCreateArticle : function(){
-						this.gotoState('createArticleState');
-					},
 					
 					requestCreateLabel : function() {
 						this.gotoState('createLabelState');

@@ -5,6 +5,6 @@
 
 # Add initial buildfile information here
 
-config :all, :required => [:sproutcore, :ki]
+config :all, :required => [:sproutcore, "sproutcore/animation", :ki]
 
 proxy '/', :to => 'bodyboard.couchone.com'

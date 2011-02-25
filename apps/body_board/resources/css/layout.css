@@ -32,3 +32,28 @@
 			position: static !important;
 		}
 	
+	
+/******************************/
+/* BODY BOARD LABELS */ 
+/******************************/
+.body-label-view .marker {
+
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	width: 10px;
+	height: 10px;
+}
+.body-label-view .container {
+	width: 400px;
+	position: relative;
+	left: 16px;
+	top: -12px;
+}
+	.body-label-view h1 {
+		min-width: 230px;
+		display: block;
+		padding: 4px 7px 7px 7px;
+		opacity: 0.8;
+	}
+
