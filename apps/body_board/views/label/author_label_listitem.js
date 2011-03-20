@@ -8,10 +8,10 @@
 
 BodyBoard.authorLabelListitemView = SC.View.extend( SC.ContentDisplay, {
 	
-	classNames : ['author-label-li-view'],
 	contentDisplayProperties : 'name system'.w(),
+	classNames : 'author-label-li-view green-bg'.w(),
 	
-	displayProperties: 'name system'.w(),
+	displayProperties: 'isSelected'.w(),
 	
 	render : function( context, firstTime ) {
 		
@@ -26,9 +26,11 @@ BodyBoard.authorLabelListitemView = SC.View.extend( SC.ContentDisplay, {
 			
 		}
 		
-		if (this.get('isSelected')) {
-			context.setClass('selected', this.get('isSelected'));
-		} 
+		if (this.get('isSelected') == YES) {
+			context.addClass('selected');
+		} else {
+			context.removeClass('selected');
+		}
 		
 		//RENDER HTML
 		context = context.begin('h3').addClass('name').push(name).end();

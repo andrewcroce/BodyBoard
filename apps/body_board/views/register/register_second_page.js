@@ -9,10 +9,12 @@ BodyBoard.registerSecondPage = SC.View.design({
 	
 	layout : { top: 0, bottom: 0, left: 0, right: 0 },
 	childViews : 'headerView titleLabelView titleSelectView educationLabelView educationFieldView positionLabelView positionFieldView specialtyLabelView specialtyFieldView requiredMessageLabel backButtonView cancelButtonView submitButtonView'.w(),
+	classNames : 'green-bg'.w(),
 	
 	headerView : SC.ToolbarView.design({
 		layout : { left: 0, right: 0, height: 30 },
 		childViews : 'myLabelView'.w(),
+		layerId : 'register-header',
 		myLabelView : SC.LabelView.design({
 			layout : { left: 10, centerY: 0, height: 20 },
 			tagname : 'h2',
@@ -28,8 +30,8 @@ BodyBoard.registerSecondPage = SC.View.design({
 	titleSelectView : SC.SelectFieldView.design({
 		layout : { top: 90, left: 120, width: 330 },
 		emptyName : 'Choose an appropriate title',
-		objects : ['M.D.','D.O.','Ph.D.','Professor','Teacher','Student','Other medical professional','None of the above'],
-		//valueBinding : 'BodyBoard.registerController.title'
+		objects : ['M.D.','D.O.','Ph.D.','Professor','Teacher','Student','Other Medical Professional','None of the above'],
+		valueBinding : 'BodyBoard.bufferedAuthorController.title'
 	}),
 	
 	educationLabelView : SC.LabelView.design({
@@ -39,7 +41,7 @@ BodyBoard.registerSecondPage = SC.View.design({
 	
 	educationFieldView : SC.TextFieldView.design({
 		layout : { top: 125, left: 120, width: 330, height: 75 },
-		valueBinding : 'BodyBoard.authorController.education',
+		valueBinding : 'BodyBoard.bufferedAuthorController.education',
 		isTextArea : YES,
 		hint : 'If applicable, describe where you received your education, or what school you are currently attending.'
 	}),
@@ -51,7 +53,7 @@ BodyBoard.registerSecondPage = SC.View.design({
 	
 	positionFieldView : SC.TextFieldView.design({
 		layout : { top: 205, left: 120, width: 330, height: 75 },
-		valueBinding : 'BodyBoard.authorController.position',
+		valueBinding : 'BodyBoard.bufferedAuthorController.position',
 		isTextArea : YES,
 		hint : 'If applicable, describe your past or present professional positions.'
 	}),
@@ -63,7 +65,7 @@ BodyBoard.registerSecondPage = SC.View.design({
 	
 	specialtyFieldView : SC.TextFieldView.design({
 		layout : { top: 285, left: 120, width: 330, height: 75 },
-		valueBinding : 'BodyBoard.authorController.specialty',
+		valueBinding : 'BodyBoard.bufferedAuthorController.specialty',
 		isTextArea : YES,
 		hint : 'If applicable, describe your professional specialty or expertise'
 	}),

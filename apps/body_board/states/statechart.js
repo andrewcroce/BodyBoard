@@ -117,11 +117,12 @@ BodyBoard.statechart = Ki.Statechart.create({
 				enterState : function() {
 					console.log('Entered login state');
 					BodyBoard.getPath('loginPage.mainPane').append();
+					BodyBoard.loginController.beginLogin();
 				},
 				
 				requestSubmitLogin : function() {
 					console.log('Requested login');
-					BodyBoard.loginController.attemptLogin();
+					BodyBoard.loginController.enterLogin();
 				},
 				
 				loginError : function() {
@@ -134,8 +135,8 @@ BodyBoard.statechart = Ki.Statechart.create({
 				
 				requestCancelLogin : function() {
 					console.log('Cancelled login');
-					BodyBoard.getPath('loginPage.mainPane').remove();
 					this.gotoState('publicState');
+					BodyBoard.getPath('loginPage.mainPane').remove();
 				}
 				
 				
@@ -181,6 +182,15 @@ BodyBoard.statechart = Ki.Statechart.create({
 				BodyBoard.labelController.hideCaptions();
 			},
 			
+			requestAboutPage : function(){
+				BodyBoard.getPath('aboutPage.mainPane').append();
+			},
+			requestCloseAboutPage : function(){
+				BodyBoard.getPath('aboutPage.mainPane').remove();
+			},
+			
+			
+			
 			//	PUBLIC STATE
 			
 			initialSubstate : 'publicState',
@@ -216,10 +226,12 @@ BodyBoard.statechart = Ki.Statechart.create({
 					BodyBoard.setPath('mainPage.mainPane.topView.loginNavView.nowShowing','accountNavView');
 					BodyBoard.setPath('mainPage.bodyView.bodyMenuView.contentView.canEditContent',YES);
 					BodyBoard.setPath('mainPage.bodyView.bodyMenuView.contentView.canDeleteContent',YES);
+					BodyBoard.getPath('mainPage.mainPane.middleView')._updateTopLeftThickness(325);
 					
 					//Moved to loginController.completeLogin
 					//BodyBoard.accountController.set('content', BodyBoard.store.find('BodyBoard.Account', 1) );
 					//BodyBoard.authorsController.selectObject(BodyBoard.accountController.get('author'));
+					//BodyBoard.authorsController.selectObject(BodyBoard.store.find(BodyBoard.Author,2));
 					BodyBoard.setPath('mainPage.mainPane.middleView.topLeftView.contentView.nowShowing','authorContentView');
 					//BodyBoard.setPath('mainPage.mainPane.middleView.scrollView.contentView.nowShowing','authorContentView');
 				},
@@ -230,13 +242,46 @@ BodyBoard.statechart = Ki.Statechart.create({
 				},
 				
 				requestLogout : function() {
-					BodyBoard.accountController.set('content', '');
+					BodyBoard.loginController.logout()
 					BodyBoard.setPath('mainPage.mainPane.middleView.topLeftView.contentView.nowShowing','homeView');
 					this.gotoState('publicState');
+					BodyBoard.getPath('mainPage.mainPane.middleView')._updateTopLeftThickness(0);
+					
 				},
 				
 				requestManageAccount : function() {
 					this.gotoState('manageAccountState');
+				},
+				
+				systemChanged : function(){
+					BodyBoard.setPath('mainPage.bodyView.labelsToggleView.title', 'Show My Labels');
+				},
+				
+				requestToggleLabels : function(){
+					if(BodyBoard.systemLabelsController.get('showAuthorLabels') == NO) {
+						console.log('Show Author labels only');
+						BodyBoard.systemLabelsController.set('showAuthorLabels', YES);
+						BodyBoard.setPath('mainPage.bodyView.labelsToggleView.title', 'Show All Labels');
+						
+						this.invokeLast(function(){									
+							
+							BodyBoard.labelCollectionView.get('childViews').forEach(function(item,index,enumerable){
+								item.updateLayer();
+							});
+							
+						});
+						
+					} else {
+						
+						console.log('Show All labels');
+						BodyBoard.setPath('mainPage.bodyView.labelsToggleView.title', 'Show My Labels');
+						BodyBoard.systemLabelsController.set('showAuthorLabels', NO);
+						
+						BodyBoard.labelCollectionView.get('childViews').forEach(function(item,index,enumerable){
+							item.updateLayer();
+						});
+						
+					}
 				},
 				
 				loggedInDefaultState : Ki.State.design({
@@ -250,6 +295,18 @@ BodyBoard.statechart = Ki.Statechart.create({
 						this.gotoState('createLabelState');
 					},
 					
+					requestEditLabel : function() {
+						this.gotoState('editLabelState');
+					},
+					
+					requestCreateCaption : function() {
+						this.gotoState('createCaptionState');
+					},
+					
+					requestEditCaption : function() {
+						this.gotoState('editCaptionState');
+					},
+					
 					requestEditAuthor : function() {
 						this.gotoState('editAuthorState');
 					}
@@ -261,16 +318,18 @@ BodyBoard.statechart = Ki.Statechart.create({
 					enterState : function() {
 						console.log('Entered manage account state');
 						BodyBoard.setPath('mainPage.mainPane.middleView.bottomRightView.contentView.nowShowing','editAuthorView');
+						BodyBoard.bufferedAuthorController.editAuthor();
 					},
 					
 					requestSaveAccount : function() {
 						console.log('Requested save account info');
-						BodyBoard.accountController.saveAccount();
+						BodyBoard.bufferedAuthorController.save();
 					},
 					
 					requestCancelEditAccount : function() {
 						console.log('Cancel edit account info');
 						BodyBoard.setPath('mainPage.mainPane.middleView.bottomRightView.contentView.nowShowing','bodyView');
+						BodyBoard.bufferedAuthorController.discard();
 						this.gotoState('loggedInDefaultState');
 						
 						//BodyBoard.accountController.undoChanges();  //TO DO
@@ -279,14 +338,6 @@ BodyBoard.statechart = Ki.Statechart.create({
 					
 				}),
 				
-				createArticleState : Ki.State.design({
-					
-					requestCreateCaption : function() {
-						this.gotoState('createCaptionState');
-					},
-					
-					
-				}),
 				
 				createLabelState : Ki.State.design({
 					
@@ -294,35 +345,110 @@ BodyBoard.statechart = Ki.Statechart.create({
 						console.log('Entered create label state');
 						BodyBoard.setPath('mainPage.bodyView.editPanelView.nowShowing','createLabelView');
 						BodyBoard.setPath('mainPage.bodyView.dragTargetView.isVisible', YES);
-						BodyBoard.systemsController.set('allowsSelection',NO);
-						BodyBoard.labelsController.addLabel();
 						BodyBoard.labelController.set('isEditable',YES);
 					},
 					
 					requestSaveLabel : function(){
 						console.log('Requested save new label');
-						BodyBoard.setPath('mainPage.bodyView.editPanelView.nowShowing',null);
-						BodyBoard.setPath('mainPage.bodyView.dragTargetView.isVisible', NO);
-						this.gotoState('loggedInDefaultState')
-						BodyBoard.labelsController.saveLabel();
-						BodyBoard.systemsController.set('allowsSelection',YES);
+						//BodyBoard.setPath('mainPage.bodyView.editPanelView.nowShowing',null);
+						//BodyBoard.setPath('mainPage.bodyView.dragTargetView.isVisible', NO);
+						//this.gotoState('loggedInDefaultState')
+						try {
+							//BodyBoard.setPath('createLabelView.saveButtonView.isEnabled',NO);
+							BodyBoard.bufferedLabelController.save(BodyBoard.get('createLabelView'),this.labelCreationComplete, YES);
+						} catch(error) {
+							BodyBoard.get('mainPage').showError(error);
+							
+						}
 					}, 
 					
 					requestCancelCreateLabel : function(){
 						console.log('Requested cancel create label');
+						BodyBoard.bufferedLabelController.discard();
+						//this.gotoState('loggedInDefaultState');
+						
+					},
+					
+					labelCreationComplete : function() {
+						console.log('Label creation finished');
 						BodyBoard.setPath('mainPage.bodyView.editPanelView.nowShowing',null);
 						BodyBoard.setPath('mainPage.bodyView.dragTargetView.isVisible', NO);
-						BodyBoard.systemsController.set('allowsSelection',YES);
-						//BodyBoard.labelsController.cancelLabelCreation();
-						BodyBoard.labelsController.set('isDeleteOk',YES);
-						BodyBoard.labelsController.deleteLabel();
-						this.gotoState('loggedInDefaultState');
-						
+						BodyBoard.getPath('mainPage.bodyView.dragTargetView').adjust({ bottom: 45, left: 142 });
+						//BodyBoard.systemsController.set('allowsSelection',YES);
+						BodyBoard.statechart.gotoState('loggedInDefaultState');
 					}
 					
 				}),
 				
+				editLabelState : Ki.State.design({
+					
+					enterState : function(){
+						console.log('Entered edit label state');
+						BodyBoard.setPath('mainPage.bodyView.editPanelView.nowShowing','editLabelView');
+						BodyBoard.bufferedLabelController.set('isEditable',YES);
+						BodyBoard.bufferedLabelController.editLabel();
+					},
+					requestSaveLabel : function(){
+						console.log('Requested save new label');
+						try {
+							BodyBoard.bufferedLabelController.save(BodyBoard.get('editLabelView'),this.labelEditingComplete, NO);
+						} catch(error) {
+							BodyBoard.get('mainPage').showError(error);
+							
+						}
+					},
+					requestCancelEditLabel : function(){
+						console.log('Requested cancel create label');
+						BodyBoard.bufferedLabelController.discard();						
+					},
+					
+					labelEditingComplete : function() {
+						console.log('Label creation finished');
+						BodyBoard.setPath('mainPage.bodyView.editPanelView.nowShowing',null);
+						BodyBoard.statechart.gotoState('loggedInDefaultState');
+					}
+					
+				}),
+				
+				
+				
+				
 				createCaptionState : Ki.State.design({
+					
+					enterState : function() {
+						console.log('Entered create caption state');
+						BodyBoard.setPath('mainPage.mainPane.middleView.topLeftView.contentView.nowShowing','createCaptionView');
+						BodyBoard.bufferedCaptionController.createNewCaption();
+					},
+					
+					requestSaveCaption : function(){
+						console.log('Requested save new caption');
+						try {
+							BodyBoard.bufferedCaptionController.save(BodyBoard.get('createCaptionView'),this.captionCreationComplete);
+						} catch(error) {
+							BodyBoard.get('mainPage').showError(error);
+						}
+					},
+					
+					requestCancelCreateCaption : function(){
+						console.log('Requested cancel create caption');
+						BodyBoard.bufferedCaptionController.discard();	
+					
+					},
+					
+					captionCreationComplete : function() {
+						console.log('Caption creation finished');
+						BodyBoard.setPath('mainPage.mainPane.middleView.topLeftView.contentView.nowShowing','authorContentView');	
+						BodyBoard.statechart.gotoState('loggedInDefaultState');
+					}
+					
+				}),
+				
+				editCaptionState : Ki.State.design({
+					
+					enterState : function(){
+						console.log('Entered edit caption state');
+					}
 					
 				}),
 				
@@ -397,11 +523,12 @@ BodyBoard.statechart = Ki.Statechart.create({
 						BodyBoard.setPath('registerPage.mainPane.contentView.nowShowing','registerFirstPage');
 					},
 					requestSubmit : function(){
-						BodyBoard.registerController.finishRegistration();
+						BodyBoard.registerController.saveUser();
 					},
 					
 					registrationComplete : function(){
 						this.gotoState('registerConfirmState');
+						BodyBoard.loginController.login(BodyBoard.userController.get('name'),BodyBoard.userController.get('password'));
 						BodyBoard.setPath('registerPage.mainPane.contentView.nowShowing','registerConfirmPage');
 					}
 					
@@ -424,6 +551,7 @@ BodyBoard.statechart = Ki.Statechart.create({
 				
 				requestCancelRegister : function(){
 					BodyBoard.registerController.cancelRegistration();
+					console.log('Cancelling');
 					BodyBoard.getPath('registerPage.mainPane').remove();
 					this.gotoState('publicState');
 				},

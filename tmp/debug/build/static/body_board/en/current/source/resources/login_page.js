@@ -17,10 +17,13 @@ BodyBoard.loginPage = SC.Page.create({
 			
 			layout : { top: 0, bottom: 0, left: 0, right: 0 },
 			childViews : 'headerView errorMessageView emailLabelView emailInputView passwordlLabelView passwordInputView submitButtonView cancelButtonView'.w(),
+			classNames : 'green-bg'.w(),
+			layerId : 'login-panel',
 			
 			headerView : SC.ToolbarView.design({
 				layout : { left: 0, right: 0, height: 30 },
 				childViews : 'myLabelView'.w(),
+				layerId : 'login-header',
 				myLabelView : SC.LabelView.design({
 					layout : { left: 10, centerY: 0, height: 20 },
 					tagname : 'h2',
@@ -40,7 +43,8 @@ BodyBoard.loginPage = SC.Page.create({
 			
 			emailInputView : SC.TextFieldView.design({
 				layout : { left: 130, top: 105, height: 30, width: 300 },
-				valueBinding : 'BodyBoard.loginController.emailInput',
+				//valueBinding : 'BodyBoard.loginController.emailInput',
+				valueBinding : 'BodyBoard.userController.name',
 			}),
 			
 			passwordlLabelView : SC.LabelView.design({
@@ -50,7 +54,9 @@ BodyBoard.loginPage = SC.Page.create({
 			
 			passwordInputView : SC.TextFieldView.design({
 				layout : { left: 130, top: 150, height: 30, width: 300 },
-				valueBinding : 'BodyBoard.loginController.passwordInput',
+				//valueBinding : 'BodyBoard.loginController.passwordInput',
+				valueBinding : 'BodyBoard.userController.password',
+				isPassword : YES
 			}),
 			
 			submitButtonView : SC.ButtonView.design({

@@ -21,7 +21,7 @@ BodyBoard.Label = SC.Record.extend(
 	x : SC.Record.attr(Number),
 	y : SC.Record.attr(Number),
 	
-	author_id : SC.Record.attr(Number),
+	author_id : SC.Record.attr(String),
 	system_id : SC.Record.attr(Number),
 	
 	author : function(){
@@ -42,9 +42,40 @@ BodyBoard.Label = SC.Record.extend(
 	treeItemChildren : null,
 	treeItemIsExpanded : NO,
 	
+	//isShowingCaptions : NO,
+	//isShowingMoreButton : NO,
+	
 	isLabel : function(){
 		return YES;
+	},
+	
+	hasCaptions : function(){
+		var captions = this.get('captions');
+		if(captions.get('length') > 0){
+			return YES;
+		} else {
+			return NO;
+		}
+	}.property().cacheable(),
+	
+	backup : function(){
+		console.log('Properties:',this.get('attributes'));
+		var backup = SC.Object.create();
+		for (var i = 0; i < this.attributes.length; i++) {
+			var p = this.attributes[i];
+			backup.set(p, this.get(p));
+		}
+		return backup;
+	},
+	
+	restore : function(backup) {
+		for (var i = 0; i < this.attributes.length; i++) {
+			var p = this.attributes[i];
+			this.set(p, backup.get(p));
+		}
+		return;
 	}
+	
 	
 
 }) ;

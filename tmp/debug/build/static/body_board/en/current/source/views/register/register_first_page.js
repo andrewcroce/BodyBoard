@@ -9,10 +9,12 @@ BodyBoard.registerFirstPage = SC.View.design({
 	
 	layout : { top: 0, bottom: 0, left: 0, right: 0 },
 	childViews : 'headerView firstNameLabelView firstNameFieldView lastNameLabelView lastNameFieldView emailLabelView emailFieldView confirmEmailFieldView emailCheckView passwordlLabelView passwordFieldView confirmPasswordFieldView passwordCheckView nextButtonView cancelButtonView'.w(),
+	classNames : 'green-bg'.w(),
 	
 	headerView : SC.ToolbarView.design({
 		layout : { left: 0, right: 0, height: 30 },
 		childViews : 'myLabelView'.w(),
+		layerId : 'register-header',
 		myLabelView : SC.LabelView.design({
 			layout : { left: 10, centerY: 0, height: 20 },
 			tagname : 'h2',
@@ -28,7 +30,7 @@ BodyBoard.registerFirstPage = SC.View.design({
 	firstNameFieldView : SC.TextFieldView.design({
 		layout : { top: 85, left: 120, width: 330, height: 25 },
 		hint: 'Enter your first name',
-		valueBinding : 'BodyBoard.authorController.firstName'
+		valueBinding : 'BodyBoard.bufferedAuthorController.firstName'
 	}),
 	
 	
@@ -39,7 +41,7 @@ BodyBoard.registerFirstPage = SC.View.design({
 	
 	lastNameFieldView : SC.TextFieldView.design({
 		layout : { top: 115, left: 120, width: 330, height: 25 },
-		valueBinding : 'BodyBoard.authorController.lastName',
+		valueBinding : 'BodyBoard.bufferedAuthorController.lastName',
 		hint: 'Enter your last name'
 	}),
 	
@@ -53,7 +55,7 @@ BodyBoard.registerFirstPage = SC.View.design({
 	
 	emailFieldView : SC.TextFieldView.design({
 		layout : { top: 175, left: 120, width: 330, height: 25 },
-		valueBinding : 'BodyBoard.accountController.email',
+		valueBinding : 'BodyBoard.userController.name',
 		hint: 'Enter a valid email address'
 	}),
 	
@@ -82,7 +84,7 @@ BodyBoard.registerFirstPage = SC.View.design({
 	
 	passwordFieldView : SC.TextFieldView.design({
 		layout : { top: 265, left: 120, width: 330, height: 25 },
-		valueBinding : 'BodyBoard.accountController.password',
+		valueBinding : 'BodyBoard.userController.password',
 		hint: 'Choose a password at least 8 characters long'
 	}),
 	

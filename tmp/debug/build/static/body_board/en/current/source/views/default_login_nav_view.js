@@ -10,14 +10,14 @@ BodyBoard.defaultLoginNavView = SC.View.design({
 	childViews : 'registerButtonView loginButtonView'.w(),
 	
 	registerButtonView : SC.ButtonView.design({
-		layout : { top: 25, right: 50, width: 98 },
+		layout : { top: 25, right: 40, width: 98 },
 		title : 'Create Account',
 		action : 'requestRegister',
 		layerId : 'create-account-button'
 	}),
 	
 	loginButtonView : SC.ButtonView.design({
-		layout : { top: 25, right: 10, width: 40 },
+		layout : { top: 25, right: 0, width: 40 },
 		title : 'Login',
 		action : 'requestLogin',
 		layerId : 'login-button'

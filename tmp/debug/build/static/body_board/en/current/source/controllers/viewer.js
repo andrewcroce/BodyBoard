@@ -22,6 +22,8 @@ BodyBoard.viewerController = SC.ObjectController.create(
 	isAnimating : NO,		//Is the viewer currently being manipulated
 	isReady : NO,
 	mousePosition : '',	//Current mouse position over the DZI viewer
+	targetX : 0.5,
+	targetY : 0.5,
 	zoom : 1,				//Current zoom level
 	center : {},				//Current center point of DZI viewer
 	
@@ -34,6 +36,7 @@ BodyBoard.viewerController = SC.ObjectController.create(
 		var controls;
 		
 		console.log('Initializing Viewer');
+		Seadragon.Strings.Errors.Empty = '';
 		this.set('viewer', new Seadragon.Viewer('body-board-view'));
 		
 		// Some javascript hackery allowing the viewer controls to be repositioned with css
@@ -43,14 +46,14 @@ BodyBoard.viewerController = SC.ObjectController.create(
 		controls.parentNode.parentNode.parentNode.id = 'controls-container';
 		
 		this.get('viewer').addEventListener('open',function(){
-			console.log('DZI Opened');
+			//console.log('DZI Opened');
 			BodyBoard.viewerController.setViewerPosition();
 			BodyBoard.viewerController.set('isReady',YES);
 			BodyBoard.systemController.setSystem();
 		});
 		
 		this.get('viewer').addEventListener('animationstart',function(){
-			console.log('animation started');
+			//console.log('animation started');
 			BodyBoard.viewerController.set('isAnimating',YES);
 		});
 		
@@ -59,15 +62,25 @@ BodyBoard.viewerController = SC.ObjectController.create(
 		});
 		
 		this.get('viewer').addEventListener('animationfinish',function(){
-			console.log('animation finished');
-			BodyBoard.viewerController.set('isAnimating',YES);
+			//console.log('animation finished');
+			BodyBoard.viewerController.set('isAnimating',NO);
 		});
 		
 		//Open System 1 on initialization
 		//TODO: Randomize, or set to the user's last-opened System
-		BodyBoard.systemController.open(1);
+		//BodyBoard.systemController.open(1);
+		var system = BodyBoard.store.find(BodyBoard.System,1);
+		BodyBoard.systemsController.selectObject(system);
 
 	},
+	
+	observeReadyState : function(){
+		if(this.get('isReady') == YES){
+			console.log('Viewer Ready!!');
+		} else {
+			console.log('Viewer not ready');
+		}
+	}.observes('isReady'),
 	
 	setViewerPosition : function(){
 		this.set('zoom',this.get('viewer').viewport.getZoom());
@@ -81,15 +94,35 @@ BodyBoard.viewerController = SC.ObjectController.create(
 	
 	setMousePosition : function(event) {
 		//console.log('mouse position set');
+		SC.RunLoop.begin();
 	 	var pixel = Seadragon.Utils.getMousePosition(event).minus(Seadragon.Utils.getElementPosition(this.get('viewer').elmt));
 		//var pixel = Seadragon.Utils.getMousePosition(event);
 		var point = this.get('viewer').viewport.pointFromPixel(pixel);
 		this.set('mousePosition', point);
-		this.invokeLater(function(){
-			//console.log(this.get('mousePosition'));
-			
-		});
+		SC.RunLoop.end();
+
 	},
+	
+	setTargetPosition : function(view) {
+		SC.RunLoop.begin();
+		var position = this.get('mousePosition');
+		
+		/*
+		var targetView = BodyBoard.getPath('mainPage.bodyView.dragTargetView');
+		var layout = {
+			x : targetView.layout.left,
+			y : targetView.layout.bottom
+		};
+		var point = new Seadragon.Point(layout.x,layout.y);
+		var pixel = point.minus(Seadragon.Utils.getElementPosition(this.get('viewer').elmt));
+		var position = this.get('viewer').viewport.pointFromPixel(pixel);
+		*/
+		
+		this.set('targetX', position.x);
+		this.set('targetY', position.y);
+		console.log('setting target position: ',this.get('targetX'),this.get('targetY'));
+		SC.RunLoop.end();
+	}
 	
 
 	

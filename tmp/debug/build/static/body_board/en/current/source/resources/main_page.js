@@ -17,18 +17,19 @@ BodyBoard.mainPage = SC.Page.design({
 	
 		defaultResponder : 'BodyBoard.statechart', 
 		
-		childViews : 'topView middleView'.w(),
+		childViews : 'topView bottomView middleView'.w(),
 	
 	
 		topView : SC.ToolbarView.design({
 		
-			layout : { left: 0, right: 0, height: 57 },
+			layout : { left: 0, right: 0, height: 56 },
 			childViews : 'logoView loginNavView'.w(),
 			layerId : 'main-header',
 			
 			logoView : SC.LabelView.design({
-				layout : { left: 10, centerY: 0, height: 20 },
+				layout : { left: 0, top: 0, height: 52 },
 				tagname : 'h1',
+				layerId : 'top-logo',
 				value : 'BodyBoard'
 			}),
 			
@@ -42,14 +43,27 @@ BodyBoard.mainPage = SC.Page.design({
 			
 		}),
 		
+		bottomView : SC.ToolbarView.design({
+			layout : { left: 0, right: 0, bottom: 0, height: 29 },
+			layerId : 'main-footer',
+			childViews : 'aboutLinkView'.w(),
+			
+			aboutLinkView : SC.LabelView.design({
+				layout : { left: 10, top: 5 },
+				value : 'About BodyBoard',
+				click : function(){
+					BodyBoard.statechart.sendEvent('requestAboutPage');
+				}
+			})
+		}),
 		
 		middleView : SC.SplitView.design({
 		
-			layout : { top: 57, bottom: 0, left: 0, right:0 },
+			layout : { top: 57, bottom: 30, left: 0, right:0 },
 			backgroundColor : 'white',
 			layoutDirection : SC.LAYOUT_HORIZONTAL,			
 			//childViews : 'topLeftView dividerView bottomRightView'.w(),
-			defaultThickness : 300,
+			defaultThickness : 0,
 			autoresizeBehavior: SC.RESIZE_BOTTOM_RIGHT,
 			
 			
@@ -65,8 +79,8 @@ BodyBoard.mainPage = SC.Page.design({
 				isContainer : YES,
 				layout : { top: 0, bottom: 0, left: 0 },				
 				contentView : SC.SceneView.design({ 
-					scenes : 'homeView authorContentView'.w(),
-					nowShowing : 'homeView'
+					scenes : 'homeView authorContentView createCaptionView'.w(),
+					nowShowing : 'authorContentView'
 				}),
 				
 				
@@ -100,8 +114,13 @@ BodyBoard.mainPage = SC.Page.design({
 			
 		}),
 		
+		
+		
+		
 	
 	}),
+	
+	
 	
 	//LOGIN NAVIGATION LAYOUTS
 	
@@ -118,6 +137,8 @@ BodyBoard.mainPage = SC.Page.design({
 	authorContentView : BodyBoard.authorContentView.design({}),
 	editAuthorView : BodyBoard.editAuthorView.design({}),
 	createLabelView : BodyBoard.createLabelView.design({}),
+	editLabelView : BodyBoard.editLabelView.design({}),
+	createCaptionView : BodyBoard.createCaptionView.design({}),
 
 	emptyView : SC.View.design({}), //Need this for SceneViews that currently have no scene... this cant be right
 	

@@ -628,7 +628,7 @@ SC.Record = SC.Object.extend(
   */
   status: function() {
     return this.store.readStatus(this.storeKey);
-  }.property('storeKey').cacheable(),
+  }.property(), //.property('storeKey').cacheable(),
 
   /**
     The store that owns this record.  All changes will be buffered into this

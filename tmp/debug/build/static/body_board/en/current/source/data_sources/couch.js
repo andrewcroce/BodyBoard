@@ -15,6 +15,7 @@
 sc_require('models/author');
 sc_require('models/system');
 sc_require('models/label');
+sc_require('data_sources/jquery.couch');
 
 
 BodyBoard.AUTHORS_QUERY = SC.Query.local(BodyBoard.Author, {
@@ -215,7 +216,17 @@ BodyBoard.CouchDataSource = SC.DataSource.extend(
 								.send();
 							return YES;
 						} else {
-							return NO;
+							if(SC.kindOf(store.recordTypeFor(storeKey), BodyBoard.User)){
+								var id = store.idFor(storeKey);
+								console.log('Retrieving account ',id);
+								SC.Request.getUrl(this.getServerPath('_user',id))
+									.header('Accept', 'application/json').json()
+									.notify(this, 'didRetrieveAccount', store, storeKey)
+									.send();
+								return YES;
+							} else {
+								return NO;
+							}
 						}
 					}
 				}
@@ -269,6 +280,16 @@ BodyBoard.CouchDataSource = SC.DataSource.extend(
 			store.dataSourceDidComplete(storeKey, dataHash);
 		} 	else {
 			console.log('Problem retrieving account');
+			store.dataSourceDidError(storeKey, response);
+		}
+	},
+	didRetrieveUser: function(response, store, storeKey) {
+		if (SC.ok(response)) {
+			console.log('User retrieved');
+			var dataHash = response.get('body').content;
+			store.dataSourceDidComplete(storeKey, dataHash);
+		} 	else {
+			console.log('Problem retrieving user');
 			store.dataSourceDidError(storeKey, response);
 		}
 	},
@@ -343,7 +364,8 @@ BodyBoard.CouchDataSource = SC.DataSource.extend(
 						return YES;
 						
 					} else {
-						return NO;
+							return NO;
+						
 					}
 				}
 			}

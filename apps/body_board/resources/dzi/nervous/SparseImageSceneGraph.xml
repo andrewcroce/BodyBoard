@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<SceneGraph version="1">
+  <AspectRatio>0.409090909090909</AspectRatio>
+  <BackgroundColor>000000</BackgroundColor>
+  <SceneNode>
+    <FileName>C:\Users\Andrew\Documents\Expression\Deep Zoom Composer Projects\BodyBoard\Source Images\circulatory.jpg</FileName>
+    <x>0</x>
+    <y>0</y>
+    <Width>1</Width>
+    <Height>1</Height>
+    <ZOrder>1</ZOrder>
+  </SceneNode>
+  <SceneNode>
+    <FileName>C:\Users\Andrew\Documents\Expression\Deep Zoom Composer Projects\BodyBoard\Source Images\respiratory.jpg</FileName>
+    <x>0</x>
+    <y>0</y>
+    <Width>1</Width>
+    <Height>1</Height>
+    <ZOrder>2</ZOrder>
+  </SceneNode>
+  <SceneNode>
+    <FileName>C:\Users\Andrew\Documents\Expression\Deep Zoom Composer Projects\BodyBoard\Source Images\skeletal.jpg</FileName>
+    <x>0</x>
+    <y>0</y>
+    <Width>1</Width>
+    <Height>1</Height>
+    <ZOrder>3</ZOrder>
+  </SceneNode>
+  <SceneNode>
+    <FileName>C:\Users\Andrew\Documents\Expression\Deep Zoom Composer Projects\BodyBoard\Source Images\muscular.jpg</FileName>
+    <x>0</x>
+    <y>0</y>
+    <Width>1</Width>
+    <Height>1</Height>
+    <ZOrder>4</ZOrder>
+  </SceneNode>
+  <SceneNode>
+    <FileName>C:\Users\Andrew\Documents\Expression\Deep Zoom Composer Projects\BodyBoard\Source Images\digestive.jpg</FileName>
+    <x>0</x>
+    <y>0</y>
+    <Width>1</Width>
+    <Height>1</Height>
+    <ZOrder>5</ZOrder>
+  </SceneNode>
+  <SceneNode>
+    <FileName>C:\Users\Andrew\Documents\Expression\Deep Zoom Composer Projects\BodyBoard\Source Images\nervous.jpg</FileName>
+    <x>0</x>
+    <y>0</y>
+    <Width>1</Width>
+    <Height>1</Height>
+    <ZOrder>6</ZOrder>
+  </SceneNode>
+</SceneGraph>

@@ -12,7 +12,6 @@
 */
 
 
-sc_require('fixtures/system');
 sc_require('controllers/viewer');
 
 
@@ -43,7 +42,10 @@ BodyBoard.systemController = SC.ObjectController.create(
 	selectionDidChange : function() {
 		//this.set('newZoom',BodyBoard.viewerController.get('zoom'));
 		//this.set('newCenter',BodyBoard.viewerController.get('center'));
-		this.open();
+		if(this.get('content') != null){
+			this.open();
+			BodyBoard.statechart.sendEvent('systemChanged');
+		}
 	}.observes('content'),
 	
 	
@@ -65,16 +67,6 @@ BodyBoard.systemController = SC.ObjectController.create(
 			BodyBoard.viewerController.get('viewer').openDzi(this.get('src'));
 		});
 		
-		/*
-		if(typeof index == "undefined") {
-			BodyBoard.viewerController.get('viewer').openDzi(this.get('src'));
-		} else {
-			BodyBoard.systemsController.selectObject(BodyBoard.store.find('BodyBoard.System', index));
-			this.invokeLast(function(){
-				BodyBoard.viewerController.get('viewer').openDzi(this.get('src'));
-			});
-		}
-		*/
 	},
 	
 	
@@ -90,21 +82,29 @@ BodyBoard.systemController = SC.ObjectController.create(
 		} else {
 			BodyBoard.viewerController.set('isInitialized',YES);
 		}
+		
 		labels = this.get('labels');
-		labels.forEach(function(item,index,enumerable){
-			console.log('Creating label ',index);
-			labelView = BodyBoard.labelView.create({});
-			labelView.set('content',item);			
-			
-			SC.RunLoop.begin();
-			BodyBoard.getPath('mainPage.bodyView.bodyBoardView').appendChild(labelView);
-			SC.RunLoop.end();
+		
+		BodyBoard.labelCollectionView = SC.CollectionView.create({
+			layout : { top: 0, left: 0, width: 0, height: 0 },
+			contentBinding : 'BodyBoard.systemLabelsController.arrangedObjects',
+			selectionBinding : 'BodyBoard.labelsController.selection',
+			selectOnMouseDown : YES,
+			canDeleteContent : NO,
+			layerId : 'label-collection',
+			exampleView : BodyBoard.labelView,
+			recordType: BodyBoard.Label,
 		});
+		
+		SC.RunLoop.begin();
+		BodyBoard.getPath('mainPage.bodyView.bodyBoardView').appendChild(BodyBoard.labelCollectionView);
+		SC.RunLoop.end();
+		
 		this.invokeLast(function(){
 			
 			if(BodyBoard.labelsController.get('hasSelection') == YES){
 				if(BodyBoard.labelController.get('system_id') == this.get('id')){
-					console.log(BodyBoard.labelController.get('system_id'), this.get('id'));
+					//console.log(BodyBoard.labelController.get('system_id'), this.get('id'));
 					BodyBoard.labelController.focusOnLabel();
 					SC.RunLoop.end();
 				}
@@ -117,4 +117,12 @@ BodyBoard.systemController = SC.ObjectController.create(
 	
 	
 }) ;
+
+
+
+
+BodyBoard.systemLabelsController = SC.ArrayController.create({
+	contentBinding : 'BodyBoard.systemController.labels',
+	showAuthorLabels : NO,
+});
 

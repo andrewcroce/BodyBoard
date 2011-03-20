@@ -25,15 +25,20 @@ BodyBoard.Author = SC.Record.extend(
 	
 	
 	//account : SC.Record.toOne('BodyBoard.Account', { inverse: 'author' }),
-	account_id : SC.Record.attr(Number),
-	account : function(){
-		return BodyBoard.store.find(BodyBoard.Account,this.get('account_id'));	
+	user_id : SC.Record.attr(String),
+	user : function(){
+		return BodyBoard.store.find(BodyBoard.User,this.get('user_id'));	
 	}.property().cacheable(),
 	
 	
 	//labels : SC.Record.toMany('BodyBoard.Label', { inverse: 'author'} ),
 	labels : function(){
 		var query = SC.Query.local(BodyBoard.Label,'author = {author}',{ author : this }); 
+		return BodyBoard.store.find(query);
+	}.property().cacheable(),
+	
+	captions : function(){
+		var query = SC.Query.local(BodyBoard.Caption,'author = {author}',{ author : this }); 
 		return BodyBoard.store.find(query);
 	}.property().cacheable(),
 	
@@ -62,14 +67,25 @@ BodyBoard.Author = SC.Record.extend(
 		
 		switch( title ) {
 			
-			case 'dr' :
+			case 'M.D.' :
+				prefix = 'Dr. ';
+				break;
+			case 'D.O.' :
 				prefix = 'Dr. ';
 				break;
 			
-			case 'phd':
+			case 'Ph.D.':
 				suffix = ', Ph.D.';
 				break;
 				
+			case 'Professor':
+				prefix = 'Professor ';
+				break;
+			
+			case 'Other Medical Professional':
+				suffix = ', Medical Professional';
+				break;
+			
 			default:
 				suffix = ', ';
 				suffix += title;
@@ -112,7 +128,26 @@ BodyBoard.Author = SC.Record.extend(
 		
 		//TO DO: Calculate a rating value based on votes for articles
 	
-	}.property('votes').cacheable()
+	}.property('votes').cacheable(),
+	
+	
+	backup : function(){
+		console.log('Properties:',this.get('attributes'));
+		var backup = SC.Object.create();
+		for (var i = 0; i < this.attributes.length; i++) {
+			var p = this.attributes[i];
+			backup.set(p, this.get(p));
+		}
+		return backup;
+	},
+	
+	restore : function(backup) {
+		for (var i = 0; i < this.attributes.length; i++) {
+			var p = this.attributes[i];
+			this.set(p, backup.get(p));
+		}
+		return;
+	}
 
 
 }) ;

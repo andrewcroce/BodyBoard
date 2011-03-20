@@ -6,9 +6,9 @@
 
 BodyBoard.editAuthorView = SC.View.design( SC.Control, {
 	
-	contentBinding : 'BodyBoard.authorController.content',
-	childViews : 'completionLabel completionField ratingLabel ratingField titleLabel titleField firstNameLabel firstNameField lastNameLabel lastNameField emailLabel emailField passwordLabel passwordField confirmPasswordLabel confirmPasswordField educationLabel educationField positionLabel positionField specialtyLabel specialtyField saveButtonView cancelButtonView'.w(),
-	backgroundColor: 'red',
+	//contentBinding : 'BodyBoard.authorsController.selection',
+	childViews : 'completionLabel completionField titleLabel titleField firstNameLabel firstNameField lastNameLabel lastNameField emailLabel emailField passwordLabel passwordField confirmPasswordLabel confirmPasswordField educationLabel educationField positionLabel positionField specialtyLabel specialtyField saveButtonView cancelButtonView'.w(),
+	classNames : 'green-bg'.w(),
 	
 	//COMPLETION
 	completionLabel : SC.LabelView.extend({
@@ -18,10 +18,11 @@ BodyBoard.editAuthorView = SC.View.design( SC.Control, {
 	}),
 	completionField : SC.LabelView.extend({
 		layout : { top: 40, left: 160 },
-		valueBinding : '.parentView*content.completion'
+		valueBinding : 'BodyBoard.bufferedAuthorController.completion'
 	}),
 	
 	//RATING
+	/*
 	ratingLabel : SC.LabelView.extend({
 		layout : { left: 300, top: 40 },
 		textAlign : SC.ALIGN_LEFT,
@@ -31,6 +32,7 @@ BodyBoard.editAuthorView = SC.View.design( SC.Control, {
 		layout : { left: 350, top: 40 },
 		valueBinding : '.parentView*content.rating'
 	}),
+	*/
 	
 	//TITLE
 	titleLabel : SC.LabelView.extend({
@@ -40,8 +42,10 @@ BodyBoard.editAuthorView = SC.View.design( SC.Control, {
 	}),
 	titleField : SC.TextFieldView.extend({
 		layout : { left: 60, top: 75, width: 75, height: 25 },
-		valueBinding : '.parentView*content.title'
+		valueBinding : 'BodyBoard.bufferedAuthorController.title'
 	}),
+	
+	
 	
 	//FIRST NAME
 	firstNameLabel : SC.LabelView.extend({
@@ -51,8 +55,10 @@ BodyBoard.editAuthorView = SC.View.design( SC.Control, {
 	}),
 	firstNameField : SC.TextFieldView.extend({
 		layout : { left: 265, top: 75, width: 220, height: 25 },
-		valueBinding : '.parentView*content.firstName'
+		valueBinding : 'BodyBoard.bufferedAuthorController.firstName'
 	}),
+	
+	
 	
 	//LAST NAME
 	lastNameLabel : SC.LabelView.extend({
@@ -62,7 +68,7 @@ BodyBoard.editAuthorView = SC.View.design( SC.Control, {
 	}),
 	lastNameField : SC.TextFieldView.extend({
 		layout : { left: 265, top: 110, width: 220, height: 25 },
-		valueBinding : '.parentView*content.lastName'
+		valueBinding : 'BodyBoard.bufferedAuthorController.lastName'
 	}),
 	
 	
@@ -106,6 +112,7 @@ BodyBoard.editAuthorView = SC.View.design( SC.Control, {
 	
 	
 	
+	
 	//EDUCATION
 	educationLabel : SC.LabelView.extend({
 		layout : { left: 20, top: 290 },
@@ -115,8 +122,11 @@ BodyBoard.editAuthorView = SC.View.design( SC.Control, {
 	educationField : SC.TextFieldView.extend({
 		layout : { left: 135, top: 285, width: 350, height: 60 },
 		isTextArea : YES,
-		valueBinding : '.parentView*content.education',
+		valueBinding : 'BodyBoard.bufferedAuthorController.education',
 	}),
+	
+	
+	
 	
 	//POSITION
 	positionLabel : SC.LabelView.extend({
@@ -127,8 +137,11 @@ BodyBoard.editAuthorView = SC.View.design( SC.Control, {
 	positionField : SC.TextFieldView.extend({
 		layout : { left: 135, top: 355, width: 350, height: 60 },
 		isTextArea : YES,
-		valueBinding : '.parentView*content.position'
+		valueBinding : 'BodyBoard.bufferedAuthorController.position'
 	}),
+	
+	
+	
 	
 	//SPECIALTY
 	specialtyLabel : SC.LabelView.extend({
@@ -139,13 +152,13 @@ BodyBoard.editAuthorView = SC.View.design( SC.Control, {
 	specialtyField : SC.TextFieldView.extend({
 		layout : { left: 135, top: 425, width: 350, height: 60 },
 		isTextArea : YES,
-		valueBinding : '.parentView*content.specialty'
+		valueBinding : 'BodyBoard.bufferedAuthorController.specialty'
 	}),
 	
 	saveButtonView : SC.ButtonView.extend({
 		layout : { left: 275, top: 510, width: 100, height: 25 },
 		title : 'SAVE',
-		isEnabledBinding : "BodyBoard.accountController.isSaveOk",
+		isEnabledBinding : 'BodyBoard.userController.isSaveOk',
 		action : 'requestSaveAccount'
 	}),
 	cancelButtonView : SC.ButtonView.extend({

@@ -1,4 +1,5 @@
-.section-heading .sc-label-view
+.section-heading .sc-label-view,
+.section-heading
 {
 	text-transform: uppercase;
 	font-size: 15px;

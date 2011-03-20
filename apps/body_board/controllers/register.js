@@ -42,8 +42,10 @@ return {
 	
 	beginRegistration : function() {
 
-		BodyBoard.accountController.addAccount();
-		BodyBoard.authorsController.addAuthor();
+		//BodyBoard.accountController.addAccount();
+		//BodyBoard.authorsController.addAuthor();
+		BodyBoard.userController.createNewUser();
+		BodyBoard.bufferedAuthorController.createNewAuthor();
 		this.set('isRegistering',YES);
 		console.log('Author and Account objects created');
 		return YES;
@@ -54,7 +56,7 @@ return {
 	
 	compareEmails : function(){
 		if(this.get('isRegistering') == YES){
-			var email = BodyBoard.accountController.get('email');
+			var email = BodyBoard.userController.get('name');
 			var confirmEmail = this.get('confirmEmail');
 			console.log('Comparing emails');
 		
@@ -71,13 +73,13 @@ return {
 				$('#email-check').removeClass('checked');
 			}
 		}
-	}.observes('BodyBoard.accountController.email','confirmEmail'),
+	}.observes('BodyBoard.userController.name','confirmEmail'),
 	
 	
 	
 	comparePasswords : function() {
 		if(this.get('isRegistering') == YES){
-			var password = BodyBoard.accountController.get('password');
+			var password = BodyBoard.userController.get('password');
 			var confirmPassword = this.get('confirmPassword');
 			console.log('Comparing Passwords');
 			if(password == confirmPassword) {
@@ -92,7 +94,7 @@ return {
 				$('#password-check').removeClass('checked');
 			}
 		}
-	}.observes('BodyBoard.accountController.password','confirmPassword'),
+	}.observes('BodyBoard.userController.password','confirmPassword'),
 	
 	
 	
@@ -101,8 +103,8 @@ return {
 			console.log('Checking if ready');
 			if(this.get('passwordValid') ==  YES){
 				if(this.get('emailValid') == YES){
-					if((BodyBoard.authorController.get('lastName') != '') && (BodyBoard.authorController.get('lastName') != null)){
-						if((BodyBoard.authorController.get('firstName') != '') && (BodyBoard.authorController.get('firstName') != null)){
+					if((BodyBoard.bufferedAuthorController.get('lastName') != '') && (BodyBoard.bufferedAuthorController.get('lastName') != null)){
+						if((BodyBoard.bufferedAuthorController.get('firstName') != '') && (BodyBoard.bufferedAuthorController.get('firstName') != null)){
 							this.set('isNextOk',YES);
 							console.log('Form validates, OK to move on');
 						}
@@ -111,7 +113,7 @@ return {
 			}
 		}
 		
-	}.observes('BodyBoard.authorController.firstName','BodyBoard.authorController.firstNamelastName','BodyBoard.accountController.email','confirmEmail','BodyBoard.accountController.password','confirmPassword'),
+	}.observes('BodyBoard.bufferedAuthorController.firstName','BodyBoard.bufferedAuthorController.firstNamelastName','BodyBoard.userController.name','confirmEmail','BodyBoard.userController.password','confirmPassword'),
 	
 	
 	
@@ -137,19 +139,30 @@ return {
 	
 	
 	
-	finishRegistration : function() {
-		console.log('Finishing registration');
-		BodyBoard.authorsController.saveAuthor();
-		BodyBoard.accountController.saveAccount();
-		BodyBoard.statechart.sendEvent('registrationCompleted');
+	saveUser : function() {
+		console.log('Saving User account');
+		//BodyBoard.userController.saveNew(BodyBoard.get('registerPage'), this.saveAuthor());
+		BodyBoard.userController.saveNew(BodyBoard.get('registerPage'));
+		//BodyBoard.statechart.sendEvent('userSavedOk');
 		
 	},
+	/*
+	saveAuthor : function() {
+		console.log('Saving Author');
+		//BodyBoard.bufferedAuthorController.set('user_id',BodyBoard.userController.get('id'));
+		//BodyBoard.bufferedAuthorController.save(BodyBoard.get('registerPage'), this.finish());
+		BodyBoard.bufferedAuthorController.save(BodyBoard.get('registerPage'));
+		
+	},
+	*/
 	
-	
+	finish : function(){
+		BodyBoard.statechart.sendEvent('registrationComplete');
+	},
 	
 	cancelRegistration : function() {
-		account = {},
-		author = {},
+		//account = {},
+		//author = {},
 		this.set('isRegistering',NO);
 		this.set('emailsDoMatch', NO);
 		this.set('emailValid', NO);
@@ -157,8 +170,8 @@ return {
 		this.set('passwordValid',NO);
 		this.set('isNextOk',NO);
 		this.set('isSubmitOk',NO);
-		BodyBoard.accountController.set('content', {});
-		BodyBoard.authorsController.deselectObject(author);
+		BodyBoard.userController.resetContent();
+		BodyBoard.bufferedAuthorController.resetContent();
 		console.log('Registration cancelled, information deleted');
 		
 	},

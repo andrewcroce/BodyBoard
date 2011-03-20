@@ -1,7 +1,15 @@
+body {
+	margin: 0px !important;
+}
+
+.hidden {
+	display: none;
+}
+
 #body-board-view {
 	z-index: 2;
 }
-#create-label-view {
+#create-label-view, #edit-label-view, #labels-toggle-button {
 	z-index: 3;
 }
 #drag-target-view {
@@ -36,24 +44,63 @@
 /******************************/
 /* BODY BOARD LABELS */ 
 /******************************/
+.body-label-view {
+	overflow:visible !important;
+}
 .body-label-view .marker {
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+}
 
-	border-radius: 6px;
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
-	width: 10px;
-	height: 10px;
-}
-.body-label-view .container {
-	width: 400px;
-	position: relative;
-	left: 16px;
-	top: -12px;
-}
 	.body-label-view h1 {
 		min-width: 230px;
 		display: block;
 		padding: 4px 7px 7px 7px;
 		opacity: 0.8;
 	}
+	.label-name-view {
+		padding: 5px !important;
+	}
+	
+	.captions-container {
+		
+	}
+	.captions-list {
+		width: 100000000px;
+	}
+	.caption-view {
+		display: inline !important;
+		float: left !important;
+		
+	}
+	.caption-view h2 {
+		padding: 0px 10px 10px 0px;
+	}
+	.caption-view p {
+		padding: 0px 10px 10px 0px;
+		line-height: 17px !important;
+		letter-spacing: 0px !important;
+		font-size: 12px !important;
+	}
+	small {
+		display: block !important;
+		margin: 10px 0px 0px 0px ;
+	}
+	
+	
+/******************************/
+/* WYSIWYG EDITOR */ 
+/******************************/
+	
+.wysiwyg {
 
+}	
+	
+		
+	
+/*STRING MEASUREMENT DIV*/
+.measuring-div {
+	max-width: 373px !important;
+	line-height: 17px !important;
+}

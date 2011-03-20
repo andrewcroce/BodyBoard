@@ -10,7 +10,7 @@ BodyBoard.createLabelView = SC.View.design(
 	
 	layout : { left: 0, right: 0, bottom: 0, height: 100 },
 	childViews : 'dragLabelView nameLabelView nameFieldView saveButtonView cancelButtonView'.w(),
-	backgroundColor: 'red',
+	//backgroundColor: 'red',
 	layerId : 'create-label-view',
 	
 	/*
@@ -34,7 +34,7 @@ BodyBoard.createLabelView = SC.View.design(
 	
 	nameFieldView : SC.TextFieldView.design({
 		layout : { left: 90, top: 35, width: 190, height: 25 },
-		valueBinding : 'BodyBoard.labelController.name'
+		valueBinding : 'BodyBoard.bufferedLabelController.name'
 	}),
 	
 	saveButtonView : SC.ButtonView.design({
@@ -48,5 +48,6 @@ BodyBoard.createLabelView = SC.View.design(
 		title : 'CANCEL',
 		action : 'requestCancelCreateLabel'
 		
-	})
+	}),
+
 }); if ((typeof SC !== 'undefined') && SC && SC.Module && SC.Module.scriptDidLoad) SC.Module.scriptDidLoad('body_board');

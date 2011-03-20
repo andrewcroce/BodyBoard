@@ -6,6 +6,10 @@ $theme: '';/******************************/
 .main-header-view {
 	background: sc_static('main_header_bg.png') top repeat-x;
 }
+#top-logo {
+	background: sc_static('logo.png') top left no-repeat;
+	color: transparent;
+}
 
 
 
@@ -17,4 +21,31 @@ $theme: '';/******************************/
 }
 .checked {
 	background: sc_static('check_good.png') left top no-repeat !important;
+}
+
+
+
+
+
+
+.next-button {
+	background: sc_static('next_btn.png') right center no-repeat;
+}
+.next-button-disabled {
+	background: sc_static('next_btn_disabled.png') right center no-repeat;
+}
+
+.prev-button {
+	background: sc_static('previous_btn.png') left center no-repeat;
+}
+.prev-button-disabled {
+	background: sc_static('previous_btn_disabled.png') left center no-repeat;
+}
+
+
+
+
+
+#drag-target-view {
+	background: sc_static('target.png') center center no-repeat;
 }

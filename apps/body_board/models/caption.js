@@ -19,10 +19,32 @@ BodyBoard.Caption = SC.Record.extend(
 	text : SC.Record.attr(String, { isRequired: YES }),
 	votes : SC.Record.attr(Number, { defaultValue: 0 }),
 	
-	label_id : SC.Record.attr(Number),
+	label_id : SC.Record.attr(String),
 	label : function(){
 		return BodyBoard.store.find(BodyBoard.Label,this.get('label_id'));	
 	}.property().cacheable(),
+	
+	author_id : SC.Record.attr(String),
+	author : function(){
+		return BodyBoard.store.find(BodyBoard.Author,this.get('author_id'));
+	}.property().cacheable(),
 	//image : SC.Record.toOne('BodyBoard.Image', { inverse: 'caption' })
+	
+	backup : function(){
+		var backup = SC.Object.create();
+		for (var i = 0; i < this.properties.length; i++) {
+			var p = this.properties[i];
+			backup.set(p, this.get(p));
+		}
+		return backup;
+	},
+	
+	restore : function(backup) {
+		for (var i = 0; i < this.properties.length; i++) {
+			var p = this.properties[i];
+			this.set(p, backup.get(p));
+		}
+		return;
+	}
 
 }) ;

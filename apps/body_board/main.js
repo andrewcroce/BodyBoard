@@ -22,18 +22,24 @@ BodyBoard.main = function main() {
 	
 	//var authors = BodyBoard.store.find(SC.Query.local(BodyBoard.Author));
 	var authors = BodyBoard.store.find(BodyBoard.AUTHORS_QUERY);
-	BodyBoard.authorsController.set('content', authors);
+	
 	
 	//var systems = BodyBoard.store.find(SC.Query.local(BodyBoard.System));
 	var systems = BodyBoard.store.find(BodyBoard.SYSTEMS_QUERY);
-	BodyBoard.systemsController.set('content', systems);
+
 	
 	//var labels = BodyBoard.store.find(SC.Query.local(BodyBoard.Label));
 	var labels = BodyBoard.store.find(BodyBoard.LABELS_QUERY);
-	BodyBoard.labelsController.set('content', labels);
+	
 	
 	//var captions = BodyBoard.store.find(SC.Query.local(BodyBoard.Caption));
 	var captions = BodyBoard.store.find(BodyBoard.CAPTIONS_QUERY);
+	
+	
+	
+	BodyBoard.authorsController.set('content', authors);
+	BodyBoard.systemsController.set('content', systems);
+	BodyBoard.labelsController.set('content', labels);
 	BodyBoard.captionsController.set('content', captions);
 	
 	BodyBoard.treeNavController.populate();

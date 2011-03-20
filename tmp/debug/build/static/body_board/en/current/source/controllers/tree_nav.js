@@ -42,8 +42,10 @@ SC.TreeItemContent,{
 	*/
 	
 	observeLabelContent : function(){
-		console.log('Label changed, selecting tree node');
+		//console.log('Label changed, selecting tree node');
+		
 		this.selectObject(BodyBoard.labelController.get('content'));
+
 	}.observes('BodyBoard.labelController.content'),
 	
 	
@@ -82,18 +84,23 @@ BodyBoard.treeNodeController = SC.ObjectController.create({
 			BodyBoard.systemsController.selectObject(record);
 		} else {
 			if(record.isLabel){
+				
 				if(currentSystem.get('id') != record.get('id')){
-					console.log('system reset');
+					//console.log('system reset');
 					BodyBoard.systemsController.selectObject(record.get('system'));
 					BodyBoard.labelsController.selectObject(record);
 					if(this.get('systemChanged') == NO){
+						SC.RunLoop.begin();
 						BodyBoard.labelController.focusOnLabel();
+						SC.RunLoop.end();
 					}
 				} else {
 					BodyBoard.labelsController.selectObject(record);
 					this.invokeLast(function(){
 						if(this.get('systemChanged') == NO){
+							SC.RunLoop.begin();
 							BodyBoard.labelController.focusOnLabel();
+							SC.RunLoop.end();
 						}
 					});
 				}

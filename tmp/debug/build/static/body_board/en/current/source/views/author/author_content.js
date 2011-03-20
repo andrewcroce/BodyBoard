@@ -5,6 +5,7 @@
 /*globals BodyBoard */
 
 sc_require('views/label/author_label_listitem');
+sc_require('views/caption/caption_listitem');
 
 
 //BodyBoard.authorContentView = SC.SplitView.design({
@@ -15,101 +16,47 @@ BodyBoard.authorContentView = SC.SplitView.design({
 		backgroundColor : 'white',
 		layoutDirection : SC.LAYOUT_VERTICAL,
 		autoresizeBehavior : SC.RESIZE_TOP_LEFT,
-		
+		layerId : 'author-content-view',
+				
 		childViews : 'topLeftView bottomRightView'.w(),
-		//childViews : 'scrollView'.w(),
 		
-		/*
-		topLeftView : SC.ScrollView.design({
-			
-			layout : { left: 0, right: 0, top: 0  },
-			hasHorizontalScroller : NO,
-			backgroundColor : 'red',
-			
-			contentView : SC.View.design({
-				
-				layout : { left: 0, right: 0, top: 0, bottom: 0 },
-				contentBinding : 'BodyBoard.authorController.content',
-				childViews : 'authorHeadingView createArticleButtonView articlesHeadingView articlesListView'.w(),
-
-				authorHeadingView : SC.ToolbarView.design({
-					layout : { left: 0, right: 0, top: 0, height: 30 },
-
-					childViews : 'labelView'.w(),
-
-					labelView : SC.LabelView.design({
-						layout : { left: 10 , top: 5 },
-						contentBinding : 'BodyBoard.authorController.content',
-						contentValueKey : 'fullName',
-						//contentDidChange: function() {console.log('content changed [%@]'.fmt(this.get('content')))}.observes('content')
-					})
-
-				}),
-				
-				articlesHeadingView : SC.LabelView.design({
-					layout : { top: 40, left: 10 },
-					value : "My Articles"
-				}),
-				
-				createArticleButtonView : SC.ButtonView.design({
-					layout : { top: 40, right: 10, width: 150, height: 25 },
-					title : 'Create New Article'
-				}),
-				
-				articlesListView : SC.ListView.design({
-					layout : { top: 70, bottom: 0, left: 10, right: 10 },
-					contentBinding : 'BodyBoard.authorArticlesController.arrangedObjects',
-					selectionBinding : 'BodyBoard.articlesController.selection',
-					selectOnMouseDown : YES,
-					rowHeight: 100,
-					exampleView: BodyBoard.authorArticleListitemView,
-					recordType: BodyBoard.Article
-				})
-				
-			})
-			
-		}),
-		*/
 		
-		topLeftView : SC.ScrollView.design({
+		topLeftView : SC.ContainerView.design({
 			
 			layout : { left: 0, right: 0, top: 0 },
-			hasHorizontalScroller : NO,
-			
+			layerId : 'author-content-top',
 			
 			contentView : SC.View.design({
 				
 				layout : { left: 0, right: 0, top: 0, bottom: 0 },
-				contentBinding : 'BodyBoard.authorController.content',
-				childViews : 'authorHeadingView labelsHeadingView createLabelButtonView labelsListView'.w(),
+				childViews : 'labelsHeadingView editLabelButtonView createLabelButtonView labelsListView'.w(),
+				classNames : 'green-bg'.w(),
 				
-				authorHeadingView : SC.ToolbarView.design({
-					layout : { left: 0, right: 0, top: 0, height: 30 },
-
-					childViews : 'labelView'.w(),
-
-					labelView : SC.LabelView.design({
-						layout : { left: 10 , top: 5 },
-						//contentBinding : 'BodyBoard.authorController.content',
-						//contentValueKey : 'fullName',
-						valueBinding : '*fullName'
-					})
-
-				}),
+				
 				
 				labelsHeadingView : SC.LabelView.design({
-					layout : { top: 40, left: 10 },
-					value : "My Labels"
+					layout : { top: 10, left: 10, height: 29 },
+					value : "My Labels",
+					classNames : 'section-heading'.w()
 				}),
 				
 				createLabelButtonView : SC.ButtonView.design({
-					layout : { top: 40, right: 10, width: 130, height: 25 },
-					title : 'Create New Label',
+					layout : { top: 8, right: 59, width: 35, height: 25 },
+					escapeHTML : NO,
+					title : '<strong>+</strong>',
 					action : 'requestCreateLabel'
 				}),
 				
+				editLabelButtonView : SC.ButtonView.design({
+					layout : { top: 8, right: 7, width: 45, height: 25 },
+					title : 'Edit',
+					action : 'requestEditLabel',
+					isEnabledBinding : 'BodyBoard.labelsController.hasSelection'
+				}),
+				
 				labelsListView : SC.ScrollView.design({
-					layout : { top: 70, bottom: 0, left: 10, right: 10 },
+					layout : { top: 40, bottom: 0, left: 10, right: 0 },
+					layerId : 'author-labels-list',
 					contentView : SC.ListView.design({
 						layout : { top: 0, bottom: 0, left: 0, right: 0 },
 						contentBinding : 'BodyBoard.authorLabelsController.arrangedObjects',
@@ -126,38 +73,53 @@ BodyBoard.authorContentView = SC.SplitView.design({
 		}),
 		
 		
-		bottomRightView : SC.ScrollView.design({
+		bottomRightView : SC.ContainerView.design({
 			
 			layout : { left: 0, right: 0, bottom: 0 },
 			hasHorizontalScroller : NO,
-			//backgroundColor : 'red',
+			hasVerticalScroller : YES,
+			layerId : 'author-content-bottom',
 			
 			contentView : SC.View.design({
 				
 				layout : { left: 0, right: 0, top: 0, bottom: 0 },
 				contentBinding : 'BodyBoard.authorController.content',
-				childViews : 'captionsHeadingView createCaptionButtonView captionsListView'.w(),
+				childViews : 'captionsHeadingView editCaptionButtonView createCaptionButtonView captionsListView'.w(),
+				classNames : 'green-bg'.w(),
 				
 				captionsHeadingView : SC.LabelView.design({
-					layout : { top: 10, left: 10 },
-					value : "My Captions"
+					layout : { top: 10, left: 10, height: 29 },
+					value : "My Captions",
+					classNames : 'section-heading'.w()
+				}),
+				
+				editCaptionButtonView : SC.ButtonView.design({
+					layout : { top: 8, right: 7, width: 45, height: 25 },
+					title : 'edit',
+					action : 'requestEditCaption',
+					isEnabledBinding : 'BodyBoard.captionsController.hasSelection'
 				}),
 				
 				createCaptionButtonView : SC.ButtonView.design({
-					layout : { top: 10, right: 10, width: 150, height: 25 },
-					title : 'Create New Caption'
+					layout : { top: 8, right: 59, width: 35, height: 25 },
+					escapeHTML : NO,
+					title : '<strong>+</strong>',
+					action : 'requestCreateCaption',
+					isEnabledBinding : 'BodyBoard.labelsController.hasSelection'
 				}),
+				
 				
 				captionsListView : SC.ListView.design({
 					layout : { top: 40, bottom: 0, left: 10, right: 10 },
-					/*
 					contentBinding : 'BodyBoard.authorCaptionsController.arrangedObjects',
 					selectionBinding : 'BodyBoard.captionsController.selection',
 					selectOnMouseDown : YES,
-					rowHeight: 100,
-					exampleView: BodyBoard.authorCaptionListitemView,
-					recordType: BodyBoard.Caption
-					*/
+					layerId : 'author-captions-list',
+					rowHeight: 50,
+					//contentValueKey : 'text',
+					exampleView : BodyBoard.captionListitemView,
+					recordType : BodyBoard.Caption
+					
 				})
 				
 			})

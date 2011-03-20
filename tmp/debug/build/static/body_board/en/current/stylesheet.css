@@ -1,3 +1,16 @@
+/* line 4, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/typography.css.scss */
+.section-heading .sc-label-view,
+.section-heading {
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+/* line 9, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/typography.css.scss */
+.body-label-view h1 {
+  font-size: 13px;
+  font-weight: normal !important;
+}
+
 /******************************/
 /* HEADER */
 /******************************/
@@ -6,102 +19,45 @@
   background: url('/static/body_board/en/current/resources/images/main_header_bg.png?1296599065') top repeat-x;
 }
 
-/* line 15, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/images.css.scss */
+/* line 9, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/images.css.scss */
+#top-logo {
+  background: url('/static/body_board/en/current/resources/images/logo.png?1300135534') top left no-repeat;
+  color: transparent;
+}
+
+/* line 19, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/images.css.scss */
 .check-view {
   background: url('/static/body_board/en/current/resources/images/check_bad.png?1296599065') left top no-repeat;
 }
 
-/* line 18, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/images.css.scss */
+/* line 22, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/images.css.scss */
 .checked {
   background: url('/static/body_board/en/current/resources/images/check_good.png?1296599065') left top no-repeat !important;
 }
 
-/* line 3, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/typography.css.scss */
-.section-heading .sc-label-view {
-  text-transform: uppercase;
-  font-size: 15px;
+/* line 31, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/images.css.scss */
+.next-button {
+  background: url('/static/body_board/en/current/resources/images/next_btn.png?1299605593') right center no-repeat;
 }
 
-/* line 8, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/typography.css.scss */
-.body-label-view h1 {
-  font-size: 13px;
-  font-weight: normal !important;
+/* line 34, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/images.css.scss */
+.next-button-disabled {
+  background: url('/static/body_board/en/current/resources/images/next_btn_disabled.png?1299606096') right center no-repeat;
 }
 
-/* line 2, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
-#body-board-view {
-  z-index: 2;
+/* line 38, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/images.css.scss */
+.prev-button {
+  background: url('/static/body_board/en/current/resources/images/previous_btn.png?1299606120') left center no-repeat;
 }
 
-/* line 5, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
-#create-label-view {
-  z-index: 3;
+/* line 41, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/images.css.scss */
+.prev-button-disabled {
+  background: url('/static/body_board/en/current/resources/images/previous_btn_disabled.png?1299606139') left center no-repeat;
 }
 
-/* line 8, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+/* line 49, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/images.css.scss */
 #drag-target-view {
-  z-index: 4;
-}
-
-/* line 11, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
-#label-collection {
-  z-index: 1;
-}
-
-/* line 14, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
-.sc-button-inner {
-  min-width: 25px !important;
-}
-
-/* line 17, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
-#main-header .sc-button-label {
-  text-align: left !important;
-  margin-left: 5px !important;
-  margin-right: 5px !important;
-}
-
-/* line 22, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
-#viewer-controls {
-  position: absolute !important;
-  z-index: 1000;
-  left: 10px;
-  top: 10px;
-  width: 40px;
-}
-
-/* line 29, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
-#controls-container {
-  position: relative !important;
-}
-
-/* line 32, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
-#controls-inner-container {
-  position: static !important;
-}
-
-/* line 40, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
-.body-label-view .marker {
-  border-radius: 6px;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-  width: 10px;
-  height: 10px;
-}
-
-/* line 48, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
-.body-label-view .container {
-  width: 400px;
-  position: relative;
-  left: 16px;
-  top: -12px;
-}
-
-/* line 54, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
-.body-label-view h1 {
-  min-width: 230px;
-  display: block;
-  padding: 4px 7px 7px 7px;
-  opacity: 0.8;
+  background: url('/static/body_board/en/current/resources/images/target.png?1299956085') center center no-repeat;
 }
 
 /******************************/
@@ -120,110 +76,585 @@ Main Header Gradient
 
 
 */
-/* line 21, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
-body {
-  background: #EFFFFC;
+/* line 26, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+body,
+.green-bg,
+#author-labels-list div,
+#author-captions-list,
+#author-captions-list div {
+  background: #EFFFFC !important;
 }
 
-/* line 24, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 30, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 * {
   color: #8B9EA0;
 }
 
-/* line 31, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 34, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+h1, h2, h3, h4 {
+  color: #8B9EA0 !important;
+}
+
+/* line 39, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+.sc-button-view.disabled label {
+  color: #c2d1cf !important;
+}
+
+/* line 44, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#author-labels-list {
+  border: none;
+}
+
+/* line 49, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 .label-li-view.selected {
   background: #CFF9FC;
 }
 
-/* line 40, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 56, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+.section-heading {
+  border-bottom: 1px solid #8B9EA0;
+}
+
+/* line 67, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 .section-heading,
+#author-content-view .sc-toolbar-view,
 #label-collection {
   background: none !important;
   background-color: none !important;
 }
 
-/* line 50, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
-#main-header {
+/* line 78, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#main-header, #about-header {
   background: url('/static/body_board/en/current/resources/images/main_header_bg.png?1296599065') top repeat-x;
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #a3e0e0), color-stop(0.6, #d2fcfe));
+  border-bottom: 1px solid #368084 !important;
+  border-top: none;
 }
 
-/* line 64, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 94, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #main-header .button,
 #main-header .sc-button-inner,
 #main-header .sc-button-label {
   background: none;
 }
 
-/* line 73, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 98, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+.header-label {
+  color: #65b2b5;
+}
+
+/* line 103, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#create-label-view, #edit-label-view {
+  background: url('/static/body_board/en/current/resources/images/main_header_bg.png?1296599065') top repeat-x;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #a3e0e0), color-stop(0.6, #d2fcfe));
+  border-top: 1px solid #368084;
+}
+
+/* line 120, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 .label-li-view.selected {
   background: #CFF9FC;
 }
 
-/* line 82, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 126, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+.caption-li-view.selected *,
+.author-label-li-view.selected * {
+  color: #368084 !important;
+}
+
+/* line 134, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#body-menu-container {
+  border-top: none;
+  border-bottom: none;
+  border-right: 1px solid #368084;
+}
+
+/* line 140, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #body-menu .sc-list-item-view {
   color: #fff;
   background: -moz-linear-gradient(left, #6bbcc0, #65b2b5);
   background: -webkit-gradient(linear, left bottom, right bottom, color-stop(0, #6bbcc0), color-stop(0.6, #65b2b5));
 }
 
-/* line 94, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 152, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #body-menu .sc-list-item-view label {
   color: #fff;
 }
 
-/* line 98, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 156, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #body-menu .has-disclosure {
   background: none;
 }
 
-/* line 101, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 159, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #body-menu .has-disclosure label {
   color: #33888D;
 }
 
-/* line 104, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 162, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #body-menu .sel {
   background: -moz-linear-gradient(left, #89c9cd, #84c1c4);
   background: -webkit-gradient(linear, left bottom, right bottom, color-stop(0, #89c9cd), color-stop(0.6, #84c1c4));
 }
 
-/* line 117, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 175, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 #body-menu {
   background: -moz-linear-gradient(left, #8ad9dc, #80c9cb);
   background: -webkit-gradient(linear, left bottom, right bottom, color-stop(0, #8ad9dc), color-stop(0.6, #80c9cb));
 }
 
-/* line 134, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 192, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 .body-label-view ul {
   margin: 0px;
   padding: 0px;
-  background: #f00;
 }
 
-/* line 139, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
-.body-label-view h1 {
+/* line 196, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+.body-label-view .label-name-view {
   color: #fff;
   background: #317484;
 }
 
-/* line 144, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 201, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 .body-label-view .marker {
   background: -moz-linear-gradient(top, rgba(62, 159, 163, 0.8), rgba(39, 99, 105, 0.8));
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(39, 99, 105, 0.8)), color-stop(1, rgba(62, 159, 163, 0.8)));
   border: 1px solid #368084;
 }
 
-/* line 162, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 222, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#login-header, #register-header {
+  background: url('/static/body_board/en/current/resources/images/main_header_bg.png?1296599065') top repeat-x;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #a3e0e0), color-stop(0.6, #d2fcfe));
+  border-bottom: 1px solid #368084 !important;
+  border-top: none;
+}
+
+/* line 235, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#login-panel {
+  border: 1px solid #368084 !important;
+}
+
+/* line 244, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#author-content-top {
+  border-top: none;
+}
+
+/* line 248, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#author-content-bottom {
+  border-bottom: none;
+}
+
+/* line 257, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+#main-footer {
+  background: url('/static/body_board/en/current/resources/images/main_header_bg.png?1296599065') top repeat-x;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #a3e0e0), color-stop(0.6, #d2fcfe));
+  border-top: 1px solid #368084 !important;
+}
+
+/* line 275, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 .next-button {
   border-color: transparent transparent transparent rgba(62, 159, 163, 0.8);
   border-width: 10px 0px 10px 20px;
-  background-color: #0F0;
+  /*background-color: #0F0;*/
 }
 
-/* line 168, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
+/* line 281, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/color.css.scss */
 .prev-button {
   border-color: transparent rgba(62, 159, 163, 0.8) transparent transparent;
   border-width: 10px 20px 10px 0px;
-  background-color: #0F0;
+  /*background-color: #0F0;*/
+}
+
+/* line 3, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg {
+  border: 1px solid #999;
+  padding: 5px;
+  background: white url('/static/body_board/en/current/resources/images/jquery.wysiwyg.bg.png?1299482040') repeat-x top;
+}
+
+/* line 4, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg * {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 6, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.jwysiwyg-custom-command {
+  overflow: hidden;
+}
+
+/* line 8, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar {
+  border-bottom: 1px solid #ccc;
+  float: left;
+  width: 100%;
+  padding: 0;
+}
+
+/* line 9, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li {
+  list-style: none;
+  float: left;
+  margin: 1px 2px 3px 0;
+  background: #f0f0f0;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* line 10, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.separator {
+  width: 1px;
+  height: 16px;
+  margin: 0 4px;
+  border-left: 1px solid #ccc;
+}
+
+/* line 11, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li {
+  text-indent: -5000px;
+  opacity: 0.85;
+  filter: alpha(opacity=85);
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: url("../resources/images/jquery.wysiwyg.gif") no-repeat -64px -80px;
+  border: 1px dotted #f0f0f0;
+  cursor: pointer;
+  margin: 0px;
+}
+
+/* line 12, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.wysiwyg-button-hover, div.wysiwyg ul.toolbar li.active {
+  opacity: 1.00;
+  filter: alpha(opacity=100);
+  border: 1px outset #e0e0e0;
+}
+
+/* line 13, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.active {
+  background-color: #ffff40;
+  border: 1px solid #d0d0d0;
+  border-left-color: #aaa;
+  border-top-color: #aaa;
+  margin: 0;
+}
+
+/* line 15, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.bold {
+  background-position: 0 -16px;
+}
+
+/* line 16, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.italic {
+  background-position: -16px -16px;
+}
+
+/* line 17, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.strikeThrough {
+  background-position: -32px -16px;
+}
+
+/* line 18, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.underline {
+  background-position: -48px -16px;
+}
+
+/* line 20, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.justifyLeft {
+  background-position: 0 0;
+}
+
+/* line 21, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.justifyCenter {
+  background-position: -16px 0;
+}
+
+/* line 22, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.justifyRight {
+  background-position: -32px 0;
+}
+
+/* line 23, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.justifyFull {
+  background-position: -48px 0;
+}
+
+/* line 25, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.indent {
+  background-position: -64px 0;
+}
+
+/* line 26, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.outdent {
+  background-position: -80px 0;
+}
+
+/* line 28, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.subscript {
+  background-position: -64px -16px;
+}
+
+/* line 29, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.superscript {
+  background-position: -80px -16px;
+}
+
+/* line 31, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.undo {
+  background-position: 0 -64px;
+}
+
+/* line 32, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.redo {
+  background-position: -16px -64px;
+}
+
+/* line 34, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.insertOrderedList {
+  background-position: -32px -48px;
+}
+
+/* line 35, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.insertUnorderedList {
+  background-position: -16px -48px;
+}
+
+/* line 36, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.insertHorizontalRule {
+  background-position: 0 -48px;
+}
+
+/* line 38, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.h1 {
+  background-position: 0 -32px;
+}
+
+/* line 39, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.h2 {
+  background-position: -16px -32px;
+}
+
+/* line 40, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.h3 {
+  background-position: -32px -32px;
+}
+
+/* line 41, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.h4 {
+  background-position: -48px -32px;
+}
+
+/* line 42, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.h5 {
+  background-position: -64px -32px;
+}
+
+/* line 43, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.h6 {
+  background-position: -80px -32px;
+}
+
+/* line 45, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.paragraph {
+  background-position: 0px -96px;
+}
+
+/* line 46, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.colorpicker {
+  background-position: -16px -96px;
+}
+
+/* line 47, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.fullscreen {
+  background-position: -32px -96px;
+}
+
+/* line 49, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.cut {
+  background-position: -32px -64px;
+}
+
+/* line 50, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.copy {
+  background-position: -48px -64px;
+}
+
+/* line 51, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.paste {
+  background-position: -64px -64px;
+}
+
+/* line 52, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.insertTable {
+  background-position: -64px -48px;
+}
+
+/* line 54, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.increaseFontSize {
+  background-position: -16px -80px;
+}
+
+/* line 55, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.decreaseFontSize {
+  background-position: -32px -80px;
+}
+
+/* line 57, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.createLink {
+  background-position: -80px -48px;
+}
+
+/* line 58, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.insertImage {
+  background-position: -80px -80px;
+}
+
+/* line 60, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.html {
+  background-position: -47px -46px;
+}
+
+/* line 61, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.removeFormat {
+  background-position: -80px -63px;
+}
+
+/* line 63, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg ul.toolbar li.empty {
+  background-position: -64px -80px;
+}
+
+/* line 65, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/jquery.wysiwyg.css.scss */
+div.wysiwyg iframe {
+  border: 1px solid #999;
+  clear: left;
+  -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);
+  background-color: white;
+  padding: 3px;
+  margin: 0;
+}
+
+/* line 2, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+body {
+  margin: 0px !important;
+}
+
+/* line 6, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+.hidden {
+  display: none;
+}
+
+/* line 10, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+#body-board-view {
+  z-index: 2;
+}
+
+/* line 13, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+#create-label-view, #edit-label-view, #labels-toggle-button {
+  z-index: 3;
+}
+
+/* line 16, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+#drag-target-view {
+  z-index: 4;
+}
+
+/* line 19, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+#label-collection {
+  z-index: 1;
+}
+
+/* line 22, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+.sc-button-inner {
+  min-width: 25px !important;
+}
+
+/* line 25, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+#main-header .sc-button-label {
+  text-align: left !important;
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+
+/* line 30, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+#viewer-controls {
+  position: absolute !important;
+  z-index: 1000;
+  left: 10px;
+  top: 10px;
+  width: 40px;
+}
+
+/* line 37, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+#controls-container {
+  position: relative !important;
+}
+
+/* line 40, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+#controls-inner-container {
+  position: static !important;
+}
+
+/* line 48, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+.body-label-view {
+  overflow: visible !important;
+}
+
+/* line 51, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+.body-label-view .marker {
+  border-radius: 7px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+
+/* line 57, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+.body-label-view h1 {
+  min-width: 230px;
+  display: block;
+  padding: 4px 7px 7px 7px;
+  opacity: 0.8;
+}
+
+/* line 63, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+.label-name-view {
+  padding: 5px !important;
+}
+
+/* line 70, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+.captions-list {
+  width: 100000000px;
+}
+
+/* line 73, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+.caption-view {
+  display: inline !important;
+  float: left !important;
+}
+
+/* line 78, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+.caption-view h2 {
+  padding: 0px 10px 10px 0px;
+}
+
+/* line 81, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+.caption-view p {
+  padding: 0px 10px 10px 0px;
+  line-height: 17px !important;
+  letter-spacing: 0px !important;
+  font-size: 12px !important;
+}
+
+/* line 87, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+small {
+  display: block !important;
+  margin: 10px 0px 0px 0px;
+}
+
+/* line 104, ././tmp/chance//Users/andrewcroce/Projects/BodyBoard/apps/body_board/resources/css/layout.css.scss */
+.measuring-div {
+  max-width: 373px !important;
+  line-height: 17px !important;
 }

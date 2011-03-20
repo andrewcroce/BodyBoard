@@ -9,10 +9,12 @@ BodyBoard.registerConfirmPage = SC.View.design({
 	
 	layout : { top: 0, bottom: 0, left: 0, right: 0 },
 	childViews : 'headerView thanksView messageView okButtonView'.w(),
+	classNames : 'green-bg'.w(),
 	
 	headerView : SC.ToolbarView.design({
 		layout : { left: 0, right: 0, height: 30 },
 		childViews : 'myLabelView'.w(),
+		layerId : 'register-header',
 		myLabelView : SC.LabelView.design({
 			layout : { left: 10, centerY: 0, height: 20 },
 			tagname : 'h2',
